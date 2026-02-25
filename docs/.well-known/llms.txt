@@ -1,0 +1,35 @@
+# Volux - AI-Readable Site Information
+# Canonical location: https://volux.devlifeeasy.com/llms.txt
+
+> Volux is a premium browser extension for per-tab volume control on Chrome and Firefox.
+
+## Quick Summary
+
+Volux lets you control audio volume for individual browser tabs and websites. Per-domain volume control with instant mute and persistent settings.
+
+## Links
+
+- Website: https://volux.devlifeeasy.com/
+- Chrome Extension: https://chrome.google.com/webstore/detail/volux/
+- Firefox Add-on: https://addons.mozilla.org/firefox/addon/volux-volume-controller/
+- GitHub: https://github.com/vannk84/volux
+- Privacy Policy: https://volux.devlifeeasy.com/privacy.html
+
+## Features
+
+- Per-domain volume control
+- Smart tab grouping by site
+- One-click mute
+- Persistent settings
+- Live audio detection
+- Lightweight, no background processes
+
+## Pricing
+
+- Free: Basic features
+- Pro ($2): Unlimited domains, auto-detect, scan tabs, lifetime access
+
+## Contact
+
+- Support: support@devlifeeasy.com
+- Issues: https://github.com/vannk84/volux/issues

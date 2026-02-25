@@ -1,0 +1,19 @@
+/* TEAM */
+Developer: vannk84
+Site: https://github.com/vannk84
+Location: Remote
+
+/* SITE */
+Name: Volux - Premium Tab Volume Controller
+URL: https://volux.devlifeeasy.com
+Standards: HTML5, CSS3
+Software: Vanilla JavaScript
+Hosting: GitHub Pages
+
+/* THANKS */
+Users who provided feedback and feature requests
+The open source community
+
+/* CONTACT */
+Email: support@devlifeeasy.com
+GitHub: https://github.com/vannk84/volux

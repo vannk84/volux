@@ -1,0 +1,65 @@
+# Volux - AI-Readable Site Information
+# This file provides structured information for AI assistants and LLMs
+
+> Volux is a premium browser extension for per-tab volume control on Chrome and Firefox.
+
+## About Volux
+
+Volux lets you control audio volume for individual browser tabs and websites. Unlike the system volume or browser-wide controls, Volux gives you granular per-domain volume control.
+
+## Key Features
+
+- **Per-Domain Control**: Set unique volume levels for each website independently
+- **Smart Grouping**: All tabs from the same site share one volume slider
+- **Instant Mute**: One-click mute without losing your volume setting
+- **Persistent Settings**: Your preferences are saved automatically across sessions
+- **Live Detection**: See which tabs are currently playing audio
+- **Lightweight**: Minimal resource usage, no background processes
+
+## Installation
+
+- Chrome: https://chrome.google.com/webstore/detail/volux/
+- Firefox: https://addons.mozilla.org/firefox/addon/volux-volume-controller/
+- Source Code: https://github.com/vannk84/volux
+
+## Pricing
+
+- **Free Version**: Basic volume control features
+- **Pro Version ($2)**: Unlimited domain control, auto-detect media sites, scan tabs button, priority support, lifetime access
+
+## Privacy
+
+Volux does NOT collect, store, or transmit any personal data. All settings are stored locally on the user's device. No analytics, no tracking, no cookies.
+
+Read full privacy policy: https://volux.devlifeeasy.com/privacy.html
+
+## Technical Details
+
+- Works with Manifest V3 (Chrome) and Manifest V2 (Firefox)
+- Uses Web Audio API for volume control
+- Requires permissions: tabs, storage, scripting, host_permissions
+- No external dependencies or background processes
+
+## Support
+
+- Email: support@devlifeeasy.com
+- GitHub Issues: https://github.com/vannk84/volux/issues
+
+## Common Questions
+
+Q: Does Volux work with all websites?
+A: Yes, Volux works with any website that plays audio through the browser, including YouTube, Spotify Web, Netflix, and more.
+
+Q: Is my data safe?
+A: Absolutely. Volux stores everything locally on your device. No data is ever sent to external servers.
+
+Q: What's the difference between Free and Pro?
+A: Free version has limited domain slots. Pro offers unlimited domains, auto-detection of media sites, and the ability to scan all tabs for audio.
+
+Q: Does it work with multiple tabs of the same site?
+A: Yes! Volux groups tabs by domain, so all YouTube tabs share the same volume setting.
+
+---
+Website: https://volux.devlifeeasy.com
+Developer: DevLifeEasy (https://github.com/vannk84)
+License: Open source on GitHub

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volux Screenshot</title>
+  <style>
+    /* Volux Premium - Luxury Volume Control */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #0d0d0d;
+      --bg-secondary: #161616;
+      --bg-tertiary: #1f1f1f;
+      --bg-elevated: #252525;
+      --gold-primary: #c9a962;
+      --gold-light: #e5d4a1;
+      --gold-dark: #a08339;
+      --gold-glow: rgba(201, 169, 98, 0.15);
+      --text-primary: #f5f5f5;
+      --text-secondary: #a0a0a0;
+      --text-muted: #666666;
+      --slider-track: #2a2a2a;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-full: 50px;
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #2a2a2a;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+      min-height: 100vh;
+    }
+
+    .popup {
+      width: 360px;
+      background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+      border-bottom: 1px solid rgba(201, 169, 98, 0.1);
+      position: relative;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      right: 20px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+      opacity: 0.3;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .logo {
+      width: 24px;
+      height: 24px;
+      color: var(--gold-primary);
+    }
+
+    .brand-text {
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .collapse-btn {
+      background: var(--bg-tertiary);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      cursor: pointer;
+    }
+
+    .collapse-btn svg { width: 18px; height: 18px; }
+
+    .content { padding: 16px; }
+
+    .tabs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tab-item {
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      position: relative;
+    }
+
+    .tab-item.audible {
+      border-left: 3px solid var(--gold-primary);
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+
+    .tab-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .tab-favicon {
+      width: 20px;
+      height: 20px;
+      border-radius: var(--radius-sm);
+    }
+
+    .tab-title {
+      flex: 1;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      letter-spacing: 0.2px;
+    }
+
+    .tab-count {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--gold-primary);
+      background: rgba(201, 169, 98, 0.1);
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(201, 169, 98, 0.2);
+      text-transform: uppercase;
+    }
+
+    .audible-indicator {
+      color: var(--gold-primary);
+      display: flex;
+    }
+
+    .audible-indicator svg { width: 16px; height: 16px; }
+
+    .tab-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mute-btn {
+      background: var(--bg-elevated);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      cursor: pointer;
+    }
+
+    .mute-btn svg { width: 18px; height: 18px; }
+
+    .volume-slider-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .volume-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: var(--radius-full);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 100%);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(201, 169, 98, 0.3);
+    }
+
+    .volume-value {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      min-width: 40px;
+      text-align: right;
+    }
+
+    .footer {
+      padding: 12px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      background: var(--bg-secondary);
+    }
+
+    .footer-text {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .footer-text span { color: var(--gold-primary); }
+  </style>
+</head>
+<body>
+  <div class="popup">
+    <header class="header">
+      <h1 class="title">
+        <svg class="logo" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+        <span class="brand-text">Volux</span>
+      </h1>
+      <button class="collapse-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+      </button>
+    </header>
+
+    <div class="content">
+      <div class="tabs-list">
+        <!-- YouTube - Playing -->
+        <div class="tab-item audible">
+          <div class="tab-header">
+            <img class="tab-favicon" src="https://www.youtube.com/favicon.ico" alt="">
+            <span class="tab-title">youtube.com</span>
+            <span class="tab-count">3 tabs</span>
+            <span class="audible-indicator">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+              </svg>
+            </span>
+          </div>
+          <div class="tab-controls">
+            <button class="mute-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
+            <div class="volume-slider-container">
+              <input type="range" class="volume-slider" value="75" style="background: linear-gradient(to right, #c9a962 0%, #c9a962 75%, #2a2a2a 75%, #2a2a2a 100%);">
+              <span class="volume-value">75%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spotify -->
+        <div class="tab-item">
+          <div class="tab-header">
+            <img class="tab-favicon" src="https://open.spotify.com/favicon.ico" alt="">
+            <span class="tab-title">open.spotify.com</span>
+          </div>
+          <div class="tab-controls">
+            <button class="mute-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
+            <div class="volume-slider-container">
+              <input type="range" class="volume-slider" value="100" style="background: linear-gradient(to right, #c9a962 0%, #c9a962 100%, #2a2a2a 100%, #2a2a2a 100%);">
+              <span class="volume-value">100%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Twitter -->
+        <div class="tab-item">
+          <div class="tab-header">
+            <img class="tab-favicon" src="https://twitter.com/favicon.ico" alt="">
+            <span class="tab-title">twitter.com</span>
+          </div>
+          <div class="tab-controls">
+            <button class="mute-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
+            <div class="volume-slider-container">
+              <input type="range" class="volume-slider" value="50" style="background: linear-gradient(to right, #c9a962 0%, #c9a962 50%, #2a2a2a 50%, #2a2a2a 100%);">
+              <span class="volume-value">50%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p class="footer-text">Precision <span>Audio</span> Control</p>
+    </footer>
+  </div>
+</body>
+</html>

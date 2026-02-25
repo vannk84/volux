@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volux - Premium Tab Volume Controller for Chrome & Firefox</title>
+  <meta name="description" content="Control audio volume for individual browser tabs and websites. Premium per-tab volume control extension for Chrome and Firefox. Set unique volumes per domain, instant mute, and persistent settings.">
+  <meta name="keywords" content="volume control, browser extension, tab volume, Chrome extension, Firefox addon, audio control, per-tab volume, website volume, mute tabs, sound control">
+  <meta name="author" content="DevLifeEasy">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#c9a962">
+  <link rel="canonical" href="https://volux.devlifeeasy.com/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://volux.devlifeeasy.com/">
+  <meta property="og:title" content="Volux - Premium Tab Volume Controller">
+  <meta property="og:description" content="Control audio volume for individual browser tabs. Per-domain volume control for Chrome and Firefox with instant mute and persistent settings.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean-640x400.png">
+  <meta property="og:image:width" content="640">
+  <meta property="og:image:height" content="400">
+  <meta property="og:site_name" content="Volux">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://volux.devlifeeasy.com/">
+  <meta name="twitter:title" content="Volux - Premium Tab Volume Controller">
+  <meta name="twitter:description" content="Control audio volume for individual browser tabs. Per-domain volume control for Chrome and Firefox.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean-640x400.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/vannk84/volux/main/icons/icon32.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="https://raw.githubusercontent.com/vannk84/volux/main/icons/icon128.png">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/vannk84/volux/main/icons/icon128.png">
+
+  <!-- AI/LLM Discovery -->
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Information">
+  <link rel="author" href="/humans.txt">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Volux",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Chrome, Firefox",
+    "description": "Premium per-tab volume control browser extension. Control audio volume for individual websites with per-domain settings, instant mute, and persistent preferences.",
+    "url": "https://volux.devlifeeasy.com/",
+    "image": "https://raw.githubusercontent.com/vannk84/volux/main/icons/icon128.png",
+    "screenshot": "https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean-640x400.png",
+    "softwareVersion": "1.0",
+    "author": {
+      "@type": "Organization",
+      "name": "DevLifeEasy",
+      "url": "https://devlifeeasy.com"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free Version",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Basic volume control features"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro Version",
+        "price": "2",
+        "priceCurrency": "USD",
+        "description": "Unlimited domain control, auto-detect media sites, scan tabs, priority support, lifetime access"
+      }
+    ],
+    "featureList": [
+      "Per-domain volume control",
+      "Smart tab grouping",
+      "Instant mute functionality",
+      "Persistent volume settings",
+      "Live audio detection",
+      "Lightweight performance"
+    ],
+    "downloadUrl": [
+      "https://chrome.google.com/webstore/detail/volux/",
+      "https://addons.mozilla.org/firefox/addon/volux-volume-controller/"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "ratingCount": "1",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "DevLifeEasy",
+    "url": "https://devlifeeasy.com",
+    "logo": "https://raw.githubusercontent.com/vannk84/volux/main/icons/icon128.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "support@devlifeeasy.com",
+      "contactType": "customer support"
+    },
+    "sameAs": [
+      "https://github.com/vannk84"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Volux?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Volux is a premium browser extension that lets you control audio volume for individual websites and tabs. Set unique volume levels per domain, instantly mute sites, and enjoy persistent settings across sessions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Volux work on Chrome and Firefox?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Volux is available for both Chrome and Firefox browsers. You can install it from the Chrome Web Store or Firefox Add-ons."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's included in Volux Pro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Volux Pro includes unlimited domain control, auto-detect media sites on activation, scan tabs button to find all media sites, priority support, and lifetime access for just $2."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #08080a;
+      --bg-secondary: #0f0f12;
+      --gold-400: #c9a962;
+      --gold-gradient: linear-gradient(135deg, #e8d5a3 0%, #c9a962 30%, #b8954a 70%, #9a7b3c 100%);
+      --text-primary: #fafafa;
+      --text-secondary: #9a9a9f;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 0 20px rgba(201, 169, 98, 0.3));
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .tagline {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--gold-gradient);
+      color: #0a0a0a;
+      box-shadow: 0 4px 24px rgba(201, 169, 98, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201, 169, 98, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      color: var(--text-primary);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Screenshot */
+    .screenshot {
+      margin: 60px 0;
+      text-align: center;
+    }
+
+    .screenshot img {
+      max-width: 380px;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(201, 169, 98, 0.1);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin: 60px 0;
+    }
+
+    .feature {
+      background: var(--bg-secondary);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .feature h3 {
+      color: var(--gold-400);
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    /* Gallery */
+    .gallery {
+      margin: 60px 0;
+      text-align: center;
+    }
+
+    .gallery h2 {
+      font-size: 28px;
+      margin-bottom: 32px;
+      color: var(--gold-400);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .gallery-item {
+      background: var(--bg-secondary);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      border-color: rgba(201, 169, 98, 0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .gallery-item p {
+      padding: 16px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    /* Pro Section */
+    .pro-section {
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.1) 0%, rgba(201, 169, 98, 0.05) 100%);
+      border: 1px solid rgba(201, 169, 98, 0.2);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      margin: 60px 0;
+    }
+
+    .pro-section h2 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .price {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--gold-400);
+    }
+
+    .price span {
+      font-size: 18px;
+      color: var(--text-secondary);
+    }
+
+    .pro-features {
+      list-style: none;
+      margin: 24px 0;
+    }
+
+    .pro-features li {
+      padding: 8px 0;
+      color: var(--text-secondary);
+    }
+
+    .pro-features li::before {
+      content: '✓ ';
+      color: var(--gold-400);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-secondary);
+      font-size: 14px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    footer a {
+      color: var(--gold-400);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 32px; }
+      .tagline { font-size: 16px; }
+      .cta-buttons { flex-direction: column; }
+      .btn { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <img src="https://raw.githubusercontent.com/vannk84/volux/main/icons/icon128.png" alt="Volux" class="logo">
+      <h1>VOLUX</h1>
+      <p class="tagline">Premium per-tab volume control for your browser</p>
+      <div class="cta-buttons">
+        <a href="https://chrome.google.com/webstore/detail/volux/" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          Add to Chrome
+        </a>
+        <a href="https://addons.mozilla.org/firefox/addon/volux-volume-controller/" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.74 16.35c-.97 1.46-2.44 2.48-4.14 2.87-1.7.39-3.47.11-4.99-.79s-2.67-2.4-3.23-4.17c-.57-1.77-.37-3.67.55-5.31.92-1.64 2.47-2.88 4.34-3.45 1.86-.57 3.87-.35 5.61.62 1.74.97 3.05 2.6 3.66 4.56.14.46-.11.95-.57 1.09-.46.14-.95-.11-1.09-.57-.46-1.47-1.44-2.7-2.74-3.42-1.3-.72-2.81-.89-4.21-.47-1.4.43-2.56 1.36-3.25 2.59-.69 1.23-.81 2.66-.32 3.99.48 1.33 1.5 2.41 2.85 3.03 1.35.62 2.87.65 4.24.1 1.38-.56 2.48-1.67 3.08-3.11.14-.34.44-.58.8-.63.36-.05.72.08.96.35.24.27.33.64.23.98z"/></svg>
+          Add to Firefox
+        </a>
+      </div>
+      <p style="margin-top: 16px;">
+        <a href="https://github.com/vannk84/volux" style="color: var(--text-secondary); text-decoration: none; font-size: 14px;">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View Source on GitHub
+        </a>
+      </p>
+    </section>
+
+    <section class="screenshot">
+      <img src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean.png" alt="Volux Screenshot">
+    </section>
+
+    <section class="gallery">
+      <h2>See It In Action</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean-640x400.png" alt="Volume Control Popup">
+          <p>Control volume per domain</p>
+        </div>
+        <div class="gallery-item">
+          <img src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-options-1280x800.png" alt="Settings Page">
+          <p>Manage your license & settings</p>
+        </div>
+        <div class="gallery-item">
+          <img src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-upgrade-1280x800.png" alt="Upgrade to Pro">
+          <p>Easy upgrade to Pro</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <h3>Per-Domain Control</h3>
+        <p>Set unique volume levels for each website independently</p>
+      </div>
+      <div class="feature">
+        <h3>Smart Grouping</h3>
+        <p>All tabs from the same site share one volume slider</p>
+      </div>
+      <div class="feature">
+        <h3>Instant Mute</h3>
+        <p>One-click mute without losing your volume setting</p>
+      </div>
+      <div class="feature">
+        <h3>Persistent Settings</h3>
+        <p>Your preferences are saved automatically</p>
+      </div>
+      <div class="feature">
+        <h3>Live Detection</h3>
+        <p>See which tabs are currently playing audio</p>
+      </div>
+      <div class="feature">
+        <h3>Lightweight</h3>
+        <p>Minimal resource usage, no background processes</p>
+      </div>
+    </section>
+
+    <section class="pro-section">
+      <h2>Upgrade to Pro</h2>
+      <p class="price">$2 <span>or pay what you want</span></p>
+      <ul class="pro-features">
+        <li>Unlimited domain control</li>
+        <li>Auto-detect media sites on activation</li>
+        <li>Scan tabs button to find all media sites</li>
+        <li>Priority support</li>
+        <li>Lifetime access</li>
+      </ul>
+      <a href="https://vannk.lemonsqueezy.com/checkout/buy/901905" class="btn btn-primary">Get Pro - $2</a>
+    </section>
+
+    <footer>
+      <p>Made with precision by <a href="https://github.com/vannk84">vannk84</a></p>
+      <p style="margin-top: 8px;">
+        <a href="mailto:support@devlifeeasy.com">Support</a> ·
+        <a href="/privacy.html">Privacy Policy</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

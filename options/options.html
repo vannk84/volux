@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volux Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo-section">
+        <svg class="logo" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+        <h1>Volux Settings</h1>
+      </div>
+      <span class="version">v1.0.0</span>
+    </header>
+
+    <main class="main">
+      <!-- License Section -->
+      <section class="card">
+        <h2>License</h2>
+
+        <div class="license-status" id="licenseStatus">
+          <div class="status-badge free" id="statusBadge">
+            <span class="status-icon">○</span>
+            <span class="status-text">Free Plan</span>
+          </div>
+          <p class="status-desc" id="statusDesc">Loading...</p>
+        </div>
+
+        <!-- Free User View -->
+        <div class="license-form" id="licenseForm">
+          <div class="input-group">
+            <label for="licenseInput">License Key</label>
+            <input type="text" id="licenseInput" placeholder="XXXXX-XXXXX-XXXXX-XXXXX" maxlength="23">
+          </div>
+          <button class="btn btn-primary" id="activateBtn">Activate License</button>
+          <p class="message" id="message"></p>
+
+          <div class="divider">
+            <span>Don't have a license?</span>
+          </div>
+
+          <a href="https://vannk.lemonsqueezy.com/checkout/buy/901905" target="_blank" class="btn btn-gold">
+            Get Pro License - $2
+          </a>
+        </div>
+
+        <!-- Pro User View -->
+        <div class="license-info hidden" id="licenseInfo">
+          <div class="info-row">
+            <span class="info-label">License Key</span>
+            <span class="info-value" id="licenseKey">••••-••••-••••-••••</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Activated</span>
+            <span class="info-value" id="activatedDate">-</span>
+          </div>
+          <button class="btn btn-secondary" id="deactivateBtn">Deactivate License</button>
+        </div>
+      </section>
+
+      <!-- Usage Stats Section -->
+      <section class="card">
+        <h2>Usage</h2>
+        <div class="stats">
+          <div class="stat-item">
+            <span class="stat-value" id="domainCount">0</span>
+            <span class="stat-label">Domains Controlled</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" id="domainLimit">-</span>
+            <span class="stat-label">Domain Limit</span>
+          </div>
+        </div>
+        <div class="usage-actions">
+          <button class="btn btn-gold hidden" id="scanTabsBtn">
+            <span class="btn-icon">🔍</span>
+            Scan Open Tabs for Media Sites
+          </button>
+          <p class="scan-result" id="scanResult"></p>
+          <button class="btn btn-secondary" id="resetBtn">Reset All Volume Settings</button>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="card">
+        <h2>Features</h2>
+        <div class="features-list">
+          <div class="feature-item">
+            <span class="feature-icon">🎚️</span>
+            <div class="feature-content">
+              <h3>Per-Domain Control</h3>
+              <p>Set unique volume levels for each website independently</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🔗</span>
+            <div class="feature-content">
+              <h3>Smart Grouping</h3>
+              <p>All tabs from the same site share one volume slider</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🔇</span>
+            <div class="feature-content">
+              <h3>Instant Mute</h3>
+              <p>One-click mute without losing your volume setting</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">💾</span>
+            <div class="feature-content">
+              <h3>Persistent Settings</h3>
+              <p>Your preferences are saved automatically across sessions</p>
+            </div>
+          </div>
+          <div class="feature-item pro-feature">
+            <span class="feature-icon">⭐</span>
+            <div class="feature-content">
+              <h3>Unlimited Domains <span class="pro-tag">PRO</span></h3>
+              <p>Control volume on unlimited websites with Pro license</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="card">
+        <h2>About</h2>
+        <p class="about-text">Volux is a premium volume controller that lets you set individual volume levels for each website. Perfect for balancing audio between video calls, music, and other media.</p>
+        <div class="links">
+          <a href="https://volux.devlifeeasy.com" target="_blank">Website</a>
+          <a href="https://github.com/vannk84/volux" target="_blank">GitHub</a>
+          <a href="https://github.com/vannk84/volux/issues" target="_blank">Report Issue</a>
+        </div>
+      </section>
+
+      <!-- Support Section -->
+      <section class="card">
+        <h2>Support</h2>
+        <p class="about-text">Need help or have questions?</p>
+        <div class="support-options">
+          <div class="support-link email-support" id="emailSupport">
+            <span class="support-icon">📧</span>
+            <div class="support-text">
+              <span>Email Support</span>
+              <span class="support-email">support@devlifeeasy.com</span>
+            </div>
+            <button class="copy-icon" id="copyEmailBtn" title="Click to copy">📋</button>
+          </div>
+          <a href="https://github.com/vannk84/volux/issues/new" target="_blank" class="support-link">
+            <span class="support-icon">🐛</span>
+            <span>Report a Bug</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Made with precision by <a href="https://github.com/vannk84" target="_blank">vannk84</a></p>
+    </footer>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
