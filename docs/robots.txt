@@ -1,0 +1,33 @@
+# Volux - Browser Extension Website
+# https://volux.devlifeeasy.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://volux.devlifeeasy.com/sitemap.xml
+
+# AI Crawlers - Welcome to index our content
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# LLMs.txt for AI assistants
+# See: https://volux.devlifeeasy.com/llms.txt

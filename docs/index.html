@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volux - Premium Tab Volume Controller for Chrome & Firefox</title>
+  <meta name="description" content="Control audio volume for individual browser tabs and websites. Premium per-tab volume control extension for Chrome and Firefox.">
+  <meta name="keywords" content="volume control, browser extension, tab volume, Chrome extension, Firefox addon, audio control">
+  <meta name="author" content="DevLifeEasy">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#6366f1">
+  <link rel="canonical" href="https://volux.devlifeeasy.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://volux.devlifeeasy.com/">
+  <meta property="og:title" content="Volux - Premium Tab Volume Controller">
+  <meta property="og:description" content="Control audio volume for individual browser tabs. Per-domain volume control for Chrome and Firefox.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean-640x400.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Volux - Premium Tab Volume Controller">
+  <meta name="twitter:description" content="Control audio volume for individual browser tabs.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/vannk84/volux/main/icons/icon32.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --primary-dark: #4f46e5;
+      --accent: #f59e0b;
+      --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--bg-gradient);
+      color: white;
+      padding: 80px 24px 120px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    .logo-container img {
+      width: 50px;
+      height: 50px;
+    }
+
+    h1 {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 16px;
+    }
+
+    .tagline {
+      font-size: 20px;
+      opacity: 0.9;
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--primary-dark);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .github-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .github-link:hover {
+      color: white;
+    }
+
+    /* Screenshot Section */
+    .screenshot-section {
+      margin-top: -60px;
+      padding: 0 24px 60px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .screenshot-wrapper {
+      max-width: 400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 24px;
+      padding: 12px;
+      box-shadow: var(--shadow-xl), 0 0 0 1px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 10;
+    }
+
+    .screenshot-wrapper img {
+      width: 100%;
+      border-radius: 16px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 18px;
+    }
+
+    /* Features Grid */
+    .features-section {
+      padding: 80px 24px;
+      background: white;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--bg-light);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--bg-gradient);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+      color: white;
+    }
+
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      padding: 80px 24px;
+      background: var(--bg-light);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .gallery-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .gallery-card-content {
+      padding: 20px;
+    }
+
+    .gallery-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .gallery-card p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      padding: 80px 24px;
+      background: white;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--bg-light);
+      border-radius: 20px;
+      padding: 32px;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .pricing-card.featured {
+      background: var(--bg-gradient);
+      color: white;
+      transform: scale(1.02);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .pricing-card:not(.featured):hover {
+      border-color: var(--primary);
+    }
+
+    .pricing-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .pricing-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .pricing-price {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .pricing-price span {
+      font-size: 16px;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+
+    .pricing-subtitle {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 24px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+
+    .pricing-features li {
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .pricing-features li::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2322c55e'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E") center/contain no-repeat;
+      flex-shrink: 0;
+    }
+
+    .pricing-card.featured .pricing-features li::before {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+
+    .btn-pricing {
+      width: 100%;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .btn-pricing-outline {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-pricing-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-pricing-solid {
+      background: white;
+      color: var(--primary-dark);
+      border: none;
+    }
+
+    .btn-pricing-solid:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Partner Section */
+    .partner-section {
+      padding: 60px 24px;
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    }
+
+    .partner-section .section-title h2 {
+      color: #92400e;
+    }
+
+    .partner-section .section-title p {
+      color: #b45309;
+    }
+
+    .partner-cards {
+      display: flex;
+      justify-content: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .partner-carousel {
+      width: 400px;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .partner-card-content {
+      padding: 20px;
+    }
+
+    .partner-desc {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .partner-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .partner-banner {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: visible;
+    }
+
+    .partner-banner-text {
+      text-align: center;
+      color: white;
+      z-index: 1;
+    }
+
+    .partner-banner-logo {
+      font-size: 28px;
+      font-weight: 800;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .partner-banner-tagline {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .partner-bonus {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: #ef4444;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+
+    .partner-cta {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+      color: white;
+      transition: all 0.2s;
+    }
+
+    .partner-cta:hover {
+      filter: brightness(1.1);
+      transform: scale(1.02);
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px;
+      background: #f8fafc;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.2s;
+    }
+
+    .carousel-dot.active {
+      background: var(--primary);
+      transform: scale(1.3);
+    }
+
+    .partner-disclosure {
+      text-align: center;
+      font-size: 12px;
+      color: #92400e;
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--primary-light);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.7);
+      margin: 0 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      h1 { font-size: 36px; }
+      .tagline { font-size: 16px; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 280px; justify-content: center; }
+      .pricing-card.featured { transform: none; }
+      .partner-carousel { width: 100%; max-width: 400px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="logo-container">
+        <img src="https://raw.githubusercontent.com/vannk84/volux/main/icons/icon128.png" alt="Volux">
+      </div>
+      <h1>Volux</h1>
+      <p class="tagline">Premium per-tab volume control for your browser</p>
+      <div class="cta-buttons">
+        <a href="https://chrome.google.com/webstore/detail/volux/" class="btn btn-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512">
+            <path fill="#82d889" d="M256 386.648c-25.6 0-49.434-7.062-70.621-21.186s-37.076-31.779-47.669-53.848L31.779 128C9.71 167.724 0 210.979 0 256c0 64.441 21.186 120.055 62.676 167.724s93.572 75.917 155.366 85.628l74.152-128.883c-7.063 2.648-20.304 6.179-36.194 6.179"/>
+            <path fill="#e86438" d="M175.669 150.069c23.834-18.538 50.317-26.483 80.331-26.483h219.807c-22.952-38.841-53.848-67.09-92.69-89.159Q324.855 0 256 0c-39.724 0-77.683 8.828-112.11 25.6S76.8 67.09 53.848 98.869L128 220.69c7.062-28.249 23.834-52.083 47.669-70.621"/>
+            <path fill="#fce056" d="M492.579 159.779H344.276c25.6 25.6 43.255 59.145 43.255 96.221 0 27.366-7.945 52.083-22.952 75.034L258.648 512c69.738-.883 129.766-25.6 179.2-75.917S512 325.738 512 256c0-32.662-5.297-67.09-19.421-96.221"/>
+            <path fill="#25b9e1" d="M256 158.897c52.966 0 97.103 44.138 97.103 97.103S308.966 353.103 256 353.103 158.897 308.966 158.897 256s44.137-97.103 97.103-97.103"/>
+          </svg>
+          Add to Chrome
+        </a>
+        <a href="https://addons.mozilla.org/firefox/addon/volux-volume-controller/" class="btn btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 87.419 81.967">
+            <defs>
+              <radialGradient id="ffb" gradientUnits="userSpaceOnUse" gradientTransform="translate(7978.7 8523.996)" r="80.797" cy="-8515.121" cx="-7907.187">
+                <stop stop-color="#ffbd4f" offset=".129"/><stop stop-color="#ff980e" offset=".283"/><stop stop-color="#ff3750" offset=".467"/><stop stop-color="#eb0878" offset=".782"/>
+              </radialGradient>
+              <linearGradient id="ffa" gradientUnits="userSpaceOnUse" y2="74.468" x2="6.447" y1="12.393" x1="70.786">
+                <stop stop-color="#fff44f" offset=".048"/><stop stop-color="#ff980e" offset=".368"/><stop stop-color="#ff3647" offset=".534"/><stop stop-color="#e31587" offset=".705"/>
+              </linearGradient>
+            </defs>
+            <path d="M79.616 26.827c-1.684-4.052-5.1-8.427-7.775-9.81a40.3 40.3 0 0 1 3.925 11.764l.007.065C71.391 17.92 63.96 13.516 57.891 3.924a47 47 0 0 1-.913-1.484 12 12 0 0 1-.427-.8 7 7 0 0 1-.578-1.535.1.1 0 0 0-.088-.1.14.14 0 0 0-.073 0c-.005 0-.013.009-.019.01l-.028.016.015-.026c-9.735 5.7-13.038 16.252-13.342 21.53a19.4 19.4 0 0 0-10.666 4.11 12 12 0 0 0-1-.757 17.97 17.97 0 0 1-.109-9.473 28.7 28.7 0 0 0-9.329 7.21h-.018c-1.536-1.947-1.428-8.367-1.34-9.708a7 7 0 0 0-1.294.687 28 28 0 0 0-3.788 3.245 34 34 0 0 0-3.623 4.347v.006-.007a32.7 32.7 0 0 0-5.2 11.743l-.052.256a62 62 0 0 0-.381 2.42c0 .029-.006.056-.009.085A37 37 0 0 0 5 41.042v.2a38.759 38.759 0 0 0 76.954 6.554c.065-.5.118-.995.176-1.5a39.86 39.86 0 0 0-2.514-19.47z" fill="url(#ffa)"/>
+            <path d="M79.616 26.827c-1.684-4.052-5.1-8.427-7.775-9.81a40.3 40.3 0 0 1 3.925 11.764v.037l.007.04a35.1 35.1 0 0 1-1.206 26.159c-4.442 9.53-15.194 19.3-32.024 18.825-18.185-.515-34.2-14.01-37.194-31.683-.545-2.787 0-4.2.274-6.465A29 29 0 0 0 5 41.042v.2a38.759 38.759 0 0 0 76.954 6.554c.065-.5.118-.995.176-1.5a39.86 39.86 0 0 0-2.514-19.47z" fill="url(#ffb)"/>
+          </svg>
+          Add to Firefox
+        </a>
+      </div>
+      <a href="https://github.com/vannk84/volux" class="github-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- Screenshot -->
+  <section class="screenshot-section">
+    <div class="screenshot-wrapper">
+      <img src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean.png" alt="Volux Screenshot">
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Powerful Features</h2>
+        <p>Everything you need to control your audio experience</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+          </div>
+          <h3>Per-Domain Control</h3>
+          <p>Set unique volume levels for each website independently</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18"/></svg>
+          </div>
+          <h3>Smart Grouping</h3>
+          <p>All tabs from the same site share one volume slider</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          </div>
+          <h3>Instant Mute</h3>
+          <p>One-click mute without losing your volume setting</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17,21 17,13 7,13 7,21"/></svg>
+          </div>
+          <h3>Persistent Settings</h3>
+          <p>Your preferences are saved automatically</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Live Detection</h3>
+          <p>See which tabs are currently playing audio</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3>Lightweight</h3>
+          <p>Minimal resource usage, no background processes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>See It In Action</h2>
+        <p>Beautiful interface designed for productivity</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean-640x400.png" alt="Volume Control">
+          <div class="gallery-card-content">
+            <h3>Volume Control</h3>
+            <p>Intuitive sliders for precise control</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-options-1280x800.png" alt="Settings">
+          <div class="gallery-card-content">
+            <h3>Settings Page</h3>
+            <p>Manage your license and preferences</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-upgrade-1280x800.png" alt="Upgrade">
+          <div class="gallery-card-content">
+            <h3>Easy Upgrade</h3>
+            <p>Unlock Pro features instantly</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Simple Pricing</h2>
+        <p>Start free, upgrade when you need more</p>
+      </div>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <div class="pricing-price">$0</div>
+          <p class="pricing-subtitle">Forever free</p>
+          <ul class="pricing-features">
+            <li>Control 2 domains</li>
+            <li>Per-domain volume</li>
+            <li>Instant mute</li>
+            <li>Persistent settings</li>
+          </ul>
+          <a href="https://chrome.google.com/webstore/detail/volux/" class="btn-pricing btn-pricing-outline">Get Started</a>
+        </div>
+        <div class="pricing-card featured">
+          <span class="pricing-badge">Best Value</span>
+          <h3>Pro</h3>
+          <div class="pricing-price">$2 <span>one-time</span></div>
+          <p class="pricing-subtitle">or pay what you want</p>
+          <ul class="pricing-features">
+            <li>Unlimited domains</li>
+            <li>Auto-detect media sites</li>
+            <li>Scan tabs feature</li>
+            <li>Lifetime access</li>
+          </ul>
+          <a href="https://vannk.lemonsqueezy.com/checkout" class="btn-pricing btn-pricing-solid">Upgrade to Pro</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Section -->
+  <section class="partner-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Partner Offers</h2>
+        <p>Exclusive deals from our partners</p>
+      </div>
+      <div class="partner-cards">
+        <div class="partner-carousel">
+          <div class="carousel-track">
+            <!-- Binance -->
+            <div class="carousel-slide">
+              <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_7U3V8" target="_blank" class="partner-link">
+                <div class="partner-banner" style="background: linear-gradient(135deg, #F0B90B 0%, #B8860B 100%);">
+                  <span class="partner-bonus">Bonus</span>
+                  <div class="partner-banner-text">
+                    <div class="partner-banner-logo">BINANCE</div>
+                    <div class="partner-banner-tagline">World's Largest Crypto Exchange</div>
+                  </div>
+                </div>
+                <div class="partner-card-content">
+                  <p class="partner-desc">Sign up now and get up to $100 USDC welcome bonus!</p>
+                  <span class="partner-cta" style="background: #F0B90B; color: #000;">Claim $100 Bonus</span>
+                </div>
+              </a>
+            </div>
+            <!-- Shopee -->
+            <div class="carousel-slide">
+              <a href="https://shopee.vn/tintinstickers" target="_blank" class="partner-link">
+                <div class="partner-banner" style="background: linear-gradient(135deg, #EE4D2D 0%, #FF6B35 100%);">
+                  <span class="partner-bonus">Hot</span>
+                  <div class="partner-banner-text">
+                    <div class="partner-banner-logo">SHOPEE</div>
+                    <div class="partner-banner-tagline">Sticker & Accessories</div>
+                  </div>
+                </div>
+                <div class="partner-card-content">
+                  <p class="partner-desc">Quality stickers and accessories at great prices!</p>
+                  <span class="partner-cta" style="background: #EE4D2D;">Shop Now</span>
+                </div>
+              </a>
+            </div>
+            <!-- TikTok Shop -->
+            <div class="carousel-slide">
+              <a href="https://vt.tiktok.com/ZS9R3hEq7U6db-RHoN4/" target="_blank" class="partner-link">
+                <div class="partner-banner" style="background: linear-gradient(135deg, #00F2EA 0%, #FF0050 100%);">
+                  <span class="partner-bonus">Deal</span>
+                  <div class="partner-banner-text">
+                    <div class="partner-banner-logo">TikTok Shop</div>
+                    <div class="partner-banner-tagline">Trending Products</div>
+                  </div>
+                </div>
+                <div class="partner-card-content">
+                  <p class="partner-desc">Discover trending deals only on TikTok Shop!</p>
+                  <span class="partner-cta" style="background: linear-gradient(90deg, #00F2EA, #FF0050);">View Deals</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" data-index="0"></button>
+            <button class="carousel-dot" data-index="1"></button>
+            <button class="carousel-dot" data-index="2"></button>
+          </div>
+        </div>
+      </div>
+      <p class="partner-disclosure">Affiliate links - We may earn a commission at no extra cost to you</p>
+    </div>
+  </section>
+
+  <script>
+    // Partner carousel
+    (function() {
+
+      // Carousel auto-rotation
+      document.querySelectorAll('.partner-carousel').forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        const dots = carousel.querySelectorAll('.carousel-dot');
+        const slideCount = track.children.length;
+        let currentIndex = 0;
+        let interval;
+
+        function goTo(index) {
+          currentIndex = index;
+          track.style.transform = `translateX(-${index * 100}%)`;
+          dots.forEach((d, i) => d.classList.toggle('active', i === index));
+        }
+
+        function next() { goTo((currentIndex + 1) % slideCount); }
+
+        dots.forEach(dot => {
+          dot.addEventListener('click', () => {
+            goTo(parseInt(dot.dataset.index));
+            clearInterval(interval);
+            interval = setInterval(next, 5000);
+          });
+        });
+
+        carousel.addEventListener('mouseenter', () => clearInterval(interval));
+        carousel.addEventListener('mouseleave', () => { interval = setInterval(next, 5000); });
+
+        interval = setInterval(next, 5000);
+      });
+    })();
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with care by <a href="https://github.com/vannk84">vannk84</a></p>
+    <div class="footer-links">
+      <a href="mailto:support@devlifeeasy.com">Support</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/refund.html">Refunds</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+  </footer>
+</body>
+</html>

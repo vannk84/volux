@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volux - Premium Volume Control</title>
+  <link rel="stylesheet" href="popup.css">
+  <script src="../affiliate/config.js"></script>
+</head>
+<body>
+  <div class="container" id="container">
+    <header class="header">
+      <h1 class="title">
+        <svg class="logo" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+        <span class="brand-text">Volux</span>
+      </h1>
+      <div class="header-actions">
+        <button class="header-btn hidden" id="scanTabsBtn" title="Scan open tabs for media sites">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+        </button>
+        <button class="header-btn" id="settingsBtn" title="Settings">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="content" id="content">
+      <!-- Add Domain Form -->
+      <div class="add-domain-form" id="addDomainForm">
+        <div class="domain-input-wrapper">
+          <input type="text" id="domainInput" placeholder="Enter domain (e.g. youtube.com)" class="domain-input" autocomplete="off">
+          <div class="autocomplete-dropdown" id="autocompleteDropdown"></div>
+        </div>
+        <button id="addDomainBtn" class="add-domain-btn" title="Add Domain">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+        </button>
+      </div>
+      <p class="domain-error" id="domainError"></p>
+
+      <div class="tabs-list" id="tabsList">
+        <div class="loading">Loading...</div>
+      </div>
+
+      <div class="no-tabs" id="noTabs" style="display: none;">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+        <p class="no-tabs-title">No Domains Added</p>
+        <p>Add a domain above to control its volume</p>
+      </div>
+    </div>
+
+    <!-- Upgrade Banner (shown for free users) -->
+    <div class="upgrade-banner" id="upgradeBanner">
+      <div class="upgrade-banner-text">
+        <span class="upgrade-icon">⭐</span>
+        <div class="upgrade-banner-info">
+          <span>Unlock unlimited domains</span>
+          <span class="upgrade-note">$2 or pay what you want</span>
+        </div>
+      </div>
+      <button class="upgrade-banner-btn" id="upgradeBtn">Upgrade</button>
+    </div>
+
+    <!-- Affiliate Links Section -->
+    <div class="affiliate-section" id="affiliateSection">
+      <div class="affiliate-links" id="affiliateLinks">
+        <!-- Affiliate links will be rendered here by JavaScript -->
+      </div>
+      <p class="affiliate-disclosure">Sponsored</p>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p class="footer-text">Precision <span>Audio</span> Control</p>
+        <div class="footer-actions">
+          <button class="license-btn" id="licenseBtn" title="Enter License Key">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+              <path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+            </svg>
+          </button>
+          <button class="pro-badge" id="proBadge" title="License Status">
+            <span class="pro-text">FREE</span>
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Upgrade Modal -->
+    <div class="modal-overlay" id="upgradeModal">
+      <div class="modal">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <div class="modal-header">
+          <svg class="modal-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+          <h2>Upgrade to Pro</h2>
+        </div>
+        <p class="modal-desc">Unlock unlimited domain control for <strong>$2</strong> or pay what you want.</p>
+        <ul class="pro-features">
+          <li>Unlimited domains</li>
+          <li>Priority support</li>
+          <li>Lifetime access</li>
+        </ul>
+        <a href="https://vannk.lemonsqueezy.com/checkout" target="_blank" class="buy-btn" id="buyBtn">
+          Get Pro - $2
+        </a>
+        <div class="license-input-group">
+          <input type="text" id="licenseInput" placeholder="Enter license key" class="license-input">
+          <button id="activateBtn" class="activate-btn">Activate</button>
+        </div>
+        <p class="license-error" id="licenseError"></p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
