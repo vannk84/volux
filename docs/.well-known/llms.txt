@@ -11,7 +11,7 @@ Volux lets you control audio volume for individual browser tabs and websites. Pe
 
 - Website: https://volux.devlifeeasy.com/
 - Chrome Extension: https://chrome.google.com/webstore/detail/volux/
-- Firefox Add-on: https://addons.mozilla.org/firefox/addon/volux-volume-controller/
+- Firefox Add-on: https://addons.mozilla.org/en-US/firefox/addon/volux-premium-volume-control/
 - GitHub: https://github.com/vannk84/volux
 - Privacy Policy: https://volux.devlifeeasy.com/privacy.html
 

@@ -170,7 +170,7 @@ Volux is a freemium browser extension for per-domain volume control.
    | Field | Value |
    |-------|-------|
    | Name | Volux - Premium Volume Control |
-   | Add-on URL | `volux-volume-controller` |
+   | Add-on URL | `volux-premium-volume-control` |
    | Summary | Premium per-domain volume control for Firefox |
    | Categories | Privacy & Security, Other |
 
@@ -277,7 +277,7 @@ Pro users can manually scan and add media domains at any time by clicking the ma
 ## Store Links (Update after publishing)
 
 - **Chrome:** `https://chrome.google.com/webstore/detail/volux/[EXTENSION_ID]`
-- **Firefox:** `https://addons.mozilla.org/firefox/addon/volux-volume-controller/`
+- **Firefox:** `https://addons.mozilla.org/en-US/firefox/addon/volux-premium-volume-control/`
 - **Website:** https://volux.devlifeeasy.com
 - **Buy Pro:** https://vannk.lemonsqueezy.com/checkout
 
