@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Volux - Tab Volume Controller",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Premium per-tab volume control. Independently adjust audio levels for each website with precision sliders and instant mute.",
   "permissions": [
     "tabs",
