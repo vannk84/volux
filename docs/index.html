@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Volux - Premium Tab Volume Controller for Chrome & Firefox</title>
-  <meta name="description" content="Control audio volume for individual browser tabs and websites. Premium per-tab volume control extension for Chrome and Firefox.">
-  <meta name="keywords" content="volume control, browser extension, tab volume, Chrome extension, Firefox addon, audio control">
+  <title>Volux - Remember Volume for Every Website | Per-Tab Volume Control</title>
+  <meta name="description" content="Tired of adjusting volume every time? Volux remembers your preferred volume for each website automatically. Set once, never adjust again. Different volume for every tab.">
+  <meta name="keywords" content="remember volume chrome, per tab volume control, auto save volume, youtube volume too loud fix, different volume each tab, volume reset fix, website volume control, browser volume extension">
   <meta name="author" content="DevLifeEasy">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#6366f1">
@@ -14,14 +14,14 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://volux.devlifeeasy.com/">
-  <meta property="og:title" content="Volux - Premium Tab Volume Controller">
-  <meta property="og:description" content="Control audio volume for individual browser tabs. Per-domain volume control for Chrome and Firefox.">
+  <meta property="og:title" content="Volux - Remember Volume for Every Website">
+  <meta property="og:description" content="Tired of adjusting volume every time? Volux remembers your preferred volume for each website. Set once, never adjust again.">
   <meta property="og:image" content="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean-640x400.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Volux - Premium Tab Volume Controller">
-  <meta name="twitter:description" content="Control audio volume for individual browser tabs.">
+  <meta name="twitter:title" content="Volux - Remember Volume for Every Website">
+  <meta name="twitter:description" content="Tired of adjusting volume every time? Volux remembers your volume for each website. Set once, never adjust again.">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/vannk84/volux/main/icons/icon32.png">
@@ -289,6 +289,114 @@
       font-size: 15px;
     }
 
+    /* Use Cases Section */
+    .usecases-section {
+      padding: 80px 24px;
+      background: var(--bg-light);
+    }
+
+    .usecases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .usecase-card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+      border-left: 4px solid var(--primary);
+    }
+
+    .usecase-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .usecase-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .usecase-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .usecase-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* How It Works Section */
+    .howitworks-section {
+      padding: 80px 24px;
+      background: white;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      max-width: 1000px;
+      margin: 0 auto 40px;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 32px 24px;
+    }
+
+    .step-number {
+      width: 56px;
+      height: 56px;
+      background: var(--bg-gradient);
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .step-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .howitworks-note {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px 28px;
+      background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .howitworks-note p {
+      font-size: 15px;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
     /* Gallery Section */
     .gallery-section {
       padding: 80px 24px;
@@ -463,6 +571,53 @@
     .btn-pricing-solid:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-lg);
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 80px 24px;
+      background: var(--bg-light);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 16px;
+      padding: 24px 28px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+    }
+
+    .faq-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .faq-item h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .faq-item p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 640px) {
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Partner Section */
@@ -656,17 +811,17 @@
         <img src="https://raw.githubusercontent.com/vannk84/volux/main/icons/icon128.png" alt="Volux">
       </div>
       <h1>Volux</h1>
-      <p class="tagline">Premium per-tab volume control for your browser</p>
+      <p class="tagline">Set volume once, never adjust again. Remembers your preferred volume for every website.</p>
       <div class="cta-buttons">
-        <a href="https://chrome.google.com/webstore/detail/volux/" class="btn btn-white">
+        <span class="btn btn-white" style="opacity: 0.6; cursor: not-allowed;">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512">
             <path fill="#82d889" d="M256 386.648c-25.6 0-49.434-7.062-70.621-21.186s-37.076-31.779-47.669-53.848L31.779 128C9.71 167.724 0 210.979 0 256c0 64.441 21.186 120.055 62.676 167.724s93.572 75.917 155.366 85.628l74.152-128.883c-7.063 2.648-20.304 6.179-36.194 6.179"/>
             <path fill="#e86438" d="M175.669 150.069c23.834-18.538 50.317-26.483 80.331-26.483h219.807c-22.952-38.841-53.848-67.09-92.69-89.159Q324.855 0 256 0c-39.724 0-77.683 8.828-112.11 25.6S76.8 67.09 53.848 98.869L128 220.69c7.062-28.249 23.834-52.083 47.669-70.621"/>
             <path fill="#fce056" d="M492.579 159.779H344.276c25.6 25.6 43.255 59.145 43.255 96.221 0 27.366-7.945 52.083-22.952 75.034L258.648 512c69.738-.883 129.766-25.6 179.2-75.917S512 325.738 512 256c0-32.662-5.297-67.09-19.421-96.221"/>
             <path fill="#25b9e1" d="M256 158.897c52.966 0 97.103 44.138 97.103 97.103S308.966 353.103 256 353.103 158.897 308.966 158.897 256s44.137-97.103 97.103-97.103"/>
           </svg>
-          Add to Chrome
-        </a>
+          Chrome - Coming Soon
+        </span>
         <a href="https://addons.mozilla.org/en-US/firefox/addon/volux-premium-volume-control/" class="btn btn-ghost">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 87.419 81.967">
             <defs>
@@ -701,52 +856,124 @@
   <section class="features-section">
     <div class="container">
       <div class="section-title">
-        <h2>Powerful Features</h2>
-        <p>Everything you need to control your audio experience</p>
+        <h2>Solve Your Audio Problems</h2>
+        <p>No more volume frustration across websites</p>
       </div>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17,21 17,13 7,13 7,21"/></svg>
           </div>
-          <h3>Per-Domain Control</h3>
-          <p>Set unique volume levels for each website independently</p>
+          <h3>Auto-Save Volume</h3>
+          <p>Set YouTube to 30%, Facebook to 10% - Volux remembers forever</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18"/></svg>
           </div>
-          <h3>Smart Grouping</h3>
-          <p>All tabs from the same site share one volume slider</p>
+          <h3>Different Volume Each Tab</h3>
+          <p>Zoom meeting + YouTube + Spotify? Each at the perfect level</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+          </div>
+          <h3>No More Volume Reset</h3>
+          <p>Refresh page, close browser - your volume settings stay</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
           </div>
-          <h3>Instant Mute</h3>
-          <p>One-click mute without losing your volume setting</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17,21 17,13 7,13 7,21"/></svg>
-          </div>
-          <h3>Persistent Settings</h3>
-          <p>Your preferences are saved automatically</p>
+          <h3>Fix Loud Websites</h3>
+          <p>Some sites are always too loud? Set them once, problem solved</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           </div>
-          <h3>Live Detection</h3>
-          <p>See which tabs are currently playing audio</p>
+          <h3>Works Across Sessions</h3>
+          <p>Close Chrome, reopen tomorrow - all volumes exactly as you set</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
           <h3>Lightweight</h3>
-          <p>Minimal resource usage, no background processes</p>
+          <p>Minimal resource usage, no slowdowns</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Section -->
+  <section class="usecases-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Perfect For These Situations</h2>
+        <p>Real problems Volux solves every day</p>
+      </div>
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <div class="usecase-icon">🎬</div>
+          <h3>YouTube Volume Too Loud?</h3>
+          <p>YouTube videos are often mastered at high volume. Set YouTube to 30-40% permanently and never get blasted by sudden loud intros, ads, or music videos again. Volux remembers your setting every time you visit.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-icon">💼</div>
+          <h3>Zoom & Google Meet Calls</h3>
+          <p>Keep your video meetings at a comfortable, stable volume while other tabs play at different levels. Perfect for when you're in a meeting but need to quickly check something on another tab without audio chaos.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-icon">🎵</div>
+          <h3>Spotify + Video at Same Time</h3>
+          <p>Want background music from Spotify while watching a muted tutorial? Or listening to a podcast while browsing? Set each tab to the exact volume you need. No more constant adjusting.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-icon">📱</div>
+          <h3>Social Media Auto-Play Videos</h3>
+          <p>Facebook, Twitter, Instagram - they all auto-play videos at full volume. Set these sites to 10-20% so you're never surprised by loud videos when scrolling through your feed.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-icon">🎮</div>
+          <h3>Twitch & Gaming Streams</h3>
+          <p>Streamers have wildly different audio levels. Set your favorite streaming sites to a comfortable baseline volume that works for you, regardless of how loud the streamer's setup is.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-icon">📚</div>
+          <h3>Online Learning & Courses</h3>
+          <p>Taking online courses on Udemy, Coursera, or YouTube? Keep educational content at a comfortable listening level while other entertainment tabs stay quieter in the background.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="howitworks-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>How Volux Works</h2>
+        <p>Simple setup, automatic from then on</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Install the Extension</h3>
+          <p>Add Volux to Chrome or Firefox with one click. No account needed, no complex setup. The extension icon appears in your browser toolbar immediately.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Adjust Volume on Any Website</h3>
+          <p>Click the Volux icon and use the slider to set your preferred volume for that website. YouTube too loud? Slide it down to 30%. Podcast site too quiet? Boost it up.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Volux Remembers Forever</h3>
+          <p>That's it. Volux automatically saves your preference and applies it every time you visit that site. Refresh the page, close the browser, come back next week - your volume settings stay exactly as you set them.</p>
+        </div>
+      </div>
+      <div class="howitworks-note">
+        <p><strong>Pro tip:</strong> All tabs from the same website share the volume setting. Set YouTube once, and all your YouTube tabs (current and future) will use that volume level automatically.</p>
       </div>
     </div>
   </section>
@@ -802,7 +1029,7 @@
             <li>Instant mute</li>
             <li>Persistent settings</li>
           </ul>
-          <a href="https://chrome.google.com/webstore/detail/volux/" class="btn-pricing btn-pricing-outline">Get Started</a>
+          <span class="btn-pricing btn-pricing-outline" style="opacity: 0.6; cursor: not-allowed;">Chrome Coming Soon</span>
         </div>
         <div class="pricing-card featured">
           <span class="pricing-badge">Best Value</span>
@@ -816,6 +1043,50 @@
             <li>Lifetime access</li>
           </ul>
           <a href="https://vannk.lemonsqueezy.com/checkout" class="btn-pricing btn-pricing-solid">Upgrade to Pro</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about Volux</p>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>Why does my browser volume reset every time I refresh?</h3>
+          <p>Browsers don't save volume settings per website by default. Every time you refresh or reopen a tab, the volume resets to 100%. Volux solves this by automatically remembering your preferred volume for each website, so you never have to adjust it again.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How do I set different volume for YouTube and Spotify?</h3>
+          <p>With Volux, each website has its own independent volume slider. Simply set YouTube to 30%, Spotify to 80%, or any level you prefer. Volux saves these settings automatically and applies them every time you visit those sites.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Why is YouTube always too loud compared to other sites?</h3>
+          <p>Different websites have different audio levels. YouTube videos are often mastered louder than other content. Volux lets you set a permanent lower volume for YouTube (or any loud website) so you never get blasted with sudden loud audio again.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Does Volux remember my settings after I close the browser?</h3>
+          <p>Yes! Your volume settings are saved permanently. Close Chrome, restart your computer, come back days later - Volux remembers exactly how you set the volume for each website. No more manual adjustments.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I control volume for Zoom, Google Meet, or Microsoft Teams?</h3>
+          <p>Absolutely. Volux works with any website that plays audio, including video conferencing apps like Zoom, Google Meet, and Microsoft Teams. Keep your meeting audio at a comfortable level while other tabs play at different volumes.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is Volux safe? What permissions does it need?</h3>
+          <p>Volux is open source and privacy-friendly. It only requests permissions necessary to control audio on web pages. We don't collect any personal data, browsing history, or analytics. You can review our code on GitHub.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What's the difference between Free and Pro?</h3>
+          <p>The Free version lets you control volume for 2 websites - perfect for trying it out. Pro ($2 one-time) unlocks unlimited websites, auto-detection of media sites, and the ability to scan all open tabs for audio. It's a lifetime purchase, no subscription.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Does Volux work with multiple tabs of the same website?</h3>
+          <p>Yes! All tabs from the same website share the same volume setting. If you set YouTube to 40%, all your YouTube tabs will be at 40%. This makes managing multiple tabs simple and consistent.</p>
         </div>
       </div>
     </div>

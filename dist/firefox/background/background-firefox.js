@@ -2,9 +2,6 @@
 // Manages volume states by domain and communication between popup and content scripts
 
 const STORAGE_KEY = 'volux_saved_states';
-const AFFILIATE_CONFIG_URL = 'https://volux.devlifeeasy.com/affiliate-config.json';
-const AFFILIATE_CACHE_KEY = 'volux_affiliate_config';
-const AFFILIATE_CACHE_DURATION = 60 * 60 * 1000; // 1 hour
 const LICENSE_KEY = 'volux_license';
 const MANAGED_DOMAINS_KEY = 'volux_managed_domains';
 const FREE_DOMAIN_LIMIT = 2;

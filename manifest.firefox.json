@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Volux - Tab Volume Controller",
-  "version": "1.0.3",
-  "description": "Premium per-tab volume control. Independently adjust audio levels for each website with precision sliders and instant mute.",
+  "name": "Volux - Per-Tab Volume & Auto Save",
+  "version": "1.0.4",
+  "description": "Tired of adjusting volume every time? Volux remembers your preferred volume for each website automatically. Set once, never adjust again. Different volume for every tab, works across sessions.",
   "permissions": [
     "tabs",
     "storage",
