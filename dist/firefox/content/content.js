@@ -1,5 +1,5 @@
 // Content script for Volux
-// Captures audio/video elements and controls their volume using Web Audio API
+// Controls audio/video elements volume directly
 
 (function() {
   'use strict';
@@ -8,65 +8,65 @@
   const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
 
   // Avoid running multiple times
-  if (window.__tabVolumeControllerLoaded) return;
-  window.__tabVolumeControllerLoaded = true;
+  if (window.__voluxControllerLoaded) return;
+  window.__voluxControllerLoaded = true;
 
-  const audioContexts = new Map();
-  const gainNodes = new Map();
-  let globalVolume = 1;
+  let globalVolume = 1; // 0-1 range
   let globalMuted = false;
+  const controlledElements = new Set();
 
-  // Create audio context and gain node for an element
-  function setupAudioControl(element) {
-    if (audioContexts.has(element)) return;
-
+  // Apply volume to a single media element
+  function applyVolumeToElement(element) {
     try {
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const source = audioContext.createMediaElementSource(element);
-      const gainNode = audioContext.createGain();
-
-      source.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-
-      audioContexts.set(element, audioContext);
-      gainNodes.set(element, gainNode);
-
-      // Apply current volume settings
-      gainNode.gain.value = globalMuted ? 0 : globalVolume;
-
-      // Notify background script that audio was detected
-      browserAPI.runtime.sendMessage({ type: 'AUDIO_DETECTED' }).catch(() => {});
-
-    } catch (error) {
-      // Element might already be connected to an AudioContext
-      console.log('Volux: Could not setup audio control:', error.message);
+      if (globalMuted) {
+        element.volume = 0;
+      } else {
+        element.volume = globalVolume;
+      }
+      controlledElements.add(element);
+    } catch (e) {
+      // Some elements may not support volume control
+      console.log('Volux: Could not set volume on element:', e.message);
     }
   }
 
-  // Apply volume to all controlled elements
-  function applyVolume(volume, muted) {
-    globalVolume = volume;
-    globalMuted = muted;
-
-    const effectiveVolume = muted ? 0 : volume;
-
-    gainNodes.forEach((gainNode, element) => {
-      try {
-        gainNode.gain.setValueAtTime(effectiveVolume, gainNode.context.currentTime);
-      } catch (error) {
-        console.log('Volux: Could not set volume:', error.message);
-      }
-    });
-  }
-
-  // Find and setup all audio/video elements
-  function findMediaElements() {
+  // Apply volume to all media elements on the page
+  function applyVolumeToAll() {
     const mediaElements = document.querySelectorAll('audio, video');
     mediaElements.forEach(element => {
-      // Only setup when the element starts playing
-      if (!element.paused && !audioContexts.has(element)) {
-        setupAudioControl(element);
+      applyVolumeToElement(element);
+    });
+    console.log('Volux: Applied volume', globalVolume, 'muted:', globalMuted, 'to', mediaElements.length, 'elements');
+  }
+
+  // Setup a media element for volume control
+  function setupMediaElement(element) {
+    if (controlledElements.has(element)) return;
+
+    // Apply current volume
+    applyVolumeToElement(element);
+
+    // Override volume changes by the page (optional - prevents sites from resetting volume)
+    const originalVolumeDescriptor = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'volume');
+
+    // Watch for volume changes and re-apply our volume
+    element.addEventListener('volumechange', () => {
+      const expectedVolume = globalMuted ? 0 : globalVolume;
+      // Only re-apply if significantly different (avoid infinite loops)
+      if (Math.abs(element.volume - expectedVolume) > 0.01) {
+        element.volume = expectedVolume;
       }
+    });
+
+    // Notify background script
+    browserAPI.runtime.sendMessage({ type: 'AUDIO_DETECTED' }).catch(() => {});
+  }
+
+  // Find and setup all media elements
+  function findAndSetupMediaElements() {
+    const mediaElements = document.querySelectorAll('audio, video');
+    mediaElements.forEach(element => {
+      setupMediaElement(element);
     });
   }
 
@@ -76,13 +76,11 @@
       for (const node of mutation.addedNodes) {
         if (node.nodeType === Node.ELEMENT_NODE) {
           if (node.tagName === 'AUDIO' || node.tagName === 'VIDEO') {
-            node.addEventListener('play', () => setupAudioControl(node), { once: true });
+            setupMediaElement(node);
           }
           // Check for nested media elements
           const nested = node.querySelectorAll?.('audio, video');
-          nested?.forEach(el => {
-            el.addEventListener('play', () => setupAudioControl(el), { once: true });
-          });
+          nested?.forEach(el => setupMediaElement(el));
         }
       }
     }
@@ -95,38 +93,50 @@
   });
 
   // Setup existing elements
-  document.addEventListener('DOMContentLoaded', findMediaElements);
-  if (document.readyState !== 'loading') {
-    findMediaElements();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', findAndSetupMediaElements);
+  } else {
+    findAndSetupMediaElements();
   }
 
-  // Listen for play events on all media elements
+  // Listen for play events to catch dynamically created media
   document.addEventListener('play', (event) => {
-    if (event.target.tagName === 'AUDIO' || event.target.tagName === 'VIDEO') {
-      setupAudioControl(event.target);
+    const target = event.target;
+    if (target.tagName === 'AUDIO' || target.tagName === 'VIDEO') {
+      setupMediaElement(target);
     }
   }, true);
+
+  // Periodically re-apply volume (handles dynamic content like YouTube)
+  setInterval(() => {
+    applyVolumeToAll();
+  }, 1000);
 
   // Listen for messages from background script
   browserAPI.runtime.onMessage.addListener((message, sender, sendResponse) => {
     switch (message.type) {
       case 'SET_VOLUME':
-        applyVolume(message.volume, globalMuted);
-        sendResponse({ success: true });
+        globalVolume = message.volume;
+        applyVolumeToAll();
+        sendResponse({ success: true, mediaCount: controlledElements.size });
         break;
 
       case 'SET_MUTED':
-        applyVolume(globalVolume, message.muted);
-        sendResponse({ success: true });
+        globalMuted = message.muted;
+        applyVolumeToAll();
+        sendResponse({ success: true, mediaCount: controlledElements.size });
         break;
 
       case 'GET_STATUS':
         sendResponse({
           volume: globalVolume,
           muted: globalMuted,
-          mediaCount: audioContexts.size
+          mediaCount: controlledElements.size
         });
         break;
+
+      default:
+        sendResponse({ success: false });
     }
     return true;
   });
@@ -136,7 +146,7 @@
     if (state) {
       globalVolume = state.volume / 100;
       globalMuted = state.muted;
-      applyVolume(globalVolume, globalMuted);
+      applyVolumeToAll();
     }
   }).catch(() => {});
 

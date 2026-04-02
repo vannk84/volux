@@ -148,7 +148,7 @@ function showAutocomplete(query) {
   selectedAutocompleteIndex = -1;
   dropdown.innerHTML = filtered.map((d, i) => `
     <div class="autocomplete-item" data-domain="${d.domain}" data-index="${i}">
-      ${d.favicon ? `<img src="${d.favicon}" alt="" onerror="this.style.display='none'">` : ''}
+      ${d.favicon ? `<img src="${d.favicon}" alt="" class="autocomplete-favicon">` : ''}
       <span class="domain-text">${highlightMatch(d.domain, query)}</span>
       <span class="domain-hint">open tab</span>
     </div>
@@ -161,6 +161,13 @@ function showAutocomplete(query) {
       input.value = item.dataset.domain;
       hideAutocomplete();
       addDomain();
+    });
+  });
+
+  // Add error handlers for favicon images (CSP-compliant)
+  dropdown.querySelectorAll('.autocomplete-favicon').forEach(img => {
+    img.addEventListener('error', () => {
+      img.style.display = 'none';
     });
   });
 
@@ -528,6 +535,13 @@ function renderDomains(domains) {
       }
     });
   });
+
+  // Add error handlers for favicon images (CSP-compliant)
+  document.querySelectorAll('.tab-favicon').forEach(img => {
+    img.addEventListener('error', () => {
+      img.style.display = 'none';
+    });
+  });
 }
 
 // Encode origin to be safe for use as element ID
@@ -540,7 +554,7 @@ function createDomainHTML(domain) {
   const tabCount = domain.tabs.length;
 
   const faviconHTML = domain.favIconUrl
-    ? `<img class="tab-favicon" src="${escapeHTML(domain.favIconUrl)}" alt="" onerror="this.style.display='none'">`
+    ? `<img class="tab-favicon" src="${escapeHTML(domain.favIconUrl)}" alt="">`
     : `<div class="tab-favicon-placeholder">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
@@ -651,9 +665,9 @@ async function handleMuteToggle(origin, muted) {
 
 function updateSliderBackground(slider) {
   const value = slider.value;
-  const percentage = value;
-  // Premium gold gradient for slider fill
-  slider.style.background = `linear-gradient(to right, #c9a962 0%, #c9a962 ${percentage}%, #2a2a2a ${percentage}%, #2a2a2a 100%)`;
+  // Use CSS custom property for cross-browser compatibility
+  // Chrome/Safari use this via background gradient, Firefox uses ::-moz-range-progress
+  slider.style.setProperty('--slider-progress', `${value}%`);
 }
 
 function escapeHTML(str) {
