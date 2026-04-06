@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', init);
 async function init() {
   await loadLicenseStatus();
   await loadStats();
-  await loadAffiliatePreference();
   setupEventListeners();
 }
 
@@ -14,12 +13,6 @@ function setupEventListeners() {
   document.getElementById('activateBtn').addEventListener('click', activateLicense);
   document.getElementById('resetBtn').addEventListener('click', resetSettings);
   document.getElementById('scanTabsBtn').addEventListener('click', scanMediaTabs);
-
-  // Affiliate toggle
-  const affiliateToggle = document.getElementById('showAffiliateToggle');
-  if (affiliateToggle) {
-    affiliateToggle.addEventListener('change', saveAffiliatePreference);
-  }
 
   // Format license key as user types
   document.getElementById('licenseInput').addEventListener('input', formatLicenseKey);
@@ -205,106 +198,3 @@ async function scanMediaTabs() {
   }, 5000);
 }
 
-// Affiliate Preference Functions
-async function loadAffiliatePreference() {
-  const license = await browserAPI.runtime.sendMessage({ type: 'GET_LICENSE' });
-  const isPro = license && license.isPro;
-
-  const data = await browserAPI.storage.local.get('volux_show_affiliate');
-
-  // Pro users: default OFF (but can opt-in)
-  // Free users: default ON (can opt-out)
-  let showAffiliate;
-  if (data.volux_show_affiliate === undefined) {
-    showAffiliate = !isPro; // Default based on license status
-  } else {
-    showAffiliate = data.volux_show_affiliate;
-  }
-
-  const toggle = document.getElementById('showAffiliateToggle');
-  const affiliateCard = document.getElementById('affiliateCard');
-
-  if (toggle) {
-    toggle.checked = showAffiliate;
-  }
-
-  if (affiliateCard) {
-    affiliateCard.style.display = showAffiliate ? 'block' : 'none';
-  }
-}
-
-async function saveAffiliatePreference() {
-  const toggle = document.getElementById('showAffiliateToggle');
-  const showAffiliate = toggle.checked;
-
-  await browserAPI.storage.local.set({ volux_show_affiliate: showAffiliate });
-
-  const affiliateCard = document.getElementById('affiliateCard');
-  if (affiliateCard) {
-    affiliateCard.style.display = showAffiliate ? 'block' : 'none';
-  }
-}
-
-// Geo detection & affiliate display (moved from inline script)
-function initAffiliateCarousels() {
-  function detectRegion() {
-    const lang = (navigator.language || '').toLowerCase();
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-    if (lang.includes('vi') || tz.includes('Ho_Chi_Minh') || tz.includes('Saigon')) {
-      return 'vietnam';
-    }
-    return 'global';
-  }
-
-  function showRegion(region) {
-    document.querySelectorAll('.affiliate-carousel').forEach(el => {
-      el.style.display = el.dataset.region === region ? 'block' : 'none';
-    });
-  }
-
-  // Quick detection first
-  showRegion(detectRegion());
-
-  // Verify with IP API
-  fetch('https://ipapi.co/json/')
-    .then(r => r.json())
-    .then(data => {
-      showRegion(data.country_code === 'VN' ? 'vietnam' : 'global');
-    })
-    .catch(() => {});
-
-  // Carousel auto-rotation
-  document.querySelectorAll('.affiliate-carousel').forEach(carousel => {
-    const track = carousel.querySelector('.carousel-track');
-    const dots = carousel.querySelectorAll('.carousel-dot');
-    if (!track || !dots.length) return;
-
-    const slideCount = track.children.length;
-    let currentIndex = 0;
-    let interval;
-
-    function goTo(index) {
-      currentIndex = index;
-      track.style.transform = `translateX(-${index * 100}%)`;
-      dots.forEach((d, i) => d.classList.toggle('active', i === index));
-    }
-
-    function next() { goTo((currentIndex + 1) % slideCount); }
-
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        goTo(parseInt(dot.dataset.index));
-        clearInterval(interval);
-        interval = setInterval(next, 5000);
-      });
-    });
-
-    carousel.addEventListener('mouseenter', () => clearInterval(interval));
-    carousel.addEventListener('mouseleave', () => { interval = setInterval(next, 5000); });
-
-    interval = setInterval(next, 5000);
-  });
-}
-
-// Initialize carousels when DOM is ready
-document.addEventListener('DOMContentLoaded', initAffiliateCarousels);

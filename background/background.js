@@ -2,9 +2,6 @@
 // Manages volume states by domain and communication between popup and content scripts
 
 const STORAGE_KEY = 'volux_saved_states';
-const AFFILIATE_CONFIG_URL = 'https://volux.devlifeeasy.com/affiliate-config.json';
-const AFFILIATE_CACHE_KEY = 'volux_affiliate_config';
-const AFFILIATE_CACHE_DURATION = 60 * 60 * 1000; // 1 hour
 const LICENSE_KEY = 'volux_license';
 const MANAGED_DOMAINS_KEY = 'volux_managed_domains';
 const FREE_DOMAIN_LIMIT = 2;
@@ -523,9 +520,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         const addedDomains = await autoAddMediaDomains();
         return { success: true, addedDomains };
 
-      case 'GET_AFFILIATE_CONFIG':
-        return await fetchAffiliateConfig();
-
       default:
         return null;
     }
@@ -617,39 +611,5 @@ async function validateStoredLicense() {
 
 // Run validation on startup
 validateStoredLicense();
-
-// Fetch affiliate config (background script bypasses CORS)
-async function fetchAffiliateConfig() {
-  try {
-    // Check cache first
-    const result = await chrome.storage.local.get(AFFILIATE_CACHE_KEY);
-    const cached = result[AFFILIATE_CACHE_KEY];
-    if (cached && cached.config && Date.now() - cached.timestamp < AFFILIATE_CACHE_DURATION) {
-      return { success: true, config: cached.config, source: 'cache' };
-    }
-
-    // Fetch from remote
-    const response = await fetch(AFFILIATE_CONFIG_URL, {
-      cache: 'no-cache',
-      headers: { 'Accept': 'application/json' }
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const config = await response.json();
-
-    // Cache the config
-    await chrome.storage.local.set({
-      [AFFILIATE_CACHE_KEY]: { config, timestamp: Date.now() }
-    });
-
-    return { success: true, config, source: 'remote' };
-  } catch (error) {
-    console.warn('Failed to fetch affiliate config:', error.message);
-    return { success: false, error: error.message };
-  }
-}
 
 console.log('Volux background script loaded');

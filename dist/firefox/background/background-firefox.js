@@ -492,40 +492,6 @@ async function setDomainMuted(origin, muted) {
   return results;
 }
 
-// Fetch affiliate config (background script bypasses CORS)
-async function fetchAffiliateConfig() {
-  try {
-    // Check cache first
-    const result = await browser.storage.local.get(AFFILIATE_CACHE_KEY);
-    const cached = result[AFFILIATE_CACHE_KEY];
-    if (cached && cached.config && Date.now() - cached.timestamp < AFFILIATE_CACHE_DURATION) {
-      return { success: true, config: cached.config, source: 'cache' };
-    }
-
-    // Fetch from remote
-    const response = await fetch(AFFILIATE_CONFIG_URL, {
-      cache: 'no-cache',
-      headers: { 'Accept': 'application/json' }
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const config = await response.json();
-
-    // Cache the config
-    await browser.storage.local.set({
-      [AFFILIATE_CACHE_KEY]: { config, timestamp: Date.now() }
-    });
-
-    return { success: true, config, source: 'remote' };
-  } catch (error) {
-    console.warn('Failed to fetch affiliate config:', error.message);
-    return { success: false, error: error.message };
-  }
-}
-
 // Listen for messages from popup and content scripts
 browser.runtime.onMessage.addListener((message, sender) => {
   return new Promise(async (resolve) => {
@@ -611,10 +577,6 @@ browser.runtime.onMessage.addListener((message, sender) => {
       case 'SCAN_MEDIA_TABS':
         const addedDomains = await autoAddMediaDomains();
         resolve({ success: true, addedDomains });
-        break;
-
-      case 'GET_AFFILIATE_CONFIG':
-        resolve(await fetchAffiliateConfig());
         break;
 
       default:
