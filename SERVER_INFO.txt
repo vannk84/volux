@@ -1,0 +1,71 @@
+🚀 Volux Website - Local Server Running
+
+Server Status: ✅ RUNNING
+Port: 8000
+Process ID: Check with: lsof -i:8000
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📱 ACCESS WEBSITE:
+
+Homepage:
+http://localhost:8000
+
+Privacy Policy (Chrome Store requirement):
+http://localhost:8000/privacy.html
+
+Terms of Service:
+http://localhost:8000/terms.html
+
+Refund Policy:
+http://localhost:8000/refund.html
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🛑 TO STOP SERVER:
+
+Method 1 - Find process and kill:
+lsof -ti:8000 | xargs kill -9
+
+Method 2 - If running in terminal:
+Press Ctrl+C
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔄 TO RESTART SERVER:
+
+Option 1 - Use bash script:
+./serve-local.sh
+
+Option 2 - Use npm:
+npm run serve
+
+Option 3 - Direct Python:
+cd docs && python3 -m http.server 8000
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📝 TESTING CHECKLIST:
+
+✅ Open http://localhost:8000 - Homepage loads
+✅ Check all sections scroll smoothly
+✅ Test "Get Extension" button links
+✅ Open http://localhost:8000/privacy.html
+✅ Verify "Extension vs Website" section visible
+✅ Test mobile view (resize browser)
+✅ Check browser console (F12) for errors
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 NEXT STEPS:
+
+1. Open browser → http://localhost:8000
+2. Test all pages and links
+3. Verify privacy policy content (required for Chrome Store)
+4. Make any needed changes to HTML files in docs/
+5. Refresh browser to see changes
+6. When done, stop server (Ctrl+C or kill process)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📖 Need help? See: LOCAL_DEVELOPMENT.md

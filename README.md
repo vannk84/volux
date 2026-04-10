@@ -39,10 +39,17 @@ Volux gives you independent volume control for each website you visit. Stop jugg
 
 ## Installation
 
-### Chrome Web Store
-Install from the Chrome Web Store (link coming soon)
+### Chrome Web Store (Recommended)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/cnagfimhcaplopdllnmkhalkeagmeapm.svg)](https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm)
 
-### Manual Installation
+**[Install from Chrome Web Store](https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm)**
+
+Works on Chrome, Edge, Brave, and other Chromium-based browsers.
+
+### Firefox Add-ons
+**[Install from Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/volux-premium-volume-control/)**
+
+### Manual Installation (Development)
 1. Download the latest release
 2. Open `chrome://extensions`
 3. Enable "Developer mode"
