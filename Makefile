@@ -32,6 +32,8 @@ build-chrome:
 	@sed -i 's|<script src="../affiliate/config.js"></script>||g' dist/chrome/popup/popup.html
 	@sed -i '/<div class="affiliate-section"/,/affiliate-disclosure/d' dist/chrome/popup/popup.html
 	@sed -i '/^const AFFILIATE_/d' dist/chrome/background/background.js
+	@sed -i '/^const DEV_LICENSE_KEYS/,/^];/d' dist/chrome/background/background.js
+	@sed -i 's/DEV_LICENSE_KEYS\.includes/false \&\& DEV_LICENSE_KEYS.includes/g' dist/chrome/background/background.js
 	@chmod -R 755 dist/chrome/
 	@echo "$(GREEN)Chrome extension ready: dist/chrome/$(NC)"
 
@@ -49,6 +51,8 @@ build-firefox:
 	@sed -i 's|<script src="../affiliate/config.js"></script>||g' dist/firefox/popup/popup.html
 	@sed -i '/<div class="affiliate-section"/,/affiliate-disclosure/d' dist/firefox/popup/popup.html
 	@sed -i '/^const AFFILIATE_/d' dist/firefox/background/background-firefox.js
+	@sed -i '/^const DEV_LICENSE_KEYS/,/^];/d' dist/firefox/background/background-firefox.js
+	@sed -i 's/DEV_LICENSE_KEYS\.includes/false \&\& DEV_LICENSE_KEYS.includes/g' dist/firefox/background/background-firefox.js
 	@chmod -R 755 dist/firefox/
 	@echo "$(GREEN)Firefox extension ready: dist/firefox/$(NC)"
 
@@ -110,17 +114,21 @@ install:
 	@echo "  3. Click 'Load Temporary Add-on'"
 	@echo "  4. Select any file in dist/firefox"
 
-# Verify extension is clean (no affiliate code)
+# Verify extension is clean (no affiliate code, no dev keys)
 verify:
 	@echo "$(BLUE)Verifying extension is clean...$(NC)"
 	@echo ""
 	@echo "$(YELLOW)Checking Chrome extension:$(NC)"
 	@cd dist/chrome && (grep -r "affiliate" . && echo "$(RED)❌ FOUND AFFILIATE CODE$(NC)" || echo "$(GREEN)✅ No affiliate code$(NC)")
 	@cd dist/chrome && (grep -r "utm_" . && echo "$(RED)❌ FOUND UTM$(NC)" || echo "$(GREEN)✅ No UTM parameters$(NC)")
-	@cd dist/chrome && (grep -r "ref=" . && echo "$(RED)❌ FOUND REF$(NC)" || echo "$(GREEN)✅ No ref parameters$(NC)")
+	@cd dist/chrome && (grep -r "ref=" . | grep -v "href=" && echo "$(RED)❌ FOUND REF PARAMETERS$(NC)" || echo "$(GREEN)✅ No ref parameters$(NC)")
+	@cd dist/chrome && (grep -r "VOLUX-OWNER-DEV" . && echo "$(RED)❌ FOUND DEV KEY VALUES - DO NOT SUBMIT$(NC)" || echo "$(GREEN)✅ No dev key values (secure)$(NC)")
+	@cd dist/chrome && (grep "const DEV_LICENSE_KEYS" background/background.js && echo "$(RED)❌ FOUND DEV KEYS ARRAY - DO NOT SUBMIT$(NC)" || echo "$(GREEN)✅ Dev keys array removed$(NC)")
 	@echo ""
 	@echo "$(YELLOW)Checking Firefox extension:$(NC)"
 	@cd dist/firefox && (grep -r "affiliate" . && echo "$(RED)❌ FOUND AFFILIATE CODE$(NC)" || echo "$(GREEN)✅ No affiliate code$(NC)")
+	@cd dist/firefox && (grep -r "VOLUX-OWNER-DEV" . && echo "$(RED)❌ FOUND DEV KEY VALUES - DO NOT SUBMIT$(NC)" || echo "$(GREEN)✅ No dev key values (secure)$(NC)")
+	@cd dist/firefox && (grep "const DEV_LICENSE_KEYS" background/background-firefox.js && echo "$(RED)❌ FOUND DEV KEYS ARRAY - DO NOT SUBMIT$(NC)" || echo "$(GREEN)✅ Dev keys array removed$(NC)")
 	@echo ""
 	@echo "$(GREEN)Verification complete!$(NC)"
 

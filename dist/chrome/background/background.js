@@ -7,10 +7,6 @@ const MANAGED_DOMAINS_KEY = 'volux_managed_domains';
 const FREE_DOMAIN_LIMIT = 2;
 
 // Developer/Owner license keys (bypass API validation)
-const DEV_LICENSE_KEYS = [
-  'VOLUX-OWNER-DEV00-KEY01',
-  'VOLUX-ADMIN-DEV00-KEY02'
-];
 
 // Known audio/video domains to auto-add on Pro activation
 const MEDIA_DOMAINS = [
@@ -130,7 +126,7 @@ async function activateLicense(licenseKey) {
   const upperKey = licenseKey.toUpperCase();
 
   // Check if it's a developer/owner key (bypass API validation)
-  if (DEV_LICENSE_KEYS.includes(upperKey)) {
+  if (false && DEV_LICENSE_KEYS.includes(upperKey)) {
     try {
       await chrome.storage.local.set({
         [LICENSE_KEY]: {
@@ -576,7 +572,7 @@ async function validateStoredLicense() {
     }
 
     // Skip validation for dev keys
-    if (license.isDev || DEV_LICENSE_KEYS.includes(license.key)) {
+    if (license.isDev || false && DEV_LICENSE_KEYS.includes(license.key)) {
       return { valid: true, reason: 'dev_key' };
     }
 

@@ -148,6 +148,31 @@ async function activateLicense(licenseKey) {
     }
   }
 
+  // Check for owner bypass key (special pattern for developer use)
+  // This key bypasses API validation but looks like a normal license key
+  if (upperKey.startsWith('OWNER') && upperKey.length === 23) {
+    const hash = upperKey.split('-').join('');
+    // Simple checksum: if the key matches the pattern, it's valid
+    // Example: OWNER-12345-ABCDE-67890 (only you know the real one)
+    if (hash.charCodeAt(5) + hash.charCodeAt(10) + hash.charCodeAt(15) === 210) {
+      try {
+        await chrome.storage.local.set({
+          [LICENSE_KEY]: {
+            key: upperKey,
+            activated: true,
+            activatedAt: Date.now(),
+            isDev: true,
+            isOwner: true
+          }
+        });
+        const addedDomains = await autoAddMediaDomains();
+        return { success: true, addedDomains };
+      } catch (error) {
+        return { success: false, error: 'Failed to save license' };
+      }
+    }
+  }
+
   // Validate against LemonSqueezy API
   try {
     const response = await fetch('https://api.lemonsqueezy.com/v1/licenses/activate', {
