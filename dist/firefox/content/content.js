@@ -13,49 +13,62 @@
 
   let globalVolume = 1; // 0-1 range
   let globalMuted = false;
-  const controlledElements = new Set();
+  // WeakSet so detached media elements can be GC'd (SPA sites like TikTok
+  // churn through <video> nodes; a strong Set would pin them forever).
+  const controlledElements = new WeakSet();
+  // Cooldown per element to break fight loops where a site keeps
+  // re-asserting its own volume after we set ours.
+  const reapplyCooldown = new WeakMap();
+
+  function countMediaElements() {
+    return document.querySelectorAll('audio, video').length;
+  }
 
   // Apply volume to a single media element
   function applyVolumeToElement(element) {
     try {
-      if (globalMuted) {
-        element.volume = 0;
-      } else {
-        element.volume = globalVolume;
+      const target = globalMuted ? 0 : globalVolume;
+      if (Math.abs(element.volume - target) <= 0.01) {
+        controlledElements.add(element);
+        return;
       }
+      element.volume = target;
       controlledElements.add(element);
     } catch (e) {
       // Some elements may not support volume control
-      console.log('Volux: Could not set volume on element:', e.message);
     }
   }
 
   // Apply volume to all media elements on the page
   function applyVolumeToAll() {
     const mediaElements = document.querySelectorAll('audio, video');
-    mediaElements.forEach(element => {
-      applyVolumeToElement(element);
-    });
-    console.log('Volux: Applied volume', globalVolume, 'muted:', globalMuted, 'to', mediaElements.length, 'elements');
+    mediaElements.forEach(applyVolumeToElement);
   }
 
-  // Setup a media element for volume control
+  // Setup a media element for volume control. The value-equality check
+  // in the listener inherently ignores our own writes (since we write
+  // the expected value), so no self-write flag is needed — and trying
+  // to use one is unreliable because volumechange is dispatched via a
+  // task, after microtasks, so a microtask-cleared flag is always false
+  // by the time the listener runs.
   function setupMediaElement(element) {
     if (controlledElements.has(element)) return;
+    controlledElements.add(element);
 
     // Apply current volume
     applyVolumeToElement(element);
 
-    // Override volume changes by the page (optional - prevents sites from resetting volume)
-    const originalVolumeDescriptor = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'volume');
-
     // Watch for volume changes and re-apply our volume
     element.addEventListener('volumechange', () => {
       const expectedVolume = globalMuted ? 0 : globalVolume;
-      // Only re-apply if significantly different (avoid infinite loops)
-      if (Math.abs(element.volume - expectedVolume) > 0.01) {
-        element.volume = expectedVolume;
-      }
+      if (Math.abs(element.volume - expectedVolume) <= 0.01) return;
+      // Rate-limit re-applies so a site that keeps re-asserting its own
+      // volume can't pull us into a tight loop.
+      const now = Date.now();
+      const last = reapplyCooldown.get(element) || 0;
+      if (now - last < 250) return;
+      reapplyCooldown.set(element, now);
+      element.volume = expectedVolume;
     });
 
     // Notify background script
@@ -118,20 +131,20 @@
       case 'SET_VOLUME':
         globalVolume = message.volume;
         applyVolumeToAll();
-        sendResponse({ success: true, mediaCount: controlledElements.size });
+        sendResponse({ success: true, mediaCount: countMediaElements() });
         break;
 
       case 'SET_MUTED':
         globalMuted = message.muted;
         applyVolumeToAll();
-        sendResponse({ success: true, mediaCount: controlledElements.size });
+        sendResponse({ success: true, mediaCount: countMediaElements() });
         break;
 
       case 'GET_STATUS':
         sendResponse({
           volume: globalVolume,
           muted: globalMuted,
-          mediaCount: controlledElements.size
+          mediaCount: countMediaElements()
         });
         break;
 
@@ -150,5 +163,4 @@
     }
   }).catch(() => {});
 
-  console.log('Volux content script loaded');
 })();
