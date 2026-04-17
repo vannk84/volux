@@ -2,9 +2,9 @@
 
 ## Short Description (132 chars max)
 ```
-Stop adjusting volume every time. Volux remembers your volume for each website automatically.
+Auto-save volume per website. With Pro, each tab of any site (YouTube, TikTok, Facebook…) holds its own volume.
 ```
-**Character count:** 102 ✅
+**Character count:** 110 ✅
 
 ---
 
@@ -38,8 +38,14 @@ Set your volume preferences once. Volux handles the rest automatically.
   Set volume for YouTube, Spotify, Zoom - Volux saves it automatically.
   Every reload, every new tab, same volume. Zero effort.
 
-✓ Per-Tab Control
-  Each tab can have different volume. Perfect for multitasking.
+✓ Per-Tab Volume Override (Pro)
+  Multiple tabs open on the same site (YouTube, TikTok, Facebook, Spotify,
+  Twitch — any site)? Give each tab its own volume. The site default still
+  covers any tab you haven't customized. Override clears when the tab
+  closes or navigates away.
+
+✓ Different Volume Per Site
+  Zoom at 100%, YouTube at 40%, Spotify at 60% - each site at the right level.
 
 ✓ Smart Mute
   Mute without losing your volume setting. Unmute returns to your saved level.
@@ -48,7 +54,8 @@ Set your volume preferences once. Volux handles the rest automatically.
   See which tabs are playing audio at a glance.
 
 ✓ Domain Grouping
-  All tabs from same website share one volume control. Simple and clean.
+  By default, all tabs from the same website share one volume control.
+  Simple and clean — and Pro lets you peel off individual tabs when you need them.
 
 
 💡 PERFECT FOR
@@ -101,6 +108,7 @@ Your privacy matters: No data collection. No tracking. No servers.
 ⭐ PRO VERSION ($2 one-time)
 
 • Unlimited websites
+• Per-tab volume override (set each tab's volume independently)
 • Auto-detect media sites from open tabs
 • Quick-scan button to find all media
 • Priority support
@@ -185,3 +193,16 @@ Volux - Per Tab Volume Control & Auto Save
 ```
 Volux - Remember Volume for Every Website
 ```
+
+## Marketing Assets (per-tab launch)
+
+| Slot | File |
+|------|------|
+| Screenshot 1 (hero) | `marketing/generated/popup-pro-expanded.png` |
+| Screenshot 2 | `marketing/generated/popup-pro-collapsed.png` |
+| Screenshot 3 | `marketing/generated/popup-upgrade-modal.png` |
+| Screenshot 4 | `marketing/generated/popup-free.png` |
+| Promo video  | `marketing/generated/demo-per-tab.mp4` (8.25s, H.264/AAC) |
+| Silent GIF   | `marketing/generated/demo-per-tab.gif` |
+
+These reflect the current popup UI including the per-tab expansion (Pro). Older landscape marketing PNGs in `marketing/` predate this feature and may still be useful as hero/banner imagery.

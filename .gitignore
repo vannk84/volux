@@ -1,0 +1,13 @@
+# npm dependencies (regenerate with `cd tools && npm install`)
+node_modules/
+
+# Ephemeral capture intermediates
+# tools/frames/    — 150+ PNGs per run, regen: `node tools/capture.mjs --video-frames`
+# tools/captions/  — caption PNGs, regen: `tools/build-video.sh`
+tools/frames/
+tools/captions/
+
+# OS junk
+.DS_Store
+Thumbs.db
+*.swp

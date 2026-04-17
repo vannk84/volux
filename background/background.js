@@ -4,13 +4,59 @@
 const STORAGE_KEY = 'volux_saved_states';
 const LICENSE_KEY = 'volux_license';
 const MANAGED_DOMAINS_KEY = 'volux_managed_domains';
+const TAB_OVERRIDES_KEY = 'volux_tab_overrides';
 const FREE_DOMAIN_LIMIT = 2;
 
-// Developer/Owner license keys (bypass API validation)
-const DEV_LICENSE_KEYS = [
-  'VOLUX-OWNER-DEV00-KEY01',
-  'VOLUX-ADMIN-DEV00-KEY02'
+// In-memory cache of per-tab volume overrides (PRO feature).
+// Shape: { [tabId]: { volume: 0-100, muted: boolean, domain: string } }
+// Persisted to chrome.storage.session so it survives service-worker restarts
+// but clears on browser close (tab IDs are invalid after that anyway).
+let tabOverrides = {};
+
+async function loadTabOverrides() {
+  try {
+    const result = await chrome.storage.session.get(TAB_OVERRIDES_KEY);
+    tabOverrides = result[TAB_OVERRIDES_KEY] || {};
+  } catch {
+    tabOverrides = {};
+  }
+}
+
+async function persistTabOverrides() {
+  try {
+    await chrome.storage.session.set({ [TAB_OVERRIDES_KEY]: tabOverrides });
+  } catch {}
+}
+
+// Resolve once the override map has been hydrated from session storage.
+// Message handlers and tab-event listeners await this to avoid a race on SW
+// cold-start where they'd see an empty map and miss active overrides.
+const tabOverridesReady = loadTabOverrides();
+
+// SHA-256 hashes of developer/owner license keys that bypass API validation.
+// The plaintext keys are never stored in the shipped source so they can't be
+// lifted from the extension bundle. To rotate or add a key, hash it with
+// SHA-256 (lowercase hex) and add the digest here.
+const DEV_LICENSE_KEY_HASHES = [
+  '6f00dbabaeaf7302a1104113cbf3e1addf5e33929db958aa83e5b316cc0054d0'
 ];
+
+async function sha256Hex(input) {
+  const bytes = new TextEncoder().encode(input);
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  return Array.from(new Uint8Array(digest))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+async function isDevLicenseKey(key) {
+  try {
+    const hash = await sha256Hex(key);
+    return DEV_LICENSE_KEY_HASHES.includes(hash);
+  } catch {
+    return false;
+  }
+}
 
 // Known audio/video domains to auto-add on Pro activation
 const MEDIA_DOMAINS = [
@@ -130,7 +176,7 @@ async function activateLicense(licenseKey) {
   const upperKey = licenseKey.toUpperCase();
 
   // Check if it's a developer/owner key (bypass API validation)
-  if (DEV_LICENSE_KEYS.includes(upperKey)) {
+  if (await isDevLicenseKey(upperKey)) {
     try {
       await chrome.storage.local.set({
         [LICENSE_KEY]: {
@@ -145,31 +191,6 @@ async function activateLicense(licenseKey) {
       return { success: true, addedDomains };
     } catch (error) {
       return { success: false, error: 'Failed to save license' };
-    }
-  }
-
-  // Check for owner bypass key (special pattern for developer use)
-  // This key bypasses API validation but looks like a normal license key
-  if (upperKey.startsWith('OWNER') && upperKey.length === 23) {
-    const hash = upperKey.split('-').join('');
-    // Simple checksum: if the key matches the pattern, it's valid
-    // Example: OWNER-12345-ABCDE-67890 (only you know the real one)
-    if (hash.charCodeAt(5) + hash.charCodeAt(10) + hash.charCodeAt(15) === 210) {
-      try {
-        await chrome.storage.local.set({
-          [LICENSE_KEY]: {
-            key: upperKey,
-            activated: true,
-            activatedAt: Date.now(),
-            isDev: true,
-            isOwner: true
-          }
-        });
-        const addedDomains = await autoAddMediaDomains();
-        return { success: true, addedDomains };
-      } catch (error) {
-        return { success: false, error: 'Failed to save license' };
-      }
     }
   }
 
@@ -299,6 +320,16 @@ async function removeManagedDomain(domain) {
   delete saved[`http://${domain}`];
   await chrome.storage.local.set({ [STORAGE_KEY]: saved });
 
+  // Clear any per-tab overrides tied to this managed domain.
+  let overridesChanged = false;
+  for (const tabId of Object.keys(tabOverrides)) {
+    if (tabOverrides[tabId].domain === domain) {
+      delete tabOverrides[tabId];
+      overridesChanged = true;
+    }
+  }
+  if (overridesChanged) await persistTabOverrides();
+
   return { success: true };
 }
 
@@ -380,11 +411,17 @@ async function getDomains() {
 
     if (matchedDomain && domainMap.has(matchedDomain)) {
       const domainEntry = domainMap.get(matchedDomain);
+      const override = tabOverrides[tab.id] || null;
       domainEntry.tabs.push({
         id: tab.id,
         title: tab.title || 'Untitled',
+        url: tab.url,
+        favIconUrl: tab.favIconUrl || '',
         audible: tab.audible || false,
-        hasAudio: tabsWithAudio.has(tab.id)
+        hasAudio: tabsWithAudio.has(tab.id),
+        hasOverride: !!override,
+        volume: override?.volume ?? domainEntry.volume,
+        muted: override?.muted ?? domainEntry.muted
       });
 
       if (tab.audible) {
@@ -417,7 +454,8 @@ function getDomainFromOrigin(origin) {
   }
 }
 
-// Set volume for all tabs of a domain
+// Set volume for all tabs of a domain.
+// Tabs with their own per-tab override are skipped so the override persists.
 async function setDomainVolume(origin, volume) {
   await saveStateForOrigin(origin, volume, false);
 
@@ -429,6 +467,10 @@ async function setDomainVolume(origin, volume) {
 
   for (const tab of tabs) {
     if (tabMatchesDomain(tab.url, managedDomain)) {
+      if (tabOverrides[tab.id]) {
+        results.push({ tabId: tab.id, skipped: 'override' });
+        continue;
+      }
       try {
         await chrome.tabs.sendMessage(tab.id, {
           type: 'SET_VOLUME',
@@ -444,7 +486,8 @@ async function setDomainVolume(origin, volume) {
   return results;
 }
 
-// Mute/unmute all tabs of a domain
+// Mute/unmute all tabs of a domain.
+// Tabs with their own per-tab override are skipped so the override persists.
 async function setDomainMuted(origin, muted) {
   const saved = await getSavedStateForOrigin(origin);
   const volume = saved?.volume ?? 100;
@@ -458,6 +501,10 @@ async function setDomainMuted(origin, muted) {
 
   for (const tab of tabs) {
     if (tabMatchesDomain(tab.url, managedDomain)) {
+      if (tabOverrides[tab.id]) {
+        results.push({ tabId: tab.id, skipped: 'override' });
+        continue;
+      }
       try {
         await chrome.tabs.sendMessage(tab.id, {
           type: 'SET_MUTED',
@@ -473,9 +520,113 @@ async function setDomainMuted(origin, muted) {
   return results;
 }
 
+// Resolve the managed-domain entry (e.g. "youtube.com") that a tab URL belongs to.
+// We key overrides by this rather than the raw hostname so a tab navigating
+// between www./m./shopping. subdomains of the same managed site keeps its
+// override instead of getting wiped on every URL change.
+async function resolveManagedDomainForTab(tabUrl) {
+  const tabDomain = getDomain(tabUrl);
+  if (!tabDomain) return null;
+  const managedDomains = await getManagedDomains();
+  return managedDomains.find(d => tabDomain === d || tabDomain.endsWith('.' + d)) || null;
+}
+
+// Set volume for a single tab (creates/updates a per-tab override — PRO only).
+async function setTabVolume(tabId, volume) {
+  const license = await getLicenseStatus();
+  if (!license.isPro) {
+    return { success: false, error: 'PRO_REQUIRED' };
+  }
+
+  const tab = await chrome.tabs.get(tabId).catch(() => null);
+  if (!tab) return { success: false, error: 'TAB_NOT_FOUND' };
+
+  const managedDomain = await resolveManagedDomainForTab(tab.url);
+  if (!managedDomain) return { success: false, error: 'DOMAIN_NOT_MANAGED' };
+
+  const existing = tabOverrides[tabId];
+  const muted = existing?.muted ?? false;
+
+  tabOverrides[tabId] = { volume, muted, domain: managedDomain };
+  await persistTabOverrides();
+
+  try {
+    await chrome.tabs.sendMessage(tabId, {
+      type: 'SET_VOLUME',
+      volume: volume / 100
+    });
+    return { success: true, tabId };
+  } catch {
+    return { success: false, tabId };
+  }
+}
+
+// Mute/unmute a single tab (creates/updates a per-tab override — PRO only).
+async function setTabMuted(tabId, muted) {
+  const license = await getLicenseStatus();
+  if (!license.isPro) {
+    return { success: false, error: 'PRO_REQUIRED' };
+  }
+
+  const tab = await chrome.tabs.get(tabId).catch(() => null);
+  if (!tab) return { success: false, error: 'TAB_NOT_FOUND' };
+
+  const managedDomain = await resolveManagedDomainForTab(tab.url);
+  if (!managedDomain) return { success: false, error: 'DOMAIN_NOT_MANAGED' };
+
+  let volume;
+  const existing = tabOverrides[tabId];
+  if (existing) {
+    volume = existing.volume;
+  } else {
+    // Seed the override with the domain's current default volume.
+    const saved = await getSavedStateForOrigin(`https://${managedDomain}`);
+    volume = saved?.volume ?? 100;
+  }
+
+  tabOverrides[tabId] = { volume, muted, domain: managedDomain };
+  await persistTabOverrides();
+
+  try {
+    await chrome.tabs.sendMessage(tabId, {
+      type: 'SET_MUTED',
+      muted: muted
+    });
+    return { success: true, tabId };
+  } catch {
+    return { success: false, tabId };
+  }
+}
+
+// Clear a tab's override — tab falls back to its domain's default state.
+async function clearTabOverride(tabId) {
+  if (!tabOverrides[tabId]) return { success: true };
+  delete tabOverrides[tabId];
+  await persistTabOverrides();
+
+  // Re-apply the domain default so the tab reflects the fallback immediately.
+  const tab = await chrome.tabs.get(tabId).catch(() => null);
+  if (!tab) return { success: true };
+
+  const domain = getDomain(tab.url);
+  const managedDomains = await getManagedDomains();
+  const matched = managedDomains.find(d => domain === d || domain.endsWith('.' + d));
+  if (!matched) return { success: true };
+
+  const saved = await getSavedStateForOrigin(`https://${matched}`);
+  if (!saved) return { success: true };
+
+  try {
+    await chrome.tabs.sendMessage(tabId, { type: 'SET_VOLUME', volume: saved.volume / 100 });
+    await chrome.tabs.sendMessage(tabId, { type: 'SET_MUTED', muted: saved.muted });
+  } catch {}
+  return { success: true };
+}
+
 // Listen for messages from popup and content scripts
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   const handleAsync = async () => {
+    await tabOverridesReady;
     switch (message.type) {
       case 'GET_DOMAINS':
         const domains = await getDomains();
@@ -489,10 +640,19 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         };
 
       case 'SET_VOLUME':
+        if (typeof message.tabId === 'number') {
+          return await setTabVolume(message.tabId, message.volume);
+        }
         return await setDomainVolume(message.origin, message.volume);
 
       case 'SET_MUTED':
+        if (typeof message.tabId === 'number') {
+          return await setTabMuted(message.tabId, message.muted);
+        }
         return await setDomainMuted(message.origin, message.muted);
+
+      case 'CLEAR_TAB_OVERRIDE':
+        return await clearTabOverride(message.tabId);
 
       case 'AUDIO_DETECTED':
         if (sender.tab) {
@@ -502,6 +662,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
       case 'GET_TAB_STATE':
         if (sender.tab) {
+          // Per-tab override takes precedence over the domain default.
+          const override = tabOverrides[sender.tab.id];
+          if (override) {
+            return { volume: override.volume, muted: override.muted };
+          }
           const tabDomain = getDomain(sender.tab.url);
           if (tabDomain) {
             const managedDomains = await getManagedDomains();
@@ -555,36 +720,65 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 // Clean up when tabs are closed
-chrome.tabs.onRemoved.addListener((tabId) => {
+chrome.tabs.onRemoved.addListener(async (tabId) => {
   tabsWithAudio.delete(tabId);
+  await tabOverridesReady;
+  if (tabOverrides[tabId]) {
+    delete tabOverrides[tabId];
+    persistTabOverrides();
+  }
 });
 
-// Apply saved state when navigating to a new origin
+// Apply saved state when navigating to a new URL.
+// If the tab has a per-tab override and is still on the same domain, re-apply
+// the override. If it has navigated to a different domain, drop the override
+// (stale tab IDs shouldn't carry a user's youtube setting over to twitter).
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  if (changeInfo.url) {
-    const tabDomain = getDomain(changeInfo.url);
-    if (!tabDomain) return;
+  if (!changeInfo.url) return;
+  const tabDomain = getDomain(changeInfo.url);
+  if (!tabDomain) return;
 
-    // Find if this tab's domain matches any managed domain
-    const managedDomains = await getManagedDomains();
-    const matchedDomain = managedDomains.find(d => tabDomain === d || tabDomain.endsWith('.' + d));
+  await tabOverridesReady;
+  const override = tabOverrides[tabId];
+  if (override) {
+    const sameDomain = override.domain &&
+      (tabDomain === override.domain || tabDomain.endsWith('.' + override.domain));
+    if (sameDomain) {
+      try {
+        await chrome.tabs.sendMessage(tabId, {
+          type: 'SET_VOLUME',
+          volume: override.volume / 100
+        });
+        await chrome.tabs.sendMessage(tabId, {
+          type: 'SET_MUTED',
+          muted: override.muted
+        });
+      } catch {}
+      return;
+    }
+    delete tabOverrides[tabId];
+    await persistTabOverrides();
+  }
 
-    if (matchedDomain) {
-      const origin = `https://${matchedDomain}`;
-      const saved = await getSavedStateForOrigin(origin);
-      if (saved) {
-        try {
-          await chrome.tabs.sendMessage(tabId, {
-            type: 'SET_VOLUME',
-            volume: saved.volume / 100
-          });
-          await chrome.tabs.sendMessage(tabId, {
-            type: 'SET_MUTED',
-            muted: saved.muted
-          });
-        } catch {
-          // Content script not ready yet, it will request state on load
-        }
+  // Fall back to the domain default.
+  const managedDomains = await getManagedDomains();
+  const matchedDomain = managedDomains.find(d => tabDomain === d || tabDomain.endsWith('.' + d));
+
+  if (matchedDomain) {
+    const origin = `https://${matchedDomain}`;
+    const saved = await getSavedStateForOrigin(origin);
+    if (saved) {
+      try {
+        await chrome.tabs.sendMessage(tabId, {
+          type: 'SET_VOLUME',
+          volume: saved.volume / 100
+        });
+        await chrome.tabs.sendMessage(tabId, {
+          type: 'SET_MUTED',
+          muted: saved.muted
+        });
+      } catch {
+        // Content script not ready yet, it will request state on load
       }
     }
   }
@@ -601,7 +795,7 @@ async function validateStoredLicense() {
     }
 
     // Skip validation for dev keys
-    if (license.isDev || DEV_LICENSE_KEYS.includes(license.key)) {
+    if (license.isDev || await isDevLicenseKey(license.key)) {
       return { valid: true, reason: 'dev_key' };
     }
 

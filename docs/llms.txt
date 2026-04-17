@@ -10,7 +10,8 @@ Volux lets you control audio volume for individual browser tabs and websites. Un
 ## Key Features
 
 - **Per-Domain Control**: Set unique volume levels for each website independently
-- **Smart Grouping**: All tabs from the same site share one volume slider
+- **Per-Tab Volume Override (Pro)**: Give individual tabs of the same site their own volume. Works on any site with audio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, any domain. Three tabs on the same site can hold three different volumes; the site default still applies to any tab you haven't customized
+- **Smart Grouping**: By default, all tabs from the same site share one volume slider (Pro unlocks per-tab overrides on top of this)
 - **Instant Mute**: One-click mute without losing your volume setting
 - **Persistent Settings**: Your preferences are saved automatically across sessions
 - **Live Detection**: See which tabs are currently playing audio
@@ -25,7 +26,7 @@ Volux lets you control audio volume for individual browser tabs and websites. Un
 ## Pricing
 
 - **Free Version**: Basic volume control features
-- **Pro Version ($2)**: Unlimited domain control, auto-detect media sites, scan tabs button, priority support, lifetime access
+- **Pro Version ($2)**: Unlimited domain control, per-tab volume override, auto-detect media sites, scan tabs button, priority support, lifetime access
 
 ## Privacy
 
@@ -54,10 +55,13 @@ Q: Is my data safe?
 A: Absolutely. Volux stores everything locally on your device. No data is ever sent to external servers.
 
 Q: What's the difference between Free and Pro?
-A: Free version has limited domain slots. Pro offers unlimited domains, auto-detection of media sites, and the ability to scan all tabs for audio.
+A: Free version has limited domain slots. Pro offers unlimited domains, per-tab volume override (individual tabs of the same site can have different volumes), auto-detection of media sites, and the ability to scan all tabs for audio.
 
 Q: Does it work with multiple tabs of the same site?
-A: Yes! Volux groups tabs by domain, so all YouTube tabs share the same volume setting.
+A: Yes. By default, Volux groups tabs by domain so all tabs of the same site share one volume (works the same on YouTube, TikTok, Facebook, Spotify, or any site). With Pro, you can expand the tab-count badge on a domain and set a different volume on any individual tab — three tabs of the same site can play at three different volumes simultaneously.
+
+Q: Can I set different volumes for multiple tabs of the same site (YouTube, TikTok, Facebook, etc.)?
+A: Yes, with Volux Pro. It works on any site with audio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, anywhere. Each tab can hold its own volume override. The override clears when the tab closes or navigates to a different site, so your per-site default stays clean.
 
 ---
 Website: https://volux.devlifeeasy.com

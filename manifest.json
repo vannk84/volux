@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Volux - Per-Tab Volume & Auto Save",
   "version": "1.0.2",
-  "description": "Set unique volume levels for each website. Volux remembers your preferences automatically across sessions.",
+  "description": "Auto-save volume per site. Pro adds per-tab override — each tab on YouTube, TikTok, Facebook, or any site keeps its own volume.",
   "permissions": [
     "tabs",
     "storage"

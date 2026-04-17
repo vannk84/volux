@@ -1,32 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://volux.devlifeeasy.com/</loc>
-    <lastmod>2026-04-10</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean-1280x800.png</image:loc>
-      <image:title>Volux Volume Control Interface</image:title>
-      <image:caption>Per-tab volume control with auto-save</image:caption>
+      <image:loc>https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-expanded.png</image:loc>
+      <image:title>Volux — Per-Tab Volume Control (Pro)</image:title>
+      <image:caption>Three tabs on the same site, three different volumes — expand the tab-count badge to control each tab independently.</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-collapsed.png</image:loc>
+      <image:title>Volux popup, collapsed state</image:title>
+      <image:caption>Clean default view — one slider per domain, with a clickable tab-count badge to unlock per-tab control.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-upgrade-modal.png</image:loc>
+      <image:title>Volux Pro upgrade modal</image:title>
+      <image:caption>Unlock unlimited domains and per-tab volume override for $2 one-time.</image:caption>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-expanded.png</video:thumbnail_loc>
+      <video:title>Volux Per-Tab Volume Demo</video:title>
+      <video:description>8-second demo of Volux Pro's per-tab volume override — expand a domain's tabs, drag each slider independently, mute and reset individual tabs.</video:description>
+      <video:content_loc>https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/demo-per-tab.mp4</video:content_loc>
+      <video:duration>8</video:duration>
+      <video:publication_date>2026-04-17T00:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
   </url>
   <url>
     <loc>https://volux.devlifeeasy.com/privacy.html</loc>
-    <lastmod>2026-04-10</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://volux.devlifeeasy.com/terms.html</loc>
-    <lastmod>2026-04-10</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://volux.devlifeeasy.com/refund.html</loc>
-    <lastmod>2026-04-10</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

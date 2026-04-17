@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', init);
 let licenseStatus = { isPro: false };
 let controlledCount = 0;
 let freeLimit = 2;
+// Which domain cards currently have their per-tab section expanded.
+// Persists across the 2s refresh so dragging sliders doesn't collapse the view.
+const expandedDomains = new Set();
 
 async function init() {
   // Setup header buttons
@@ -533,12 +536,80 @@ function renderDomains(domains) {
     });
   });
 
+  // Tab-count expansion toggle (PRO)
+  document.querySelectorAll('.tab-count-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const origin = btn.dataset.origin;
+      if (!origin) return;
+      if (expandedDomains.has(origin)) {
+        expandedDomains.delete(origin);
+      } else {
+        expandedDomains.add(origin);
+      }
+      // Re-render from current data — no need to re-fetch.
+      loadDomains();
+    });
+  });
+
+  // Per-tab slider
+  document.querySelectorAll('.per-tab-slider').forEach(slider => {
+    const tabId = parseInt(slider.dataset.tabId, 10);
+    slider.addEventListener('input', (e) => handlePerTabVolumeChange(tabId, e.target));
+    updateSliderBackground(slider);
+  });
+
+  // Per-tab mute
+  document.querySelectorAll('.per-tab-mute').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const tabId = parseInt(btn.dataset.tabId, 10);
+      const isMuted = btn.classList.contains('muted');
+      handlePerTabMuteToggle(tabId, !isMuted);
+    });
+  });
+
+  // Per-tab reset (clear override, fall back to domain default)
+  document.querySelectorAll('.per-tab-reset').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const tabId = parseInt(btn.dataset.tabId, 10);
+      await browserAPI.runtime.sendMessage({ type: 'CLEAR_TAB_OVERRIDE', tabId });
+      await loadDomains();
+    });
+  });
+
   // Add error handlers for favicon images (CSP-compliant)
-  document.querySelectorAll('.tab-favicon').forEach(img => {
+  document.querySelectorAll('.tab-favicon, .per-tab-favicon').forEach(img => {
     img.addEventListener('error', () => {
       img.style.display = 'none';
     });
   });
+}
+
+async function handlePerTabVolumeChange(tabId, slider) {
+  const row = slider.closest('.per-tab-row');
+  const valueEl = row?.querySelector('.per-tab-value');
+  const volume = parseInt(slider.value, 10);
+
+  if (valueEl) valueEl.textContent = `${volume}%`;
+  updateSliderBackground(slider);
+  row?.classList.add('has-override');
+
+  await browserAPI.runtime.sendMessage({
+    type: 'SET_VOLUME',
+    tabId,
+    volume
+  });
+}
+
+async function handlePerTabMuteToggle(tabId, muted) {
+  await browserAPI.runtime.sendMessage({
+    type: 'SET_MUTED',
+    tabId,
+    muted
+  });
+  await loadDomains();
 }
 
 // Encode origin to be safe for use as element ID
@@ -574,7 +645,17 @@ function createDomainHTML(domain) {
         <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
        </svg>`;
 
-  const tabCountHTML = tabCount > 1 ? `<span class="tab-count">${tabCount} tabs</span>` : '';
+  const canExpand = licenseStatus.isPro && tabCount > 1;
+  const isExpanded = canExpand && expandedDomains.has(domain.origin);
+
+  const tabCountHTML = tabCount > 1
+    ? (canExpand
+        ? `<button class="tab-count tab-count-btn ${isExpanded ? 'expanded' : ''}" data-origin="${escapeHTML(domain.origin)}" title="${isExpanded ? 'Collapse' : 'Per-tab volumes'}">
+             ${tabCount} tabs
+             <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+           </button>`
+        : `<span class="tab-count">${tabCount} tabs</span>`)
+    : '';
 
   const removeBtn = `
     <button class="remove-btn" data-domain="${escapeHTML(domain.domain)}" title="Remove domain">
@@ -586,6 +667,8 @@ function createDomainHTML(domain) {
 
   const lockedClass = domain.isLocked ? 'locked' : '';
   const isDisabled = domain.muted || domain.isLocked;
+
+  const perTabHTML = isExpanded ? renderPerTabSection(domain) : '';
 
   return `
     <div class="tab-item ${domain.audible ? 'audible' : ''} ${lockedClass}" data-origin="${escapeHTML(domain.origin)}">
@@ -613,6 +696,61 @@ function createDomainHTML(domain) {
           <span class="volume-value" id="value-${originKey}">${domain.volume}%</span>
         </div>
       </div>
+      ${perTabHTML}
+    </div>
+  `;
+}
+
+function renderPerTabSection(domain) {
+  const rows = domain.tabs.map(tab => renderTabRow(tab)).join('');
+  return `
+    <div class="tab-overrides">
+      <div class="tab-overrides-label">Per-tab volumes</div>
+      ${rows}
+    </div>
+  `;
+}
+
+function renderTabRow(tab) {
+  const faviconHTML = tab.favIconUrl
+    ? `<img class="per-tab-favicon" src="${escapeHTML(tab.favIconUrl)}" alt="">`
+    : `<div class="per-tab-favicon-placeholder"></div>`;
+
+  const muteIcon = tab.muted
+    ? `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>`
+    : `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>`;
+
+  const audibleHTML = tab.audible
+    ? `<span class="per-tab-audible" title="Playing audio">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+       </span>`
+    : '';
+
+  const resetBtn = tab.hasOverride
+    ? `<button class="per-tab-reset" data-tab-id="${tab.id}" title="Reset to domain default">
+         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+       </button>`
+    : '';
+
+  return `
+    <div class="per-tab-row ${tab.audible ? 'audible' : ''} ${tab.hasOverride ? 'has-override' : ''}" data-tab-id="${tab.id}">
+      ${faviconHTML}
+      <span class="per-tab-title" title="${escapeHTML(tab.title)}">${escapeHTML(tab.title)}</span>
+      ${audibleHTML}
+      <button class="per-tab-mute ${tab.muted ? 'muted' : ''}" data-tab-id="${tab.id}" title="${tab.muted ? 'Unmute' : 'Mute'}">
+        ${muteIcon}
+      </button>
+      <input
+        type="range"
+        class="per-tab-slider volume-slider"
+        data-tab-id="${tab.id}"
+        min="0"
+        max="100"
+        value="${tab.volume}"
+        ${tab.muted ? 'disabled' : ''}
+      >
+      <span class="per-tab-value">${tab.volume}%</span>
+      ${resetBtn}
     </div>
   `;
 }

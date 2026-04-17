@@ -22,9 +22,9 @@
 
 ### Short Description (132 chars max)
 ```
-Stop adjusting volume every time. Volux remembers your volume for each website automatically.
+Auto-save volume per website. With Pro, each tab of any site (YouTube, TikTok, Facebook…) holds its own volume.
 ```
-**Character count:** 102 ✅
+**Character count:** 110 ✅
 
 **Why better:**
 - Pain-focused ("Stop adjusting")
@@ -63,8 +63,14 @@ Set your volume preferences once. Volux handles the rest automatically.
   Set volume for YouTube, Spotify, Zoom - Volux saves it automatically.
   Every reload, every new tab, same volume. Zero effort.
 
-✓ Per-Tab Control
-  Each tab can have different volume. Perfect for multitasking.
+✓ Per-Tab Volume Override (Pro)
+  Multiple tabs open on the same site (YouTube, TikTok, Facebook, Spotify,
+  Twitch — any site)? Give each tab its own volume. The site default still
+  covers any tab you haven't customized. Override clears when the tab
+  closes or navigates away.
+
+✓ Different Volume Per Site
+  Zoom at 100%, YouTube at 40%, Spotify at 60% - each site at the right level.
 
 ✓ Smart Mute
   Mute without losing your volume setting. Unmute returns to your saved level.
@@ -73,7 +79,8 @@ Set your volume preferences once. Volux handles the rest automatically.
   See which tabs are playing audio at a glance.
 
 ✓ Domain Grouping
-  All tabs from same website share one volume control. Simple and clean.
+  By default, all tabs from the same website share one volume control.
+  Simple and clean — and Pro lets you peel off individual tabs when you need them.
 
 
 💡 PERFECT FOR
@@ -126,6 +133,7 @@ Your privacy matters: No data collection. No tracking. No servers.
 ⭐ PRO VERSION ($2 one-time)
 
 • Unlimited websites
+• Per-tab volume override (set each tab's volume independently)
 • Auto-detect media sites from open tabs
 • Quick-scan button to find all media
 • Priority support
@@ -460,3 +468,20 @@ Stop adjusting volume every time. Volux remembers your volume for each website a
 ---
 
 **Ready to use! Just copy-paste into Chrome Web Store listing.** 🚀
+
+---
+
+## Updated Marketing Assets (per-tab launch)
+
+Upload these with the new listing:
+
+| Slot | File | Notes |
+|------|------|-------|
+| Screenshot 1 (hero) | `marketing/generated/popup-pro-expanded.png` | 760×1416 — per-tab sliders expanded, the feature shot |
+| Screenshot 2 | `marketing/generated/popup-pro-collapsed.png` | Collapsed baseline with "3 TABS" affordance visible |
+| Screenshot 3 | `marketing/generated/popup-upgrade-modal.png` | Upgrade modal with updated Pro features list |
+| Screenshot 4 (optional) | `marketing/generated/popup-free.png` | Free-user view for contrast |
+| Promo video | `marketing/generated/demo-per-tab.mp4` | 8.25s, H.264/AAC, captions + ambient sound |
+| Social preview | `marketing/generated/demo-per-tab.gif` | 15fps silent, for Twitter/GitHub embeds |
+
+All assets are regeneratable from source with `node tools/capture.mjs --screenshots && tools/capture.mjs --video-frames && tools/build-video.sh`.
