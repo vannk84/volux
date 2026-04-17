@@ -135,9 +135,12 @@ async function videoFrames() {
   await page.evaluate(() => document.querySelector('.tab-count-btn')?.click());
   for (let i = 0; i < 12; i++) { await new Promise(r => setTimeout(r, 30)); await snap(); }
 
-  // Animate sliders on each per-tab row sequentially
+  // Animate sliders on each per-tab row sequentially.
+  // Targets chosen to produce clearly-audible changes in the demo: tab 1 up,
+  // tab 2 way down, tab 3 up a bit. Audio volume automation in build-video.sh
+  // mirrors these values so you hear exactly what the slider shows.
   const tabIds = [101, 102, 103];
-  const targets = [85, 35, 55];
+  const targets = [90, 15, 65];
   for (let i = 0; i < tabIds.length; i++) {
     const tid = tabIds[i], target = targets[i];
     const steps = 18;

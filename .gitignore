@@ -7,6 +7,14 @@ node_modules/
 tools/frames/
 tools/captions/
 
+# Third-party YouTube audio downloads (~240 MB, copyrighted, can be re-fetched
+# with `./tools/yt-dlp -f "bestaudio[ext=m4a]"`).
+tools/audio/
+
+# Downloaded tool binaries (fetch fresh from GitHub release on demand)
+tools/yt-dlp
+tools/bin/
+
 # OS junk
 .DS_Store
 Thumbs.db

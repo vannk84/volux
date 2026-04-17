@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
-# Builds the Volux per-tab demo video.
+# Builds the Volux per-tab demo video with real YouTube audio.
+# Each tab's audio track has a per-frame volume expression that literally
+# tracks the slider value — viewer SEES and HEARS the per-tab control.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 FFMPEG="$ROOT/tools/node_modules/ffmpeg-static/ffmpeg"
 FRAMES="$ROOT/tools/frames"
+AUDIO="$ROOT/tools/audio"
 OUT="$ROOT/marketing/generated"
 CAPS="$ROOT/tools/captions"
 FONT="/usr/share/fonts/truetype/roboto/unhinted/RobotoTTF/Roboto-Bold.ttf"
@@ -14,7 +17,7 @@ IN_FPS=24
 HOLD_END=2.0
 TOTAL_DUR=8.25
 
-# ---------- captions (ImageMagick pre-renders transparent PNGs) -----------
+# ---------- captions ------------------------------------------------------
 render_caption() {
   local text="$1" out="$2" size="${3:-32}"
   convert -size 760x90 xc:transparent \
@@ -24,15 +27,24 @@ render_caption() {
     -annotate 0 "$text" \
     "$out"
 }
-render_caption "Three tabs on one site"                   "$CAPS/cap1.png"
-render_caption "Pro lets each tab hold its own volume"    "$CAPS/cap2.png" 28
-render_caption "Mute one. Reset another. Default stays."  "$CAPS/cap3.png" 26
-render_caption "Volux Pro  -  per-tab volume  -  \$2 one-time" "$CAPS/cap4.png" 26
+render_caption "Three YouTube tabs — all at 40%"           "$CAPS/cap1.png" 28
+render_caption "Pro: drag each tab to its own volume"       "$CAPS/cap2.png" 28
+render_caption "Mute one — the other two keep playing"      "$CAPS/cap3.png" 26
+render_caption "Volux Pro  ·  per-tab volume  ·  \$2 one-time" "$CAPS/cap4.png" 26
+
+# ---------- volume automation curves --------------------------------------
+# Each curve mirrors what the slider visually does.
+# Tab 1 (Western music):  40% → 90% at 1.5-2.25s → held → muted 4.5s → reset 5.25s
+TAB1_VOL="if(lt(t,1.5),0.40,if(lt(t,2.25),0.40+0.666*(t-1.5),if(lt(t,4.5),0.90,if(lt(t,4.6),0.90-9.0*(t-4.5),if(lt(t,5.25),0,if(lt(t,5.35),4.0*(t-5.25),0.40))))))"
+
+# Tab 2 (audiobook narration):  40% → 15% at 2.5-3.25s, then held
+TAB2_VOL="if(lt(t,2.5),0.40,if(lt(t,3.25),0.40-0.333*(t-2.5),0.15))"
+
+# Tab 3 (space documentary):  40% → 65% at 3.5-4.25s, then held
+TAB3_VOL="if(lt(t,3.5),0.40,if(lt(t,4.25),0.40+0.333*(t-3.5),0.65))"
 
 # ---------- stage 1: silent video with captions ---------------------------
-# Canvas 760x1520: popup frames are up to 760x1416 when fully expanded;
-# top-align the popup and place captions in the ~100px strip below it.
-echo "[1/3] Encoding video layer (captions overlaid, no audio)..."
+echo "[1/3] Encoding video layer..."
 "$FFMPEG" -y \
   -framerate "$IN_FPS" -i "$FRAMES/%04d.png" \
   -f lavfi -t "$TOTAL_DUR" -i "color=black:s=760x1520" \
@@ -52,36 +64,33 @@ echo "[1/3] Encoding video layer (captions overlaid, no audio)..."
   -t "$TOTAL_DUR" \
   "$OUT/.video-only.mp4"
 
-# ---------- stage 2: soundtrack (A-minor pad + clicks + end chime) --------
-echo "[2/3] Encoding audio layer..."
+# ---------- stage 2: audio with per-tab volume automation -----------------
+echo "[2/3] Encoding audio layer (YouTube audio + per-tab automation)..."
 "$FFMPEG" -y \
-  -f lavfi -i "sine=f=220:d=$TOTAL_DUR" \
-  -f lavfi -i "sine=f=261.63:d=$TOTAL_DUR" \
-  -f lavfi -i "sine=f=329.63:d=$TOTAL_DUR" \
-  -f lavfi -i "sine=f=880:d=0.12" \
-  -f lavfi -i "sine=f=660:d=0.08" \
-  -f lavfi -i "sine=f=660:d=0.08" \
-  -f lavfi -i "sine=f=660:d=0.08" \
+  -i "$AUDIO/tab1.m4a" \
+  -i "$AUDIO/tab2.m4a" \
+  -i "$AUDIO/tab3.m4a" \
+  -f lavfi -i "sine=f=880:d=0.1" \
   -f lavfi -i "sine=f=440:d=0.3" \
   -f lavfi -i "sine=f=554.37:d=0.3" \
   -f lavfi -i "sine=f=659.25:d=0.4" \
   -filter_complex "\
-    [0][1][2]amix=inputs=3:duration=longest,volume=0.08,aecho=0.7:0.9:60|120:0.25|0.18,afade=t=in:d=0.5,afade=t=out:st=7.45:d=0.8[bg];\
-    [3]volume=0.22,afade=t=out:d=0.12,adelay=1000|1000[click];\
-    [4]volume=0.15,afade=t=out:d=0.08,adelay=2500|2500[t1];\
-    [5]volume=0.15,afade=t=out:d=0.08,adelay=3500|3500[t2];\
-    [6]volume=0.15,afade=t=out:d=0.08,adelay=4500|4500[t3];\
-    [7]volume=0.18,afade=t=out:d=0.3,adelay=6500|6500[c1];\
-    [8]volume=0.16,afade=t=out:d=0.3,adelay=6700|6700[c2];\
-    [9]volume=0.15,afade=t=out:d=0.4,adelay=6900|6900[c3];\
-    [bg][click][t1][t2][t3][c1][c2][c3]amix=inputs=8:duration=longest:normalize=0[aout]" \
+    [0:a]volume='${TAB1_VOL}':eval=frame[t1];\
+    [1:a]volume='${TAB2_VOL}':eval=frame[t2];\
+    [2:a]volume='${TAB3_VOL}':eval=frame[t3];\
+    [3:a]volume=0.35,afade=t=out:d=0.1,adelay=1000|1000[clk];\
+    [4:a]volume=0.22,afade=t=out:d=0.3,adelay=6500|6500[ec1];\
+    [5:a]volume=0.20,afade=t=out:d=0.3,adelay=6700|6700[ec2];\
+    [6:a]volume=0.18,afade=t=out:d=0.4,adelay=6900|6900[ec3];\
+    [t1][t2][t3][clk][ec1][ec2][ec3]amix=inputs=7:duration=longest:normalize=0[pre];\
+    [pre]alimiter=limit=0.97:attack=5:release=50,volume=1.8,afade=t=in:d=0.3,afade=t=out:st=7.85:d=0.4[aout]" \
   -map "[aout]" \
   -t "$TOTAL_DUR" \
-  -c:a aac -b:a 160k \
+  -c:a aac -b:a 192k -ar 44100 -ac 2 \
   "$OUT/.audio-only.m4a"
 
 # ---------- stage 3: mux --------------------------------------------------
-echo "[3/3] Muxing video + audio..."
+echo "[3/3] Muxing..."
 "$FFMPEG" -y \
   -i "$OUT/.video-only.mp4" \
   -i "$OUT/.audio-only.m4a" \
