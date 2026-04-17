@@ -4,6 +4,10 @@
 User-agent: *
 Allow: /
 
+# Build-time sources (served only if Jekyll is disabled; blocked defensively)
+Disallow: /_template.html
+Disallow: /_i18n/
+
 # Sitemap location
 Sitemap: https://volux.devlifeeasy.com/sitemap.xml
 
