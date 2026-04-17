@@ -1,0 +1,11 @@
+{
+  "site_url": "https://volux.devlifeeasy.com",
+  "locales": [
+    { "code": "en", "hreflang": "en",      "path": "/",      "label": "English",                    "native": "English",         "default": true },
+    { "code": "vi", "hreflang": "vi",      "path": "/vi/",   "label": "Vietnamese",                 "native": "Tiếng Việt",     "default": false },
+    { "code": "zh", "hreflang": "zh-Hans", "path": "/zh/",   "label": "Chinese (Simplified)",       "native": "简体中文",         "default": false },
+    { "code": "es", "hreflang": "es",      "path": "/es/",   "label": "Spanish",                    "native": "Español",         "default": false },
+    { "code": "pt", "hreflang": "pt-BR",   "path": "/pt/",   "label": "Portuguese (Brazil)",        "native": "Português",       "default": false },
+    { "code": "ja", "hreflang": "ja",      "path": "/ja/",   "label": "Japanese",                   "native": "日本語",           "default": false }
+  ]
+}

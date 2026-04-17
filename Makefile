@@ -1,7 +1,7 @@
 # Volux - Browser Extension Makefile
 # Usage: make [target]
 
-.PHONY: all build build-chrome build-firefox clean serve serve-bg stop package help install test verify audit submit-check dev
+.PHONY: all build build-chrome build-firefox clean serve serve-bg stop package help install test verify audit submit-check dev i18n
 
 # Colors
 GREEN := \033[0;32m
@@ -66,6 +66,12 @@ package: build
 	@echo "$(GREEN)Packages created:$(NC)"
 	@echo "  dist/volux-chrome.zip"
 	@echo "  dist/volux-firefox.zip"
+
+# Build all locales of the marketing site from docs/_template.html + docs/_i18n/*.json
+i18n:
+	@echo "$(BLUE)Building i18n site…$(NC)"
+	@node tools/build-i18n.mjs
+	@echo "$(GREEN)i18n build complete$(NC)"
 
 # Start local server for website preview
 serve:

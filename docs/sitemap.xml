@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
@@ -7,6 +8,13 @@
     <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://volux.devlifeeasy.com/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://volux.devlifeeasy.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://volux.devlifeeasy.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://volux.devlifeeasy.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://volux.devlifeeasy.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://volux.devlifeeasy.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://volux.devlifeeasy.com/"/>
     <image:image>
       <image:loc>https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-expanded.png</image:loc>
       <image:title>Volux — Per-Tab Volume Control (Pro)</image:title>
@@ -31,6 +39,71 @@
       <video:publication_date>2026-04-17T00:00:00+00:00</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
+  </url>
+  <url>
+    <loc>https://volux.devlifeeasy.com/vi/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://volux.devlifeeasy.com/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://volux.devlifeeasy.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://volux.devlifeeasy.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://volux.devlifeeasy.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://volux.devlifeeasy.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://volux.devlifeeasy.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://volux.devlifeeasy.com/"/>
+  </url>
+  <url>
+    <loc>https://volux.devlifeeasy.com/zh/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://volux.devlifeeasy.com/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://volux.devlifeeasy.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://volux.devlifeeasy.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://volux.devlifeeasy.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://volux.devlifeeasy.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://volux.devlifeeasy.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://volux.devlifeeasy.com/"/>
+  </url>
+  <url>
+    <loc>https://volux.devlifeeasy.com/es/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://volux.devlifeeasy.com/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://volux.devlifeeasy.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://volux.devlifeeasy.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://volux.devlifeeasy.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://volux.devlifeeasy.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://volux.devlifeeasy.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://volux.devlifeeasy.com/"/>
+  </url>
+  <url>
+    <loc>https://volux.devlifeeasy.com/pt/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://volux.devlifeeasy.com/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://volux.devlifeeasy.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://volux.devlifeeasy.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://volux.devlifeeasy.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://volux.devlifeeasy.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://volux.devlifeeasy.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://volux.devlifeeasy.com/"/>
+  </url>
+  <url>
+    <loc>https://volux.devlifeeasy.com/ja/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://volux.devlifeeasy.com/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://volux.devlifeeasy.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://volux.devlifeeasy.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://volux.devlifeeasy.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://volux.devlifeeasy.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://volux.devlifeeasy.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://volux.devlifeeasy.com/"/>
   </url>
   <url>
     <loc>https://volux.devlifeeasy.com/privacy.html</loc>

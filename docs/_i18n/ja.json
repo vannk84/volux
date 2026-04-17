@@ -1,0 +1,205 @@
+{
+  "locale": "ja",
+  "html_lang": "ja",
+  "dir": "ltr",
+  "canonical_path": "/ja/",
+  "lang_label": "Japanese",
+  "lang_native": "日本語",
+
+  "meta": {
+    "title": "Volux — タブごとの音量コントロールと自動保存 | Chrome & Firefox 拡張機能",
+    "description": "サイトごとに音量を自動保存。Pro 版では任意のサイトの各タブに個別の音量を設定可能 — YouTube、TikTok、Facebook、Spotify、Twitch。Chrome・Firefox 向けに無料提供。",
+    "keywords": "タブごと 音量, Chrome 音量, タブ別 音量, 音量 自動保存, YouTube 音量, TikTok 音量, Facebook 音量, Spotify 音量, 音量 記憶, Chrome 拡張 音量, Firefox 音量, Volux Pro",
+    "author": "DevLifeEasy",
+    "og_title": "Volux — タブごとの音量コントロールと自動保存",
+    "og_description": "サイトごとに音量を自動保存。Pro 版では任意のサイトの各タブが自分の音量を保持 — YouTube、TikTok、Facebook、Spotify、どこでも。Chrome・Firefox 無料拡張機能。",
+    "og_image_alt": "Volux 音量コントロール拡張機能のインターフェース",
+    "twitter_title": "Volux — タブごとの音量、一度設定すれば永続",
+    "twitter_description": "サイトごとに音量を自動保存。Pro 版では任意のサイトの各タブが自分の音量を保持 — YouTube、TikTok、Facebook、Spotify。一度設定して永遠に。",
+    "twitter_image_alt": "Volux 音量コントロール拡張機能"
+  },
+
+  "skip": "本文へスキップ",
+  "brand_aria": "Volux ホーム",
+  "nav_aria": "メイン",
+
+  "nav": {
+    "features": "機能",
+    "pertab": "タブごと",
+    "pricing": "料金",
+    "faq": "FAQ",
+    "install": "インストール"
+  },
+
+  "hero": {
+    "eyebrow": "ブラウザの音、ついに言うことを聞く",
+    "title_html": "一度だけ設定。<span class=\"amp\">ずっと</span>記憶。",
+    "lede_html": "Volux は <strong>サイトごとの音量を記憶します</strong> — YouTube 30%、Facebook 10%、Zoom 100%。Pro 版ではどのサイトの各 <em>タブ</em> も個別の音量を保持できます。",
+    "cta_chrome": "Chrome に追加",
+    "cta_firefox": "Firefox に追加",
+    "meta_version": "v1.0.5 · Chrome & Firefox",
+    "meta_github": "GitHub でオープンソース",
+    "meta_privacy": "トラッキングなし、アカウント不要",
+    "module_aria": "Volux ポップアップ インターフェース",
+    "module_alt": "タブごとの音量スライダーを備えた Volux ポップアップ — 3 つの YouTube タブがそれぞれ異なる音量"
+  },
+
+  "features": {
+    "label": "01 · 機能一覧",
+    "title": "音の悩みを解決します。",
+    "kicker": "すべてのサイトを望みの音量に。毎回。一度設定すれば、摩擦ゼロ。",
+    "items": [
+      { "title": "音量の自動保存",           "body": "YouTube を 30%、Facebook を 10% に — Volux が永続的に記憶。拡張機能を開き直す必要なし。" },
+      { "title": "サイトごとに異なる音量",    "body": "Zoom 会議、YouTube チュートリアル、バックの Spotify — それぞれベストな音量で、干渉なし。" },
+      { "title": "音量リセットからの解放",    "body": "ページを再読込。ブラウザを閉じる。来週また起動。あなたの音量はそのまま。" },
+      { "title": "うるさいサイトを制御",      "body": "どうしても音が大きいサイト。一度低く固定すれば、永遠に解決。" },
+      { "title": "セッションをまたいで動作",   "body": "音量はブラウザにローカル保存。アカウント不要。クラウド往復なし。" },
+      { "title": "軽量",                      "body": "完全にクライアントサイドで動作。キロバイト単位。バックグラウンドのポーリング・テレメトリなし。" }
+    ]
+  },
+
+  "pertab": {
+    "chip": "Pro · タブ別オーバーライド",
+    "title_html": "同じサイト。3 つのタブ。<em>3 つの音量。</em>",
+    "lede": "ほとんどの拡張機能はサイトごとに 1 つの音量しか許しません。Volux Pro なら、どのサイト — YouTube、TikTok、Facebook、Spotify、Twitch — の各タブも、サイト既定値に触れずに独立した音量を保持できます。",
+    "list": [
+      { "k": "展開",       "v_html": "任意のドメインの <strong>N&nbsp;TABS</strong> バッジをタップして、開いている各タブとその専用スライダーを表示。" },
+      { "k": "上書き",     "v_html": "任意のタブのスライダーを動かして独自の音量を設定。未カスタマイズのタブには引き続きサイト既定値が適用されます。" },
+      { "k": "クリア",     "v_html": "タブを閉じるか別サイトへ移動すると、上書きは自動でクリア。サイト既定値はクリーンに保たれます。" }
+    ],
+    "cta": "Pro を解除 · $2 買い切り",
+    "video_caption": "8 秒のデモ · 展開、ドラッグ、完了"
+  },
+
+  "usecases": {
+    "label": "02 · 利用シーン",
+    "title": "こんな場面にぴったり。",
+    "kicker": "インストールした瞬間から Volux が解決する、実際の音のストレス。",
+    "items": [
+      { "tag": "YT · マスタリング", "title": "YouTube がうるさい?",                    "body": "YouTube を 30–40% に固定。広告、ミュージックビデオ、オープニングの爆音にもう驚かない。" },
+      { "tag": "ミーティング",      "title": "Zoom & Google Meet",                      "body": "ビデオ会議を安定した快適な音量に保ちつつ、他のタブは別音量で並行再生。" },
+      { "tag": "マルチタスク",      "title": "Spotify + 動画を同時に",                  "body": "BGM 60%、ミュートのチュートリアル、別タブのポッドキャスト 80%。すべて一度設定すれば永遠に。" },
+      { "tag": "SNS",               "title": "Facebook & X の自動再生",                "body": "SNS を 10–20% に固定。急に大きな動画に邪魔されずにスクロール。" },
+      { "tag": "ライブ",            "title": "Twitch & ゲーム配信",                     "body": "配信者の音量差は大きいもの。快適なベースラインを決めれば、毎セッション Volux が適用。" },
+      { "tag": "学習",              "title": "オンライン学習",                          "body": "Udemy、Coursera、YouTube 講義 — 学習音声をクリアに、娯楽タブは静かに。" }
+    ]
+  },
+
+  "how": {
+    "label": "03 · セットアップ",
+    "title": "使い方。",
+    "kicker": "小さな 3 ステップ。その後は自動。ずっと。",
+    "steps": [
+      { "title": "拡張機能をインストール",     "body": "ワンクリックで Chrome か Firefox に追加。アカウント不要。設定不要。ツールバーにアイコンが即表示。" },
+      { "title": "任意のサイトで調整",         "body": "Volux アイコンをクリックしてスライダーをドラッグ。YouTube 30%、ポッドキャスト 80%。即時反映。" },
+      { "title": "Volux が記憶",                "body": "完了。音量はローカル保存され、毎回自動で再適用 — 再読込、再起動、数週間後でも。" }
+    ],
+    "note_html": "<strong>Pro のヒント:</strong>既定では、同一サイトのすべてのタブは 1 つの音量を共有 — YouTube、TikTok、Facebook、Spotify、どこでも同じ。Pro ではタブ数バッジを展開して各タブに独自の音量を設定可能。サイト既定値は未カスタマイズのタブに引き続き適用されます。"
+  },
+
+  "gallery": {
+    "label": "04 · インターフェース",
+    "title": "ブラウザでの見え方。",
+    "kicker": "既定はクリーン。細かな制御が必要なときは展開。",
+    "items": [
+      { "alt": "タブごとに展開した表示 — 3 つの YouTube タブがそれぞれ異なる音量", "title": "タブごとの音量 · Pro", "body": "どのサイトの各タブ — YouTube、TikTok、Facebook — も独自の音量で。" },
+      { "alt": "3 TABS バッジが表示された折りたたみ状態のポップアップ",                "title": "既定はクリーン",       "body": "細かな制御が必要なときはタブ数バッジをタップして展開。" },
+      { "alt": "タブ別音量オーバーライドを含む Pro の機能を表示するアップグレード画面", "title": "$2 買い切り",         "body": "無制限ドメイン + タブ別オーバーライド + 生涯アクセス。" }
+    ]
+  },
+
+  "pricing": {
+    "label": "05 · 料金",
+    "title": "シンプルで正直。",
+    "kicker": "無料で試して、一度アップグレード。サブスクなし、押し売りなし、テレメトリなし。",
+    "free": {
+      "name": "Free",
+      "tag": "ずっと無料",
+      "amount": "$0",
+      "sub": "アカウント不要、カード不要。",
+      "list": [ "2 ドメインを制御", "ドメインごとの音量", "即時ミュート", "永続的な設定" ],
+      "cta": "無料でインストール"
+    },
+    "pro": {
+      "name": "Pro",
+      "tag": "最もお得",
+      "amount_html": "$2<small>買い切り</small>",
+      "sub": "または好きな額で支払い。生涯アクセス。",
+      "list": [ "無制限ドメイン", "タブ別の音量オーバーライド", "メディアサイトの自動検出", "タブのスキャン機能", "生涯アップデート" ],
+      "cta": "Pro にアップグレード"
+    }
+  },
+
+  "faq": {
+    "label": "06 · 質問",
+    "title": "よくある質問。",
+    "kicker": "質問をタップすると開きます。",
+    "items": [
+      { "q": "再読込のたびに音量が元に戻るのはなぜ?",
+        "a": "ブラウザは既定でサイトごとの音量を保存しません。再読込やタブの再オープンで 100% に戻ります。Volux はサイトごとの希望音量を自動で記憶し、再調整の必要をなくします。" },
+      { "q": "YouTube と Spotify で別々の音量を設定するには?",
+        "a": "各サイトが独立したスライダーを持ちます。YouTube 30%、Spotify 80%、好みの値を設定してください。Volux が自動保存し、次回訪問時に適用します。" },
+      { "q": "なぜ YouTube は他サイトよりうるさいの?",
+        "a": "サイトごとに音声マスタリングのレベルが異なります。YouTube はしばしば大きめ。Volux なら YouTube (や任意の大音量サイト) を永続的に低音量で固定可能。もう驚かされません。" },
+      { "q": "ブラウザを閉じても設定を記憶しますか?",
+        "a": "はい。設定はブラウザのローカルストレージに保存されます。Chrome を閉じ、PC を再起動し、数日後に戻っても、Volux は設定どおりの音量を適用します。" },
+      { "q": "Zoom、Google Meet、Microsoft Teams の音量も操作できますか?",
+        "a": "はい。Volux は音声を再生するどんなサイトでも動作します (ビデオ会議アプリを含む)。会議音声を快適な音量に保ちつつ、他タブは別音量で再生できます。" },
+      { "q": "Volux は安全?どんな権限が必要?",
+        "a": "Volux はオープンソースでプライバシーに配慮。ページ上の音声制御に必要な権限のみ要求します。個人データ、閲覧履歴、解析は一切収集しません。コードは GitHub で確認できます。" },
+      { "q": "Free と Pro の違いは?",
+        "a": "Free は 2 サイトを制御 — お試しに最適。Pro ($2 買い切り) は無制限サイト、メディアサイトの自動検出、開いているタブのスキャンを解除。生涯購入、サブスクなし。" },
+      { "q": "同じサイトの複数のタブで動作しますか?",
+        "a": "はい — 2 つのモードがあります。既定では、同一サイトのすべてのタブが 1 つの音量を共有。Pro では個別タブを上書き可能。同じサイトの 3 タブが同時に 3 つの異なる音量を保持でき、サイト既定値は未カスタマイズのタブに引き続き適用されます。" },
+      { "q": "同じサイト (YouTube、TikTok、Facebook…) の複数タブに異なる音量を設定できますか?",
+        "a": "はい、Volux Pro で可能。音声のある任意のサイトで動作 — YouTube、TikTok、Facebook、Spotify、Twitch、SoundCloud、ニュースサイトなど。ドメインカードの「N tabs」バッジをクリックしてタブ別リストを展開し、任意のタブのスライダーをドラッグして独自音量を付与。タブを閉じるか別サイトに移動すると上書きはクリアされ、サイト既定値はクリーンに保たれます。" }
+    ]
+  },
+
+  "footer": {
+    "tagline_html": "Chrome &amp; Firefox 向けのタブ別音量コントロール。<a href=\"https://github.com/vannk84\" style=\"color:var(--amber);\">vannk84</a> が丁寧に制作。",
+    "col_product": "プロダクト",
+    "col_install": "インストール",
+    "col_legal":   "法的情報",
+    "col_language": "言語",
+    "link_features": "機能",
+    "link_pertab": "タブごと · Pro",
+    "link_pricing": "料金",
+    "link_faq": "FAQ",
+    "link_chrome": "Chrome Web Store",
+    "link_firefox": "Firefox Add-ons",
+    "link_github": "GitHub ソースコード",
+    "link_terms": "利用規約",
+    "link_refund": "返金ポリシー",
+    "link_privacy": "プライバシー",
+    "link_support": "サポート",
+    "copyright": "© DevLifeEasy · Volux v1.0.5",
+    "notice": "トラッキングなし · アカウント不要 · ローカル保存のみ"
+  },
+
+  "schema": {
+    "app_description": "サイトごとに音量を自動保存するブラウザ拡張機能。Pro 版では任意のサイトの各タブが自分の音量を保持 — YouTube、TikTok、Facebook、Spotify、Twitch、音声のあるどんなドメインでも。一度設定すれば、セッションをまたいで記憶されます。",
+    "webapp_description": "サイトごとに音量を自動保存。Pro 版では任意のサイトの各タブが自分の音量を保持 — YouTube、TikTok、Facebook、Spotify、Twitch、どこでも。",
+    "video_description": "Volux Pro のタブ別音量オーバーライドの 8 秒デモ — ドメインのタブ一覧を展開し、各タブのスライダーを独立してドラッグ。3 つの YouTube タブが 3 つの異なる音量、サイト既定値は未カスタマイズのタブに引き続き適用。",
+    "feature_list": [
+      "サイトごとの音量を自動保存",
+      "タブごとの音量オーバーライド (Pro)",
+      "スマートミュート",
+      "リアルタイム音声検出",
+      "ドメイン別グルーピング",
+      "プライバシー重視 (データ収集なし)"
+    ],
+    "faq": [
+      { "q": "Volux はどのように音量設定を記憶していますか?",
+        "a": "Volux はブラウザのローカルストレージを使って、サイトごとの音量設定を保存します。すべてのデータは端末に残り、サーバーには送信されません。" },
+      { "q": "Volux は Chrome と Firefox で動きますか?",
+        "a": "はい! Volux は Chrome、Firefox、Edge、Brave、その他の Chromium 系ブラウザで利用可能です。" },
+      { "q": "Volux は無料ですか?",
+        "a": "はい、Volux は無料版を提供しており、主要機能を含む 2 サイトの制御が可能です。Pro 版 ($2 買い切り) は無制限サイトに対応します。" },
+      { "q": "Volux はデータを収集しますか?",
+        "a": "いいえ。Volux は個人データの収集、保存、送信を一切行いません。すべての設定は端末にローカル保存されます。トラッキングなし、解析なし、サーバーなし。" },
+      { "q": "同じサイト (YouTube、TikTok、Facebook など) の複数タブに異なる音量を設定できますか?",
+        "a": "はい、Volux Pro で可能 — 音声のある任意のサイトで動作します: YouTube、TikTok、Facebook、Spotify、Twitch、SoundCloud など。任意のドメインのタブバッジを展開し、特定タブのスライダーをドラッグして独自の音量を設定。同一サイトの 3 タブが同時に 3 つの異なる音量を保持できます。タブを閉じるか別サイトに移動すると上書きは自動でクリアされます。" }
+    ]
+  }
+}

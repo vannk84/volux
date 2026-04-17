@@ -1,0 +1,205 @@
+{
+  "locale": "es",
+  "html_lang": "es",
+  "dir": "ltr",
+  "canonical_path": "/es/",
+  "lang_label": "Spanish",
+  "lang_native": "Español",
+
+  "meta": {
+    "title": "Volux — Volumen por pestaña con guardado automático | Extensión Chrome & Firefox",
+    "description": "Guarda automáticamente el volumen por sitio web. Con Pro, define un volumen diferente para cada pestaña de cualquier sitio — YouTube, TikTok, Facebook, Spotify, Twitch. Gratis para Chrome & Firefox.",
+    "keywords": "control de volumen por pestaña, volumen chrome, volumen distinto por pestaña, guardar volumen automáticamente, volumen youtube, volumen tiktok, volumen facebook, volumen spotify, recordar volumen, extensión chrome volumen, firefox volumen, volux pro",
+    "author": "DevLifeEasy",
+    "og_title": "Volux — Volumen por pestaña con guardado automático",
+    "og_description": "Guarda el volumen por sitio web. Con Pro, cada pestaña de cualquier sitio conserva su propio volumen — YouTube, TikTok, Facebook, Spotify. Extensión gratuita para Chrome & Firefox.",
+    "og_image_alt": "Interfaz de la extensión Volux para control de volumen",
+    "twitter_title": "Volux — Volumen por pestaña, recordado para siempre",
+    "twitter_description": "Guarda el volumen por sitio web. Con Pro, cada pestaña de cualquier sitio conserva su nivel — YouTube, TikTok, Facebook, Spotify. Configurá una vez, se guarda para siempre.",
+    "twitter_image_alt": "Extensión Volux de control de volumen"
+  },
+
+  "skip": "Saltar al contenido",
+  "brand_aria": "Inicio de Volux",
+  "nav_aria": "Principal",
+
+  "nav": {
+    "features": "Funciones",
+    "pertab": "Por pestaña",
+    "pricing": "Precios",
+    "faq": "Preguntas",
+    "install": "Instalar"
+  },
+
+  "hero": {
+    "eyebrow": "Audio del navegador, por fin controlado",
+    "title_html": "Una vez. <span class=\"amp\">Guardado</span> para siempre.",
+    "lede_html": "Volux <strong>recuerda tu volumen en cada sitio web</strong> — YouTube al 30%, Facebook al 10%, Zoom al 100%. Con Pro, cada <em>pestaña</em> de cualquier sitio también puede tener su propio nivel.",
+    "cta_chrome": "Agregar a Chrome",
+    "cta_firefox": "Agregar a Firefox",
+    "meta_version": "v1.0.5 · Chrome & Firefox",
+    "meta_github": "Código abierto en GitHub",
+    "meta_privacy": "Sin rastreo, sin cuentas",
+    "module_aria": "Interfaz del popup de Volux",
+    "module_alt": "Popup de Volux con controles de volumen por pestaña — tres pestañas de YouTube a tres volúmenes distintos"
+  },
+
+  "features": {
+    "label": "01 · Capacidades",
+    "title": "Resuelve tus problemas de audio.",
+    "kicker": "Cada sitio al volumen exacto que quieras. Siempre. Sin fricción después de configurarlo una vez.",
+    "items": [
+      { "title": "Guardado automático del volumen",    "body": "YouTube al 30%, Facebook al 10% — Volux lo recuerda para siempre. Sin reabrir la extensión." },
+      { "title": "Volumen distinto por sitio",          "body": "Reunión de Zoom, tutorial de YouTube, Spotify de fondo — cada uno en su nivel perfecto, sin superposiciones." },
+      { "title": "Sin más reinicios de volumen",        "body": "Recarga la página. Cierra el navegador. Reinicia la próxima semana. Tus niveles se mantienen exactos." },
+      { "title": "Dominá sitios ruidosos",              "body": "Algunos sitios suenan al máximo siempre. Fijalos bajos una vez — problema resuelto para siempre." },
+      { "title": "Funciona entre sesiones",             "body": "El volumen se guarda localmente en tu navegador. Sin cuenta, sin viajes a la nube." },
+      { "title": "Ligero",                               "body": "Corre totalmente en el cliente. Se mide en kilobytes. Cero sondeo en segundo plano, cero telemetría." }
+    ]
+  },
+
+  "pertab": {
+    "chip": "Pro · Anulación por pestaña",
+    "title_html": "Un sitio. Tres pestañas. <em>Tres volúmenes.</em>",
+    "lede": "La mayoría de las extensiones te dan un volumen por sitio. Volux Pro permite que cada pestaña de cualquier sitio — YouTube, TikTok, Facebook, Spotify, Twitch — mantenga su propio nivel de forma independiente, sin tocar el predeterminado del sitio.",
+    "list": [
+      { "k": "Expandir", "v_html": "Tocá la insignia <strong>N&nbsp;TABS</strong> en cualquier dominio para ver cada pestaña abierta con su propio control deslizante." },
+      { "k": "Anular",   "v_html": "Arrastrá el control de cualquier pestaña para asignarle su propio volumen. El predeterminado del sitio sigue aplicándose a las pestañas que no personalizaste." },
+      { "k": "Descartar","v_html": "Cerrá la pestaña o cambiá de sitio — la anulación se borra sola. El predeterminado del sitio se mantiene limpio." }
+    ],
+    "cta": "Desbloquear Pro · $2 pago único",
+    "video_caption": "Demo de 8 segundos · Expandir, arrastrar, listo"
+  },
+
+  "usecases": {
+    "label": "02 · Escenarios",
+    "title": "Perfecto para estas situaciones.",
+    "kicker": "Molestias reales de audio que Volux resuelve en cuanto lo instalás.",
+    "items": [
+      { "tag": "YT · Mastering", "title": "¿YouTube demasiado fuerte?",          "body": "Fijá YouTube permanentemente al 30–40%. Nunca más un anuncio, videoclip o intro te reventará los oídos." },
+      { "tag": "Reuniones",      "title": "Zoom & Google Meet",                   "body": "Mantené las llamadas en un nivel estable y cómodo mientras otras pestañas reproducen a distintos volúmenes en paralelo." },
+      { "tag": "Multitarea",     "title": "Spotify + video a la vez",             "body": "Música de fondo al 60%, tutorial en silencio al costado, podcast en otra pestaña al 80%. Todo configurado una vez, para siempre." },
+      { "tag": "Redes",          "title": "Reproducción automática en Facebook y Twitter", "body": "Fijá las redes al 10–20%. Scrolleá sin videos ruidosos que interrumpan tu flujo." },
+      { "tag": "En vivo",        "title": "Twitch y streams de gaming",          "body": "Los streamers tienen niveles muy distintos. Definí una base cómoda que Volux aplica cada sesión." },
+      { "tag": "Aprender",       "title": "Cursos online",                        "body": "Udemy, Coursera, clases de YouTube — el audio educativo queda nítido mientras las pestañas de entretenimiento quedan más bajas." }
+    ]
+  },
+
+  "how": {
+    "label": "03 · Puesta en marcha",
+    "title": "Cómo funciona.",
+    "kicker": "Tres pasitos. Después, automático. Para siempre.",
+    "steps": [
+      { "title": "Instalá la extensión",           "body": "Agregá Volux a Chrome o Firefox con un clic. Sin cuenta. Sin configuración. El ícono aparece en tu barra al instante." },
+      { "title": "Ajustá en cualquier sitio",      "body": "Hacé clic en el ícono de Volux y arrastrá el control. YouTube al 30%. Podcast al 80%. Se aplica de inmediato." },
+      { "title": "Volux recuerda",                  "body": "Listo. Tus niveles se guardan localmente y se reaplican cada vez, para siempre — entre recargas, reinicios y semanas." }
+    ],
+    "note_html": "<strong>Tip Pro:</strong> por defecto, todas las pestañas del mismo sitio comparten un volumen — igual en YouTube, TikTok, Facebook, Spotify, donde sea. Con Pro, expandí la insignia con el conteo de pestañas para darle nivel propio a cada una. El predeterminado del sitio sigue cubriendo las pestañas no personalizadas."
+  },
+
+  "gallery": {
+    "label": "04 · Interfaz",
+    "title": "Mirá cómo se ve.",
+    "kicker": "Limpia por defecto. Ampliable cuando querés control granular.",
+    "items": [
+      { "alt": "Vista expandida por pestaña — YouTube con tres pestañas a tres volúmenes distintos", "title": "Volumen por pestaña · Pro", "body": "Cada pestaña en cualquier sitio — YouTube, TikTok, Facebook — con su propio nivel." },
+      { "alt": "Popup contraído con insignia 3 TABS lista para expandir",                              "title": "Limpia por defecto",        "body": "Tocá la insignia de conteo para expandir cuando necesites control granular." },
+      { "alt": "Modal de upgrade mostrando funciones Pro incluyendo anulación por pestaña",            "title": "$2 pago único",             "body": "Dominios ilimitados + anulación por pestaña + acceso de por vida." }
+    ]
+  },
+
+  "pricing": {
+    "label": "05 · Precios",
+    "title": "Simple y honesto.",
+    "kicker": "Probá gratis. Subí una vez. Sin suscripciones, sin upsells, sin telemetría.",
+    "free": {
+      "name": "Gratis",
+      "tag": "Para siempre",
+      "amount": "$0",
+      "sub": "Sin cuenta, sin tarjeta.",
+      "list": [ "Control de 2 dominios", "Volumen por dominio", "Silencio instantáneo", "Ajustes persistentes" ],
+      "cta": "Instalar gratis"
+    },
+    "pro": {
+      "name": "Pro",
+      "tag": "Mejor valor",
+      "amount_html": "$2<small>pago único</small>",
+      "sub": "O pagá lo que quieras. Acceso de por vida.",
+      "list": [ "Dominios ilimitados", "Anulación de volumen por pestaña", "Detección automática de sitios de medios", "Escaneo de pestañas", "Actualizaciones de por vida" ],
+      "cta": "Actualizar a Pro"
+    }
+  },
+
+  "faq": {
+    "label": "06 · Preguntas",
+    "title": "Preguntas frecuentes.",
+    "kicker": "Tocá cualquier pregunta para expandir.",
+    "items": [
+      { "q": "¿Por qué se reinicia el volumen de mi navegador cada vez que recargo?",
+        "a": "Los navegadores no guardan el volumen por sitio por defecto. Cada recarga o pestaña reabierta vuelve a 100%. Volux lo resuelve recordando automáticamente tu volumen preferido para cada sitio — no tenés que volver a ajustarlo." },
+      { "q": "¿Cómo establezco volúmenes distintos para YouTube y Spotify?",
+        "a": "Cada sitio tiene su propio control independiente. Ajustá YouTube al 30%, Spotify al 80% o el nivel que prefieras. Volux los guarda automáticamente y los aplica cada vez que los visitás." },
+      { "q": "¿Por qué YouTube siempre suena más fuerte que otros sitios?",
+        "a": "Diferentes sitios masterizan el audio a niveles distintos. Los videos de YouTube suelen venir más fuertes. Volux te permite fijar un volumen bajo permanente para YouTube (o cualquier sitio ruidoso) para que no te sobresaltes." },
+      { "q": "¿Volux recuerda mis ajustes después de cerrar el navegador?",
+        "a": "Sí. Los ajustes se guardan en el almacenamiento local del navegador. Cerrá Chrome, reiniciá la computadora, volvé días después — Volux aplica exactamente los niveles que configuraste." },
+      { "q": "¿Puedo controlar el volumen de Zoom, Google Meet o Microsoft Teams?",
+        "a": "Sí. Volux funciona con cualquier sitio que reproduzca audio, incluidas apps de videoconferencia. Mantené el audio de la reunión en un nivel cómodo mientras otras pestañas suenan a distintos volúmenes." },
+      { "q": "¿Es seguro Volux? ¿Qué permisos necesita?",
+        "a": "Volux es código abierto y respeta la privacidad. Solo pide los permisos necesarios para controlar el audio en páginas web. Sin datos personales, sin historial de navegación, sin analítica. Podés revisar el código en GitHub." },
+      { "q": "¿Cuál es la diferencia entre Free y Pro?",
+        "a": "Free te deja controlar 2 sitios — ideal para probar. Pro ($2 pago único) desbloquea sitios ilimitados, detección automática de sitios de medios y escaneo de todas las pestañas abiertas. Compra única, sin suscripción." },
+      { "q": "¿Funciona Volux con varias pestañas del mismo sitio?",
+        "a": "Sí — dos modos. Por defecto, todas las pestañas del mismo sitio comparten un volumen. Con Pro, podés anular cualquier pestaña individual: tres pestañas del mismo sitio pueden mantener tres volúmenes distintos al mismo tiempo, y el predeterminado del sitio sigue cubriendo las que no personalizaste." },
+      { "q": "¿Puedo poner volúmenes distintos en varias pestañas del mismo sitio (YouTube, TikTok, Facebook…)?",
+        "a": "Sí, con Volux Pro. Funciona en cualquier sitio con audio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, sitios de noticias, donde sea. Tocá la insignia «N tabs» en la tarjeta de dominio para expandir la lista por pestaña y arrastrá el control de cualquiera para darle su volumen. La anulación se borra al cerrar la pestaña o cambiar de sitio, así el predeterminado queda limpio." }
+    ]
+  },
+
+  "footer": {
+    "tagline_html": "Control de volumen por pestaña para Chrome &amp; Firefox. Hecho con cariño por <a href=\"https://github.com/vannk84\" style=\"color:var(--amber);\">vannk84</a>.",
+    "col_product": "Producto",
+    "col_install": "Instalar",
+    "col_legal":   "Legal",
+    "col_language": "Idioma",
+    "link_features": "Funciones",
+    "link_pertab": "Por pestaña · Pro",
+    "link_pricing": "Precios",
+    "link_faq": "Preguntas",
+    "link_chrome": "Chrome Web Store",
+    "link_firefox": "Firefox Add-ons",
+    "link_github": "Código en GitHub",
+    "link_terms": "Términos",
+    "link_refund": "Reembolsos",
+    "link_privacy": "Privacidad",
+    "link_support": "Soporte",
+    "copyright": "© DevLifeEasy · Volux v1.0.5",
+    "notice": "Sin rastreo · Sin cuentas · Solo almacenamiento local"
+  },
+
+  "schema": {
+    "app_description": "Extensión de navegador que guarda automáticamente el volumen por sitio y, con Pro, permite que cada pestaña de cualquier sitio mantenga su propio volumen — YouTube, TikTok, Facebook, Spotify, Twitch o cualquier dominio con audio. Configurá una vez y queda recordado entre sesiones.",
+    "webapp_description": "Guarda automáticamente el volumen por sitio. Con Pro, cada pestaña de cualquier sitio puede mantener su propio volumen — YouTube, TikTok, Facebook, Spotify, Twitch, donde sea.",
+    "video_description": "Demo de 8 segundos de la anulación por pestaña de Volux Pro — expandí la lista de pestañas de un dominio y arrastrá el control de cada una de forma independiente. Tres pestañas de YouTube, tres volúmenes distintos, mientras el predeterminado del sitio sigue cubriendo las que no personalizaste.",
+    "feature_list": [
+      "Guardado automático del volumen por sitio",
+      "Anulación de volumen por pestaña (Pro)",
+      "Silencio inteligente",
+      "Detección de audio en vivo",
+      "Agrupación por dominio",
+      "Enfocado en privacidad (sin recopilación de datos)"
+    ],
+    "faq": [
+      { "q": "¿Cómo recuerda Volux mis ajustes de volumen?",
+        "a": "Volux usa el almacenamiento local del navegador para guardar las preferencias de volumen de cada sitio. Todos los datos permanecen en tu dispositivo y nunca se envían a ningún servidor." },
+      { "q": "¿Funciona Volux en Chrome y Firefox?",
+        "a": "¡Sí! Volux está disponible para Chrome, Firefox, Edge, Brave y otros navegadores basados en Chromium." },
+      { "q": "¿Volux es gratis?",
+        "a": "Sí, Volux tiene una versión gratuita que permite controlar 2 sitios con todas las funciones principales. La versión Pro ($2 pago único) ofrece sitios ilimitados." },
+      { "q": "¿Volux recopila mis datos?",
+        "a": "No. Volux no recopila, almacena ni transmite datos personales. Todos los ajustes se guardan localmente en tu dispositivo. Sin rastreo, sin analítica, sin servidores." },
+      { "q": "¿Puedo establecer volúmenes distintos para varias pestañas del mismo sitio (YouTube, TikTok, Facebook, etc.)?",
+        "a": "Sí, con Volux Pro — funciona en cualquier sitio con audio: YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud y donde sea. Expandí la insignia de pestañas en cualquier dominio y arrastrá el control de una pestaña para darle su propio volumen. Tres pestañas del mismo sitio pueden mantener tres volúmenes distintos al mismo tiempo. La anulación se borra al cerrar la pestaña o navegar a otro sitio." }
+    ]
+  }
+}

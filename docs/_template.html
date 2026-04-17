@@ -1,48 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="{{html_lang}}" dir="{{dir}}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Volux - Per-Tab Volume Control & Auto-Save | Chrome & Firefox Extension</title>
-  <meta name="description" content="Auto-save volume per website. With Pro, set a different volume for every tab on any site — YouTube, TikTok, Facebook, Spotify, Twitch. Free for Chrome & Firefox.">
-  <meta name="keywords" content="per tab volume control, volume control chrome, different volume per tab same site, auto save volume, tiktok tab volume, facebook tab volume, youtube tab volume, twitch volume, spotify volume, remember volume, chrome extension volume, firefox volume control, website volume control, tab audio control, volux pro">
-  <meta name="author" content="DevLifeEasy">
+  <title>{{meta.title}}</title>
+  <meta name="description" content="{{meta.description}}">
+  <meta name="keywords" content="{{meta.keywords}}">
+  <meta name="author" content="{{meta.author}}">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#141210">
-  <link rel="canonical" href="https://volux.devlifeeasy.com/">
+  <link rel="canonical" href="{{canonical_url}}">
 
   <!-- Language alternates -->
-  <link rel="alternate" hreflang="en" href="https://volux.devlifeeasy.com/">
-  <link rel="alternate" hreflang="vi" href="https://volux.devlifeeasy.com/vi/">
-  <link rel="alternate" hreflang="zh-Hans" href="https://volux.devlifeeasy.com/zh/">
-  <link rel="alternate" hreflang="es" href="https://volux.devlifeeasy.com/es/">
-  <link rel="alternate" hreflang="pt-BR" href="https://volux.devlifeeasy.com/pt/">
-  <link rel="alternate" hreflang="ja" href="https://volux.devlifeeasy.com/ja/">
-  <link rel="alternate" hreflang="x-default" href="https://volux.devlifeeasy.com/">
+{{hreflang_html}}
 
   <!-- Chrome Web Store -->
   <meta name="chrome-web-store-item" content="cnagfimhcaplopdllnmkhalkeagmeapm">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://volux.devlifeeasy.com/">
+  <meta property="og:url" content="{{canonical_url}}">
   <meta property="og:site_name" content="Volux">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Volux - Per-Tab Volume Control & Auto-Save">
-  <meta property="og:description" content="Auto-save volume per website. With Pro, each tab of any site can hold its own volume — YouTube, TikTok, Facebook, Spotify, anywhere. Free Chrome & Firefox extension.">
+  <meta property="og:locale" content="{{og_locale}}">
+  <meta property="og:title" content="{{meta.og_title}}">
+  <meta property="og:description" content="{{meta.og_description}}">
   <meta property="og:image" content="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean-1280x800.png">
   <meta property="og:image:width" content="1280">
   <meta property="og:image:height" content="800">
-  <meta property="og:image:alt" content="Volux Volume Control Extension Interface">
+  <meta property="og:image:alt" content="{{meta.og_image_alt}}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@devlifeeasy">
   <meta name="twitter:creator" content="@devlifeeasy">
-  <meta name="twitter:title" content="Volux - Per-Tab Volume Control & Auto-Save">
-  <meta name="twitter:description" content="Auto-save volume per website. With Pro, each tab on any site holds its own volume — YouTube, TikTok, Facebook, Spotify. Set once, saved forever.">
+  <meta name="twitter:title" content="{{meta.twitter_title}}">
+  <meta name="twitter:description" content="{{meta.twitter_description}}">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean-1280x800.png">
-  <meta name="twitter:image:alt" content="Volux Volume Control Extension">
+  <meta name="twitter:image:alt" content="{{meta.twitter_image_alt}}">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/vannk84/volux/main/icons/icon32.png">
@@ -1086,35 +1080,30 @@
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#main">{{skip}}</a>
 
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="/" aria-label="Volux home">Volux</a>
-      <nav class="top-nav" aria-label="Primary">
-        <a href="#features">Features</a>
-        <a href="#per-tab">Per-Tab</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
+      <a class="brand" href="{{lang_root}}" aria-label="{{brand_aria}}">Volux</a>
+      <nav class="top-nav" aria-label="{{nav_aria}}">
+        <a href="#features">{{nav.features}}</a>
+        <a href="#per-tab">{{nav.pertab}}</a>
+        <a href="#pricing">{{nav.pricing}}</a>
+        <a href="#faq">{{nav.faq}}</a>
         <div class="lang-picker">
-          <button class="lang-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Choose language" data-lang-btn>
+          <button class="lang-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="{{lang_aria}}" data-lang-btn>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <circle cx="12" cy="12" r="9"/>
               <path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/>
             </svg>
-            <span class="code">EN</span>
+            <span class="code">{{lang_active_code}}</span>
             <span class="caret">▾</span>
           </button>
           <div class="lang-menu" role="listbox" data-lang-menu>
-            <span class="active" role="option" aria-selected="true" aria-current="page" lang="en"><span>English</span><span class="hreflang">en</span></span>
-            <a href="/vi/" role="option" lang="vi" hreflang="vi"><span>Tiếng Việt</span><span class="hreflang">vi</span></a>
-            <a href="/zh/" role="option" lang="zh-Hans" hreflang="zh-Hans"><span>简体中文</span><span class="hreflang">zh-Hans</span></a>
-            <a href="/es/" role="option" lang="es" hreflang="es"><span>Español</span><span class="hreflang">es</span></a>
-            <a href="/pt/" role="option" lang="pt-BR" hreflang="pt-BR"><span>Português</span><span class="hreflang">pt-BR</span></a>
-            <a href="/ja/" role="option" lang="ja" hreflang="ja"><span>日本語</span><span class="hreflang">ja</span></a>
+{{top_lang_switch_html}}
           </div>
         </div>
-        <a class="install" href="https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm">Install</a>
+        <a class="install" href="https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm">{{nav.install}}</a>
       </nav>
     </div>
   </header>
@@ -1146,28 +1135,28 @@
       <div class="hero-inner">
         <div class="hero-grid">
           <div>
-            <div class="eyebrow reveal" data-d="1">Browser audio, finally behaved</div>
-            <h1 class="hero-title reveal" data-d="2">Set once. <span class="amp">Saved</span> forever.</h1>
+            <div class="eyebrow reveal" data-d="1">{{hero.eyebrow}}</div>
+            <h1 class="hero-title reveal" data-d="2">{{hero.title_html}}</h1>
             <p class="hero-lede reveal" data-d="3">
-              Volux <strong>remembers your volume for every website</strong> — YouTube at 30%, Facebook at 10%, Zoom at 100%. With Pro, every <em>tab</em> on any site can hold its own level too.
+              {{hero.lede_html}}
             </p>
             <div class="cta-row reveal" data-d="4">
               <a class="btn primary" href="https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm">
                 <svg viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M256 96a160 160 0 1 0 0 320 160 160 0 0 0 0-320zm0 80a80 80 0 1 1 0 160 80 80 0 0 1 0-160z" opacity=".35"/><circle cx="256" cy="256" r="72" fill="currentColor"/></svg>
-                Add to Chrome
+                {{hero.cta_chrome}}
               </a>
               <a class="btn ghost" href="https://addons.mozilla.org/en-US/firefox/addon/volux-premium-volume-control/">
-                Add to Firefox
+                {{hero.cta_firefox}}
               </a>
             </div>
             <div class="hero-meta reveal" data-d="5">
-              <span>v1.0.5 · Chrome & Firefox</span>
-              <a href="https://github.com/vannk84/volux" rel="noopener">Open source on GitHub</a>
-              <span>No tracking, no accounts</span>
+              <span>{{hero.meta_version}}</span>
+              <a href="https://github.com/vannk84/volux" rel="noopener">{{hero.meta_github}}</a>
+              <span>{{hero.meta_privacy}}</span>
             </div>
           </div>
 
-          <figure class="module reveal" data-d="3" aria-label="Volux popup interface">
+          <figure class="module reveal" data-d="3" aria-label="{{hero.module_aria}}">
             <div class="module-bar">
               <span>CH-01 · OUTPUT</span>
               <div class="module-leds">
@@ -1180,7 +1169,7 @@
             <div class="module-img-wrap">
               <img
                 src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-expanded.png"
-                alt="Volux popup with per-tab volume sliders — three YouTube tabs at three different volumes"
+                alt="{{hero.module_alt}}"
                 width="400" height="520" loading="eager" decoding="async">
             </div>
             <div class="module-footer">
@@ -1198,50 +1187,15 @@
     <section class="section features" id="features">
       <div class="section-inner">
         <header class="section-head reveal">
-          <div class="label">01 · Capabilities</div>
+          <div class="label">{{features.label}}</div>
           <div>
-            <h2>Solve your audio problems.</h2>
-            <p class="kicker">Every website at the exact level you want it. Every time. With zero friction after you set it once.</p>
+            <h2>{{features.title}}</h2>
+            <p class="kicker">{{features.kicker}}</p>
           </div>
         </header>
 
         <div class="features-grid">
-          <article class="feat reveal" data-d="1">
-            <div class="feat-num">/ 01</div>
-            <svg class="feat-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 26V10l12 6-12 10z"/><path d="M6 6h20" stroke-dasharray="2 3"/></svg>
-            <h3>Auto-Save Volume</h3>
-            <p>Set YouTube to 30%, Facebook to 10% — Volux remembers, forever. No plugin UI to re-open.</p>
-          </article>
-          <article class="feat reveal" data-d="2">
-            <div class="feat-num">/ 02</div>
-            <svg class="feat-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="6" width="8" height="20"/><rect x="14" y="10" width="8" height="16"/><rect x="24" y="14" width="4" height="12"/></svg>
-            <h3>Different Volume Per Site</h3>
-            <p>Zoom meeting, YouTube tutorial, Spotify in the background — each at the perfect level, no crosstalk.</p>
-          </article>
-          <article class="feat reveal" data-d="3">
-            <div class="feat-num">/ 03</div>
-            <svg class="feat-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 16h4l4-10 8 20 4-10h4"/></svg>
-            <h3>No More Volume Reset</h3>
-            <p>Refresh the page. Close the browser. Reboot next week. Your levels stay exactly where you left them.</p>
-          </article>
-          <article class="feat reveal" data-d="4">
-            <div class="feat-num">/ 04</div>
-            <svg class="feat-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12v8h5l8 6V6l-8 6H4z"/><path d="M24 10l6 12M30 10L24 22" /></svg>
-            <h3>Fix Loud Websites</h3>
-            <p>Some sites blast at full volume no matter what. Pin them low once — problem gone permanently.</p>
-          </article>
-          <article class="feat reveal" data-d="5">
-            <div class="feat-num">/ 05</div>
-            <svg class="feat-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 8v8l6 3"/></svg>
-            <h3>Works Across Sessions</h3>
-            <p>Volumes sync locally to your browser. No account required. No cloud round-trip.</p>
-          </article>
-          <article class="feat reveal" data-d="1">
-            <div class="feat-num">/ 06</div>
-            <svg class="feat-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M18 4l-10 16h8l-2 8 10-16h-8z"/></svg>
-            <h3>Lightweight</h3>
-            <p>Runs entirely client-side. Measured in kilobytes. Zero background polling, zero telemetry.</p>
-          </article>
+{{features_items_html}}
         </div>
       </div>
     </section>
@@ -1250,26 +1204,15 @@
     <section class="pertab" id="per-tab">
       <div class="pertab-inner">
         <div class="reveal">
-          <span class="pro-chip">Pro · Tab Override</span>
-          <h2>One site. Three tabs. <em>Three volumes.</em></h2>
+          <span class="pro-chip">{{pertab.chip}}</span>
+          <h2>{{pertab.title_html}}</h2>
           <p class="pertab-lede">
-            Most extensions give you one volume per website. Volux Pro lets every tab of any site — YouTube, TikTok, Facebook, Spotify, Twitch — hold its own level independently, without touching the site default.
+            {{pertab.lede}}
           </p>
           <ul class="pertab-list">
-            <li>
-              <span class="k">Expand</span>
-              <span class="v">Tap the <strong>N&nbsp;TABS</strong> badge on any domain to reveal every open tab with a dedicated slider.</span>
-            </li>
-            <li>
-              <span class="k">Override</span>
-              <span class="v">Drag any tab&rsquo;s slider to give it its own volume. The site default still covers anything you haven&rsquo;t customized.</span>
-            </li>
-            <li>
-              <span class="k">Dispose</span>
-              <span class="v">Close the tab or navigate away — the override clears automatically. Your site default stays clean.</span>
-            </li>
+{{pertab_list_html}}
           </ul>
-          <a class="btn primary" href="https://vannk.lemonsqueezy.com/checkout">Unlock Pro · $2 one-time</a>
+          <a class="btn primary" href="https://vannk.lemonsqueezy.com/checkout">{{pertab.cta}}</a>
         </div>
 
         <div class="reveal" data-d="2">
@@ -1286,7 +1229,7 @@
               <source src="https://cdn.jsdelivr.net/gh/vannk84/volux@main/marketing/generated/demo-per-tab.mp4" type="video/mp4">
               <source src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/demo-per-tab.mp4" type="video/mp4">
             </video>
-            <figcaption class="video-caption">8-second demo · Expand, drag, done</figcaption>
+            <figcaption class="video-caption">{{pertab.video_caption}}</figcaption>
           </figure>
         </div>
       </div>
@@ -1296,44 +1239,15 @@
     <section class="section usecases">
       <div class="section-inner">
         <header class="section-head reveal">
-          <div class="label">02 · Scenarios</div>
+          <div class="label">{{usecases.label}}</div>
           <div>
-            <h2>Perfect for these situations.</h2>
-            <p class="kicker">Real audio frustrations Volux solves the moment you install it.</p>
+            <h2>{{usecases.title}}</h2>
+            <p class="kicker">{{usecases.kicker}}</p>
           </div>
         </header>
 
         <div class="usecases-grid">
-          <article class="uc reveal" data-d="1">
-            <span class="tag">YT · Mastering</span>
-            <h3>YouTube too loud?</h3>
-            <p>Set YouTube to 30–40% permanently. Never get blasted by a loud ad, music video, or intro again.</p>
-          </article>
-          <article class="uc reveal" data-d="2">
-            <span class="tag">Meetings</span>
-            <h3>Zoom & Google Meet</h3>
-            <p>Keep video calls at a stable, comfortable level while other tabs play at different volumes in parallel.</p>
-          </article>
-          <article class="uc reveal" data-d="3">
-            <span class="tag">Multitask</span>
-            <h3>Spotify + video at once</h3>
-            <p>Background music at 60%, muted tutorial on the side, podcast in another tab at 80%. All set once, forever.</p>
-          </article>
-          <article class="uc reveal" data-d="1">
-            <span class="tag">Social</span>
-            <h3>Auto-play on Facebook & Twitter</h3>
-            <p>Pin social feeds to 10–20%. Scroll without surprise-loud videos interrupting your flow.</p>
-          </article>
-          <article class="uc reveal" data-d="2">
-            <span class="tag">Live</span>
-            <h3>Twitch & gaming streams</h3>
-            <p>Streamers have wildly different audio levels. Set a comfortable baseline that Volux applies every session.</p>
-          </article>
-          <article class="uc reveal" data-d="3">
-            <span class="tag">Learning</span>
-            <h3>Online courses</h3>
-            <p>Udemy, Coursera, YouTube lectures — keep educational audio clear while entertainment tabs stay quieter.</p>
-          </article>
+{{usecases_items_html}}
         </div>
       </div>
     </section>
@@ -1342,33 +1256,19 @@
     <section class="section how">
       <div class="section-inner">
         <header class="section-head reveal">
-          <div class="label">03 · Setup</div>
+          <div class="label">{{how.label}}</div>
           <div>
-            <h2>How it works.</h2>
-            <p class="kicker">Three small steps. After that, it&rsquo;s automatic. Forever.</p>
+            <h2>{{how.title}}</h2>
+            <p class="kicker">{{how.kicker}}</p>
           </div>
         </header>
 
         <div class="steps">
-          <article class="step reveal" data-d="1">
-            <span class="step-num">1</span>
-            <h3>Install the extension</h3>
-            <p>Add Volux to Chrome or Firefox with one click. No account. No setup. Icon appears in your toolbar instantly.</p>
-          </article>
-          <article class="step reveal" data-d="2">
-            <span class="step-num">2</span>
-            <h3>Adjust on any site</h3>
-            <p>Click the Volux icon and drag the slider. YouTube at 30%. Podcast at 80%. It applies immediately.</p>
-          </article>
-          <article class="step reveal" data-d="3">
-            <span class="step-num">3</span>
-            <h3>Volux remembers</h3>
-            <p>That&rsquo;s it. Your levels are saved locally and reapplied every time, forever — across refreshes, restarts, and weeks.</p>
-          </article>
+{{steps_html}}
         </div>
 
         <div class="how-note reveal">
-          <strong>Pro tip:</strong> by default, all tabs of the same site share one volume — same on YouTube, TikTok, Facebook, Spotify, anywhere. With Pro, expand the tab-count badge to give individual tabs their own level. The site default still covers any tab you haven&rsquo;t customized.
+          {{how.note_html}}
         </div>
       </div>
     </section>
@@ -1377,41 +1277,15 @@
     <section class="section gallery">
       <div class="section-inner">
         <header class="section-head reveal">
-          <div class="label">04 · Interface</div>
+          <div class="label">{{gallery.label}}</div>
           <div>
-            <h2>See it in the browser.</h2>
-            <p class="kicker">Clean by default. Expandable when you want granular control.</p>
+            <h2>{{gallery.title}}</h2>
+            <p class="kicker">{{gallery.kicker}}</p>
           </div>
         </header>
 
         <div class="gallery-grid">
-          <article class="gcard reveal" data-d="1">
-            <div class="gcard-img">
-              <img src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-expanded.png" alt="Per-tab expanded view — YouTube with three tabs at three different volumes" width="600" height="450" loading="lazy" decoding="async">
-            </div>
-            <div class="gcard-body">
-              <h3>Per-tab volume · Pro</h3>
-              <p>Every tab on any site — YouTube, TikTok, Facebook — its own level.</p>
-            </div>
-          </article>
-          <article class="gcard reveal" data-d="2">
-            <div class="gcard-img">
-              <img src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-collapsed.png" alt="Collapsed popup with 3 TABS badge ready to expand" width="600" height="450" loading="lazy" decoding="async">
-            </div>
-            <div class="gcard-body">
-              <h3>Clean by default</h3>
-              <p>Tap the tab-count badge to expand when you need granular control.</p>
-            </div>
-          </article>
-          <article class="gcard reveal" data-d="3">
-            <div class="gcard-img">
-              <img src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-upgrade-modal.png" alt="Upgrade modal showing Pro features including per-tab volume override" width="600" height="450" loading="lazy" decoding="async">
-            </div>
-            <div class="gcard-body">
-              <h3>$2 one-time</h3>
-              <p>Unlimited domains + per-tab override + lifetime access.</p>
-            </div>
-          </article>
+{{gallery_items_html}}
         </div>
       </div>
     </section>
@@ -1420,49 +1294,42 @@
     <section class="section pricing" id="pricing">
       <div class="section-inner">
         <header class="section-head reveal">
-          <div class="label">05 · Pricing</div>
+          <div class="label">{{pricing.label}}</div>
           <div>
-            <h2>Simple & honest.</h2>
-            <p class="kicker">Try free. Upgrade once. No subscriptions, no upsells, no telemetry.</p>
+            <h2>{{pricing.title}}</h2>
+            <p class="kicker">{{pricing.kicker}}</p>
           </div>
         </header>
 
         <div class="price-grid reveal">
           <article class="price">
             <div class="price-head">
-              <span class="price-name">Free</span>
-              <span class="price-tag">Forever</span>
+              <span class="price-name">{{pricing.free.name}}</span>
+              <span class="price-tag">{{pricing.free.tag}}</span>
             </div>
             <div>
-              <div class="price-amt">$0</div>
-              <p class="price-sub">No account, no credit card.</p>
+              <div class="price-amt">{{pricing.free.amount}}</div>
+              <p class="price-sub">{{pricing.free.sub}}</p>
             </div>
             <ul class="price-list">
-              <li>Control 2 domains</li>
-              <li>Per-domain volume</li>
-              <li>Instant mute</li>
-              <li>Persistent settings</li>
+{{pricing_free_list_html}}
             </ul>
-            <a class="btn ghost" href="https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm">Install free</a>
+            <a class="btn ghost" href="https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm">{{pricing.free.cta}}</a>
           </article>
 
           <article class="price featured">
             <div class="price-head">
-              <span class="price-name">Pro</span>
-              <span class="price-tag">Best value</span>
+              <span class="price-name">{{pricing.pro.name}}</span>
+              <span class="price-tag">{{pricing.pro.tag}}</span>
             </div>
             <div>
-              <div class="price-amt">$2<small>one-time</small></div>
-              <p class="price-sub">Or pay what you want. Lifetime access.</p>
+              <div class="price-amt">{{pricing.pro.amount_html}}</div>
+              <p class="price-sub">{{pricing.pro.sub}}</p>
             </div>
             <ul class="price-list">
-              <li>Unlimited domains</li>
-              <li>Per-tab volume override</li>
-              <li>Auto-detect media sites</li>
-              <li>Scan tabs feature</li>
-              <li>Lifetime updates</li>
+{{pricing_pro_list_html}}
             </ul>
-            <a class="btn primary" href="https://vannk.lemonsqueezy.com/checkout">Upgrade to Pro</a>
+            <a class="btn primary" href="https://vannk.lemonsqueezy.com/checkout">{{pricing.pro.cta}}</a>
           </article>
         </div>
       </div>
@@ -1472,50 +1339,15 @@
     <section class="section faq" id="faq">
       <div class="section-inner">
         <header class="section-head reveal">
-          <div class="label">06 · Questions</div>
+          <div class="label">{{faq.label}}</div>
           <div>
-            <h2>Frequently asked.</h2>
-            <p class="kicker">Tap any question to expand. Shift-click to open in a new reading frame.</p>
+            <h2>{{faq.title}}</h2>
+            <p class="kicker">{{faq.kicker}}</p>
           </div>
         </header>
 
         <div class="faq-list">
-          <details class="qa reveal">
-            <summary>Why does my browser volume reset every time I refresh?</summary>
-            <div class="qa-body">Browsers don&rsquo;t save volume settings per website by default. Every refresh or reopened tab resets to 100%. Volux solves this by automatically remembering your preferred volume for each website, so you never have to adjust it again.</div>
-          </details>
-          <details class="qa reveal">
-            <summary>How do I set different volumes for YouTube and Spotify?</summary>
-            <div class="qa-body">Each website gets its own independent volume slider. Set YouTube to 30%, Spotify to 80%, or any level you prefer. Volux saves these settings automatically and applies them every time you visit those sites.</div>
-          </details>
-          <details class="qa reveal">
-            <summary>Why is YouTube always too loud compared to other sites?</summary>
-            <div class="qa-body">Different websites master audio at different levels. YouTube videos often ship louder than other content. Volux lets you pin a permanent lower volume for YouTube (or any loud website) so you never get blasted again.</div>
-          </details>
-          <details class="qa reveal">
-            <summary>Does Volux remember my settings after I close the browser?</summary>
-            <div class="qa-body">Yes. Settings are saved in your browser&rsquo;s local storage. Close Chrome, restart your computer, return days later — Volux applies exactly the levels you set for each website.</div>
-          </details>
-          <details class="qa reveal">
-            <summary>Can I control volume for Zoom, Google Meet, or Microsoft Teams?</summary>
-            <div class="qa-body">Yes. Volux works with any website that plays audio, including video conferencing apps. Keep meeting audio at a comfortable level while other tabs play at different volumes.</div>
-          </details>
-          <details class="qa reveal">
-            <summary>Is Volux safe? What permissions does it need?</summary>
-            <div class="qa-body">Volux is open source and privacy-friendly. It only requests permissions necessary to control audio on web pages. No personal data, no browsing history, no analytics. Code is reviewable on GitHub.</div>
-          </details>
-          <details class="qa reveal">
-            <summary>What&rsquo;s the difference between Free and Pro?</summary>
-            <div class="qa-body">Free lets you control volume for 2 websites — perfect to try. Pro ($2 one-time) unlocks unlimited websites, auto-detection of media sites, and the ability to scan all open tabs. Lifetime purchase, no subscription.</div>
-          </details>
-          <details class="qa reveal">
-            <summary>Does Volux work with multiple tabs of the same website?</summary>
-            <div class="qa-body">Yes — two modes. By default, all tabs of the same site share one volume. With Pro, you can override any individual tab: three tabs on the same site can hold three different volumes simultaneously, and the site default still covers any tab you haven&rsquo;t customized.</div>
-          </details>
-          <details class="qa reveal">
-            <summary>Can I set different volumes for multiple tabs of the same site (YouTube, TikTok, Facebook…)?</summary>
-            <div class="qa-body">Yes, with Volux Pro. It works on any site with audio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, news sites, anywhere. Click the &ldquo;N tabs&rdquo; badge on a domain card to expand a per-tab list, then drag the slider on any tab to give it its own volume. The override clears when you close that tab or navigate it to a different site, so your site-wide default stays clean.</div>
-          </details>
+{{faq_items_html}}
         </div>
       </div>
     </section>
@@ -1527,38 +1359,38 @@
     <div class="foot-inner">
       <div>
         <div class="foot-brand">Volux</div>
-        <p class="foot-tag">Per-tab volume control for Chrome &amp; Firefox. Made with care by <a href="https://github.com/vannk84" style="color:var(--amber);">vannk84</a>.</p>
+        <p class="foot-tag">{{footer.tagline_html}}</p>
       </div>
       <div class="foot-col">
-        <h4>Product</h4>
+        <h4>{{footer.col_product}}</h4>
         <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#per-tab">Per-tab · Pro</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#features">{{footer.link_features}}</a></li>
+          <li><a href="#per-tab">{{footer.link_pertab}}</a></li>
+          <li><a href="#pricing">{{footer.link_pricing}}</a></li>
+          <li><a href="#faq">{{footer.link_faq}}</a></li>
         </ul>
       </div>
       <div class="foot-col">
-        <h4>Install</h4>
+        <h4>{{footer.col_install}}</h4>
         <ul>
-          <li><a href="https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm">Chrome Web Store</a></li>
-          <li><a href="https://addons.mozilla.org/en-US/firefox/addon/volux-premium-volume-control/">Firefox Add-ons</a></li>
-          <li><a href="https://github.com/vannk84/volux" rel="noopener">GitHub source</a></li>
+          <li><a href="https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm">{{footer.link_chrome}}</a></li>
+          <li><a href="https://addons.mozilla.org/en-US/firefox/addon/volux-premium-volume-control/">{{footer.link_firefox}}</a></li>
+          <li><a href="https://github.com/vannk84/volux" rel="noopener">{{footer.link_github}}</a></li>
         </ul>
       </div>
       <div class="foot-col">
-        <h4>Legal</h4>
+        <h4>{{footer.col_legal}}</h4>
         <ul>
-          <li><a href="/terms.html">Terms</a></li>
-          <li><a href="/refund.html">Refunds</a></li>
-          <li><a href="/privacy.html">Privacy</a></li>
-          <li><a href="mailto:support@devlifeeasy.com">Support</a></li>
+          <li><a href="/terms.html">{{footer.link_terms}}</a></li>
+          <li><a href="/refund.html">{{footer.link_refund}}</a></li>
+          <li><a href="/privacy.html">{{footer.link_privacy}}</a></li>
+          <li><a href="mailto:support@devlifeeasy.com">{{footer.link_support}}</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© DevLifeEasy · Volux v1.0.5</span>
-      <span>No tracking · No accounts · Local storage only</span>
+      <span>{{footer.copyright}}</span>
+      <span>{{footer.notice}}</span>
     </div>
   </footer>
 
@@ -1659,8 +1491,8 @@
     "applicationCategory": "BrowserApplication",
     "applicationSubCategory": "BrowserExtension",
     "operatingSystem": "Chrome, Firefox, Edge",
-    "inLanguage": "en",
-    "description": "Browser extension that auto-saves volume per website and, with Pro, lets each tab of any site hold its own volume — YouTube, TikTok, Facebook, Spotify, Twitch, or any domain with audio. Set once, remembered across sessions.",
+    "inLanguage": "{{html_lang}}",
+    "description": {{schema_app_description_json}},
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -1680,7 +1512,7 @@
       "name": "DevLifeEasy",
       "url": "https://volux.devlifeeasy.com"
     },
-    "url": "https://volux.devlifeeasy.com/",
+    "url": "{{canonical_url}}",
     "downloadUrl": "https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm",
     "installUrl": "https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm",
     "screenshot": [
@@ -1689,14 +1521,7 @@
       "https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-upgrade-modal.png",
       "https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean-1280x800.png"
     ],
-    "featureList": [
-      "Auto-save volume per website",
-      "Per-tab volume override (Pro)",
-      "Smart mute functionality",
-      "Live audio detection",
-      "Domain grouping",
-      "Privacy-focused (no data collection)"
-    ],
+    "featureList": {{schema_feature_list_json}},
     "softwareVersion": "1.0.5",
     "datePublished": "2026-04-10",
     "dateModified": "2026-04-17",
@@ -1709,9 +1534,9 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Volux",
-    "url": "https://volux.devlifeeasy.com/",
-    "inLanguage": "en",
-    "description": "Auto-save volume per website. With Pro, each tab of any site can hold its own volume — YouTube, TikTok, Facebook, Spotify, Twitch, anywhere.",
+    "url": "{{canonical_url}}",
+    "inLanguage": "{{html_lang}}",
+    "description": {{schema_webapp_description_json}},
     "browserRequirements": "Requires Chrome 88+, Firefox 78+, or Edge 88+",
     "permissions": "Required permissions: storage, tabs, host_permissions",
     "installUrl": "https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm"
@@ -1722,49 +1547,8 @@
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "inLanguage": "en",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How does Volux remember my volume settings?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Volux uses your browser's local storage to save volume preferences for each website. All data stays on your device and is never sent to any server."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does Volux work on Chrome and Firefox?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes! Volux is available for Chrome, Firefox, Edge, Brave, and other Chromium-based browsers."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is Volux free?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, Volux offers a free version that lets you control 2 websites with all core features. Pro version ($2 one-time) offers unlimited websites."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does Volux collect my data?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Volux does not collect, store, or transmit any personal data. All settings are stored locally on your device. No tracking, no analytics, no servers."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I set different volumes for multiple tabs of the same site (YouTube, TikTok, Facebook, etc.)?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, with Volux Pro — it works on any site with audio: YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, and everywhere else. Expand the tabs badge on any domain and drag the slider on any individual tab to give it its own volume. Three tabs of the same site can hold three different volumes simultaneously. The override clears when you close the tab or navigate it to a different site."
-        }
-      }
-    ]
+    "inLanguage": "{{html_lang}}",
+    "mainEntity": {{schema_faq_json}}
   }
   </script>
 
@@ -1773,13 +1557,13 @@
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "name": "Volux Per-Tab Volume Demo",
-    "inLanguage": "en",
-    "description": "8-second demo of Volux Pro's per-tab volume override — expand a domain's tab list and drag each tab's slider independently. Three YouTube tabs, three different volumes, with the site default still covering any tab you haven't customized.",
+    "inLanguage": "{{html_lang}}",
+    "description": {{schema_video_description_json}},
     "thumbnailUrl": "https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-expanded.png",
     "uploadDate": "2026-04-17",
     "duration": "PT8S",
     "contentUrl": "https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/demo-per-tab.mp4",
-    "embedUrl": "https://volux.devlifeeasy.com/#per-tab",
+    "embedUrl": "{{canonical_url}}#per-tab",
     "publisher": {
       "@type": "Organization",
       "name": "DevLifeEasy",

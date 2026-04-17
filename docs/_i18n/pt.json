@@ -1,0 +1,205 @@
+{
+  "locale": "pt",
+  "html_lang": "pt-BR",
+  "dir": "ltr",
+  "canonical_path": "/pt/",
+  "lang_label": "Portuguese (Brazil)",
+  "lang_native": "Português",
+
+  "meta": {
+    "title": "Volux — Volume por aba com salvamento automático | Extensão Chrome & Firefox",
+    "description": "Salva automaticamente o volume de cada site. Com o Pro, defina um volume diferente para cada aba de qualquer site — YouTube, TikTok, Facebook, Spotify, Twitch. Grátis para Chrome & Firefox.",
+    "keywords": "volume por aba, controle de volume chrome, volume diferente por aba mesmo site, salvar volume automático, volume youtube, volume tiktok, volume facebook, volume spotify, lembrar volume, extensão chrome volume, firefox volume, volux pro",
+    "author": "DevLifeEasy",
+    "og_title": "Volux — Volume por aba com salvamento automático",
+    "og_description": "Salva o volume de cada site. Com o Pro, cada aba de qualquer site mantém o próprio volume — YouTube, TikTok, Facebook, Spotify. Extensão grátis para Chrome & Firefox.",
+    "og_image_alt": "Interface da extensão Volux para controle de volume",
+    "twitter_title": "Volux — Volume por aba, lembrado para sempre",
+    "twitter_description": "Salva o volume de cada site. Com o Pro, cada aba de qualquer site mantém o próprio nível — YouTube, TikTok, Facebook, Spotify. Configure uma vez e pronto.",
+    "twitter_image_alt": "Extensão Volux para controle de volume"
+  },
+
+  "skip": "Pular para o conteúdo",
+  "brand_aria": "Página inicial do Volux",
+  "nav_aria": "Principal",
+
+  "nav": {
+    "features": "Recursos",
+    "pertab": "Por aba",
+    "pricing": "Preços",
+    "faq": "FAQ",
+    "install": "Instalar"
+  },
+
+  "hero": {
+    "eyebrow": "Áudio do navegador, finalmente comportado",
+    "title_html": "Defina uma vez. <span class=\"amp\">Salvo</span> para sempre.",
+    "lede_html": "O Volux <strong>lembra o seu volume em cada site</strong> — YouTube em 30%, Facebook em 10%, Zoom em 100%. Com o Pro, cada <em>aba</em> de qualquer site também pode ter o próprio nível.",
+    "cta_chrome": "Adicionar ao Chrome",
+    "cta_firefox": "Adicionar ao Firefox",
+    "meta_version": "v1.0.5 · Chrome & Firefox",
+    "meta_github": "Código aberto no GitHub",
+    "meta_privacy": "Sem rastreamento, sem contas",
+    "module_aria": "Interface do popup do Volux",
+    "module_alt": "Popup do Volux com controles de volume por aba — três abas do YouTube em três volumes diferentes"
+  },
+
+  "features": {
+    "label": "01 · Capacidades",
+    "title": "Resolva seus problemas de áudio.",
+    "kicker": "Cada site no volume exato que você quer. Sempre. Sem atrito depois da primeira configuração.",
+    "items": [
+      { "title": "Salvamento automático do volume", "body": "YouTube em 30%, Facebook em 10% — o Volux lembra para sempre. Sem abrir a extensão de novo." },
+      { "title": "Volume diferente por site",        "body": "Reunião no Zoom, tutorial do YouTube, Spotify de fundo — cada um no nível perfeito, sem interferência." },
+      { "title": "Sem reset de volume",              "body": "Recarregue a página. Feche o navegador. Reinicie semana que vem. Seus níveis continuam iguais." },
+      { "title": "Dome sites barulhentos",           "body": "Alguns sites sempre tocam alto demais. Fixe baixo uma vez — problema resolvido para sempre." },
+      { "title": "Funciona entre sessões",           "body": "Volumes salvos localmente no navegador. Sem conta. Sem ida à nuvem." },
+      { "title": "Leve",                              "body": "Roda inteiramente no cliente. Medido em kilobytes. Zero polling em segundo plano, zero telemetria." }
+    ]
+  },
+
+  "pertab": {
+    "chip": "Pro · Override por aba",
+    "title_html": "Um site. Três abas. <em>Três volumes.</em>",
+    "lede": "A maioria das extensões dá um volume por site. O Volux Pro permite que cada aba de qualquer site — YouTube, TikTok, Facebook, Spotify, Twitch — mantenha o próprio nível de forma independente, sem mexer no padrão do site.",
+    "list": [
+      { "k": "Expandir",    "v_html": "Toque no selo <strong>N&nbsp;ABAS</strong> em qualquer domínio para ver cada aba aberta com um controle dedicado." },
+      { "k": "Sobrepor",    "v_html": "Arraste o controle de qualquer aba para dar a ela um volume próprio. O padrão do site ainda vale para o que você não personalizou." },
+      { "k": "Descartar",   "v_html": "Feche a aba ou mude de site — o override se apaga automaticamente. O padrão do site continua limpo." }
+    ],
+    "cta": "Liberar Pro · $2 pagamento único",
+    "video_caption": "Demo de 8 segundos · Expandir, arrastar, pronto"
+  },
+
+  "usecases": {
+    "label": "02 · Cenários",
+    "title": "Perfeito para estas situações.",
+    "kicker": "Incômodos reais de áudio que o Volux resolve assim que você instala.",
+    "items": [
+      { "tag": "YT · Mastering", "title": "YouTube muito alto?",                      "body": "Fixe o YouTube permanentemente em 30–40%. Nunca mais leve susto com anúncio, clipe ou abertura alta." },
+      { "tag": "Reuniões",       "title": "Zoom & Google Meet",                         "body": "Mantenha as reuniões em um nível estável enquanto outras abas tocam em volumes diferentes em paralelo." },
+      { "tag": "Multitarefa",    "title": "Spotify + vídeo ao mesmo tempo",             "body": "Música de fundo a 60%, tutorial mudo ao lado, podcast em outra aba a 80%. Tudo configurado uma vez, para sempre." },
+      { "tag": "Redes",          "title": "Auto-play no Facebook & Twitter",            "body": "Fixe redes em 10–20%. Scroll sem que vídeos altos surpresa interrompam o fluxo." },
+      { "tag": "Ao vivo",        "title": "Twitch & streams de jogos",                 "body": "Streamers têm níveis de áudio bem diferentes. Defina uma base confortável que o Volux aplica todo início de sessão." },
+      { "tag": "Aprender",       "title": "Cursos online",                              "body": "Udemy, Coursera, aulas do YouTube — áudio educativo nítido enquanto abas de entretenimento ficam mais baixas." }
+    ]
+  },
+
+  "how": {
+    "label": "03 · Configuração",
+    "title": "Como funciona.",
+    "kicker": "Três passos pequenos. Depois, automático. Para sempre.",
+    "steps": [
+      { "title": "Instale a extensão",         "body": "Adicione o Volux ao Chrome ou Firefox com um clique. Sem conta, sem configuração. O ícone aparece na barra na hora." },
+      { "title": "Ajuste em qualquer site",    "body": "Clique no ícone do Volux e arraste o controle. YouTube em 30%. Podcast em 80%. Aplica na hora." },
+      { "title": "O Volux lembra",              "body": "Pronto. Seus níveis ficam salvos localmente e se reaplicam toda vez — entre recargas, reinícios e semanas depois." }
+    ],
+    "note_html": "<strong>Dica Pro:</strong> por padrão, todas as abas do mesmo site compartilham um volume — igual no YouTube, TikTok, Facebook, Spotify, onde for. Com o Pro, expanda o selo de contagem de abas para dar nível próprio a cada uma. O padrão do site ainda cobre as abas que você não personalizou."
+  },
+
+  "gallery": {
+    "label": "04 · Interface",
+    "title": "Veja em ação no navegador.",
+    "kicker": "Limpa por padrão. Expansível quando você quer controle granular.",
+    "items": [
+      { "alt": "Visão expandida por aba — YouTube com três abas em três volumes diferentes", "title": "Volume por aba · Pro",  "body": "Cada aba em qualquer site — YouTube, TikTok, Facebook — com o nível próprio." },
+      { "alt": "Popup recolhido com selo 3 ABAS pronto para expandir",                       "title": "Limpa por padrão",      "body": "Toque no selo de contagem para expandir quando precisar de controle granular." },
+      { "alt": "Modal de upgrade mostrando os recursos Pro, incluindo override por aba",     "title": "$2 pagamento único",    "body": "Domínios ilimitados + override por aba + acesso vitalício." }
+    ]
+  },
+
+  "pricing": {
+    "label": "05 · Preços",
+    "title": "Simples e honesto.",
+    "kicker": "Teste grátis. Suba uma vez. Sem assinaturas, sem upsells, sem telemetria.",
+    "free": {
+      "name": "Grátis",
+      "tag": "Para sempre",
+      "amount": "$0",
+      "sub": "Sem conta, sem cartão.",
+      "list": [ "Controle de 2 domínios", "Volume por domínio", "Mudo instantâneo", "Ajustes persistentes" ],
+      "cta": "Instalar grátis"
+    },
+    "pro": {
+      "name": "Pro",
+      "tag": "Melhor custo-benefício",
+      "amount_html": "$2<small>pagamento único</small>",
+      "sub": "Ou pague o quanto quiser. Acesso vitalício.",
+      "list": [ "Domínios ilimitados", "Override de volume por aba", "Detecção automática de sites de mídia", "Escaneamento de abas", "Atualizações vitalícias" ],
+      "cta": "Fazer upgrade para Pro"
+    }
+  },
+
+  "faq": {
+    "label": "06 · Perguntas",
+    "title": "Perguntas frequentes.",
+    "kicker": "Toque em qualquer pergunta para expandir.",
+    "items": [
+      { "q": "Por que o volume do navegador reseta toda vez que eu recarrego?",
+        "a": "Os navegadores não salvam o volume por site por padrão. A cada recarga ou aba reaberta, o volume volta a 100%. O Volux resolve isso lembrando automaticamente o seu volume preferido para cada site — você não precisa ajustar de novo." },
+      { "q": "Como defino volumes diferentes para YouTube e Spotify?",
+        "a": "Cada site tem um controle independente. Coloque o YouTube em 30%, o Spotify em 80% ou o nível que preferir. O Volux salva e aplica automaticamente toda vez que você visita." },
+      { "q": "Por que o YouTube sempre é mais alto que outros sites?",
+        "a": "Sites masterizam o áudio em níveis diferentes. Vídeos do YouTube geralmente saem mais altos. O Volux deixa você fixar um volume mais baixo permanente para o YouTube (ou qualquer site barulhento) para não se assustar mais." },
+      { "q": "O Volux lembra os ajustes depois que eu fecho o navegador?",
+        "a": "Sim. Os ajustes ficam salvos no armazenamento local do navegador. Feche o Chrome, reinicie o computador, volte dias depois — o Volux aplica exatamente os níveis que você definiu." },
+      { "q": "Posso controlar o volume de Zoom, Google Meet ou Microsoft Teams?",
+        "a": "Sim. O Volux funciona com qualquer site que toque áudio, incluindo apps de videoconferência. Mantenha o áudio da reunião em nível confortável enquanto outras abas tocam em volumes diferentes." },
+      { "q": "O Volux é seguro? Que permissões precisa?",
+        "a": "O Volux é open source e respeita a privacidade. Só pede as permissões necessárias para controlar o áudio nas páginas. Sem dados pessoais, sem histórico de navegação, sem analytics. O código pode ser revisado no GitHub." },
+      { "q": "Qual a diferença entre Free e Pro?",
+        "a": "O Free permite controlar 2 sites — ótimo para testar. O Pro ($2 pagamento único) libera sites ilimitados, detecção automática de sites de mídia e escaneamento de todas as abas abertas. Compra vitalícia, sem assinatura." },
+      { "q": "O Volux funciona com várias abas do mesmo site?",
+        "a": "Sim — dois modos. Por padrão, todas as abas do mesmo site compartilham um volume. Com o Pro, você pode sobrepor qualquer aba individualmente: três abas do mesmo site podem manter três volumes diferentes ao mesmo tempo, e o padrão do site ainda cobre as abas não personalizadas." },
+      { "q": "Posso colocar volumes diferentes em várias abas do mesmo site (YouTube, TikTok, Facebook…)?",
+        "a": "Sim, com o Volux Pro. Funciona em qualquer site com áudio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, sites de notícias, onde for. Toque no selo “N abas” no card do domínio para expandir a lista por aba e arraste o controle de qualquer aba para dar o volume próprio. O override é apagado ao fechar a aba ou navegar para outro site, mantendo o padrão do site limpo." }
+    ]
+  },
+
+  "footer": {
+    "tagline_html": "Controle de volume por aba para Chrome &amp; Firefox. Feito com carinho por <a href=\"https://github.com/vannk84\" style=\"color:var(--amber);\">vannk84</a>.",
+    "col_product": "Produto",
+    "col_install": "Instalar",
+    "col_legal":   "Legal",
+    "col_language": "Idioma",
+    "link_features": "Recursos",
+    "link_pertab": "Por aba · Pro",
+    "link_pricing": "Preços",
+    "link_faq": "FAQ",
+    "link_chrome": "Chrome Web Store",
+    "link_firefox": "Firefox Add-ons",
+    "link_github": "Código no GitHub",
+    "link_terms": "Termos",
+    "link_refund": "Reembolsos",
+    "link_privacy": "Privacidade",
+    "link_support": "Suporte",
+    "copyright": "© DevLifeEasy · Volux v1.0.5",
+    "notice": "Sem rastreamento · Sem contas · Só armazenamento local"
+  },
+
+  "schema": {
+    "app_description": "Extensão de navegador que salva o volume por site automaticamente e, com o Pro, deixa cada aba de qualquer site manter o próprio volume — YouTube, TikTok, Facebook, Spotify, Twitch ou qualquer domínio com áudio. Configure uma vez, fica lembrado entre sessões.",
+    "webapp_description": "Salva o volume por site automaticamente. Com o Pro, cada aba de qualquer site mantém o próprio volume — YouTube, TikTok, Facebook, Spotify, Twitch, onde for.",
+    "video_description": "Demo de 8 segundos do override de volume por aba do Volux Pro — expanda a lista de abas de um domínio e arraste o controle de cada aba de forma independente. Três abas do YouTube, três volumes diferentes, com o padrão do site ainda cobrindo as abas não personalizadas.",
+    "feature_list": [
+      "Salvamento automático do volume por site",
+      "Override de volume por aba (Pro)",
+      "Mudo inteligente",
+      "Detecção de áudio em tempo real",
+      "Agrupamento por domínio",
+      "Foco em privacidade (sem coleta de dados)"
+    ],
+    "faq": [
+      { "q": "Como o Volux lembra dos meus ajustes de volume?",
+        "a": "O Volux usa o armazenamento local do navegador para salvar as preferências de volume de cada site. Todos os dados ficam no seu dispositivo e nunca são enviados para nenhum servidor." },
+      { "q": "O Volux funciona no Chrome e no Firefox?",
+        "a": "Sim! O Volux está disponível para Chrome, Firefox, Edge, Brave e outros navegadores baseados em Chromium." },
+      { "q": "O Volux é grátis?",
+        "a": "Sim, o Volux tem uma versão grátis que permite controlar 2 sites com todas as funções principais. A versão Pro ($2 pagamento único) oferece sites ilimitados." },
+      { "q": "O Volux coleta meus dados?",
+        "a": "Não. O Volux não coleta, armazena ou transmite dados pessoais. Todos os ajustes ficam salvos localmente no seu dispositivo. Sem rastreamento, sem analytics, sem servidores." },
+      { "q": "Posso definir volumes diferentes para várias abas do mesmo site (YouTube, TikTok, Facebook, etc.)?",
+        "a": "Sim, com o Volux Pro — funciona em qualquer site com áudio: YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud e onde for. Expanda o selo de abas em qualquer domínio e arraste o controle de uma aba para dar a ela o próprio volume. Três abas do mesmo site podem manter três volumes diferentes ao mesmo tempo. O override é apagado ao fechar a aba ou mudar de site." }
+    ]
+  }
+}

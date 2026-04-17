@@ -1,0 +1,205 @@
+{
+  "locale": "vi",
+  "html_lang": "vi",
+  "dir": "ltr",
+  "canonical_path": "/vi/",
+  "lang_label": "Vietnamese",
+  "lang_native": "Tiếng Việt",
+
+  "meta": {
+    "title": "Volux — Điều chỉnh âm lượng từng tab & tự động ghi nhớ | Tiện ích Chrome & Firefox",
+    "description": "Tự động lưu âm lượng cho từng website. Với bản Pro, mỗi tab trên YouTube, TikTok, Facebook, Spotify, Twitch có thể giữ mức âm lượng riêng. Miễn phí cho Chrome & Firefox.",
+    "keywords": "điều chỉnh âm lượng từng tab, âm lượng chrome, âm lượng từng trang, tự động lưu âm lượng, âm lượng youtube, âm lượng tiktok, âm lượng facebook, âm lượng spotify, ghi nhớ âm lượng, tiện ích chrome âm lượng, firefox âm lượng, điều khiển âm lượng web, volux pro",
+    "author": "DevLifeEasy",
+    "og_title": "Volux — Điều chỉnh âm lượng từng tab & tự động ghi nhớ",
+    "og_description": "Tự động lưu âm lượng theo website. Với Pro, mỗi tab của bất kỳ trang nào cũng giữ được mức âm lượng riêng — YouTube, TikTok, Facebook, Spotify, bất cứ đâu. Miễn phí cho Chrome & Firefox.",
+    "og_image_alt": "Giao diện tiện ích Volux điều chỉnh âm lượng",
+    "twitter_title": "Volux — Âm lượng từng tab, ghi nhớ vĩnh viễn",
+    "twitter_description": "Đặt một lần, nhớ mãi. Volux tự động lưu âm lượng cho mỗi website và cho phép từng tab có mức âm lượng riêng (Pro).",
+    "twitter_image_alt": "Tiện ích Volux điều chỉnh âm lượng"
+  },
+
+  "skip": "Đi tới nội dung",
+  "brand_aria": "Trang chủ Volux",
+  "nav_aria": "Chính",
+
+  "nav": {
+    "features": "Tính năng",
+    "pertab": "Theo tab",
+    "pricing": "Giá",
+    "faq": "Câu hỏi",
+    "install": "Cài đặt"
+  },
+
+  "hero": {
+    "eyebrow": "Âm thanh trình duyệt, cuối cùng cũng ngoan",
+    "title_html": "Đặt một lần. <span class=\"amp\">Lưu</span> mãi mãi.",
+    "lede_html": "Volux <strong>ghi nhớ âm lượng cho từng website</strong> — YouTube ở 30%, Facebook ở 10%, Zoom ở 100%. Với bản Pro, mỗi <em>tab</em> trên bất kỳ trang nào cũng có thể giữ mức âm lượng riêng.",
+    "cta_chrome": "Thêm vào Chrome",
+    "cta_firefox": "Thêm vào Firefox",
+    "meta_version": "v1.0.5 · Chrome & Firefox",
+    "meta_github": "Mã nguồn mở trên GitHub",
+    "meta_privacy": "Không theo dõi, không tài khoản",
+    "module_aria": "Giao diện popup Volux",
+    "module_alt": "Popup Volux với các thanh trượt âm lượng theo tab — ba tab YouTube ở ba mức âm lượng khác nhau"
+  },
+
+  "features": {
+    "label": "01 · Khả năng",
+    "title": "Giải quyết mọi vấn đề âm thanh của bạn.",
+    "kicker": "Mỗi website ở đúng mức âm lượng bạn muốn. Mọi lúc. Không cần chỉnh lại sau lần đầu.",
+    "items": [
+      { "title": "Tự động lưu âm lượng",          "body": "Đặt YouTube 30%, Facebook 10% — Volux nhớ mãi mãi. Không cần mở lại tiện ích." },
+      { "title": "Âm lượng riêng cho từng trang",  "body": "Zoom họp, YouTube học, Spotify nền — mỗi nơi một mức hoàn hảo, không chồng chéo." },
+      { "title": "Không còn reset về 100%",        "body": "Tải lại trang. Đóng trình duyệt. Khởi động lại tuần sau. Mức âm lượng của bạn vẫn nguyên." },
+      { "title": "Xử lý website ồn",               "body": "Một số trang luôn quá to. Ghim thấp một lần — hết ồn mãi mãi." },
+      { "title": "Hoạt động xuyên phiên",          "body": "Âm lượng lưu cục bộ trong trình duyệt. Không cần đăng ký. Không gọi cloud." },
+      { "title": "Nhẹ tênh",                        "body": "Chạy hoàn toàn trên máy bạn. Đo bằng kilobyte. Không polling nền, không telemetry." }
+    ]
+  },
+
+  "pertab": {
+    "chip": "Pro · Ghi đè theo tab",
+    "title_html": "Một trang. Ba tab. <em>Ba mức âm lượng.</em>",
+    "lede": "Hầu hết tiện ích chỉ cho bạn một mức âm lượng mỗi trang. Volux Pro cho phép từng tab của bất kỳ website nào — YouTube, TikTok, Facebook, Spotify, Twitch — giữ mức âm lượng độc lập của riêng nó mà không đụng đến mức mặc định của trang.",
+    "list": [
+      { "k": "Mở rộng", "v_html": "Nhấn vào huy hiệu <strong>N&nbsp;TABS</strong> trên bất kỳ tên miền nào để xem từng tab đang mở kèm thanh trượt riêng." },
+      { "k": "Ghi đè",  "v_html": "Kéo thanh trượt của tab nào đó để gán mức âm lượng riêng. Mức mặc định vẫn áp dụng cho những tab bạn chưa tùy chỉnh." },
+      { "k": "Tự xoá",  "v_html": "Đóng tab hoặc chuyển trang — ghi đè tự động mất đi. Mặc định của website vẫn giữ sạch sẽ." }
+    ],
+    "cta": "Mở khoá Pro · $2 trọn đời",
+    "video_caption": "Demo 8 giây · Mở rộng, kéo, xong"
+  },
+
+  "usecases": {
+    "label": "02 · Tình huống",
+    "title": "Hoàn hảo cho những tình huống này.",
+    "kicker": "Những khó chịu âm thanh thực tế mà Volux giải quyết ngay khi bạn cài.",
+    "items": [
+      { "tag": "YT · Mastering",   "title": "YouTube quá to?",                 "body": "Đặt YouTube cố định ở 30–40%. Không bao giờ bị ad, video ca nhạc hay intro dội vào tai nữa." },
+      { "tag": "Họp",              "title": "Zoom & Google Meet",               "body": "Giữ cuộc họp ở mức ổn định, thoải mái trong khi các tab khác chạy âm lượng khác." },
+      { "tag": "Đa nhiệm",         "title": "Spotify + video cùng lúc",        "body": "Nhạc nền 60%, tutorial im, podcast tab khác 80%. Đặt một lần, dùng mãi." },
+      { "tag": "Mạng xã hội",      "title": "Auto-play trên Facebook & Twitter","body": "Ghim mạng xã hội ở 10–20%. Cuộn news feed không bị video to bất ngờ làm giật mình." },
+      { "tag": "Live",             "title": "Twitch & stream game",            "body": "Streamer có mức âm thanh rất khác nhau. Đặt một mốc thoải mái để Volux áp dụng mỗi phiên." },
+      { "tag": "Học",              "title": "Khoá học online",                 "body": "Udemy, Coursera, giảng bài YouTube — giữ âm thanh học rõ ràng trong khi tab giải trí nhỏ hơn." }
+    ]
+  },
+
+  "how": {
+    "label": "03 · Thiết lập",
+    "title": "Hoạt động thế nào.",
+    "kicker": "Ba bước nhỏ. Sau đó, tự động. Mãi mãi.",
+    "steps": [
+      { "title": "Cài tiện ích",           "body": "Thêm Volux vào Chrome hoặc Firefox chỉ với một cú nhấp. Không tài khoản, không thiết lập. Biểu tượng hiện ngay trên thanh công cụ." },
+      { "title": "Chỉnh trên bất kỳ trang","body": "Nhấp biểu tượng Volux và kéo thanh trượt. YouTube 30%. Podcast 80%. Áp dụng ngay lập tức." },
+      { "title": "Volux ghi nhớ",          "body": "Vậy là xong. Mức của bạn được lưu cục bộ và áp dụng lại mỗi lần — qua tải lại, khởi động lại và nhiều tuần sau." }
+    ],
+    "note_html": "<strong>Mẹo Pro:</strong> mặc định, mọi tab của cùng một website chia sẻ một mức âm lượng — giống nhau trên YouTube, TikTok, Facebook, Spotify, bất cứ đâu. Với Pro, mở huy hiệu đếm tab để gán mức riêng cho từng tab. Mức mặc định vẫn áp dụng cho tab chưa tùy chỉnh."
+  },
+
+  "gallery": {
+    "label": "04 · Giao diện",
+    "title": "Xem trực tiếp trong trình duyệt.",
+    "kicker": "Sạch sẽ theo mặc định. Mở rộng khi bạn cần điều khiển chi tiết.",
+    "items": [
+      { "alt": "Chế độ mở rộng theo tab — YouTube với ba tab ở ba mức âm lượng khác nhau", "title": "Âm lượng theo tab · Pro", "body": "Mỗi tab trên bất kỳ trang nào — YouTube, TikTok, Facebook — một mức riêng." },
+      { "alt": "Popup thu gọn với huy hiệu 3 TABS sẵn sàng mở rộng",                     "title": "Sạch theo mặc định",       "body": "Nhấn huy hiệu đếm tab khi cần điều khiển chi tiết." },
+      { "alt": "Modal nâng cấp hiển thị các tính năng Pro gồm ghi đè âm lượng theo tab", "title": "$2 một lần",              "body": "Không giới hạn tên miền + ghi đè theo tab + truy cập trọn đời." }
+    ]
+  },
+
+  "pricing": {
+    "label": "05 · Giá",
+    "title": "Đơn giản & minh bạch.",
+    "kicker": "Dùng thử miễn phí. Nâng cấp một lần. Không thuê bao, không ép bán thêm, không telemetry.",
+    "free": {
+      "name": "Miễn phí",
+      "tag": "Mãi mãi",
+      "amount": "$0",
+      "sub": "Không tài khoản, không thẻ.",
+      "list": [ "Kiểm soát 2 tên miền", "Âm lượng theo tên miền", "Tắt tiếng tức thì", "Lưu cài đặt lâu dài" ],
+      "cta": "Cài miễn phí"
+    },
+    "pro": {
+      "name": "Pro",
+      "tag": "Giá trị nhất",
+      "amount_html": "$2<small>một lần</small>",
+      "sub": "Hoặc trả bao nhiêu tuỳ bạn. Truy cập trọn đời.",
+      "list": [ "Không giới hạn tên miền", "Ghi đè âm lượng theo tab", "Tự phát hiện trang media", "Quét tab có âm thanh", "Cập nhật trọn đời" ],
+      "cta": "Nâng cấp Pro"
+    }
+  },
+
+  "faq": {
+    "label": "06 · Câu hỏi",
+    "title": "Câu hỏi thường gặp.",
+    "kicker": "Nhấp vào câu hỏi bất kỳ để mở rộng.",
+    "items": [
+      { "q": "Tại sao âm lượng trình duyệt cứ reset mỗi khi tôi tải lại?",
+        "a": "Trình duyệt không lưu âm lượng theo website theo mặc định. Mỗi lần tải lại hoặc mở tab mới, mức quay về 100%. Volux giải quyết bằng cách tự động nhớ âm lượng ưu tiên của bạn cho mỗi website — bạn không cần chỉnh lại nữa." },
+      { "q": "Làm sao để đặt âm lượng khác nhau cho YouTube và Spotify?",
+        "a": "Mỗi website có thanh trượt độc lập. Đặt YouTube 30%, Spotify 80% hay bất kỳ mức nào bạn muốn. Volux tự lưu và áp dụng mỗi lần bạn ghé thăm." },
+      { "q": "Tại sao YouTube lúc nào cũng to hơn các trang khác?",
+        "a": "Các website master âm thanh ở mức khác nhau. Video YouTube thường to hơn nội dung khác. Volux cho phép ghim YouTube (hoặc bất kỳ trang ồn nào) ở mức thấp cố định để bạn không còn bị dội nữa." },
+      { "q": "Volux có nhớ cài đặt sau khi tôi đóng trình duyệt không?",
+        "a": "Có. Cài đặt được lưu trong local storage của trình duyệt. Đóng Chrome, khởi động lại máy, quay lại sau nhiều ngày — Volux áp dụng đúng mức bạn đã đặt." },
+      { "q": "Tôi có thể điều chỉnh âm lượng cho Zoom, Google Meet, Microsoft Teams không?",
+        "a": "Được. Volux hoạt động với mọi website có âm thanh, bao gồm các ứng dụng họp video. Giữ âm thanh cuộc họp thoải mái trong khi các tab khác chạy mức khác nhau." },
+      { "q": "Volux có an toàn không? Cần quyền gì?",
+        "a": "Volux là mã nguồn mở và tôn trọng quyền riêng tư. Chỉ yêu cầu những quyền cần thiết để điều khiển âm thanh trên trang web. Không thu thập dữ liệu cá nhân, không lịch sử duyệt, không analytics. Bạn có thể xem mã trên GitHub." },
+      { "q": "Khác biệt giữa Free và Pro là gì?",
+        "a": "Free cho phép điều khiển 2 website — đủ để thử. Pro ($2 một lần) mở khoá không giới hạn website, tự phát hiện trang media, và quét mọi tab đang mở. Mua trọn đời, không phải thuê bao." },
+      { "q": "Volux có hoạt động với nhiều tab của cùng một website không?",
+        "a": "Có — hai chế độ. Mặc định, mọi tab của cùng một trang chia sẻ một mức âm lượng. Với Pro, bạn có thể ghi đè từng tab riêng: ba tab cùng trang có thể giữ ba mức khác nhau cùng lúc, và mức mặc định vẫn áp dụng cho tab chưa tùy chỉnh." },
+      { "q": "Tôi có thể đặt mức âm lượng khác nhau cho nhiều tab cùng trang (YouTube, TikTok, Facebook…) không?",
+        "a": "Có, với Volux Pro. Hoạt động trên mọi trang có âm thanh — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, trang tin tức, bất cứ đâu. Nhấp huy hiệu “N tabs” trên thẻ tên miền để mở danh sách theo tab, sau đó kéo thanh trượt của tab bất kỳ để gán mức riêng. Ghi đè tự xoá khi bạn đóng tab hoặc chuyển sang trang khác, giữ mức mặc định của website sạch sẽ." }
+    ]
+  },
+
+  "footer": {
+    "tagline_html": "Điều chỉnh âm lượng theo tab cho Chrome &amp; Firefox. Tâm huyết bởi <a href=\"https://github.com/vannk84\" style=\"color:var(--amber);\">vannk84</a>.",
+    "col_product": "Sản phẩm",
+    "col_install": "Cài đặt",
+    "col_legal":   "Pháp lý",
+    "col_language": "Ngôn ngữ",
+    "link_features": "Tính năng",
+    "link_pertab": "Theo tab · Pro",
+    "link_pricing": "Giá",
+    "link_faq": "Câu hỏi",
+    "link_chrome": "Chrome Web Store",
+    "link_firefox": "Firefox Add-ons",
+    "link_github": "Mã nguồn GitHub",
+    "link_terms": "Điều khoản",
+    "link_refund": "Hoàn tiền",
+    "link_privacy": "Quyền riêng tư",
+    "link_support": "Hỗ trợ",
+    "copyright": "© DevLifeEasy · Volux v1.0.5",
+    "notice": "Không theo dõi · Không tài khoản · Chỉ lưu cục bộ"
+  },
+
+  "schema": {
+    "app_description": "Tiện ích trình duyệt tự động lưu âm lượng theo website và, với Pro, cho phép từng tab của bất kỳ trang nào giữ mức âm lượng riêng — YouTube, TikTok, Facebook, Spotify, Twitch hay bất kỳ tên miền nào có âm thanh. Đặt một lần, nhớ qua mọi phiên.",
+    "webapp_description": "Tự động lưu âm lượng theo website. Với Pro, mỗi tab của bất kỳ trang nào có thể giữ âm lượng riêng — YouTube, TikTok, Facebook, Spotify, Twitch, bất cứ đâu.",
+    "video_description": "Demo 8 giây của tính năng ghi đè âm lượng theo tab trong Volux Pro — mở rộng danh sách tab của một tên miền và kéo thanh trượt từng tab độc lập. Ba tab YouTube, ba mức âm lượng khác nhau, trong khi mức mặc định của trang vẫn áp dụng cho tab chưa tùy chỉnh.",
+    "feature_list": [
+      "Tự động lưu âm lượng theo website",
+      "Ghi đè âm lượng theo tab (Pro)",
+      "Tắt tiếng thông minh",
+      "Phát hiện âm thanh trực tiếp",
+      "Nhóm theo tên miền",
+      "Tôn trọng riêng tư (không thu thập dữ liệu)"
+    ],
+    "faq": [
+      { "q": "Volux ghi nhớ cài đặt âm lượng của tôi bằng cách nào?",
+        "a": "Volux dùng local storage của trình duyệt để lưu tùy chọn âm lượng cho mỗi website. Mọi dữ liệu ở trên máy bạn và không bao giờ được gửi đi đâu." },
+      { "q": "Volux có chạy trên Chrome và Firefox không?",
+        "a": "Có! Volux có sẵn cho Chrome, Firefox, Edge, Brave và các trình duyệt dựa trên Chromium." },
+      { "q": "Volux có miễn phí không?",
+        "a": "Có. Volux có bản miễn phí cho phép điều khiển 2 website với đầy đủ tính năng cốt lõi. Bản Pro ($2 một lần) mở khoá không giới hạn website." },
+      { "q": "Volux có thu thập dữ liệu của tôi không?",
+        "a": "Không. Volux không thu thập, lưu trữ hay truyền bất kỳ dữ liệu cá nhân nào. Mọi cài đặt ở trên máy bạn. Không theo dõi, không analytics, không server." },
+      { "q": "Tôi có thể đặt âm lượng khác nhau cho nhiều tab cùng trang (YouTube, TikTok, Facebook, v.v.) không?",
+        "a": "Có, với Volux Pro — hoạt động trên mọi trang có âm thanh: YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud và bất cứ đâu. Mở huy hiệu tab trên tên miền và kéo thanh trượt của từng tab để gán mức riêng. Ba tab cùng trang có thể giữ ba mức khác nhau đồng thời. Ghi đè tự xoá khi bạn đóng tab hoặc chuyển trang." }
+    ]
+  }
+}

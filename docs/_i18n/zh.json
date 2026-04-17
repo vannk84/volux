@@ -1,0 +1,205 @@
+{
+  "locale": "zh",
+  "html_lang": "zh-Hans",
+  "dir": "ltr",
+  "canonical_path": "/zh/",
+  "lang_label": "Chinese (Simplified)",
+  "lang_native": "简体中文",
+
+  "meta": {
+    "title": "Volux — 按标签页音量控制与自动记忆 | Chrome & Firefox 扩展",
+    "description": "按网站自动保存音量。Pro 版支持为任何站点的每个标签页设置独立音量 — YouTube、TikTok、Facebook、Spotify、Twitch 都可以。Chrome & Firefox 免费使用。",
+    "keywords": "按标签页音量控制, Chrome 音量, 每个标签页不同音量, 自动保存音量, YouTube 音量, TikTok 音量, Facebook 音量, Spotify 音量, 记忆音量, Chrome 扩展音量, Firefox 音量控制, 网站音量控制, 标签页音频, Volux Pro",
+    "author": "DevLifeEasy",
+    "og_title": "Volux — 按标签页音量控制与自动记忆",
+    "og_description": "按网站自动保存音量。Pro 版下,任何站点的每个标签页都能保持自己的音量 — YouTube、TikTok、Facebook、Spotify,到处适用。Chrome & Firefox 免费扩展。",
+    "og_image_alt": "Volux 音量控制扩展界面",
+    "twitter_title": "Volux — 按标签页音量,一次设置永久记忆",
+    "twitter_description": "按网站自动保存音量。Pro 版让任何站点的每个标签页保持独立音量 — YouTube、TikTok、Facebook、Spotify。设一次,永远记住。",
+    "twitter_image_alt": "Volux 音量控制扩展"
+  },
+
+  "skip": "跳到内容",
+  "brand_aria": "Volux 主页",
+  "nav_aria": "主导航",
+
+  "nav": {
+    "features": "功能",
+    "pertab": "按标签页",
+    "pricing": "价格",
+    "faq": "常见问题",
+    "install": "安装"
+  },
+
+  "hero": {
+    "eyebrow": "浏览器音频,终于听话了",
+    "title_html": "设一次。<span class=\"amp\">永久</span>保存。",
+    "lede_html": "Volux <strong>记住每个网站的音量</strong> — YouTube 30%、Facebook 10%、Zoom 100%。Pro 版下,任何站点的每个 <em>标签页</em> 也能保持独立音量。",
+    "cta_chrome": "添加到 Chrome",
+    "cta_firefox": "添加到 Firefox",
+    "meta_version": "v1.0.5 · Chrome & Firefox",
+    "meta_github": "GitHub 开源",
+    "meta_privacy": "不追踪、不需账号",
+    "module_aria": "Volux 弹窗界面",
+    "module_alt": "带有按标签音量滑块的 Volux 弹窗 — 三个 YouTube 标签,三种不同音量"
+  },
+
+  "features": {
+    "label": "01 · 能力",
+    "title": "解决你的音频烦恼。",
+    "kicker": "每个网站都停在你想要的音量。每一次。设一次,从此零摩擦。",
+    "items": [
+      { "title": "自动保存音量",          "body": "YouTube 设 30%、Facebook 设 10% — Volux 永久记住,不用再打开扩展。" },
+      { "title": "每个站点独立音量",      "body": "Zoom 会议、YouTube 教程、背景播放 Spotify — 每个都停在完美音量,互不干扰。" },
+      { "title": "不再重置音量",           "body": "刷新页面、关闭浏览器、下周再开 — 音量依然保持你设好的。" },
+      { "title": "驯服吵闹网站",           "body": "有些网站总是特别吵?调低一次 — 永久解决。" },
+      { "title": "跨会话持续生效",         "body": "音量保存在本地浏览器。无需账号,无需云端往返。" },
+      { "title": "轻量无感",                "body": "完全在客户端运行。体积以 KB 计算。无后台轮询、无任何遥测。" }
+    ]
+  },
+
+  "pertab": {
+    "chip": "Pro · 标签页覆盖",
+    "title_html": "同一站点。三个标签。<em>三种音量。</em>",
+    "lede": "多数扩展只允许一个网站一个音量。Volux Pro 让任何站点 — YouTube、TikTok、Facebook、Spotify、Twitch — 的每个标签页独立保持音量,同时不影响站点默认值。",
+    "list": [
+      { "k": "展开", "v_html": "点击任一域名上的 <strong>N&nbsp;TABS</strong> 徽章,展开每个打开的标签页及其独立滑块。" },
+      { "k": "覆盖", "v_html": "拖动某个标签页的滑块即可赋予独立音量。未自定义的标签页仍沿用站点默认。" },
+      { "k": "清除", "v_html": "关闭标签页或切换到其他站点 — 覆盖自动清除。站点默认保持整洁。" }
+    ],
+    "cta": "解锁 Pro · $2 一次性",
+    "video_caption": "8 秒演示 · 展开、拖动、完成"
+  },
+
+  "usecases": {
+    "label": "02 · 使用场景",
+    "title": "完美适用的场景。",
+    "kicker": "Volux 安装后立即解决的真实音频烦恼。",
+    "items": [
+      { "tag": "YT · 母带",   "title": "YouTube 太吵?",          "body": "将 YouTube 永久设为 30–40%。再也不会被突然变大的广告、MV 或片头震到。" },
+      { "tag": "会议",         "title": "Zoom 与 Google Meet",      "body": "让视频通话保持稳定舒适,同时其他标签页可以用不同音量平行播放。" },
+      { "tag": "多任务",       "title": "Spotify + 视频同时开",     "body": "背景音乐 60%、旁边教程静音、另一标签播客 80%。全部设一次,永远生效。" },
+      { "tag": "社交",         "title": "Facebook & Twitter 自动播放","body": "把社交信息流固定在 10–20%。刷 feed 时不再被突然的大声视频吓到。" },
+      { "tag": "直播",         "title": "Twitch 与游戏直播",        "body": "主播的音量差异很大。设一个舒服基准,Volux 每次都帮你应用。" },
+      { "tag": "学习",         "title": "在线课程",                  "body": "Udemy、Coursera、YouTube 讲座 — 学习音频清晰,同时娱乐标签保持更安静。" }
+    ]
+  },
+
+  "how": {
+    "label": "03 · 上手",
+    "title": "如何工作。",
+    "kicker": "三个小步骤。之后,一切自动进行。永远。",
+    "steps": [
+      { "title": "安装扩展",         "body": "一键添加 Volux 到 Chrome 或 Firefox。无需账号、无需配置。图标立刻出现在工具栏。" },
+      { "title": "在任何站点调节",   "body": "点击 Volux 图标拖动滑块。YouTube 30%。播客 80%。立即生效。" },
+      { "title": "Volux 帮你记住",  "body": "就这样。你的设置保存在本地,每次自动应用 — 刷新、重启、甚至几周后,都依然生效。" }
+    ],
+    "note_html": "<strong>Pro 小技巧:</strong>默认下,同一站点的所有标签页共享一个音量 — 在 YouTube、TikTok、Facebook、Spotify 上都一样。Pro 版下,展开标签计数徽章即可为单个标签页设置独立音量。未自定义的标签页仍沿用站点默认值。"
+  },
+
+  "gallery": {
+    "label": "04 · 界面",
+    "title": "在浏览器中实际查看。",
+    "kicker": "默认简洁。需要精细控制时可展开。",
+    "items": [
+      { "alt": "按标签展开视图 — YouTube 三个标签页,三种不同音量", "title": "按标签页音量 · Pro", "body": "任何站点上的每个标签页 — YouTube、TikTok、Facebook — 各自独立音量。" },
+      { "alt": "折叠的弹窗,3 TABS 徽章可展开",                      "title": "默认简洁",           "body": "需要精细控制时点击标签计数徽章展开。" },
+      { "alt": "升级弹窗展示 Pro 功能,包括按标签音量覆盖",            "title": "$2 一次性",         "body": "无限域名 + 按标签覆盖 + 终身访问。" }
+    ]
+  },
+
+  "pricing": {
+    "label": "05 · 价格",
+    "title": "简单透明。",
+    "kicker": "免费试用。升级一次。无订阅、无追加销售、无遥测。",
+    "free": {
+      "name": "免费版",
+      "tag": "永久",
+      "amount": "$0",
+      "sub": "无需账号,无需信用卡。",
+      "list": [ "控制 2 个域名", "按域名音量", "即时静音", "设置持久保存" ],
+      "cta": "免费安装"
+    },
+    "pro": {
+      "name": "Pro",
+      "tag": "最超值",
+      "amount_html": "$2<small>一次性</small>",
+      "sub": "或随心支付。终身访问。",
+      "list": [ "无限域名", "按标签页音量覆盖", "自动识别媒体站点", "扫描标签页功能", "终身更新" ],
+      "cta": "升级到 Pro"
+    }
+  },
+
+  "faq": {
+    "label": "06 · 问答",
+    "title": "常见问题。",
+    "kicker": "点击任一问题展开。",
+    "items": [
+      { "q": "为什么每次刷新后浏览器音量都会重置?",
+        "a": "浏览器默认不保存每个网站的音量。每次刷新或重开标签页,音量会回到 100%。Volux 通过自动记住你为每个网站设定的音量来解决这个问题,你再也不用反复调整。" },
+      { "q": "如何为 YouTube 和 Spotify 设置不同音量?",
+        "a": "每个网站都有独立的音量滑块。把 YouTube 设为 30%、Spotify 设为 80% 或任何你喜欢的值。Volux 会自动保存并在每次访问时应用。" },
+      { "q": "为什么 YouTube 总是比其他网站大声?",
+        "a": "不同网站音频的母带电平不同。YouTube 视频通常比其他内容更响。Volux 让你把 YouTube(或任何吵闹站点)永久固定在较低音量,不再被震到。" },
+      { "q": "关闭浏览器后 Volux 还记得我的设置吗?",
+        "a": "是的。设置保存在浏览器本地存储中。关闭 Chrome、重启电脑、几天后回来 — Volux 仍会按你设置的音量应用。" },
+      { "q": "我能控制 Zoom、Google Meet、Microsoft Teams 的音量吗?",
+        "a": "可以。Volux 适用于任何播放音频的网站,包括视频会议应用。让会议音量保持舒适,同时其他标签页播放不同音量。" },
+      { "q": "Volux 安全吗?需要哪些权限?",
+        "a": "Volux 是开源且注重隐私的。只请求在网页上控制音频所需的权限。不收集任何个人数据、浏览记录或分析。代码可在 GitHub 上审阅。" },
+      { "q": "Free 和 Pro 有什么区别?",
+        "a": "Free 版支持控制 2 个网站 — 足够试用。Pro 版($2 一次性)解锁无限网站、自动识别媒体站点、扫描所有打开标签页。终身购买,无订阅。" },
+      { "q": "Volux 能支持同一网站的多个标签页吗?",
+        "a": "能 — 两种模式。默认下,同一站点的所有标签页共享一个音量。Pro 版下,你可以覆盖任一标签页:同一站点三个标签页可以同时保持三种不同音量,未自定义的仍沿用站点默认。" },
+      { "q": "我能为同一站点(YouTube、TikTok、Facebook…)的多个标签页设置不同音量吗?",
+        "a": "可以,使用 Volux Pro。适用于任何有音频的站点 — YouTube、TikTok、Facebook、Spotify、Twitch、SoundCloud、新闻站点,到处可用。点击域名卡片上的“N tabs”徽章展开按标签列表,然后拖动任一标签页的滑块赋予独立音量。关闭标签页或切换到其他站点时,覆盖自动清除,站点默认值保持整洁。" }
+    ]
+  },
+
+  "footer": {
+    "tagline_html": "面向 Chrome &amp; Firefox 的按标签页音量控制。<a href=\"https://github.com/vannk84\" style=\"color:var(--amber);\">vannk84</a> 用心打造。",
+    "col_product": "产品",
+    "col_install": "安装",
+    "col_legal":   "法律",
+    "col_language": "语言",
+    "link_features": "功能",
+    "link_pertab": "按标签 · Pro",
+    "link_pricing": "价格",
+    "link_faq": "常见问题",
+    "link_chrome": "Chrome Web Store",
+    "link_firefox": "Firefox Add-ons",
+    "link_github": "GitHub 源代码",
+    "link_terms": "条款",
+    "link_refund": "退款",
+    "link_privacy": "隐私",
+    "link_support": "支持",
+    "copyright": "© DevLifeEasy · Volux v1.0.5",
+    "notice": "不追踪 · 无账号 · 仅本地存储"
+  },
+
+  "schema": {
+    "app_description": "一款浏览器扩展,按网站自动保存音量;Pro 版下,任何站点的每个标签页都能保持独立音量 — YouTube、TikTok、Facebook、Spotify、Twitch 或任何含音频的域名。设一次,跨会话记忆。",
+    "webapp_description": "按网站自动保存音量。Pro 版下,任何站点的每个标签页都能保持独立音量 — YouTube、TikTok、Facebook、Spotify、Twitch,到处适用。",
+    "video_description": "Volux Pro 按标签页音量覆盖的 8 秒演示 — 展开某个域名的标签列表,独立拖动每个标签的滑块。三个 YouTube 标签,三种不同音量,未自定义的标签仍沿用站点默认。",
+    "feature_list": [
+      "按网站自动保存音量",
+      "按标签页音量覆盖(Pro)",
+      "智能静音",
+      "实时音频检测",
+      "按域名分组",
+      "注重隐私(不收集数据)"
+    ],
+    "faq": [
+      { "q": "Volux 是如何记住我的音量设置的?",
+        "a": "Volux 使用浏览器的本地存储保存每个网站的音量偏好。所有数据都保留在你的设备上,永远不会发送到任何服务器。" },
+      { "q": "Volux 支持 Chrome 和 Firefox 吗?",
+        "a": "是的!Volux 支持 Chrome、Firefox、Edge、Brave 和其他基于 Chromium 的浏览器。" },
+      { "q": "Volux 免费吗?",
+        "a": "是的,Volux 提供免费版本,可控制 2 个网站并包含所有核心功能。Pro 版($2 一次性)提供无限网站支持。" },
+      { "q": "Volux 会收集我的数据吗?",
+        "a": "不会。Volux 不收集、存储或传输任何个人数据。所有设置都保存在你的设备本地。无追踪、无分析、无服务器。" },
+      { "q": "我能为同一站点(YouTube、TikTok、Facebook 等)的多个标签页设置不同音量吗?",
+        "a": "可以,使用 Volux Pro — 适用于任何含音频的站点:YouTube、TikTok、Facebook、Spotify、Twitch、SoundCloud 等。展开域名的标签徽章,拖动任一标签页的滑块赋予独立音量。同一站点三个标签页可同时保持三种不同音量。关闭标签或切换站点时,覆盖自动清除。" }
+    ]
+  }
+}

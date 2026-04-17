@@ -1,0 +1,205 @@
+{
+  "locale": "en",
+  "html_lang": "en",
+  "dir": "ltr",
+  "canonical_path": "/",
+  "lang_label": "English",
+  "lang_native": "English",
+
+  "meta": {
+    "title": "Volux - Per-Tab Volume Control & Auto-Save | Chrome & Firefox Extension",
+    "description": "Auto-save volume per website. With Pro, set a different volume for every tab on any site — YouTube, TikTok, Facebook, Spotify, Twitch. Free for Chrome & Firefox.",
+    "keywords": "per tab volume control, volume control chrome, different volume per tab same site, auto save volume, tiktok tab volume, facebook tab volume, youtube tab volume, twitch volume, spotify volume, remember volume, chrome extension volume, firefox volume control, website volume control, tab audio control, volux pro",
+    "author": "DevLifeEasy",
+    "og_title": "Volux - Per-Tab Volume Control & Auto-Save",
+    "og_description": "Auto-save volume per website. With Pro, each tab of any site can hold its own volume — YouTube, TikTok, Facebook, Spotify, anywhere. Free Chrome & Firefox extension.",
+    "og_image_alt": "Volux Volume Control Extension Interface",
+    "twitter_title": "Volux - Per-Tab Volume Control & Auto-Save",
+    "twitter_description": "Auto-save volume per website. With Pro, each tab on any site holds its own volume — YouTube, TikTok, Facebook, Spotify. Set once, saved forever.",
+    "twitter_image_alt": "Volux Volume Control Extension"
+  },
+
+  "skip": "Skip to content",
+  "brand_aria": "Volux home",
+  "nav_aria": "Primary",
+
+  "nav": {
+    "features": "Features",
+    "pertab": "Per-Tab",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "install": "Install"
+  },
+
+  "hero": {
+    "eyebrow": "Browser audio, finally behaved",
+    "title_html": "Set once. <span class=\"amp\">Saved</span> forever.",
+    "lede_html": "Volux <strong>remembers your volume for every website</strong> — YouTube at 30%, Facebook at 10%, Zoom at 100%. With Pro, every <em>tab</em> on any site can hold its own level too.",
+    "cta_chrome": "Add to Chrome",
+    "cta_firefox": "Add to Firefox",
+    "meta_version": "v1.0.5 · Chrome & Firefox",
+    "meta_github": "Open source on GitHub",
+    "meta_privacy": "No tracking, no accounts",
+    "module_aria": "Volux popup interface",
+    "module_alt": "Volux popup with per-tab volume sliders — three YouTube tabs at three different volumes"
+  },
+
+  "features": {
+    "label": "01 · Capabilities",
+    "title": "Solve your audio problems.",
+    "kicker": "Every website at the exact level you want it. Every time. With zero friction after you set it once.",
+    "items": [
+      { "title": "Auto-Save Volume", "body": "Set YouTube to 30%, Facebook to 10% — Volux remembers, forever. No plugin UI to re-open." },
+      { "title": "Different Volume Per Site", "body": "Zoom meeting, YouTube tutorial, Spotify in the background — each at the perfect level, no crosstalk." },
+      { "title": "No More Volume Reset", "body": "Refresh the page. Close the browser. Reboot next week. Your levels stay exactly where you left them." },
+      { "title": "Fix Loud Websites", "body": "Some sites blast at full volume no matter what. Pin them low once — problem gone permanently." },
+      { "title": "Works Across Sessions", "body": "Volumes sync locally to your browser. No account required. No cloud round-trip." },
+      { "title": "Lightweight", "body": "Runs entirely client-side. Measured in kilobytes. Zero background polling, zero telemetry." }
+    ]
+  },
+
+  "pertab": {
+    "chip": "Pro · Tab Override",
+    "title_html": "One site. Three tabs. <em>Three volumes.</em>",
+    "lede": "Most extensions give you one volume per website. Volux Pro lets every tab of any site — YouTube, TikTok, Facebook, Spotify, Twitch — hold its own level independently, without touching the site default.",
+    "list": [
+      { "k": "Expand",   "v_html": "Tap the <strong>N&nbsp;TABS</strong> badge on any domain to reveal every open tab with a dedicated slider." },
+      { "k": "Override", "v_html": "Drag any tab&rsquo;s slider to give it its own volume. The site default still covers anything you haven&rsquo;t customized." },
+      { "k": "Dispose",  "v_html": "Close the tab or navigate away — the override clears automatically. Your site default stays clean." }
+    ],
+    "cta": "Unlock Pro · $2 one-time",
+    "video_caption": "8-second demo · Expand, drag, done"
+  },
+
+  "usecases": {
+    "label": "02 · Scenarios",
+    "title": "Perfect for these situations.",
+    "kicker": "Real audio frustrations Volux solves the moment you install it.",
+    "items": [
+      { "tag": "YT · Mastering", "title": "YouTube too loud?",              "body": "Set YouTube to 30–40% permanently. Never get blasted by a loud ad, music video, or intro again." },
+      { "tag": "Meetings",       "title": "Zoom & Google Meet",             "body": "Keep video calls at a stable, comfortable level while other tabs play at different volumes in parallel." },
+      { "tag": "Multitask",      "title": "Spotify + video at once",        "body": "Background music at 60%, muted tutorial on the side, podcast in another tab at 80%. All set once, forever." },
+      { "tag": "Social",         "title": "Auto-play on Facebook & Twitter","body": "Pin social feeds to 10–20%. Scroll without surprise-loud videos interrupting your flow." },
+      { "tag": "Live",           "title": "Twitch & gaming streams",        "body": "Streamers have wildly different audio levels. Set a comfortable baseline that Volux applies every session." },
+      { "tag": "Learning",       "title": "Online courses",                 "body": "Udemy, Coursera, YouTube lectures — keep educational audio clear while entertainment tabs stay quieter." }
+    ]
+  },
+
+  "how": {
+    "label": "03 · Setup",
+    "title": "How it works.",
+    "kicker": "Three small steps. After that, it&rsquo;s automatic. Forever.",
+    "steps": [
+      { "title": "Install the extension", "body": "Add Volux to Chrome or Firefox with one click. No account. No setup. Icon appears in your toolbar instantly." },
+      { "title": "Adjust on any site",    "body": "Click the Volux icon and drag the slider. YouTube at 30%. Podcast at 80%. It applies immediately." },
+      { "title": "Volux remembers",       "body": "That&rsquo;s it. Your levels are saved locally and reapplied every time, forever — across refreshes, restarts, and weeks." }
+    ],
+    "note_html": "<strong>Pro tip:</strong> by default, all tabs of the same site share one volume — same on YouTube, TikTok, Facebook, Spotify, anywhere. With Pro, expand the tab-count badge to give individual tabs their own level. The site default still covers any tab you haven&rsquo;t customized."
+  },
+
+  "gallery": {
+    "label": "04 · Interface",
+    "title": "See it in the browser.",
+    "kicker": "Clean by default. Expandable when you want granular control.",
+    "items": [
+      { "alt": "Per-tab expanded view — YouTube with three tabs at three different volumes", "title": "Per-tab volume · Pro", "body": "Every tab on any site — YouTube, TikTok, Facebook — its own level." },
+      { "alt": "Collapsed popup with 3 TABS badge ready to expand",                          "title": "Clean by default",    "body": "Tap the tab-count badge to expand when you need granular control." },
+      { "alt": "Upgrade modal showing Pro features including per-tab volume override",       "title": "$2 one-time",         "body": "Unlimited domains + per-tab override + lifetime access." }
+    ]
+  },
+
+  "pricing": {
+    "label": "05 · Pricing",
+    "title": "Simple & honest.",
+    "kicker": "Try free. Upgrade once. No subscriptions, no upsells, no telemetry.",
+    "free": {
+      "name": "Free",
+      "tag": "Forever",
+      "amount": "$0",
+      "sub": "No account, no credit card.",
+      "list": [ "Control 2 domains", "Per-domain volume", "Instant mute", "Persistent settings" ],
+      "cta": "Install free"
+    },
+    "pro": {
+      "name": "Pro",
+      "tag": "Best value",
+      "amount_html": "$2<small>one-time</small>",
+      "sub": "Or pay what you want. Lifetime access.",
+      "list": [ "Unlimited domains", "Per-tab volume override", "Auto-detect media sites", "Scan tabs feature", "Lifetime updates" ],
+      "cta": "Upgrade to Pro"
+    }
+  },
+
+  "faq": {
+    "label": "06 · Questions",
+    "title": "Frequently asked.",
+    "kicker": "Tap any question to expand. Shift-click to open in a new reading frame.",
+    "items": [
+      { "q": "Why does my browser volume reset every time I refresh?",
+        "a": "Browsers don&rsquo;t save volume settings per website by default. Every refresh or reopened tab resets to 100%. Volux solves this by automatically remembering your preferred volume for each website, so you never have to adjust it again." },
+      { "q": "How do I set different volumes for YouTube and Spotify?",
+        "a": "Each website gets its own independent volume slider. Set YouTube to 30%, Spotify to 80%, or any level you prefer. Volux saves these settings automatically and applies them every time you visit those sites." },
+      { "q": "Why is YouTube always too loud compared to other sites?",
+        "a": "Different websites master audio at different levels. YouTube videos often ship louder than other content. Volux lets you pin a permanent lower volume for YouTube (or any loud website) so you never get blasted again." },
+      { "q": "Does Volux remember my settings after I close the browser?",
+        "a": "Yes. Settings are saved in your browser&rsquo;s local storage. Close Chrome, restart your computer, return days later — Volux applies exactly the levels you set for each website." },
+      { "q": "Can I control volume for Zoom, Google Meet, or Microsoft Teams?",
+        "a": "Yes. Volux works with any website that plays audio, including video conferencing apps. Keep meeting audio at a comfortable level while other tabs play at different volumes." },
+      { "q": "Is Volux safe? What permissions does it need?",
+        "a": "Volux is open source and privacy-friendly. It only requests permissions necessary to control audio on web pages. No personal data, no browsing history, no analytics. Code is reviewable on GitHub." },
+      { "q": "What&rsquo;s the difference between Free and Pro?",
+        "a": "Free lets you control volume for 2 websites — perfect to try. Pro ($2 one-time) unlocks unlimited websites, auto-detection of media sites, and the ability to scan all open tabs. Lifetime purchase, no subscription." },
+      { "q": "Does Volux work with multiple tabs of the same website?",
+        "a": "Yes — two modes. By default, all tabs of the same site share one volume. With Pro, you can override any individual tab: three tabs on the same site can hold three different volumes simultaneously, and the site default still covers any tab you haven&rsquo;t customized." },
+      { "q": "Can I set different volumes for multiple tabs of the same site (YouTube, TikTok, Facebook…)?",
+        "a": "Yes, with Volux Pro. It works on any site with audio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, news sites, anywhere. Click the &ldquo;N tabs&rdquo; badge on a domain card to expand a per-tab list, then drag the slider on any tab to give it its own volume. The override clears when you close that tab or navigate it to a different site, so your site-wide default stays clean." }
+    ]
+  },
+
+  "footer": {
+    "tagline_html": "Per-tab volume control for Chrome &amp; Firefox. Made with care by <a href=\"https://github.com/vannk84\" style=\"color:var(--amber);\">vannk84</a>.",
+    "col_product": "Product",
+    "col_install": "Install",
+    "col_legal":   "Legal",
+    "col_language": "Language",
+    "link_features": "Features",
+    "link_pertab": "Per-tab · Pro",
+    "link_pricing": "Pricing",
+    "link_faq": "FAQ",
+    "link_chrome": "Chrome Web Store",
+    "link_firefox": "Firefox Add-ons",
+    "link_github": "GitHub source",
+    "link_terms": "Terms",
+    "link_refund": "Refunds",
+    "link_privacy": "Privacy",
+    "link_support": "Support",
+    "copyright": "© DevLifeEasy · Volux v1.0.5",
+    "notice": "No tracking · No accounts · Local storage only"
+  },
+
+  "schema": {
+    "app_description": "Browser extension that auto-saves volume per website and, with Pro, lets each tab of any site hold its own volume — YouTube, TikTok, Facebook, Spotify, Twitch, or any domain with audio. Set once, remembered across sessions.",
+    "webapp_description": "Auto-save volume per website. With Pro, each tab of any site can hold its own volume — YouTube, TikTok, Facebook, Spotify, Twitch, anywhere.",
+    "video_description": "8-second demo of Volux Pro's per-tab volume override — expand a domain's tab list and drag each tab's slider independently. Three YouTube tabs, three different volumes, with the site default still covering any tab you haven't customized.",
+    "feature_list": [
+      "Auto-save volume per website",
+      "Per-tab volume override (Pro)",
+      "Smart mute functionality",
+      "Live audio detection",
+      "Domain grouping",
+      "Privacy-focused (no data collection)"
+    ],
+    "faq": [
+      { "q": "How does Volux remember my volume settings?",
+        "a": "Volux uses your browser's local storage to save volume preferences for each website. All data stays on your device and is never sent to any server." },
+      { "q": "Does Volux work on Chrome and Firefox?",
+        "a": "Yes! Volux is available for Chrome, Firefox, Edge, Brave, and other Chromium-based browsers." },
+      { "q": "Is Volux free?",
+        "a": "Yes, Volux offers a free version that lets you control 2 websites with all core features. Pro version ($2 one-time) offers unlimited websites." },
+      { "q": "Does Volux collect my data?",
+        "a": "No. Volux does not collect, store, or transmit any personal data. All settings are stored locally on your device. No tracking, no analytics, no servers." },
+      { "q": "Can I set different volumes for multiple tabs of the same site (YouTube, TikTok, Facebook, etc.)?",
+        "a": "Yes, with Volux Pro — it works on any site with audio: YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, and everywhere else. Expand the tabs badge on any domain and drag the slider on any individual tab to give it its own volume. Three tabs of the same site can hold three different volumes simultaneously. The override clears when you close the tab or navigate it to a different site." }
+    ]
+  }
+}
