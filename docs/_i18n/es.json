@@ -157,6 +157,17 @@
     ]
   },
 
+  "partners": {
+    "label": "07 · Socios",
+    "title": "Amigos de Volux.",
+    "kicker": "Herramientas y servicios que usamos o recomendamos. Enlaces de afiliados — podemos recibir una pequeña comisión sin costo adicional para vos.",
+    "items": [
+      { "tag": "Bonus", "desc": "Registrate y recibí hasta $100 USDC de bienvenida en el mayor exchange de cripto del mundo.", "cta": "Reclamar bonus" },
+      { "tag": "Top",   "desc": "Stickers y accesorios seleccionados a buen precio.", "cta": "Comprar ahora" },
+      { "tag": "Oferta","desc": "Descubrí productos de moda y ofertas de creadores.", "cta": "Ver ofertas" }
+    ]
+  },
+
   "footer": {
     "tagline_html": "Control de volumen por pestaña para Chrome &amp; Firefox. Hecho con cariño por <a href=\"https://github.com/vannk84\" style=\"color:var(--amber);\">vannk84</a>.",
     "col_product": "Producto",

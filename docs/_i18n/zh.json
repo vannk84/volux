@@ -157,6 +157,17 @@
     ]
   },
 
+  "partners": {
+    "label": "07 · 合作伙伴",
+    "title": "Volux 的好伙伴。",
+    "kicker": "我们使用或推荐的工具和服务。联盟链接 — 我们可能获得小额佣金,对你不产生任何额外费用。",
+    "items": [
+      { "tag": "奖励", "desc": "立即注册,在全球最大的加密货币交易所获得最高 $100 USDC 欢迎奖励。", "cta": "领取奖励" },
+      { "tag": "热门", "desc": "精选贴纸与配件,价格亲民。", "cta": "立即购买" },
+      { "tag": "优惠", "desc": "发现热门商品与创作者专属优惠。", "cta": "查看优惠" }
+    ]
+  },
+
   "footer": {
     "tagline_html": "面向 Chrome &amp; Firefox 的按标签页音量控制。<a href=\"https://github.com/vannk84\" style=\"color:var(--amber);\">vannk84</a> 用心打造。",
     "col_product": "产品",

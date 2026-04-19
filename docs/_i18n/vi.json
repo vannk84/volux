@@ -157,6 +157,17 @@
     ]
   },
 
+  "partners": {
+    "label": "07 · Đối tác",
+    "title": "Những người bạn của Volux.",
+    "kicker": "Các công cụ và dịch vụ chúng tôi dùng hoặc giới thiệu. Liên kết tiếp thị — chúng tôi có thể nhận hoa hồng nhỏ mà bạn không trả thêm đồng nào.",
+    "items": [
+      { "tag": "Thưởng", "desc": "Đăng ký ngay để nhận tới $100 USDC thưởng chào mừng từ sàn tiền mã hoá lớn nhất thế giới.", "cta": "Nhận thưởng" },
+      { "tag": "Hot",    "desc": "Sticker và phụ kiện chất lượng với mức giá tốt.", "cta": "Mua ngay" },
+      { "tag": "Deal",   "desc": "Khám phá sản phẩm thịnh hành và deal từ creator.", "cta": "Xem deal" }
+    ]
+  },
+
   "footer": {
     "tagline_html": "Điều chỉnh âm lượng theo tab cho Chrome &amp; Firefox. Tâm huyết bởi <a href=\"https://github.com/vannk84\" style=\"color:var(--amber);\">vannk84</a>.",
     "col_product": "Sản phẩm",

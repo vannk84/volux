@@ -103,6 +103,38 @@ function renderFragments(data) {
             <div class="qa-body">${it.a}</div>
           </details>`).join('\n');
 
+  // Partner cards — brand data is fixed, copy is localized
+  var PARTNERS = [
+    {
+      mark: 'BINANCE',
+      accent: '#F0B90B',
+      href: 'https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00RM83NKAK'
+    },
+    {
+      mark: 'SHOPEE',
+      accent: '#EE4D2D',
+      href: 'https://shopee.vn/tintinstickers'
+    },
+    {
+      mark: 'TikTok Shop',
+      accent: 'linear-gradient(180deg, #00F2EA 0%, #FF0050 100%)',
+      href: 'https://vt.tiktok.com/ZS9R3hEq7U6db-RHoN4/'
+    }
+  ];
+  frags.partners_items_html = PARTNERS.map((p, i) => {
+    var item = data.partners.items[i] || { tag: '', desc: '', cta: '' };
+    var d = (i % 3) + 1;
+    return `          <article class="partner-card reveal" data-d="${d}">
+            <span class="partner-accent" style="background: ${p.accent};"></span>
+            <div class="partner-head">
+              <div class="partner-mark">${p.mark}</div>
+              <span class="partner-tag">${item.tag}</span>
+            </div>
+            <p class="partner-desc">${item.desc}</p>
+            <a class="partner-cta" href="${p.href}" target="_blank" rel="noopener noreferrer sponsored">${item.cta}</a>
+          </article>`;
+  }).join('\n');
+
   return frags;
 }
 

@@ -157,6 +157,17 @@
     ]
   },
 
+  "partners": {
+    "label": "07 · Parceiros",
+    "title": "Amigos do Volux.",
+    "kicker": "Ferramentas e serviços que usamos ou recomendamos. Links de afiliado — podemos receber uma pequena comissão sem custo extra para você.",
+    "items": [
+      { "tag": "Bônus", "desc": "Cadastre-se e receba até $100 USDC de boas-vindas na maior exchange de cripto do mundo.", "cta": "Garantir bônus" },
+      { "tag": "Hot",   "desc": "Stickers e acessórios selecionados com ótimo preço.", "cta": "Comprar agora" },
+      { "tag": "Oferta","desc": "Descubra produtos em alta e ofertas de criadores.", "cta": "Ver ofertas" }
+    ]
+  },
+
   "footer": {
     "tagline_html": "Controle de volume por aba para Chrome &amp; Firefox. Feito com carinho por <a href=\"https://github.com/vannk84\" style=\"color:var(--amber);\">vannk84</a>.",
     "col_product": "Produto",

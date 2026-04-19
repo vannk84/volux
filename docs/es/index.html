@@ -708,6 +708,88 @@
       max-width: 70ch;
     }
 
+    /* --------- Partners (affiliate disclosures) --------- */
+    .partners { background: var(--paper); }
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    @media (max-width: 880px) { .partners-grid { grid-template-columns: 1fr; } }
+    .partner-card {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--rule);
+      padding: 30px 28px 26px 32px;
+      display: flex; flex-direction: column; gap: 14px;
+      min-height: 200px;
+      transition: transform .2s, box-shadow .25s, border-color .2s;
+      overflow: hidden;
+    }
+    .partner-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-soft);
+      border-color: var(--rule-strong);
+    }
+    .partner-accent {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+    }
+    .partner-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .partner-mark {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-style: italic;
+      font-size: 22px;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      font-variation-settings: 'opsz' 48, 'SOFT' 50, 'WONK' 1;
+    }
+    .partner-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--vermilion);
+      border: 1px solid rgba(224,60,26,0.35);
+      padding: 3px 9px;
+      white-space: nowrap;
+    }
+    .partner-desc {
+      color: var(--ink-2);
+      font-size: 15px;
+      line-height: 1.55;
+      flex: 1;
+    }
+    .partner-cta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      padding-top: 12px;
+      margin-top: auto;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      transition: color .2s;
+    }
+    .partner-cta:hover { color: var(--vermilion); }
+    .partner-cta::after {
+      content: '→';
+      font-size: 14px;
+      transition: transform .2s;
+    }
+    .partner-cta:hover::after { transform: translateX(3px); }
+
   </style>
 </head>
 <body>
@@ -1153,6 +1235,49 @@
             <summary>¿Puedo poner volúmenes distintos en varias pestañas del mismo sitio (YouTube, TikTok, Facebook…)?</summary>
             <div class="qa-body">Sí, con Volux Pro. Funciona en cualquier sitio con audio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, sitios de noticias, donde sea. Tocá la insignia «N tabs» en la tarjeta de dominio para expandir la lista por pestaña y arrastrá el control de cualquiera para darle su volumen. La anulación se borra al cerrar la pestaña o cambiar de sitio, así el predeterminado queda limpio.</div>
           </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PARTNERS ========== -->
+    <section class="section partners" id="partners">
+      <div class="section-inner">
+        <header class="section-head reveal">
+          <div class="label">07 · Socios</div>
+          <div>
+            <h2>Amigos de Volux.</h2>
+            <p class="kicker">Herramientas y servicios que usamos o recomendamos. Enlaces de afiliados — podemos recibir una pequeña comisión sin costo adicional para vos.</p>
+          </div>
+        </header>
+
+        <div class="partners-grid">
+          <article class="partner-card reveal" data-d="1">
+            <span class="partner-accent" style="background: #F0B90B;"></span>
+            <div class="partner-head">
+              <div class="partner-mark">BINANCE</div>
+              <span class="partner-tag">Bonus</span>
+            </div>
+            <p class="partner-desc">Registrate y recibí hasta $100 USDC de bienvenida en el mayor exchange de cripto del mundo.</p>
+            <a class="partner-cta" href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00RM83NKAK" target="_blank" rel="noopener noreferrer sponsored">Reclamar bonus</a>
+          </article>
+          <article class="partner-card reveal" data-d="2">
+            <span class="partner-accent" style="background: #EE4D2D;"></span>
+            <div class="partner-head">
+              <div class="partner-mark">SHOPEE</div>
+              <span class="partner-tag">Top</span>
+            </div>
+            <p class="partner-desc">Stickers y accesorios seleccionados a buen precio.</p>
+            <a class="partner-cta" href="https://shopee.vn/tintinstickers" target="_blank" rel="noopener noreferrer sponsored">Comprar ahora</a>
+          </article>
+          <article class="partner-card reveal" data-d="3">
+            <span class="partner-accent" style="background: linear-gradient(180deg, #00F2EA 0%, #FF0050 100%);"></span>
+            <div class="partner-head">
+              <div class="partner-mark">TikTok Shop</div>
+              <span class="partner-tag">Oferta</span>
+            </div>
+            <p class="partner-desc">Descubrí productos de moda y ofertas de creadores.</p>
+            <a class="partner-cta" href="https://vt.tiktok.com/ZS9R3hEq7U6db-RHoN4/" target="_blank" rel="noopener noreferrer sponsored">Ver ofertas</a>
+          </article>
         </div>
       </div>
     </section>

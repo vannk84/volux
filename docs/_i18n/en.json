@@ -157,6 +157,17 @@
     ]
   },
 
+  "partners": {
+    "label": "07 · Partners",
+    "title": "Friends of Volux.",
+    "kicker": "Tools and services we use or recommend. Affiliate links — we may earn a small commission at no extra cost to you.",
+    "items": [
+      { "tag": "Bonus", "desc": "Sign up and get up to $100 USDC welcome bonus on the world's largest crypto exchange.", "cta": "Claim bonus" },
+      { "tag": "Hot",   "desc": "Curated stickers and accessories at great prices.", "cta": "Shop now" },
+      { "tag": "Deal",  "desc": "Discover trending products and creator deals.", "cta": "View deals" }
+    ]
+  },
+
   "footer": {
     "tagline_html": "Per-tab volume control for Chrome &amp; Firefox. Made with care by <a href=\"https://github.com/vannk84\" style=\"color:var(--amber);\">vannk84</a>.",
     "col_product": "Product",
