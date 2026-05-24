@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', init);
 let licenseStatus = { isPro: false };
 let controlledCount = 0;
 let freeLimit = 2;
+// Boosting above 100% is a Pro feature; free users top out at 100%.
+const MAX_BOOST = 300;
+function maxVolume() {
+  return licenseStatus.isPro ? MAX_BOOST : 100;
+}
 // Which domain cards currently have their per-tab section expanded.
 // Persists across the 2s refresh so dragging sliders doesn't collapse the view.
 const expandedDomains = new Set();
@@ -592,7 +597,10 @@ async function handlePerTabVolumeChange(tabId, slider) {
   const valueEl = row?.querySelector('.per-tab-value');
   const volume = parseInt(slider.value, 10);
 
-  if (valueEl) valueEl.textContent = `${volume}%`;
+  if (valueEl) {
+    valueEl.textContent = `${volume}%`;
+    valueEl.classList.toggle('boosting', volume > 100);
+  }
   updateSliderBackground(slider);
   row?.classList.add('has-override');
 
@@ -667,6 +675,8 @@ function createDomainHTML(domain) {
 
   const lockedClass = domain.isLocked ? 'locked' : '';
   const isDisabled = domain.muted || domain.isLocked;
+  const maxVol = maxVolume();
+  const boosting = domain.volume > 100;
 
   const perTabHTML = isExpanded ? renderPerTabSection(domain) : '';
 
@@ -683,17 +693,17 @@ function createDomainHTML(domain) {
         <button class="mute-btn ${domain.muted ? 'muted' : ''}" id="mute-${originKey}" title="${domain.muted ? 'Unmute' : 'Mute'}" ${domain.isLocked ? 'disabled' : ''}>
           ${muteIconHTML}
         </button>
-        <div class="volume-slider-container">
+        <div class="volume-slider-container ${boosting ? 'boosting' : ''}" id="sliderwrap-${originKey}">
           <input
             type="range"
-            class="volume-slider"
+            class="volume-slider ${boosting ? 'boosting' : ''}"
             id="slider-${originKey}"
             min="0"
-            max="100"
+            max="${maxVol}"
             value="${domain.volume}"
             ${isDisabled ? 'disabled' : ''}
           >
-          <span class="volume-value" id="value-${originKey}">${domain.volume}%</span>
+          <span class="volume-value ${boosting ? 'boosting' : ''}" id="value-${originKey}">${domain.volume}%</span>
         </div>
       </div>
       ${perTabHTML}
@@ -732,6 +742,8 @@ function renderTabRow(tab) {
        </button>`
     : '';
 
+  const boosting = tab.volume > 100;
+
   return `
     <div class="per-tab-row ${tab.audible ? 'audible' : ''} ${tab.hasOverride ? 'has-override' : ''}" data-tab-id="${tab.id}">
       ${faviconHTML}
@@ -742,14 +754,14 @@ function renderTabRow(tab) {
       </button>
       <input
         type="range"
-        class="per-tab-slider volume-slider"
+        class="per-tab-slider volume-slider ${boosting ? 'boosting' : ''}"
         data-tab-id="${tab.id}"
         min="0"
-        max="100"
+        max="${MAX_BOOST}"
         value="${tab.volume}"
         ${tab.muted ? 'disabled' : ''}
       >
-      <span class="per-tab-value">${tab.volume}%</span>
+      <span class="per-tab-value ${boosting ? 'boosting' : ''}">${tab.volume}%</span>
       ${resetBtn}
     </div>
   `;
@@ -758,10 +770,15 @@ function renderTabRow(tab) {
 async function handleVolumeChange(origin, volume, originKey) {
   const volumeValue = document.getElementById(`value-${originKey}`);
   const slider = document.getElementById(`slider-${originKey}`);
+  const wrap = document.getElementById(`sliderwrap-${originKey}`);
+  const boosting = parseInt(volume, 10) > 100;
 
   if (volumeValue) {
     volumeValue.textContent = `${volume}%`;
+    volumeValue.classList.toggle('boosting', boosting);
   }
+
+  if (wrap) wrap.classList.toggle('boosting', boosting);
 
   if (slider) {
     updateSliderBackground(slider);
@@ -799,10 +816,15 @@ async function handleMuteToggle(origin, muted) {
 }
 
 function updateSliderBackground(slider) {
-  const value = slider.value;
-  // Use CSS custom property for cross-browser compatibility
-  // Chrome/Safari use this via background gradient, Firefox uses ::-moz-range-progress
-  slider.style.setProperty('--slider-progress', `${value}%`);
+  const max = parseFloat(slider.max) || 100;
+  const value = parseFloat(slider.value) || 0;
+  // Fill is a fraction of the *track*, not the raw value — sliders now run to
+  // 300, so 150 should fill half the track, not overflow it.
+  // Chrome/Safari read --slider-progress in the track gradient; Firefox uses
+  // its native ::-moz-range-progress. --unity-pos marks the 100% tick.
+  slider.style.setProperty('--slider-progress', `${(value / max) * 100}%`);
+  slider.style.setProperty('--unity-pos', `${(100 / max) * 100}%`);
+  slider.classList.toggle('boosting', value > 100);
 }
 
 function escapeHTML(str) {

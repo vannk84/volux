@@ -442,6 +442,8 @@ async function getDomains() {
   const tabs = await browser.tabs.query({});
   const savedStates = await loadSavedStates();
   const managedDomains = await getManagedDomains();
+  const license = await getLicenseStatus();
+  const ceiling = license.isPro ? MAX_BOOST_VOLUME : 100;
   const domainMap = new Map();
 
   // Initialize all managed domains
@@ -451,7 +453,9 @@ async function getDomains() {
     domainMap.set(domain, {
       origin,
       domain,
-      volume: saved.volume,
+      // Clamp display to the license ceiling so a former-Pro boost doesn't
+      // linger in the UI after a downgrade.
+      volume: Math.min(saved.volume, ceiling),
       muted: saved.muted,
       tabs: [],
       audible: false,
@@ -495,9 +499,19 @@ async function getDomains() {
   return Array.from(domainMap.values());
 }
 
+// Boosting above 100% is a Pro feature. Free users are capped at 100% so a
+// crafted message or a stale saved state can't slip an un-paid boost through.
+const MAX_BOOST_VOLUME = 300;
+async function clampVolumeForLicense(volume) {
+  const license = await getLicenseStatus();
+  const ceiling = license.isPro ? MAX_BOOST_VOLUME : 100;
+  return Math.max(0, Math.min(volume, ceiling));
+}
+
 // Set volume for all tabs of a domain.
 // Tabs with their own per-tab override are skipped so the override persists.
 async function setDomainVolume(origin, volume) {
+  volume = await clampVolumeForLicense(volume);
   await saveStateForOrigin(origin, volume, false);
 
   const managedDomain = getDomainFromOrigin(origin);
@@ -585,6 +599,7 @@ async function setTabVolume(tabId, volume) {
   const managedDomain = await resolveManagedDomainForTab(tab.url);
   if (!managedDomain) return { success: false, error: 'DOMAIN_NOT_MANAGED' };
 
+  volume = Math.max(0, Math.min(volume, MAX_BOOST_VOLUME));
   const existing = tabOverrides[tabId];
   const muted = existing?.muted ?? false;
 
@@ -708,10 +723,12 @@ browser.runtime.onMessage.addListener((message, sender) => {
 
       case 'GET_TAB_STATE':
         if (sender.tab) {
+          // Cap what content scripts actually apply at the license ceiling.
+          const ceiling = (await getLicenseStatus()).isPro ? MAX_BOOST_VOLUME : 100;
           // Per-tab override takes precedence over the domain default.
           const override = tabOverrides[sender.tab.id];
           if (override) {
-            resolve({ volume: override.volume, muted: override.muted });
+            resolve({ volume: Math.min(override.volume, ceiling), muted: override.muted });
             break;
           }
           const tabDomain = getDomain(sender.tab.url);
@@ -721,8 +738,10 @@ browser.runtime.onMessage.addListener((message, sender) => {
             if (matchedDomain) {
               const origin = `https://${matchedDomain}`;
               const saved = await getSavedStateForOrigin(origin);
-              resolve(saved || { volume: 100, muted: false });
-              break;
+              if (saved) {
+                resolve({ volume: Math.min(saved.volume, ceiling), muted: saved.muted });
+                break;
+              }
             }
           }
           resolve({ volume: 100, muted: false });

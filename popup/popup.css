@@ -25,6 +25,11 @@
   --gold-glow: rgba(201, 169, 98, 0.12);
   --gold-glow-strong: rgba(201, 169, 98, 0.25);
 
+  /* Boost zone (>100%) — gold heated toward molten amber */
+  --boost-gradient: linear-gradient(135deg, #f0c040 0%, #e8843a 55%, #d9542a 100%);
+  --boost-amber: #f0a83a;
+  --boost-glow: rgba(232, 132, 58, 0.45);
+
   /* Text Hierarchy */
   --text-primary: #fafafa;
   --text-secondary: #9a9a9f;
@@ -664,6 +669,43 @@ body {
   text-align: right;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.5px;
+}
+
+/* ── Boost zone (>100%, Pro) ──────────────────────────────────────────────
+   The track fill stays gold up to the 100% unity mark (--unity-pos), then
+   ramps molten toward the thumb — that colour break IS the 100% reference. */
+.volume-slider.boosting {
+  background: linear-gradient(to right,
+    #c9a962 0%,
+    #c9a962 var(--unity-pos, 33.33%),
+    #e8843a var(--slider-progress, 100%),
+    #2a2a2a var(--slider-progress, 100%),
+    #2a2a2a 100%);
+  border-color: rgba(232, 132, 58, 0.35);
+  box-shadow: 0 0 14px var(--boost-glow);
+}
+
+.volume-slider.boosting::-webkit-slider-thumb {
+  background: var(--boost-gradient);
+  border-color: #f7df9a;
+  box-shadow: 0 2px 12px var(--boost-glow), 0 0 0 4px rgba(232, 132, 58, 0.18);
+}
+
+.volume-slider.boosting::-moz-range-thumb {
+  background: var(--boost-gradient);
+  border-color: #f7df9a;
+  box-shadow: 0 2px 12px var(--boost-glow);
+}
+
+/* Firefox fills to the exact value, so we just heat the whole progress run. */
+.volume-slider.boosting::-moz-range-progress {
+  background: linear-gradient(to right, #c9a962, #e8843a);
+}
+
+.volume-value.boosting,
+.per-tab-value.boosting {
+  color: var(--boost-amber);
+  text-shadow: 0 0 10px var(--boost-glow);
 }
 
 /* Loading State */
