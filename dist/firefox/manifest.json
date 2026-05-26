@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Volux - Per-Tab Volume & Auto Save",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Auto-save volume per website, with per-tab override for Pro. Each tab on any site — YouTube, TikTok, Facebook, Spotify — can hold its own volume across sessions.",
   "permissions": [
     "tabs",
