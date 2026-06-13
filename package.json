@@ -1,6 +1,6 @@
 {
   "name": "volux-website",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "description": "Volux website development server",
   "scripts": {
     "serve": "cd docs && python3 -m http.server 8000",

@@ -167,13 +167,17 @@ async function getLicenseStatus() {
 }
 
 async function activateLicense(licenseKey) {
-  // Validate license key format (LemonSqueezy format: XXXXX-XXXXX-XXXXX-XXXXX)
-  const keyPattern = /^[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}$/i;
-  if (!keyPattern.test(licenseKey)) {
+  // Validate license key format. LemonSqueezy issues UUID-format keys
+  // (8-4-4-4-12, e.g. 458E7F71-5DB3-4915-88D0-7DBEB060CA80); legacy 5-5-5-5
+  // keys are also accepted for backwards compatibility.
+  const uuidPattern = /^[A-F0-9]{8}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{12}$/i;
+  const legacyPattern = /^[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}$/i;
+  const trimmedKey = (licenseKey || '').trim();
+  if (!uuidPattern.test(trimmedKey) && !legacyPattern.test(trimmedKey)) {
     return { success: false, error: 'Invalid license key format' };
   }
 
-  const upperKey = licenseKey.toUpperCase();
+  const upperKey = trimmedKey.toUpperCase();
 
   // Check if it's a developer/owner key (bypass API validation)
   if (await isDevLicenseKey(upperKey)) {

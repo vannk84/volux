@@ -4,9 +4,18 @@ const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
 document.addEventListener('DOMContentLoaded', init);
 
 async function init() {
+  showVersion();
   await loadLicenseStatus();
   await loadStats();
   setupEventListeners();
+}
+
+function showVersion() {
+  // Read from the manifest so the badge never drifts from the real version.
+  const badge = document.getElementById('versionBadge');
+  if (badge) {
+    badge.textContent = 'v' + browserAPI.runtime.getManifest().version;
+  }
 }
 
 function setupEventListeners() {
@@ -40,15 +49,11 @@ function setupEventListeners() {
 }
 
 function formatLicenseKey(e) {
-  let value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
-  let formatted = '';
-  for (let i = 0; i < value.length && i < 20; i++) {
-    if (i > 0 && i % 5 === 0) {
-      formatted += '-';
-    }
-    formatted += value[i];
-  }
-  e.target.value = formatted;
+  // LemonSqueezy issues UUID-format keys (8-4-4-4-12, e.g.
+  // 458E7F71-5DB3-4915-88D0-7DBEB060CA80). Preserve dashes the user pastes and
+  // just normalize case + strip stray characters. Do NOT re-chunk into 5-5-5-5
+  // groups — that mangled the real UUID keys and produced "license_key not found".
+  e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9-]/g, '').slice(0, 36);
 }
 
 let freeLimit = 2;
@@ -82,7 +87,10 @@ function updateLicenseUI(license) {
 
     // Show license key (masked)
     if (license.licenseKey) {
-      const masked = license.licenseKey.substring(0, 5) + '-••••-••••-' + license.licenseKey.substring(18);
+      const key = license.licenseKey;
+      const masked = key.length > 12
+        ? key.substring(0, 8) + '-••••-••••-' + key.substring(key.length - 4)
+        : key;
       document.getElementById('licenseKey').textContent = masked;
     }
 
