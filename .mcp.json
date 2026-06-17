@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "gsc": {
+      "command": "tools/gsc-mcp"
+    }
+  }
+}

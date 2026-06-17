@@ -1,0 +1,10 @@
+{
+  "name": "volux-gsc",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Ad-hoc Google Search Console queries for volux.devlifeeasy.com",
+  "dependencies": {
+    "googleapis": "^144.0.0"
+  }
+}

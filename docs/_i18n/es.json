@@ -7,7 +7,7 @@
   "lang_native": "Español",
 
   "meta": {
-    "title": "Volux — Volumen por pestaña con guardado automático | Extensión Chrome & Firefox",
+    "title": "Volux — Control de Volumen por Pestaña | Chrome & Firefox",
     "description": "Guarda automáticamente el volumen por sitio web. Con Pro, define un volumen diferente para cada pestaña de cualquier sitio — YouTube, TikTok, Facebook, Spotify, Twitch. Gratis para Chrome & Firefox.",
     "keywords": "control de volumen por pestaña, volumen chrome, volumen distinto por pestaña, guardar volumen automáticamente, volumen youtube, volumen tiktok, volumen facebook, volumen spotify, recordar volumen, extensión chrome volumen, firefox volumen, volux pro",
     "author": "DevLifeEasy",
@@ -153,7 +153,15 @@
       { "q": "¿Funciona Volux con varias pestañas del mismo sitio?",
         "a": "Sí — dos modos. Por defecto, todas las pestañas del mismo sitio comparten un volumen. Con Pro, podés anular cualquier pestaña individual: tres pestañas del mismo sitio pueden mantener tres volúmenes distintos al mismo tiempo, y el predeterminado del sitio sigue cubriendo las que no personalizaste." },
       { "q": "¿Puedo poner volúmenes distintos en varias pestañas del mismo sitio (YouTube, TikTok, Facebook…)?",
-        "a": "Sí, con Volux Pro. Funciona en cualquier sitio con audio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, sitios de noticias, donde sea. Tocá la insignia «N tabs» en la tarjeta de dominio para expandir la lista por pestaña y arrastrá el control de cualquiera para darle su volumen. La anulación se borra al cerrar la pestaña o cambiar de sitio, así el predeterminado queda limpio." }
+        "a": "Sí, con Volux Pro. Funciona en cualquier sitio con audio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, sitios de noticias, donde sea. Tocá la insignia «N tabs» en la tarjeta de dominio para expandir la lista por pestaña y arrastrá el control de cualquiera para darle su volumen. La anulación se borra al cerrar la pestaña o cambiar de sitio, así el predeterminado queda limpio." },
+      { "q": "¿Puedo silenciar una pestaña en Chrome sin silenciar las demás?",
+        "a": "Sí. Volux le da a cada dominio su propio botón de silencio instantáneo, así podés silenciar un sitio mientras todo lo demás sigue sonando — sin el silencio general del sistema. Con Pro, podés silenciar una pestaña individual de un sitio mientras las demás siguen con audio." },
+      { "q": "¿En qué se diferencia Volux del volumen del navegador o del sistema?",
+        "a": "Tu sistema operativo tiene un volumen general, y el &ldquo;silenciar pestaña&rdquo; del navegador es solo activar/desactivar. Volux agrega verdaderos niveles de volumen por sitio web (y por pestaña con Pro) de 0 a 100% que se recuerdan automáticamente — así YouTube puede estar al 30% mientras una llamada de Zoom queda al 100%, sin tocar el volumen del sistema." },
+      { "q": "¿Funciona Volux en Edge, Brave y otros navegadores Chromium?",
+        "a": "Sí. Volux funciona en Chrome, Microsoft Edge, Brave y otros navegadores basados en Chromium desde Chrome Web Store, y en Firefox desde Firefox Add-ons. Tus volúmenes guardados funcionan igual en todos." },
+      { "q": "¿Volux ralentiza mi navegador o consume batería?",
+        "a": "No. Volux se ejecuta completamente en tu dispositivo, pesa kilobytes, sin polling en segundo plano, sin telemetría ni viajes a la nube. Solo actúa en pestañas que reproducen audio, así que no tiene impacto medible en la velocidad de navegación ni en la batería." }
     ]
   },
 
@@ -211,7 +219,15 @@
       { "q": "¿Volux recopila mis datos?",
         "a": "No. Volux no recopila, almacena ni transmite datos personales. Todos los ajustes se guardan localmente en tu dispositivo. Sin rastreo, sin analítica, sin servidores." },
       { "q": "¿Puedo establecer volúmenes distintos para varias pestañas del mismo sitio (YouTube, TikTok, Facebook, etc.)?",
-        "a": "Sí, con Volux Pro — funciona en cualquier sitio con audio: YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud y donde sea. Expandí la insignia de pestañas en cualquier dominio y arrastrá el control de una pestaña para darle su propio volumen. Tres pestañas del mismo sitio pueden mantener tres volúmenes distintos al mismo tiempo. La anulación se borra al cerrar la pestaña o navegar a otro sitio." }
+        "a": "Sí, con Volux Pro — funciona en cualquier sitio con audio: YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud y donde sea. Expandí la insignia de pestañas en cualquier dominio y arrastrá el control de una pestaña para darle su propio volumen. Tres pestañas del mismo sitio pueden mantener tres volúmenes distintos al mismo tiempo. La anulación se borra al cerrar la pestaña o navegar a otro sitio." },
+      { "q": "¿Puedo silenciar una pestaña en Chrome sin silenciar las demás?",
+        "a": "Sí. Volux le da a cada dominio su propio botón de silencio instantáneo, así podés silenciar un sitio mientras todo lo demás sigue sonando. Con Pro, podés silenciar una pestaña individual de un sitio mientras las demás siguen con audio." },
+      { "q": "¿En qué se diferencia Volux del volumen del navegador o del sistema?",
+        "a": "Tu sistema operativo tiene un volumen general, y el silenciar pestaña del navegador es solo activar/desactivar. Volux agrega verdaderos niveles de volumen por sitio web (y por pestaña con Pro) de 0 a 100% que se recuerdan automáticamente, así YouTube puede estar al 30% mientras una llamada de Zoom queda al 100%." },
+      { "q": "¿Funciona Volux en Edge, Brave y otros navegadores Chromium?",
+        "a": "Sí. Volux funciona en Chrome, Microsoft Edge, Brave y otros navegadores basados en Chromium desde Chrome Web Store, y en Firefox desde Firefox Add-ons. Tus volúmenes guardados funcionan igual en todos." },
+      { "q": "¿Volux ralentiza mi navegador o consume batería?",
+        "a": "No. Volux se ejecuta completamente en tu dispositivo, pesa kilobytes, sin polling en segundo plano, sin telemetría ni viajes a la nube. Solo actúa en pestañas que reproducen audio, así que no tiene impacto medible en la velocidad de navegación ni en la batería." }
     ]
   }
 }

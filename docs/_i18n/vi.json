@@ -153,7 +153,15 @@
       { "q": "Volux có hoạt động với nhiều tab của cùng một website không?",
         "a": "Có — hai chế độ. Mặc định, mọi tab của cùng một trang chia sẻ một mức âm lượng. Với Pro, bạn có thể ghi đè từng tab riêng: ba tab cùng trang có thể giữ ba mức khác nhau cùng lúc, và mức mặc định vẫn áp dụng cho tab chưa tùy chỉnh." },
       { "q": "Tôi có thể đặt mức âm lượng khác nhau cho nhiều tab cùng trang (YouTube, TikTok, Facebook…) không?",
-        "a": "Có, với Volux Pro. Hoạt động trên mọi trang có âm thanh — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, trang tin tức, bất cứ đâu. Nhấp huy hiệu “N tabs” trên thẻ tên miền để mở danh sách theo tab, sau đó kéo thanh trượt của tab bất kỳ để gán mức riêng. Ghi đè tự xoá khi bạn đóng tab hoặc chuyển sang trang khác, giữ mức mặc định của website sạch sẽ." }
+        "a": "Có, với Volux Pro. Hoạt động trên mọi trang có âm thanh — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, trang tin tức, bất cứ đâu. Nhấp huy hiệu "N tabs" trên thẻ tên miền để mở danh sách theo tab, sau đó kéo thanh trượt của tab bất kỳ để gán mức riêng. Ghi đè tự xoá khi bạn đóng tab hoặc chuyển sang trang khác, giữ mức mặc định của website sạch sẽ." },
+      { "q": "Tôi có thể tắt tiếng một tab trong Chrome mà không tắt các tab khác không?",
+        "a": "Được. Volux cung cấp nút tắt tiếng tức thì cho từng tên miền, nên bạn có thể im lặng một trang trong khi mọi thứ khác vẫn phát — không cần nút tắt tiếng toàn hệ thống kiểu tất-cả-hoặc-không. Với Pro, bạn có thể tắt tiếng một tab riêng lẻ của một trang trong khi các tab khác vẫn có âm thanh." },
+      { "q": "Volux khác gì so với âm lượng trình duyệt hoặc âm lượng hệ thống?",
+        "a": "Hệ điều hành chỉ có một mức âm lượng chung, và nút &ldquo;tắt tiếng tab&rdquo; của trình duyệt chỉ là bật/tắt. Volux thêm mức âm lượng thực sự theo từng website (và theo tab với Pro) từ 0–100% được nhớ tự động — YouTube có thể ở 30% trong khi cuộc gọi Zoom ở 100%, không cần chạm vào âm lượng hệ thống." },
+      { "q": "Volux có hoạt động trên Edge, Brave và các trình duyệt Chromium khác không?",
+        "a": "Có. Volux chạy trên Chrome, Microsoft Edge, Brave và các trình duyệt Chromium khác từ Chrome Web Store, và trên Firefox từ Firefox Add-ons. Các mức âm lượng đã lưu hoạt động giống nhau trên tất cả." },
+      { "q": "Volux có làm chậm trình duyệt hoặc hao pin không?",
+        "a": "Không. Volux chạy hoàn toàn trên thiết bị của bạn, đo bằng kilobyte, không polling nền, không telemetry, không gọi cloud. Chỉ tác động lên các tab đang phát âm thanh, nên không có ảnh hưởng đáng kể đến tốc độ duyệt web hay pin." }
     ]
   },
 
@@ -211,7 +219,15 @@
       { "q": "Volux có thu thập dữ liệu của tôi không?",
         "a": "Không. Volux không thu thập, lưu trữ hay truyền bất kỳ dữ liệu cá nhân nào. Mọi cài đặt ở trên máy bạn. Không theo dõi, không analytics, không server." },
       { "q": "Tôi có thể đặt âm lượng khác nhau cho nhiều tab cùng trang (YouTube, TikTok, Facebook, v.v.) không?",
-        "a": "Có, với Volux Pro — hoạt động trên mọi trang có âm thanh: YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud và bất cứ đâu. Mở huy hiệu tab trên tên miền và kéo thanh trượt của từng tab để gán mức riêng. Ba tab cùng trang có thể giữ ba mức khác nhau đồng thời. Ghi đè tự xoá khi bạn đóng tab hoặc chuyển trang." }
+        "a": "Có, với Volux Pro — hoạt động trên mọi trang có âm thanh: YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud và bất cứ đâu. Mở huy hiệu tab trên tên miền và kéo thanh trượt của từng tab để gán mức riêng. Ba tab cùng trang có thể giữ ba mức khác nhau đồng thời. Ghi đè tự xoá khi bạn đóng tab hoặc chuyển trang." },
+      { "q": "Tôi có thể tắt tiếng một tab trong Chrome mà không tắt các tab khác không?",
+        "a": "Được. Volux cung cấp nút tắt tiếng tức thì cho từng tên miền, nên bạn có thể im lặng một trang trong khi mọi thứ khác vẫn phát. Với Pro, bạn có thể tắt tiếng một tab riêng lẻ của một trang trong khi các tab khác vẫn có âm thanh." },
+      { "q": "Volux khác gì so với âm lượng trình duyệt hoặc âm lượng hệ thống?",
+        "a": "Hệ điều hành chỉ có một mức âm lượng chung, và nút tắt tiếng tab của trình duyệt chỉ là bật/tắt. Volux thêm mức âm lượng thực sự theo từng website (và theo tab với Pro) từ 0–100% được nhớ tự động — YouTube có thể ở 30% trong khi cuộc gọi Zoom ở 100%, không cần chạm vào âm lượng hệ thống." },
+      { "q": "Volux có hoạt động trên Edge, Brave và các trình duyệt Chromium khác không?",
+        "a": "Có. Volux chạy trên Chrome, Microsoft Edge, Brave và các trình duyệt Chromium khác từ Chrome Web Store, và trên Firefox từ Firefox Add-ons. Các mức âm lượng đã lưu hoạt động giống nhau trên tất cả." },
+      { "q": "Volux có làm chậm trình duyệt hoặc hao pin không?",
+        "a": "Không. Volux chạy hoàn toàn trên thiết bị của bạn, đo bằng kilobyte, không polling nền, không telemetry, không gọi cloud. Chỉ tác động lên các tab đang phát âm thanh, nên không có ảnh hưởng đáng kể đến tốc độ duyệt web hay pin." }
     ]
   }
 }

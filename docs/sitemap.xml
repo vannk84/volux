@@ -5,7 +5,7 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://volux.devlifeeasy.com/</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://volux.devlifeeasy.com/"/>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://volux.devlifeeasy.com/vi/</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://volux.devlifeeasy.com/"/>
@@ -55,7 +55,7 @@
   </url>
   <url>
     <loc>https://volux.devlifeeasy.com/zh/</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://volux.devlifeeasy.com/"/>
@@ -68,7 +68,7 @@
   </url>
   <url>
     <loc>https://volux.devlifeeasy.com/es/</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://volux.devlifeeasy.com/"/>
@@ -81,7 +81,7 @@
   </url>
   <url>
     <loc>https://volux.devlifeeasy.com/pt/</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://volux.devlifeeasy.com/"/>
@@ -94,7 +94,7 @@
   </url>
   <url>
     <loc>https://volux.devlifeeasy.com/ja/</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://volux.devlifeeasy.com/"/>
@@ -107,19 +107,19 @@
   </url>
   <url>
     <loc>https://volux.devlifeeasy.com/privacy.html</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://volux.devlifeeasy.com/terms.html</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://volux.devlifeeasy.com/refund.html</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Launch the Google Search Console MCP server (mcp-server-gsc) using a
+# service-account JSON. Portable: no absolute paths and no key committed to git.
+#
+# The credential lives at tmp/gsc-credentials.json (gitignored). Recreate it on a
+# new machine by copying the GSC service-account JSON there:
+#   cp /path/to/service-account.json tmp/gsc-credentials.json && chmod 600 tmp/gsc-credentials.json
+#
+# The service account (volux-718@my-project-1473230869100.iam.gserviceaccount.com)
+# must be added as a user on the Search Console Domain property
+# sc-domain:volux.devlifeeasy.com (Settings -> Users and permissions).
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+CRED_FILE="$PWD/tmp/gsc-credentials.json"
+
+if [[ ! -f "$CRED_FILE" ]]; then
+  echo "Missing $CRED_FILE — copy the GSC service-account JSON there first." >&2
+  exit 1
+fi
+
+export GOOGLE_APPLICATION_CREDENTIALS="$CRED_FILE"
+exec npx -y mcp-server-gsc

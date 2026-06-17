@@ -153,7 +153,15 @@
       { "q": "O Volux funciona com várias abas do mesmo site?",
         "a": "Sim — dois modos. Por padrão, todas as abas do mesmo site compartilham um volume. Com o Pro, você pode sobrepor qualquer aba individualmente: três abas do mesmo site podem manter três volumes diferentes ao mesmo tempo, e o padrão do site ainda cobre as abas não personalizadas." },
       { "q": "Posso colocar volumes diferentes em várias abas do mesmo site (YouTube, TikTok, Facebook…)?",
-        "a": "Sim, com o Volux Pro. Funciona em qualquer site com áudio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, sites de notícias, onde for. Toque no selo “N abas” no card do domínio para expandir a lista por aba e arraste o controle de qualquer aba para dar o volume próprio. O override é apagado ao fechar a aba ou navegar para outro site, mantendo o padrão do site limpo." }
+        "a": "Sim, com o Volux Pro. Funciona em qualquer site com áudio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, sites de notícias, onde for. Toque no selo "N abas" no card do domínio para expandir a lista por aba e arraste o controle de qualquer aba para dar o volume próprio. O override é apagado ao fechar a aba ou navegar para outro site, mantendo o padrão do site limpo." },
+      { "q": "Posso mutar uma aba no Chrome sem mutar as outras?",
+        "a": "Sim. O Volux dá a cada domínio um botão de mudo instantâneo, então você pode silenciar um site enquanto tudo continua tocando — sem precisar do mudo geral do sistema. Com o Pro, você pode mutar uma aba individual de um site enquanto as outras continuam com áudio." },
+      { "q": "Qual a diferença entre o Volux e o volume do navegador ou do sistema?",
+        "a": "Seu sistema operacional tem um único volume geral, e o &ldquo;mutar aba&rdquo; do navegador é apenas liga/desliga. O Volux adiciona níveis reais de volume por site (e por aba com o Pro) de 0 a 100% que são lembrados automaticamente — então o YouTube pode ficar em 30% enquanto uma chamada de Zoom fica em 100%, sem mexer no volume do sistema." },
+      { "q": "O Volux funciona no Edge, Brave e outros navegadores Chromium?",
+        "a": "Sim. O Volux funciona no Chrome, Microsoft Edge, Brave e outros navegadores baseados em Chromium pela Chrome Web Store, e no Firefox pelo Firefox Add-ons. Seus volumes salvos funcionam da mesma forma em todos." },
+      { "q": "O Volux vai deixar meu navegador lento ou gastar bateria?",
+        "a": "Não. O Volux roda inteiramente no seu dispositivo, medido em kilobytes, sem polling em segundo plano, sem telemetria e sem idas à nuvem. Só age em abas que reproduzem áudio, então não tem impacto mensurável na velocidade de navegação ou na bateria." }
     ]
   },
 
@@ -211,7 +219,15 @@
       { "q": "O Volux coleta meus dados?",
         "a": "Não. O Volux não coleta, armazena ou transmite dados pessoais. Todos os ajustes ficam salvos localmente no seu dispositivo. Sem rastreamento, sem analytics, sem servidores." },
       { "q": "Posso definir volumes diferentes para várias abas do mesmo site (YouTube, TikTok, Facebook, etc.)?",
-        "a": "Sim, com o Volux Pro — funciona em qualquer site com áudio: YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud e onde for. Expanda o selo de abas em qualquer domínio e arraste o controle de uma aba para dar a ela o próprio volume. Três abas do mesmo site podem manter três volumes diferentes ao mesmo tempo. O override é apagado ao fechar a aba ou mudar de site." }
+        "a": "Sim, com o Volux Pro — funciona em qualquer site com áudio: YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud e onde for. Expanda o selo de abas em qualquer domínio e arraste o controle de uma aba para dar a ela o próprio volume. Três abas do mesmo site podem manter três volumes diferentes ao mesmo tempo. O override é apagado ao fechar a aba ou mudar de site." },
+      { "q": "Posso mutar uma aba no Chrome sem mutar as outras?",
+        "a": "Sim. O Volux dá a cada domínio um botão de mudo instantâneo, então você pode silenciar um site enquanto tudo continua tocando. Com o Pro, você pode mutar uma aba individual de um site enquanto as outras continuam com áudio." },
+      { "q": "Qual a diferença entre o Volux e o volume do navegador ou do sistema?",
+        "a": "Seu sistema operacional tem um único volume geral, e o mutar aba do navegador é apenas liga/desliga. O Volux adiciona níveis reais de volume por site (e por aba com o Pro) de 0 a 100% que são lembrados automaticamente, então o YouTube pode ficar em 30% enquanto uma chamada de Zoom fica em 100%." },
+      { "q": "O Volux funciona no Edge, Brave e outros navegadores Chromium?",
+        "a": "Sim. O Volux funciona no Chrome, Microsoft Edge, Brave e outros navegadores baseados em Chromium pela Chrome Web Store, e no Firefox pelo Firefox Add-ons. Seus volumes salvos funcionam da mesma forma em todos." },
+      { "q": "O Volux vai deixar meu navegador lento ou gastar bateria?",
+        "a": "Não. O Volux roda inteiramente no seu dispositivo, medido em kilobytes, sem polling em segundo plano, sem telemetria e sem idas à nuvem. Só age em abas que reproduzem áudio, então não tem impacto mensurável na velocidade de navegação ou na bateria." }
     ]
   }
 }

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — This page is muted · Volux</title>
+  <meta name="description" content="The page you were looking for could not be found. Head back to Volux — per-tab volume control for Chrome & Firefox.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#141210">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://volux.devlifeeasy.com/404.html">
+  <meta property="og:site_name" content="Volux">
+  <meta property="og:title" content="404 — This page is muted · Volux">
+  <meta property="og:description" content="That URL doesn't play here. Turn the volume back up on the Volux homepage.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/vannk84/volux/main/icons/icon32.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Shared site chrome -->
+  <link rel="stylesheet" href="/assets/site.css">
+
+  <script src="/assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/" aria-label="Volux home">Volux</a>
+      <nav class="top-nav" aria-label="Primary">
+        <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu-mobile" data-nav-toggle>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" data-nav-icon-open/>
+            <path d="M6 6l12 12M18 6L6 18" data-nav-icon-close style="display:none"/>
+          </svg>
+        </button>
+        <a href="/#features">Features</a>
+        <a href="/#per-tab">Per-Tab</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#faq">FAQ</a>
+        <a class="install" href="https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm">Install</a>
+      </nav>
+    </div>
+    <div class="nav-menu-mobile" id="nav-menu-mobile" data-nav-menu>
+      <a href="/#features">Features</a>
+      <a href="/#per-tab">Per-Tab</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="eyebrow">Error 404 · Signal lost</div>
+      <h1>This page is <em>muted</em>.</h1>
+      <p class="subtitle">The URL you followed doesn&rsquo;t play here — it may have moved, been renamed, or never existed. Let&rsquo;s turn the volume back up.</p>
+
+      <!-- On-brand motif: a volume slider pulled all the way down to 0% -->
+      <div role="img" aria-label="Volume slider muted at 0 percent" style="margin: 8px 0 36px;">
+        <svg viewBox="0 0 520 96" width="100%" style="max-width:520px; height:auto; overflow:visible;" fill="none" aria-hidden="true">
+          <!-- muted speaker -->
+          <g stroke="var(--ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M30 38v20h12l16 13V25L42 38H30z" fill="var(--ink)"/>
+            <path d="M70 36l22 24M92 36L70 60" stroke="var(--vermilion)" stroke-width="3.5"/>
+          </g>
+          <!-- 0% track -->
+          <line x1="120" y1="48" x2="500" y2="48" stroke="var(--rule-strong)" stroke-width="3" stroke-linecap="round"/>
+          <!-- filled portion sits at the very start: muted -->
+          <line x1="120" y1="48" x2="126" y2="48" stroke="var(--vermilion)" stroke-width="6" stroke-linecap="round"/>
+          <!-- handle parked at 0% -->
+          <g>
+            <circle cx="126" cy="48" r="13" fill="var(--card)" stroke="var(--vermilion)" stroke-width="3"/>
+            <circle cx="126" cy="48" r="4" fill="var(--vermilion)"/>
+            <animateTransform attributeName="transform" type="translate" dur="3.2s" repeatCount="indefinite"
+              keyTimes="0;0.5;1" values="0 0; 0 -4; 0 0" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"/>
+          </g>
+          <!-- 0% label -->
+          <text x="500" y="84" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="15" letter-spacing="2" fill="var(--ink-3)">0%</text>
+        </svg>
+      </div>
+
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a class="btn primary" href="/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11l9-8 9 8M5 9v11h5v-6h4v6h5V9"/></svg>
+          Back to home
+        </a>
+        <a class="btn ghost" href="/#features">Browse features</a>
+      </div>
+
+      <dl class="page-meta">
+        <div><dt>Try instead</dt><dd><a href="/#pricing" style="color:inherit;">Pricing</a></dd></div>
+        <div><dt>Questions</dt><dd><a href="/#faq" style="color:inherit;">FAQ</a></dd></div>
+        <div><dt>Get Volux</dt><dd><a href="https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm" style="color:inherit;">Install</a></dd></div>
+      </dl>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot-inner">
+      <div>
+        <div class="foot-brand">Volux</div>
+        <p class="foot-tag">Per-tab volume control for Chrome &amp; Firefox. Made with care by <a href="https://github.com/vannk84" style="color:var(--amber);">vannk84</a>.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#per-tab">Per-tab · Pro</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Install</h4>
+        <ul>
+          <li><a href="https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm">Chrome Web Store</a></li>
+          <li><a href="https://addons.mozilla.org/en-US/firefox/addon/volux-premium-volume-control/">Firefox Add-ons</a></li>
+          <li><a href="https://github.com/vannk84/volux" rel="noopener">GitHub source</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/terms.html">Terms</a></li>
+          <li><a href="/refund.html">Refunds</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+          <li><a href="mailto:support@devlifeeasy.com">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© DevLifeEasy · Volux v1.0.5</span>
+      <span>No tracking · No accounts · Local storage only</span>
+    </div>
+  </footer>
+</body>
+</html>

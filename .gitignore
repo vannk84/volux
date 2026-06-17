@@ -19,3 +19,7 @@ tools/bin/
 .DS_Store
 Thumbs.db
 *.swp
+
+# Google Search Console service-account credentials (never commit secrets).
+# Regenerate by copying the service-account JSON to tmp/gsc-credentials.json.
+tmp/
