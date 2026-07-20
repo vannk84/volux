@@ -32,6 +32,10 @@
   // native element.volume — zero risk for ordinary use.
   let audioContext = null;
   const boostNodes = new WeakMap(); // element -> { source, gain }
+  // Elements where createMediaElementSource threw (e.g. the page already owns
+  // a source node for them). That failure is permanent, so don't retry it on
+  // every 1s re-apply tick.
+  const routingFailed = new WeakSet();
 
   function ensureAudioContext() {
     if (!audioContext) {
@@ -52,23 +56,69 @@
     return audioContext;
   }
 
-  // Build (or fetch the cached) gain chain for an element. Returns null if Web
-  // Audio is unavailable or the element can't be routed (source already taken,
-  // or CORS-tainted media that createMediaElementSource refuses).
+  // Master limiter shared by every boosted element. A raw 3x gain straight
+  // into the destination hard-clips; a compressor with a high ratio and fast
+  // attack saturates gracefully instead.
+  let limiter = null;
+  function ensureLimiter(ctx) {
+    if (!limiter) {
+      limiter = ctx.createDynamicsCompressor();
+      limiter.threshold.value = -6;
+      limiter.knee.value = 0;
+      limiter.ratio.value = 20;
+      limiter.attack.value = 0.003;
+      limiter.release.value = 0.25;
+      limiter.connect(ctx.destination);
+    }
+    return limiter;
+  }
+
+  // Cross-origin media without CORS approval does NOT make
+  // createMediaElementSource throw — the source is tainted and outputs
+  // silence forever. Routing such an element would mute it instead of
+  // boosting it, so only route media we can prove is CORS-clean:
+  // same-origin, blob:/data: (MSE and inline data), or fetched with a
+  // crossorigin attribute (if the server had refused CORS, the media
+  // wouldn't be playing at all).
+  function canRouteElement(element) {
+    // MediaStream-backed elements are unreliable through
+    // createMediaElementSource; leave them on native volume.
+    if (element.srcObject) return false;
+    const src = element.currentSrc || element.src;
+    if (!src) return false; // no source yet — re-checked on the next apply
+    if (src.startsWith('blob:') || src.startsWith('data:')) return true;
+    if (element.crossOrigin === 'anonymous' || element.crossOrigin === 'use-credentials') return true;
+    try {
+      return new URL(src, window.location.href).origin === window.location.origin;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // Build (or fetch the cached) gain chain for an element. Returns null when
+  // the element can't (yet) be routed; applyVolumeToElement then falls back
+  // to native volume capped at 100%.
   function getBoostNodes(element) {
     const existing = boostNodes.get(element);
     if (existing) return existing;
+    if (routingFailed.has(element)) return null;
+    if (!canRouteElement(element)) return null;
     const ctx = ensureAudioContext();
     if (!ctx) return null;
+    // Routing through a suspended context silences the element until a user
+    // gesture resumes it. Stay on native volume until the context is live —
+    // the gesture listeners below re-apply as soon as it resumes.
+    if (ctx.state !== 'running') return null;
     try {
       const source = ctx.createMediaElementSource(element);
       const gain = ctx.createGain();
       source.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(ensureLimiter(ctx));
       const nodes = { source, gain };
       boostNodes.set(element, nodes);
       return nodes;
     } catch (e) {
+      routingFailed.add(element);
       return null;
     }
   }
@@ -210,7 +260,9 @@
   ['pointerdown', 'keydown', 'play'].forEach((evt) => {
     document.addEventListener(evt, () => {
       if (audioContext && audioContext.state === 'suspended') {
-        audioContext.resume().catch(() => {});
+        // Re-apply after resume so elements waiting on a live context get
+        // routed immediately instead of on the next 1s tick.
+        audioContext.resume().then(applyVolumeToAll).catch(() => {});
       }
     }, { capture: true, passive: true });
   });

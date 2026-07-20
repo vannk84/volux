@@ -671,7 +671,10 @@ async function clearTabOverride(tabId) {
   if (!saved) return { success: true };
 
   try {
-    await browser.tabs.sendMessage(tabId, { type: 'SET_VOLUME', volume: saved.volume / 100 });
+    // Clamp so a >100% state saved under a former Pro license can't be
+    // re-applied after a downgrade.
+    const volume = await clampVolumeForLicense(saved.volume);
+    await browser.tabs.sendMessage(tabId, { type: 'SET_VOLUME', volume: volume / 100 });
     await browser.tabs.sendMessage(tabId, { type: 'SET_MUTED', muted: saved.muted });
   } catch {}
   return { success: true };
@@ -818,9 +821,12 @@ browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
       (tabDomain === override.domain || tabDomain.endsWith('.' + override.domain));
     if (sameDomain) {
       try {
+        // Overrides are created Pro-only, but they persist — clamp so a
+        // stale 300% override can't outlive a downgrade.
+        const volume = await clampVolumeForLicense(override.volume);
         await browser.tabs.sendMessage(tabId, {
           type: 'SET_VOLUME',
-          volume: override.volume / 100
+          volume: volume / 100
         });
         await browser.tabs.sendMessage(tabId, {
           type: 'SET_MUTED',
@@ -842,9 +848,10 @@ browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     const saved = await getSavedStateForOrigin(origin);
     if (saved) {
       try {
+        const volume = await clampVolumeForLicense(saved.volume);
         await browser.tabs.sendMessage(tabId, {
           type: 'SET_VOLUME',
-          volume: saved.volume / 100
+          volume: volume / 100
         });
         await browser.tabs.sendMessage(tabId, {
           type: 'SET_MUTED',

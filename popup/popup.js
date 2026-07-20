@@ -757,7 +757,7 @@ function renderTabRow(tab) {
         class="per-tab-slider volume-slider ${boosting ? 'boosting' : ''}"
         data-tab-id="${tab.id}"
         min="0"
-        max="${MAX_BOOST}"
+        max="${maxVolume()}"
         value="${tab.volume}"
         ${tab.muted ? 'disabled' : ''}
       >
