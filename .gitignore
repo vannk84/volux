@@ -15,6 +15,14 @@ tools/audio/
 tools/yt-dlp
 tools/bin/
 
+# Local scratch — holds service-account keys (tmp/gsc-credentials.json),
+# must never be committed
+tmp/
+*credentials*.json
+
+# Playwright MCP session artifacts
+.playwright-mcp/
+
 # OS junk
 .DS_Store
 Thumbs.db
