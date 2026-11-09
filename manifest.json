@@ -5,7 +5,8 @@
   "description": "Auto-save volume per site. Pro adds per-tab override — each tab on YouTube, TikTok, Facebook, or any site keeps its own volume.",
   "permissions": [
     "tabs",
-    "storage"
+    "storage",
+    "scripting"
   ],
   "host_permissions": [
     "<all_urls>"

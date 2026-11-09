@@ -7,9 +7,30 @@
   // Cross-browser compatibility
   const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
 
-  // Avoid running multiple times
-  if (window.__voluxControllerLoaded) return;
-  window.__voluxControllerLoaded = true;
+  // An instance is "alive" while its extension context is valid. After the
+  // extension is updated/reloaded, the old instance keeps running in open tabs
+  // but its runtime is gone (runtime.id becomes undefined): it can no longer
+  // receive messages, yet its timers and listeners would keep forcing the OLD
+  // volume and fight the new instance — the "can't control until reload" bug.
+  function isContextAlive() {
+    try {
+      return !!(browserAPI.runtime && browserAPI.runtime.id);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // Avoid running twice in the same live context (manifest injection plus an
+  // on-demand executeScript), but replace an orphaned predecessor.
+  const previous = window.__voluxController;
+  if (previous && previous.isAlive()) return;
+  if (previous) previous.teardown();
+
+  // Every listener this instance installs is bound to this signal so teardown
+  // can remove them all at once.
+  const lifetime = new AbortController();
+  const { signal } = lifetime;
+  const TAKEOVER_EVENT = 'volux:takeover';
 
   // Volume multiplier. 0–1 is plain attenuation; >1 is a boost that the
   // native element.volume can't reach (browsers clamp it to [0,1]), so we
@@ -32,6 +53,10 @@
   // native element.volume — zero risk for ordinary use.
   let audioContext = null;
   const boostNodes = new WeakMap(); // element -> { source, gain }
+  // Strong list of gain nodes so teardown can reset them to passthrough; a
+  // source node can't be re-created by the next instance, so a stale boost
+  // gain would otherwise stay stuck on the element.
+  const gainNodes = new Set();
   // Elements where createMediaElementSource threw (e.g. the page already owns
   // a source node for them). That failure is permanent, so don't retry it on
   // every 1s re-apply tick.
@@ -116,6 +141,7 @@
       gain.connect(ensureLimiter(ctx));
       const nodes = { source, gain };
       boostNodes.set(element, nodes);
+      gainNodes.add(gain);
       return nodes;
     } catch (e) {
       routingFailed.add(element);
@@ -137,6 +163,8 @@
   }
 
   // Apply the current volume/mute state to a single media element.
+  // NOTE: must not mark the element as set up — only setupMediaElement does,
+  // otherwise an element first touched here never gets its volumechange guard.
   function applyVolumeToElement(element) {
     try {
       const multiplier = globalMuted ? 0 : globalVolume;
@@ -147,25 +175,27 @@
       if (routed) {
         const nodes = getBoostNodes(element);
         if (nodes) {
+          // A context suspended after routing (e.g. page backgrounded) ignores
+          // gain changes; nudge it back.
+          if (audioContext && audioContext.state === 'suspended') {
+            audioContext.resume().catch(() => {});
+          }
           nodes.gain.gain.value = multiplier; // mute → 0, boost → up to MAX
           const elemTarget = globalMuted ? 0 : 1;
           if (Math.abs(element.volume - elemTarget) > 0.01) {
             element.volume = elemTarget;
           }
-          controlledElements.add(element);
           return;
         }
         // Routing unavailable (CORS/no Web Audio) — do the best the bare
         // element can: full volume, capped at 100%.
         const fallback = Math.min(multiplier, 1);
         if (Math.abs(element.volume - fallback) > 0.01) element.volume = fallback;
-        controlledElements.add(element);
         return;
       }
 
       // Plain path: ≤100% and never routed.
       if (Math.abs(element.volume - multiplier) > 0.01) element.volume = multiplier;
-      controlledElements.add(element);
     } catch (e) {
       // Some elements may not support volume control
     }
@@ -203,7 +233,7 @@
       if (now - last < 250) return;
       reapplyCooldown.set(element, now);
       element.volume = expectedVolume;
-    });
+    }, { signal });
 
     // Notify background script
     browserAPI.runtime.sendMessage({ type: 'AUDIO_DETECTED' }).catch(() => {});
@@ -233,6 +263,8 @@
     }
   });
 
+  signal.addEventListener('abort', () => observer.disconnect());
+
   // Start observing
   observer.observe(document.documentElement, {
     childList: true,
@@ -241,7 +273,7 @@
 
   // Setup existing elements
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', findAndSetupMediaElements);
+    document.addEventListener('DOMContentLoaded', findAndSetupMediaElements, { signal });
   } else {
     findAndSetupMediaElements();
   }
@@ -252,7 +284,7 @@
     if (target.tagName === 'AUDIO' || target.tagName === 'VIDEO') {
       setupMediaElement(target);
     }
-  }, true);
+  }, { capture: true, signal });
 
   // A suspended AudioContext can only resume after a user gesture in the page.
   // Volume changes are driven from the popup (a different context), so nudge it
@@ -264,16 +296,23 @@
         // routed immediately instead of on the next 1s tick.
         audioContext.resume().then(applyVolumeToAll).catch(() => {});
       }
-    }, { capture: true, passive: true });
+    }, { capture: true, passive: true, signal });
   });
 
-  // Periodically re-apply volume (handles dynamic content like YouTube)
-  setInterval(() => {
+  // Periodically re-apply volume (handles dynamic content like YouTube). The
+  // tick doubles as the orphan check: once our extension context is gone we
+  // stand down instead of fighting the replacement instance.
+  const tick = setInterval(() => {
+    if (!isContextAlive()) {
+      teardown();
+      return;
+    }
     applyVolumeToAll();
   }, 1000);
+  signal.addEventListener('abort', () => clearInterval(tick));
 
   // Listen for messages from background script
-  browserAPI.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  function onRuntimeMessage(message, sender, sendResponse) {
     switch (message.type) {
       case 'SET_VOLUME':
         globalVolume = message.volume;
@@ -299,7 +338,35 @@
         sendResponse({ success: false });
     }
     return true;
-  });
+  }
+  browserAPI.runtime.onMessage.addListener(onRuntimeMessage);
+
+  function teardown() {
+    if (signal.aborted) return;
+    lifetime.abort();
+    try {
+      browserAPI.runtime.onMessage.removeListener(onRuntimeMessage);
+    } catch (e) {}
+    // Leave boosted elements at unity gain so the next instance (which falls
+    // back to native element.volume) is in control of the audible level.
+    gainNodes.forEach((gain) => {
+      try { gain.gain.value = 1; } catch (e) {}
+    });
+    if (window.__voluxController === controller) {
+      delete window.__voluxController;
+    }
+  }
+
+  const controller = { isAlive: isContextAlive, teardown };
+  window.__voluxController = controller;
+
+  // Content scripts of different extension instances may live in separate
+  // isolated worlds (so the window handle above isn't shared), but DOM events
+  // are. Announce ourselves; any orphaned predecessor that hears it stands down.
+  document.addEventListener(TAKEOVER_EVENT, () => {
+    if (!isContextAlive()) teardown();
+  }, { signal });
+  document.dispatchEvent(new CustomEvent(TAKEOVER_EVENT));
 
   // Get initial state from background
   browserAPI.runtime.sendMessage({ type: 'GET_TAB_STATE' }).then(state => {
