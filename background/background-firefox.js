@@ -517,7 +517,7 @@ async function setDomainVolume(origin, volume) {
         continue;
       }
       try {
-        await browser.tabs.sendMessage(tab.id, {
+        await sendToTab(tab.id, {
           type: 'SET_VOLUME',
           volume: volume / 100
         });
@@ -551,7 +551,7 @@ async function setDomainMuted(origin, muted) {
         continue;
       }
       try {
-        await browser.tabs.sendMessage(tab.id, {
+        await sendToTab(tab.id, {
           type: 'SET_MUTED',
           muted: muted
         });
@@ -596,7 +596,7 @@ async function setTabVolume(tabId, volume) {
   await persistTabOverrides();
 
   try {
-    await browser.tabs.sendMessage(tabId, {
+    await sendToTab(tabId, {
       type: 'SET_VOLUME',
       volume: volume / 100
     });
@@ -632,7 +632,7 @@ async function setTabMuted(tabId, muted) {
   await persistTabOverrides();
 
   try {
-    await browser.tabs.sendMessage(tabId, {
+    await sendToTab(tabId, {
       type: 'SET_MUTED',
       muted: muted
     });
@@ -660,11 +660,59 @@ async function clearTabOverride(tabId) {
   if (!saved) return { success: true };
 
   try {
-    await browser.tabs.sendMessage(tabId, { type: 'SET_VOLUME', volume: saved.volume / 100 });
-    await browser.tabs.sendMessage(tabId, { type: 'SET_MUTED', muted: saved.muted });
+    await sendToTab(tabId, { type: 'SET_VOLUME', volume: saved.volume / 100 });
+    await sendToTab(tabId, { type: 'SET_MUTED', muted: saved.muted });
   } catch {}
   return { success: true };
 }
+
+// ── Content-script delivery ────────────────────────────────────────────────
+// A tab can lose its content script without the page reloading: tabs that were
+// already open when the extension was installed/updated/reloaded never get the
+// manifest script, and the old instance is orphaned (its runtime is gone). A
+// plain tabs.sendMessage then fails with "Receiving end does not exist" and the
+// tab is uncontrollable until the user reloads it. Inject on demand and retry.
+function isInjectableUrl(url) {
+  return typeof url === 'string' && /^(https?|file):/.test(url);
+}
+
+async function injectContentScript(tabId) {
+  try {
+    await browser.tabs.executeScript(tabId, {
+      file: '/content/content.js',
+      allFrames: true,
+      runAt: 'document_start'
+    });
+    return true;
+  } catch {
+    // Restricted page (store, about:, PDF viewer…) — nothing we can do.
+    return false;
+  }
+}
+
+async function sendToTab(tabId, message) {
+  try {
+    return await browser.tabs.sendMessage(tabId, message);
+  } catch (firstError) {
+    const tab = await browser.tabs.get(tabId).catch(() => null);
+    if (!tab || !isInjectableUrl(tab.url) || tab.discarded) throw firstError;
+    if (!(await injectContentScript(tabId))) throw firstError;
+    // The fresh script pulls its own state via GET_TAB_STATE, but deliver the
+    // message too so the caller gets a real response.
+    return await browser.tabs.sendMessage(tabId, message);
+  }
+}
+
+// Re-arm every open tab after install/update so they're controllable without a
+// manual reload. The new instance tells any orphaned old one to stand down.
+browser.runtime.onInstalled.addListener(async () => {
+  const tabs = await browser.tabs.query({}).catch(() => []);
+  await Promise.all(
+    tabs
+      .filter(tab => isInjectableUrl(tab.url) && !tab.discarded)
+      .map(tab => injectContentScript(tab.id))
+  );
+});
 
 // Listen for messages from popup and content scripts
 browser.runtime.onMessage.addListener((message, sender) => {
