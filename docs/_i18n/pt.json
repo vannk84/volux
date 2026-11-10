@@ -7,8 +7,8 @@
   "lang_native": "Português",
 
   "meta": {
-    "title": "Volux — Volume por aba com salvamento automático | Extensão Chrome & Firefox",
-    "description": "Salva automaticamente o volume de cada site. Com o Pro, defina um volume diferente para cada aba de qualquer site — YouTube, TikTok, Facebook, Spotify, Twitch. Grátis para Chrome & Firefox.",
+    "title": "Volux — Volume por aba e salvamento automático",
+    "description": "Salva o volume de cada site automaticamente. Com o Pro, cada aba tem seu próprio volume no YouTube, TikTok, Spotify ou Twitch. Grátis.",
     "keywords": "volume por aba, controle de volume chrome, volume diferente por aba mesmo site, salvar volume automático, volume youtube, volume tiktok, volume facebook, volume spotify, lembrar volume, extensão chrome volume, firefox volume, volux pro",
     "author": "DevLifeEasy",
     "og_title": "Volux — Volume por aba com salvamento automático",
@@ -153,7 +153,7 @@
       { "q": "O Volux funciona com várias abas do mesmo site?",
         "a": "Sim — dois modos. Por padrão, todas as abas do mesmo site compartilham um volume. Com o Pro, você pode sobrepor qualquer aba individualmente: três abas do mesmo site podem manter três volumes diferentes ao mesmo tempo, e o padrão do site ainda cobre as abas não personalizadas." },
       { "q": "Posso colocar volumes diferentes em várias abas do mesmo site (YouTube, TikTok, Facebook…)?",
-        "a": "Sim, com o Volux Pro. Funciona em qualquer site com áudio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, sites de notícias, onde for. Toque no selo "N abas" no card do domínio para expandir a lista por aba e arraste o controle de qualquer aba para dar o volume próprio. O override é apagado ao fechar a aba ou navegar para outro site, mantendo o padrão do site limpo." },
+        "a": "Sim, com o Volux Pro. Funciona em qualquer site com áudio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, sites de notícias, onde for. Toque no selo “N abas” no card do domínio para expandir a lista por aba e arraste o controle de qualquer aba para dar o volume próprio. O override é apagado ao fechar a aba ou navegar para outro site, mantendo o padrão do site limpo." },
       { "q": "Posso mutar uma aba no Chrome sem mutar as outras?",
         "a": "Sim. O Volux dá a cada domínio um botão de mudo instantâneo, então você pode silenciar um site enquanto tudo continua tocando — sem precisar do mudo geral do sistema. Com o Pro, você pode mutar uma aba individual de um site enquanto as outras continuam com áudio." },
       { "q": "Qual a diferença entre o Volux e o volume do navegador ou do sistema?",

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — Volux | No Data Collection, 100% Private</title>
-  <meta name="description" content="Volux Privacy Policy: no data collection, no tracking, no analytics. All volume settings stored locally on your device. Chrome & Firefox extension with complete privacy.">
+  <meta name="description" content="Volux Privacy Policy: the extension collects no data and runs no tracking or analytics. Volume settings stay stored locally on your device.">
   <meta name="keywords" content="volux privacy policy, no data collection, private browser extension, local storage only, no tracking extension">
   <meta name="author" content="DevLifeEasy">
   <meta name="robots" content="index, follow, max-snippet:-1">
@@ -64,6 +64,15 @@
       }
     ]
   }
+  </script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RVJN7NM3XC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RVJN7NM3XC');
   </script>
 
   <!-- Microsoft Clarity -->
@@ -129,7 +138,7 @@
       <h1>Your data <em>stays</em> with you.</h1>
       <p class="subtitle">Volux does not collect, store, or transmit any personal data. Everything lives in your browser — no servers, no accounts, no telemetry.</p>
       <dl class="page-meta">
-        <div><dt>Last updated</dt><dd>2026-04-17</dd></div>
+        <div><dt>Last updated</dt><dd>2026-11-10</dd></div>
         <div><dt>Version</dt><dd>1.0.5</dd></div>
         <div><dt>Contact</dt><dd><a href="mailto:support@devlifeeasy.com" style="color:inherit;">support@devlifeeasy.com</a></dd></div>
       </dl>
@@ -151,7 +160,7 @@
         <p><strong>Important distinction:</strong></p>
         <ul>
           <li><strong>Volux extension</strong> — no tracking, no analytics, no data collection of any kind.</li>
-          <li><strong>This website</strong> — uses Microsoft Clarity for basic visitor analytics (page views only). This does NOT affect the extension. Your volume settings and browsing activity remain completely private in the extension itself.</li>
+          <li><strong>This website</strong> — uses Google Analytics 4 and Microsoft Clarity to understand how visitors use the site (pages viewed, device and browser type, approximate country). These tools set analytics cookies on this website only. This does NOT affect the extension. Your volume settings and browsing activity remain completely private in the extension itself.</li>
         </ul>
 
         <h3>What we store locally</h3>
@@ -167,7 +176,7 @@
           <li>No personal information.</li>
           <li>No browsing history.</li>
           <li>No analytics or tracking in the extension.</li>
-          <li>No cookies for advertising.</li>
+          <li>No advertising cookies, on the website or in the extension.</li>
           <li>No data shared with third parties.</li>
         </ul>
 
@@ -180,6 +189,7 @@
           <tbody>
             <tr><td><code>tabs</code></td><td>To identify which tabs contain audio and read domain names.</td></tr>
             <tr><td><code>storage</code></td><td>To save your volume preferences locally.</td></tr>
+            <tr><td><code>scripting</code></td><td>To start controlling tabs that were already open when you installed or updated Volux, so you don&rsquo;t have to reload them. Only Volux&rsquo;s own built-in script is used.</td></tr>
             <tr><td><code>host_permissions</code></td><td>To control audio on any website you choose.</td></tr>
           </tbody>
         </table>
@@ -195,7 +205,8 @@
 
         <h2>Third-party services</h2>
         <p><strong>LemonSqueezy</strong> — payment processing for Pro licenses (only if you choose to purchase). Their privacy policy: <a href="https://www.lemonsqueezy.com/privacy" target="_blank" rel="noopener">lemonsqueezy.com/privacy</a>.</p>
-        <p><strong>Microsoft Clarity</strong> — page-view analytics for <em>this website only</em>. Does not run inside the extension. Privacy policy: <a href="https://clarity.microsoft.com/terms" target="_blank" rel="noopener">clarity.microsoft.com/terms</a>.</p>
+        <p><strong>Google Analytics 4</strong> — visitor analytics for <em>this website only</em>. Does not run inside the extension. Privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>. You can opt out with the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics opt-out add-on</a>.</p>
+        <p><strong>Microsoft Clarity</strong> — heatmaps and anonymized session recordings for <em>this website only</em>, to see how visitors use our pages. Does not run inside the extension. Privacy policy: <a href="https://clarity.microsoft.com/terms" target="_blank" rel="noopener">clarity.microsoft.com/terms</a>.</p>
 
         <h2>Data security</h2>
         <ul>

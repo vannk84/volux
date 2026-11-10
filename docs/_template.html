@@ -49,6 +49,15 @@
   <!-- Shared site chrome -->
   <link rel="stylesheet" href="/assets/site.css">
 
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RVJN7NM3XC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RVJN7NM3XC');
+  </script>
+
   <!-- Microsoft Clarity -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -889,7 +898,7 @@
               <img
                 src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-expanded.png"
                 alt="{{hero.module_alt}}"
-                width="400" height="520" loading="eager" decoding="async">
+                width="400" height="520" loading="eager" fetchpriority="high" decoding="async">
             </div>
             <div class="module-footer">
               <span>ROUTING · PER-TAB</span>
@@ -1143,20 +1152,26 @@
     "operatingSystem": "Chrome, Firefox, Edge",
     "inLanguage": "{{html_lang}}",
     "description": {{schema_app_description_json}},
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "priceValidUntil": "2027-12-31",
-      "category": "Free"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "ratingCount": "1",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Volux Free",
+        "price": "0",
+        "priceCurrency": "USD",
+        "category": "Free",
+        "url": "https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm"
+      },
+      {
+        "@type": "Offer",
+        "name": "Volux Pro (lifetime)",
+        "price": "2",
+        "priceCurrency": "USD",
+        "category": "One-time purchase",
+        "url": "https://vannk.lemonsqueezy.com/checkout/buy/4acd6770-beaa-48be-80bd-8ced54bfbc7c"
+      }
+    ],
+    "browserRequirements": "Requires Chrome 88+, Firefox 140+, or Edge 88+",
+    "permissions": "storage, tabs, scripting, host_permissions",
     "author": {
       "@type": "Organization",
       "name": "DevLifeEasy",
@@ -1172,26 +1187,13 @@
       "https://raw.githubusercontent.com/vannk84/volux/main/marketing/screenshot-clean-1280x800.png"
     ],
     "featureList": {{schema_feature_list_json}},
-    "softwareVersion": "1.0.5",
+    "softwareVersion": "1.0.8",
     "datePublished": "2026-04-10",
-    "dateModified": "2026-04-17",
+    "dateModified": "2026-11-09",
     "keywords": "volume control, per-tab volume, browser extension, tab audio, auto-save volume, youtube tab volume, zoom audio"
   }
   </script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Volux",
-    "url": "{{canonical_url}}",
-    "inLanguage": "{{html_lang}}",
-    "description": {{schema_webapp_description_json}},
-    "browserRequirements": "Requires Chrome 88+, Firefox 78+, or Edge 88+",
-    "permissions": "Required permissions: storage, tabs, host_permissions",
-    "installUrl": "https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm"
-  }
-  </script>
 
   <script type="application/ld+json">
   {

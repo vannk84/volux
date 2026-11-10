@@ -55,6 +55,15 @@
   <!-- Shared site chrome -->
   <link rel="stylesheet" href="/assets/site.css">
 
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RVJN7NM3XC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RVJN7NM3XC');
+  </script>
+
   <!-- Microsoft Clarity -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -900,7 +909,7 @@
               <img
                 src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-expanded.png"
                 alt="带有按标签音量滑块的 Volux 弹窗 — 三个 YouTube 标签,三种不同音量"
-                width="400" height="520" loading="eager" decoding="async">
+                width="400" height="520" loading="eager" fetchpriority="high" decoding="async">
             </div>
             <div class="module-footer">
               <span>ROUTING · PER-TAB</span>
@@ -1233,7 +1242,7 @@
           </details>
           <details class="qa reveal">
             <summary>我能为同一站点(YouTube、TikTok、Facebook…)的多个标签页设置不同音量吗?</summary>
-            <div class="qa-body">可以,使用 Volux Pro。适用于任何有音频的站点 — YouTube、TikTok、Facebook、Spotify、Twitch、SoundCloud、新闻站点,到处可用。点击域名卡片上的"N tabs"徽章展开按标签列表,然后拖动任一标签页的滑块赋予独立音量。关闭标签页或切换到其他站点时,覆盖自动清除,站点默认值保持整洁。</div>
+            <div class="qa-body">可以,使用 Volux Pro。适用于任何有音频的站点 — YouTube、TikTok、Facebook、Spotify、Twitch、SoundCloud、新闻站点,到处可用。点击域名卡片上的“N tabs”徽章展开按标签列表,然后拖动任一标签页的滑块赋予独立音量。关闭标签页或切换到其他站点时,覆盖自动清除,站点默认值保持整洁。</div>
           </details>
           <details class="qa reveal">
             <summary>我能在 Chrome 中只静音一个标签页而不影响其他标签吗?</summary>
@@ -1241,7 +1250,7 @@
           </details>
           <details class="qa reveal">
             <summary>Volux 和浏览器内置音量或系统音量有什么不同?</summary>
-            <div class="qa-body">操作系统只有一个主音量,浏览器内置的&ldquo;静音标签页&rdquo;只是开/关。Volux 为每个网站(Pro 版下为每个标签页)添加 0–100% 的真实音量级别并自动记忆 — YouTube 可以保持 30%,Zoom 通话保持 100%,完全不用碰系统音量。</div>
+            <div class="qa-body">操作系统只有一个主音量,浏览器内置的“静音标签页”只是开/关。Volux 为每个网站(Pro 版下为每个标签页)添加 0–100% 的真实音量级别并自动记忆 — YouTube 可以保持 30%,Zoom 通话保持 100%,完全不用碰系统音量。</div>
           </details>
           <details class="qa reveal">
             <summary>Volux 能在 Edge、Brave 和其他 Chromium 浏览器上使用吗?</summary>
@@ -1353,20 +1362,26 @@
     "operatingSystem": "Chrome, Firefox, Edge",
     "inLanguage": "zh-Hans",
     "description": "一款浏览器扩展,按网站自动保存音量;Pro 版下,任何站点的每个标签页都能保持独立音量 — YouTube、TikTok、Facebook、Spotify、Twitch 或任何含音频的域名。设一次,跨会话记忆。",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "priceValidUntil": "2027-12-31",
-      "category": "Free"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "ratingCount": "1",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Volux Free",
+        "price": "0",
+        "priceCurrency": "USD",
+        "category": "Free",
+        "url": "https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm"
+      },
+      {
+        "@type": "Offer",
+        "name": "Volux Pro (lifetime)",
+        "price": "2",
+        "priceCurrency": "USD",
+        "category": "One-time purchase",
+        "url": "https://vannk.lemonsqueezy.com/checkout/buy/4acd6770-beaa-48be-80bd-8ced54bfbc7c"
+      }
+    ],
+    "browserRequirements": "Requires Chrome 88+, Firefox 140+, or Edge 88+",
+    "permissions": "storage, tabs, scripting, host_permissions",
     "author": {
       "@type": "Organization",
       "name": "DevLifeEasy",
@@ -1389,26 +1404,13 @@
       "按域名分组",
       "注重隐私(不收集数据)"
     ],
-    "softwareVersion": "1.0.5",
+    "softwareVersion": "1.0.8",
     "datePublished": "2026-04-10",
-    "dateModified": "2026-04-17",
+    "dateModified": "2026-11-09",
     "keywords": "volume control, per-tab volume, browser extension, tab audio, auto-save volume, youtube tab volume, zoom audio"
   }
   </script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Volux",
-    "url": "https://volux.devlifeeasy.com/zh/",
-    "inLanguage": "zh-Hans",
-    "description": "按网站自动保存音量。Pro 版下,任何站点的每个标签页都能保持独立音量 — YouTube、TikTok、Facebook、Spotify、Twitch,到处适用。",
-    "browserRequirements": "Requires Chrome 88+, Firefox 78+, or Edge 88+",
-    "permissions": "Required permissions: storage, tabs, host_permissions",
-    "installUrl": "https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm"
-  }
-  </script>
 
   <script type="application/ld+json">
   {

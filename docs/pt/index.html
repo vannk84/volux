@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Volux — Volume por aba com salvamento automático | Extensão Chrome & Firefox</title>
-  <meta name="description" content="Salva automaticamente o volume de cada site. Com o Pro, defina um volume diferente para cada aba de qualquer site — YouTube, TikTok, Facebook, Spotify, Twitch. Grátis para Chrome & Firefox.">
+  <title>Volux — Volume por aba e salvamento automático</title>
+  <meta name="description" content="Salva o volume de cada site automaticamente. Com o Pro, cada aba tem seu próprio volume no YouTube, TikTok, Spotify ou Twitch. Grátis.">
   <meta name="keywords" content="volume por aba, controle de volume chrome, volume diferente por aba mesmo site, salvar volume automático, volume youtube, volume tiktok, volume facebook, volume spotify, lembrar volume, extensão chrome volume, firefox volume, volux pro">
   <meta name="author" content="DevLifeEasy">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -54,6 +54,15 @@
 
   <!-- Shared site chrome -->
   <link rel="stylesheet" href="/assets/site.css">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RVJN7NM3XC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RVJN7NM3XC');
+  </script>
 
   <!-- Microsoft Clarity -->
   <script type="text/javascript">
@@ -900,7 +909,7 @@
               <img
                 src="https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-expanded.png"
                 alt="Popup do Volux com controles de volume por aba — três abas do YouTube em três volumes diferentes"
-                width="400" height="520" loading="eager" decoding="async">
+                width="400" height="520" loading="eager" fetchpriority="high" decoding="async">
             </div>
             <div class="module-footer">
               <span>ROUTING · PER-TAB</span>
@@ -1233,7 +1242,7 @@
           </details>
           <details class="qa reveal">
             <summary>Posso colocar volumes diferentes em várias abas do mesmo site (YouTube, TikTok, Facebook…)?</summary>
-            <div class="qa-body">Sim, com o Volux Pro. Funciona em qualquer site com áudio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, sites de notícias, onde for. Toque no selo "N abas" no card do domínio para expandir a lista por aba e arraste o controle de qualquer aba para dar o volume próprio. O override é apagado ao fechar a aba ou navegar para outro site, mantendo o padrão do site limpo.</div>
+            <div class="qa-body">Sim, com o Volux Pro. Funciona em qualquer site com áudio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, sites de notícias, onde for. Toque no selo “N abas” no card do domínio para expandir a lista por aba e arraste o controle de qualquer aba para dar o volume próprio. O override é apagado ao fechar a aba ou navegar para outro site, mantendo o padrão do site limpo.</div>
           </details>
           <details class="qa reveal">
             <summary>Posso mutar uma aba no Chrome sem mutar as outras?</summary>
@@ -1353,20 +1362,26 @@
     "operatingSystem": "Chrome, Firefox, Edge",
     "inLanguage": "pt-BR",
     "description": "Extensão de navegador que salva o volume por site automaticamente e, com o Pro, deixa cada aba de qualquer site manter o próprio volume — YouTube, TikTok, Facebook, Spotify, Twitch ou qualquer domínio com áudio. Configure uma vez, fica lembrado entre sessões.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "priceValidUntil": "2027-12-31",
-      "category": "Free"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "ratingCount": "1",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Volux Free",
+        "price": "0",
+        "priceCurrency": "USD",
+        "category": "Free",
+        "url": "https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm"
+      },
+      {
+        "@type": "Offer",
+        "name": "Volux Pro (lifetime)",
+        "price": "2",
+        "priceCurrency": "USD",
+        "category": "One-time purchase",
+        "url": "https://vannk.lemonsqueezy.com/checkout/buy/4acd6770-beaa-48be-80bd-8ced54bfbc7c"
+      }
+    ],
+    "browserRequirements": "Requires Chrome 88+, Firefox 140+, or Edge 88+",
+    "permissions": "storage, tabs, scripting, host_permissions",
     "author": {
       "@type": "Organization",
       "name": "DevLifeEasy",
@@ -1389,26 +1404,13 @@
       "Agrupamento por domínio",
       "Foco em privacidade (sem coleta de dados)"
     ],
-    "softwareVersion": "1.0.5",
+    "softwareVersion": "1.0.8",
     "datePublished": "2026-04-10",
-    "dateModified": "2026-04-17",
+    "dateModified": "2026-11-09",
     "keywords": "volume control, per-tab volume, browser extension, tab audio, auto-save volume, youtube tab volume, zoom audio"
   }
   </script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Volux",
-    "url": "https://volux.devlifeeasy.com/pt/",
-    "inLanguage": "pt-BR",
-    "description": "Salva o volume por site automaticamente. Com o Pro, cada aba de qualquer site mantém o próprio volume — YouTube, TikTok, Facebook, Spotify, Twitch, onde for.",
-    "browserRequirements": "Requires Chrome 88+, Firefox 78+, or Edge 88+",
-    "permissions": "Required permissions: storage, tabs, host_permissions",
-    "installUrl": "https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm"
-  }
-  </script>
 
   <script type="application/ld+json">
   {
