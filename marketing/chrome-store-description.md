@@ -38,6 +38,19 @@ Set your volume preferences once. Volux handles the rest automatically.
   Set volume for YouTube, Spotify, Zoom - Volux saves it automatically.
   Every reload, every new tab, same volume. Zero effort.
 
+✓ One-Click Add
+  Open the Volux popup on any site and click "Control this site".
+  No typing web addresses. Sites playing audio in other tabs are
+  suggested too.
+
+✓ Scan Open Tabs
+  One button finds the media sites in your open tabs (YouTube, Spotify,
+  Twitch, TikTok and more) and adds them for you.
+
+✓ Ready Out of the Box
+  YouTube is added the moment you install, so you can set its volume
+  right away.
+
 ✓ Per-Tab Volume Override (Pro)
   Multiple tabs open on the same site (YouTube, TikTok, Facebook, Spotify,
   Twitch — any site)? Give each tab its own volume. The site default still
@@ -57,6 +70,10 @@ Set your volume preferences once. Volux handles the rest automatically.
   By default, all tabs from the same website share one volume control.
   Simple and clean — and Pro lets you peel off individual tabs when you need them.
 
+✓ Works on Tabs Already Open
+  Install or update Volux and control the tabs you already have open.
+  No page reload needed.
+
 
 💡 PERFECT FOR
 
@@ -70,8 +87,8 @@ Set your volume preferences once. Volux handles the rest automatically.
 📋 HOW IT WORKS
 
 1. Open any website (YouTube, Spotify, etc.)
-2. Adjust volume to your preference
-3. Done - Volux saves it automatically
+2. Click the Volux icon, then "Control this site"
+3. Adjust volume to your preference - Volux saves it automatically
 
 Next time you visit: Your volume is exactly as you left it.
 No setup. No configuration. Just works.
@@ -87,21 +104,28 @@ Volux needs certain permissions to work. Here's exactly why:
 
 • Tabs Permission
   Detects which tabs have audio and gets website names.
-  Needed to apply the correct volume to each site.
+  Needed to apply the correct volume to each site and to suggest
+  the site you're on.
+
+• Scripting Permission
+  Lets Volux start controlling tabs that were already open when you
+  installed or updated it, so you never have to reload a page.
+  Only runs Volux's own built-in code.
 
 • Access to Websites
-  Controls audio/video elements on sites you choose.
-  Only affects domains you manually add to Volux.
+  Controls audio/video elements in the page.
+  Volume is only changed on the sites in your Volux list.
 
-Your privacy matters: No data collection. No tracking. No servers.
+Your privacy matters: No data collection. No tracking. No accounts.
 
 
 🆓 FREE VERSION
 
 • Control 2 websites
-• All core features
-• Auto-save volume
-• Per-tab control
+• Auto-save volume per website
+• One-click add for the site you're on
+• Scan open tabs for media sites
+• Smart mute and live audio detection
 • Perfect for most users
 
 
@@ -109,8 +133,6 @@ Your privacy matters: No data collection. No tracking. No servers.
 
 • Unlimited websites
 • Per-tab volume override (set each tab's volume independently)
-• Auto-detect media sites from open tabs
-• Quick-scan button to find all media
 • Priority support
 • Lifetime access
 • No recurring fees
@@ -124,7 +146,8 @@ Note: Pro upgrade is an optional direct purchase (not affiliate marketing).
 ✓ No tracking or analytics
 ✓ All settings stored locally
 ✓ No accounts required
-✓ No external servers
+✓ No servers of our own - the only network request is a license check
+  with our payment provider (Lemon Squeezy) when you activate Pro
 ✓ Open source on GitHub
 
 Full privacy policy: https://volux.devlifeeasy.com/privacy.html
@@ -138,18 +161,11 @@ Volux: Control volume ✓ + Remember it forever ✓
 The difference? You never have to think about volume again.
 
 
-💬 WHAT USERS SAY
-
-"Finally! No more volume roulette on YouTube."
-"Set it once, forget it exists. Perfect."
-"Why isn't this built into Chrome?"
-
-
 🛠️ TECHNICAL DETAILS
 
 • Lightweight - Minimal resource usage
 • Fast - No performance impact
-• Compatible - Works with all websites
+• Compatible - Works on any site that plays HTML5 audio or video
 • Reliable - Saves settings automatically
 • Safe - No code obfuscation, fully readable
 
@@ -166,10 +182,10 @@ We typically respond within 24 hours.
 
 🚀 TRY IT NOW
 
-Free version gives you full features for 2 websites.
+The free version gives you every core feature for 2 websites.
 Perfect for testing. Upgrade anytime if you need more.
 
-Install → Add a domain → Adjust volume → Never think about it again.
+Install → Click "Control this site" → Adjust volume → Never think about it again.
 
 
 Made with care for people who value their time and sanity.
