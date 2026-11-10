@@ -147,8 +147,8 @@ function showAutocomplete(query) {
 
   selectedAutocompleteIndex = -1;
   dropdown.innerHTML = filtered.map((d, i) => `
-    <div class="autocomplete-item" data-domain="${d.domain}" data-index="${i}">
-      ${d.favicon ? `<img src="${d.favicon}" alt="" class="autocomplete-favicon">` : ''}
+    <div class="autocomplete-item" data-domain="${escapeHTML(d.domain)}" data-index="${i}">
+      ${d.favicon ? `<img src="${escapeHTML(d.favicon)}" alt="" class="autocomplete-favicon">` : ''}
       <span class="domain-text">${highlightMatch(d.domain, query)}</span>
       <span class="domain-hint">open tab</span>
     </div>
@@ -187,29 +187,44 @@ function updateAutocompleteSelection(items) {
 }
 
 function highlightMatch(text, query) {
-  if (!query) return text;
-  const regex = new RegExp(`(${query})`, 'gi');
-  return text.replace(regex, '<strong style="color: var(--gold-400)">$1</strong>');
+  const safe = escapeHTML(text);
+  if (!query) return safe;
+  // Escape regex metacharacters so typing "(" or "+" can't throw.
+  const pattern = escapeHTML(query).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return safe.replace(new RegExp(`(${pattern})`, 'gi'), '<strong style="color: var(--gold-400)">$1</strong>');
 }
 
-async function addDomain() {
+// "https://www.YouTube.com/watch?v=1" → "youtube.com"
+function normalizeDomain(raw) {
+  let domain = (raw || '').trim().toLowerCase();
+  domain = domain.replace(/^(https?:\/\/)?(www\.)?/, '');
+  return domain.split(/[/?#:]/)[0];
+}
+
+function isValidDomain(domain) {
+  return /^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,}$/i.test(domain);
+}
+
+// True when `host` is already covered by a managed domain (subdomains count:
+// managing youtube.com also controls m.youtube.com).
+function isManagedHost(host, managedDomains) {
+  return managedDomains.some(d => host === d || host.endsWith('.' + d));
+}
+
+// Adds the typed domain, or `domainArg` when called from a one-click suggestion.
+async function addDomain(domainArg) {
   const input = document.getElementById('domainInput');
   const error = document.getElementById('domainError');
-  let domain = input.value.trim().toLowerCase();
-
-  // Remove protocol if present
-  domain = domain.replace(/^(https?:\/\/)?(www\.)?/, '');
-  // Remove path
-  domain = domain.split('/')[0];
+  const fromInput = domainArg === undefined;
+  const domain = normalizeDomain(fromInput ? input.value : domainArg);
 
   if (!domain) {
-    error.textContent = 'Please enter a domain';
+    error.textContent = 'Type a site, e.g. youtube.com';
     return;
   }
 
-  // Basic validation
-  if (!/^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,}$/i.test(domain)) {
-    error.textContent = 'Invalid domain format';
+  if (!isValidDomain(domain)) {
+    error.textContent = `"${domain}" isn't a website address. Try something like youtube.com`;
     return;
   }
 
@@ -219,9 +234,10 @@ async function addDomain() {
   });
 
   if (result.success) {
-    input.value = '';
+    if (fromInput) input.value = '';
     error.textContent = '';
     await loadDomains();
+    loadAvailableDomains();
   } else if (result.error === 'FREE_LIMIT_REACHED') {
     error.textContent = `Free limit reached (${result.limit} domains). Upgrade to Pro!`;
     openModal();
@@ -340,14 +356,14 @@ function updateProBadge() {
     text.textContent = 'PRO';
     upgradeBanner?.classList.add('hidden');
     licenseBtn?.classList.add('hidden');
-    scanBtn?.classList.remove('hidden');
   } else {
     badge.classList.remove('is-pro');
     text.textContent = 'FREE';
     upgradeBanner?.classList.remove('hidden');
     licenseBtn?.classList.remove('hidden');
-    scanBtn?.classList.add('hidden');
   }
+  // Scan is available on every plan; Free scans stop at the free limit.
+  scanBtn?.classList.remove('hidden');
 }
 
 async function scanMediaTabs() {
@@ -362,14 +378,26 @@ async function scanMediaTabs() {
 
   try {
     const result = await browserAPI.runtime.sendMessage({ type: 'SCAN_MEDIA_TABS' });
+    const added = result.addedDomains?.length || 0;
+    const plural = added > 1 ? 's' : '';
 
-    if (result.addedDomains && result.addedDomains.length > 0) {
-      error.textContent = `Added ${result.addedDomains.length} media domain${result.addedDomains.length > 1 ? 's' : ''}!`;
-      error.style.color = '#2ecc71';
+    if (added > 0) {
       await loadDomains();
       loadAvailableDomains();
+    }
+
+    if (result.limitReached) {
+      // Free plan: some (or all) found sites didn't fit in the free slots.
+      error.textContent = added > 0
+        ? `Added ${added} site${plural}. Free plan covers ${freeLimit} sites; upgrade to add the rest.`
+        : `Free plan covers ${freeLimit} sites. Upgrade to add more.`;
+      error.style.color = 'var(--gold-300)';
+      if (added === 0) openModal();
+    } else if (added > 0) {
+      error.textContent = `Added ${added} site${plural} from your open tabs.`;
+      error.style.color = '#2ecc71';
     } else {
-      error.textContent = 'No new media domains found in open tabs.';
+      error.textContent = 'No new media sites found in open tabs.';
       error.style.color = 'var(--text-muted)';
     }
   } catch (err) {
@@ -384,6 +412,7 @@ async function scanMediaTabs() {
   // Clear message after 3 seconds
   setTimeout(() => {
     error.textContent = '';
+    error.style.color = '';
   }, 3000);
 }
 
@@ -398,77 +427,135 @@ async function loadDomains() {
     controlledCount = response.controlledCount || 0;
     freeLimit = response.freeLimit || 2;
 
-    // Auto-add domains from all open tabs only on first ever load
-    if (response.domains.length === 0) {
-      const initialized = await browserAPI.storage.local.get('volux_initialized');
-      if (!initialized.volux_initialized) {
-        await autoAddCurrentDomains();
-        await browserAPI.storage.local.set({ volux_initialized: true });
-        // Reload after adding
-        const newResponse = await browserAPI.runtime.sendMessage({ type: 'GET_DOMAINS' });
-        controlledCount = newResponse.controlledCount || 0;
-        updateProBadge();
-        renderDomains(newResponse.domains);
-        return;
-      }
-    }
-
     updateProBadge();
     renderDomains(response.domains);
+    await renderQuickAdd(response.domains);
   } catch (error) {
     console.error('Failed to load domains:', error);
   }
 }
 
-async function autoAddCurrentDomains() {
+// ── Quick add ──────────────────────────────────────────────────────────────
+// Typing a domain by hand is the slow path. Offer the site in the current tab,
+// plus other open tabs that are playing audio, as one-click rows.
+const MAX_OTHER_SUGGESTIONS = 3;
+let quickAddSignature = '';
+
+// Browsers block extensions from running on their own add-on stores, so the
+// volume there can never be controlled. Never suggest or auto-add them.
+const UNCONTROLLABLE_HOSTS = ['chromewebstore.google.com', 'chrome.google.com', 'addons.mozilla.org', 'microsoftedge.microsoft.com'];
+
+function tabSuggestion(tab) {
   try {
-    const tabs = await browserAPI.tabs.query({});
-    const preferredDomains = ['youtube.com', 'google.com', 'spotify.com', 'facebook.com'];
-    const foundDomains = new Set();
-    const preferredFound = [];
-    const otherFound = [];
-
-    // Collect all unique domains from open tabs
-    for (const tab of tabs) {
-      if (!tab.url) continue;
-
-      try {
-        const url = new URL(tab.url);
-        if (url.protocol !== 'http:' && url.protocol !== 'https:') continue;
-
-        let domain = url.hostname.replace(/^www\./, '');
-
-        if (foundDomains.has(domain)) continue;
-        foundDomains.add(domain);
-
-        // Check if it's a preferred domain
-        if (preferredDomains.includes(domain)) {
-          preferredFound.push(domain);
-        } else {
-          otherFound.push(domain);
-        }
-      } catch {
-        // Invalid URL, skip
-      }
-    }
-
-    // Prioritize preferred domains, then fill with others
-    const domainsToAdd = [...preferredFound, ...otherFound].slice(0, freeLimit);
-
-    // Add domains
-    for (const domain of domainsToAdd) {
-      const result = await browserAPI.runtime.sendMessage({
-        type: 'ADD_DOMAIN',
-        domain: domain
-      });
-
-      if (result.error === 'FREE_LIMIT_REACHED') {
-        break;
-      }
-    }
-  } catch (error) {
-    console.error('Failed to auto-add domains:', error);
+    const url = new URL(tab.url);
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return null;
+    const domain = normalizeDomain(url.hostname);
+    if (!isValidDomain(domain) || UNCONTROLLABLE_HOSTS.includes(domain)) return null;
+    return { domain, favicon: tab.favIconUrl || '', audible: !!tab.audible };
+  } catch {
+    return null;
   }
+}
+
+async function getQuickAddSuggestions(managedDomains) {
+  const [activeTabs, allTabs] = await Promise.all([
+    browserAPI.tabs.query({ active: true, currentWindow: true }),
+    browserAPI.tabs.query({ audible: true })
+  ]);
+
+  const seen = new Set();
+  const take = (tab) => {
+    const s = tab && tabSuggestion(tab);
+    if (!s || seen.has(s.domain) || isManagedHost(s.domain, managedDomains)) return null;
+    seen.add(s.domain);
+    return s;
+  };
+
+  const current = take(activeTabs[0]);
+  const others = allTabs.map(take).filter(Boolean).slice(0, MAX_OTHER_SUGGESTIONS);
+  return { current, others };
+}
+
+function quickAddRowHTML(s, isCurrent, atLimit, isPro, slotsLeft) {
+  let hint = isCurrent
+    ? (s.audible ? 'This tab, playing audio' : 'This tab')
+    : 'Playing audio in another tab';
+  if (!isPro && isCurrent) {
+    hint = atLimit
+      ? `Free plan covers ${freeLimit} sites`
+      : `${hint}. ${slotsLeft} free ${slotsLeft === 1 ? 'site' : 'sites'} left`;
+  }
+  const label = atLimit ? 'Unlock with Pro' : (isCurrent ? 'Control this site' : 'Add');
+  const favicon = s.favicon
+    ? `<img src="${escapeHTML(s.favicon)}" alt="">`
+    : '';
+  return `
+    <div class="quick-add-row ${isCurrent ? 'is-current' : ''}">
+      ${favicon}
+      <div class="quick-add-text">
+        <span class="quick-add-domain" title="${escapeHTML(s.domain)}">${escapeHTML(s.domain)}</span>
+        <span class="quick-add-hint">${hint}</span>
+      </div>
+      <button class="quick-add-btn" data-domain="${escapeHTML(s.domain)}" aria-label="${escapeHTML(label)}: ${escapeHTML(s.domain)}">${label}</button>
+    </div>
+  `;
+}
+
+async function renderQuickAdd(domains) {
+  const container = document.getElementById('quickAdd');
+  if (!container) return;
+
+  let suggestions;
+  try {
+    suggestions = await getQuickAddSuggestions(domains.map(d => d.domain));
+  } catch {
+    container.hidden = true;
+    return;
+  }
+
+  // Free vs Pro: Pro gets every suggestion. Free users only see as many rows
+  // as they have free slots left, so no row offers an "Add" that would just
+  // bounce off the limit. At the limit, only the current tab is shown, as an
+  // upgrade prompt. The background enforces the limit regardless (ADD_DOMAIN
+  // returns FREE_LIMIT_REACHED); this only keeps the UI honest.
+  const isPro = !!licenseStatus.isPro;
+  const slotsLeft = isPro ? Infinity : Math.max(0, freeLimit - controlledCount);
+  const atLimit = slotsLeft === 0;
+
+  const candidates = [];
+  if (suggestions.current) candidates.push({ s: suggestions.current, isCurrent: true });
+  suggestions.others.forEach(s => candidates.push({ s, isCurrent: false }));
+
+  const visible = atLimit
+    ? candidates.filter(c => c.isCurrent)
+    : candidates.slice(0, slotsLeft);
+
+  const rows = visible.map(c => quickAddRowHTML(c.s, c.isCurrent, atLimit, isPro, slotsLeft));
+
+  // loadDomains runs every 2s; only touch the DOM when something changed so a
+  // button doesn't get swapped out from under the cursor or keyboard focus.
+  const signature = `${atLimit}|${rows.join('')}`;
+  if (signature === quickAddSignature) return;
+  quickAddSignature = signature;
+
+  container.hidden = rows.length === 0;
+  container.innerHTML = rows.join('');
+
+  container.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', () => { img.style.display = 'none'; });
+  });
+
+  container.querySelectorAll('.quick-add-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      if (atLimit) {
+        openModal();
+        return;
+      }
+      btn.disabled = true;
+      await addDomain(btn.dataset.domain);
+      btn.disabled = false;
+    });
+  });
 }
 
 function renderDomains(domains) {

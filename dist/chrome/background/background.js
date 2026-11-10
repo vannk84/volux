@@ -106,10 +106,16 @@ const MEDIA_DOMAINS = [
 
 // Auto-add media domains from open tabs after Pro activation
 async function autoAddMediaDomains() {
+  // Available to Free and Pro. addManagedDomain enforces the free limit, so a
+  // Free user's scan stops once their slots are full and reports limitReached
+  // for the popup's upgrade prompt; Pro adds everything found.
   try {
     const tabs = await chrome.tabs.query({});
     const managedDomains = await getManagedDomains();
-    const domainsToAdd = new Set();
+    // Audible tabs first: with only a couple of free slots, the site that is
+    // playing right now is the one the user most likely wants.
+    const audible = new Set();
+    const media = new Set();
 
     for (const tab of tabs) {
       if (!tab.url) continue;
@@ -118,37 +124,39 @@ async function autoAddMediaDomains() {
         const url = new URL(tab.url);
         if (url.protocol !== 'http:' && url.protocol !== 'https:') continue;
 
-        let domain = url.hostname.replace(/^www\./, '');
+        const domain = url.hostname.replace(/^www\./, '');
 
-        // Skip if already managed
-        if (managedDomains.includes(domain)) continue;
+        // Skip hosts already covered by a managed domain (m.youtube.com is
+        // controlled by youtube.com) so a scan never burns a slot on a duplicate.
+        if (managedDomains.some(d => domain === d || domain.endsWith('.' + d))) continue;
 
-        // Add if it's a known media domain
-        const isMediaDomain = MEDIA_DOMAINS.some(md => domain === md || domain.endsWith('.' + md));
-
-        // Or if the tab is currently playing audio
-        if (isMediaDomain || tab.audible) {
-          domainsToAdd.add(domain);
+        if (tab.audible) {
+          audible.add(domain);
+        } else if (MEDIA_DOMAINS.some(md => domain === md || domain.endsWith('.' + md))) {
+          media.add(domain);
         }
       } catch {
         // Invalid URL, skip
       }
     }
 
-    // Add all found media domains
     const addedDomains = [];
-    for (const domain of domainsToAdd) {
+    let limitReached = false;
+    for (const domain of new Set([...audible, ...media])) {
       const result = await addManagedDomain(domain);
       if (result.success) {
         addedDomains.push(domain);
+      } else if (result.error === 'FREE_LIMIT_REACHED') {
+        limitReached = true;
+        break;
       }
     }
 
     console.log('Auto-added media domains:', addedDomains);
-    return addedDomains;
+    return { addedDomains, limitReached };
   } catch (error) {
     console.error('Failed to auto-add media domains:', error);
-    return [];
+    return { addedDomains: [], limitReached: false };
   }
 }
 
@@ -191,7 +199,7 @@ async function activateLicense(licenseKey) {
         }
       });
       // Auto-add media domains from open tabs
-      const addedDomains = await autoAddMediaDomains();
+      const { addedDomains } = await autoAddMediaDomains();
       return { success: true, addedDomains };
     } catch (error) {
       return { success: false, error: 'Failed to save license' };
@@ -226,7 +234,7 @@ async function activateLicense(licenseKey) {
         }
       });
       // Auto-add media domains from open tabs
-      const addedDomains = await autoAddMediaDomains();
+      const { addedDomains } = await autoAddMediaDomains();
       return { success: true, addedDomains };
     } else {
       // License validation failed
@@ -476,7 +484,7 @@ async function setDomainVolume(origin, volume) {
         continue;
       }
       try {
-        await chrome.tabs.sendMessage(tab.id, {
+        await sendToTab(tab.id, {
           type: 'SET_VOLUME',
           volume: volume / 100
         });
@@ -510,7 +518,7 @@ async function setDomainMuted(origin, muted) {
         continue;
       }
       try {
-        await chrome.tabs.sendMessage(tab.id, {
+        await sendToTab(tab.id, {
           type: 'SET_MUTED',
           muted: muted
         });
@@ -555,7 +563,7 @@ async function setTabVolume(tabId, volume) {
   await persistTabOverrides();
 
   try {
-    await chrome.tabs.sendMessage(tabId, {
+    await sendToTab(tabId, {
       type: 'SET_VOLUME',
       volume: volume / 100
     });
@@ -592,7 +600,7 @@ async function setTabMuted(tabId, muted) {
   await persistTabOverrides();
 
   try {
-    await chrome.tabs.sendMessage(tabId, {
+    await sendToTab(tabId, {
       type: 'SET_MUTED',
       muted: muted
     });
@@ -621,11 +629,76 @@ async function clearTabOverride(tabId) {
   if (!saved) return { success: true };
 
   try {
-    await chrome.tabs.sendMessage(tabId, { type: 'SET_VOLUME', volume: saved.volume / 100 });
-    await chrome.tabs.sendMessage(tabId, { type: 'SET_MUTED', muted: saved.muted });
+    await sendToTab(tabId, { type: 'SET_VOLUME', volume: saved.volume / 100 });
+    await sendToTab(tabId, { type: 'SET_MUTED', muted: saved.muted });
   } catch {}
   return { success: true };
 }
+
+// ── Content-script delivery ────────────────────────────────────────────────
+// A tab can lose its content script without the page reloading: tabs that were
+// already open when the extension was installed/updated/reloaded never get the
+// manifest script, and the old instance is orphaned (its runtime is gone). A
+// plain tabs.sendMessage then fails with "Receiving end does not exist" and the
+// tab is uncontrollable until the user reloads it. Inject on demand and retry.
+function isInjectableUrl(url) {
+  return typeof url === 'string' && /^(https?|file):/.test(url);
+}
+
+async function injectContentScript(tabId) {
+  try {
+    await chrome.scripting.executeScript({
+      target: { tabId, allFrames: true },
+      files: ['content/content.js']
+    });
+    return true;
+  } catch {
+    // Restricted page (store, about:, PDF viewer…) — nothing we can do.
+    return false;
+  }
+}
+
+async function sendToTab(tabId, message) {
+  try {
+    return await chrome.tabs.sendMessage(tabId, message);
+  } catch (firstError) {
+    const tab = await chrome.tabs.get(tabId).catch(() => null);
+    if (!tab || !isInjectableUrl(tab.url) || tab.discarded) throw firstError;
+    if (!(await injectContentScript(tabId))) throw firstError;
+    // The fresh script pulls its own state via GET_TAB_STATE, but deliver the
+    // message too so the caller gets a real response.
+    return await chrome.tabs.sendMessage(tabId, message);
+  }
+}
+
+// Fresh installs start with YouTube so the list isn't empty. Only one site is
+// added: the free plan has 2 slots, and the other stays open for whatever the
+// user actually wants (one click via the popup's "Control this site" row).
+// Runs on 'install' only, so existing users are never touched on update.
+const DEFAULT_DOMAINS = ['youtube.com'];
+
+async function addDefaultDomains() {
+  try {
+    const managed = await getManagedDomains();
+    if (managed.length > 0) return;
+    for (const domain of DEFAULT_DOMAINS) await addManagedDomain(domain);
+    await chrome.storage.local.set({ volux_initialized: true });
+  } catch (error) {
+    console.error('Failed to add default domains:', error);
+  }
+}
+
+// Re-arm every open tab after install/update so they're controllable without a
+// manual reload. The new instance tells any orphaned old one to stand down.
+chrome.runtime.onInstalled.addListener(async (details) => {
+  if (details.reason === 'install') await addDefaultDomains();
+  const tabs = await chrome.tabs.query({}).catch(() => []);
+  await Promise.all(
+    tabs
+      .filter(tab => isInjectableUrl(tab.url) && !tab.discarded)
+      .map(tab => injectContentScript(tab.id))
+  );
+});
 
 // Listen for messages from popup and content scripts
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
@@ -711,8 +784,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         return FREE_DOMAIN_LIMIT;
 
       case 'SCAN_MEDIA_TABS':
-        const addedDomains = await autoAddMediaDomains();
-        return { success: true, addedDomains };
+        const scan = await autoAddMediaDomains();
+        return { success: true, ...scan };
 
       default:
         return null;
