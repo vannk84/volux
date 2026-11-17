@@ -75,9 +75,9 @@ function renderFragments(data) {
 
   // Gallery (3 images — fixed URLs)
   const galleryImgs = [
-    'https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-expanded.png',
-    'https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-collapsed.png',
-    'https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-upgrade-modal.png',
+    '/assets/media/popup-per-site.png',
+    '/assets/media/popup-one-click.png',
+    '/assets/media/popup-scan.png',
   ];
   frags.gallery_items_html = data.gallery.items.map((it, i) =>
 `          <article class="gcard reveal" data-d="${i + 1}">
