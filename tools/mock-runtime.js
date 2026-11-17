@@ -4,7 +4,7 @@
 // so popup.html + popup.js render exactly as they would for a real
 // user — without needing a loaded extension.
 (() => {
-  const state = {
+  const defaultState = {
     license: { isPro: true },
     controlledCount: 2,
     freeLimit: 2,
@@ -78,6 +78,34 @@
 
   // Expose the mutable state so the puppeteer driver can flip modes
   // between shots (free↔pro, toggle overrides, etc.).
+  // A capture script can stage a scenario by setting window.__VOLUX_MOCK_STATE__
+  // (same shape as defaultState, plus optional openTabs / activeTabId) before
+  // this file runs. openTabs are tabs on sites that are NOT managed yet; they
+  // feed the popup's quick-add row and the Scan button.
+  const state = window.__VOLUX_MOCK_STATE__
+    ? JSON.parse(JSON.stringify(window.__VOLUX_MOCK_STATE__))
+    : defaultState;
+  state.openTabs = state.openTabs || [];
+
+  const managedTabs = () => state.domains.flatMap(d => d.tabs);
+  const allTabs = () => [...managedTabs(), ...state.openTabs].map(t => ({
+    id: t.id, url: t.url, title: t.title, favIconUrl: t.favIconUrl, audible: !!t.audible
+  }));
+  const hostOf = (url) => new URL(url).hostname.replace(/^www\./, '');
+  const atLimit = () => !state.license.isPro && state.domains.length >= state.freeLimit;
+
+  // Promote an open tab's site to a managed domain (ADD_DOMAIN / scan).
+  function manage(domain) {
+    const tabs = state.openTabs.filter(t => hostOf(t.url) === domain || hostOf(t.url).endsWith('.' + domain));
+    state.openTabs = state.openTabs.filter(t => !tabs.includes(t));
+    state.domains.push({
+      origin: `https://${domain}`, domain, volume: 100, muted: false,
+      audible: tabs.some(t => t.audible),
+      favIconUrl: tabs[0]?.favIconUrl || '',
+      tabs: tabs.map(t => ({ ...t, hasAudio: true, hasOverride: false, volume: 100, muted: false }))
+    });
+  }
+
   window.__voluxMock = {
     state,
     setLicense(isPro) { state.license = { isPro }; },
@@ -113,7 +141,7 @@
         return {
           domains: JSON.parse(JSON.stringify(state.domains)),
           license: { ...state.license },
-          controlledCount: state.controlledCount,
+          controlledCount: state.domains.length,
           freeLimit: state.freeLimit
         };
       case 'VALIDATE_LICENSE':
@@ -153,8 +181,22 @@
         return { success: true };
       case 'GET_FREE_LIMIT':
         return state.freeLimit;
-      case 'SCAN_MEDIA_TABS':
-        return { success: true, addedDomains: [] };
+      case 'ADD_DOMAIN': {
+        if (atLimit()) return { success: false, error: 'FREE_LIMIT_REACHED', limit: state.freeLimit };
+        if (state.domains.some(d => d.domain === message.domain)) return { success: false, error: 'DOMAIN_EXISTS' };
+        manage(message.domain);
+        return { success: true };
+      }
+      case 'SCAN_MEDIA_TABS': {
+        const addedDomains = [];
+        let limitReached = false;
+        const media = [...new Set(state.openTabs.filter(t => t.media || t.audible).map(t => hostOf(t.url)))];
+        for (const domain of media) {
+          if (atLimit()) { limitReached = true; break; }
+          manage(domain); addedDomains.push(domain);
+        }
+        return { success: true, addedDomains, limitReached };
+      }
       default:
         return null;
     }
@@ -166,9 +208,10 @@
   };
 
   const mockTabs = {
-    query: () => Promise.resolve(state.domains.flatMap(d => d.tabs.map(t => ({
-      id: t.id, url: t.url, title: t.title, favIconUrl: t.favIconUrl, audible: t.audible
-    }))))
+    query: (filter = {}) => Promise.resolve(allTabs().filter(t =>
+      (!filter.active || t.id === state.activeTabId) &&
+      (!filter.audible || t.audible)
+    ))
   };
 
   const mockStorage = {

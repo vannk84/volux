@@ -23,3 +23,6 @@ Thumbs.db
 # Google Search Console service-account credentials (never commit secrets).
 # Regenerate by copying the service-account JSON to tmp/gsc-credentials.json.
 tmp/
+
+# Video frame dumps from tools/store-assets.mjs --video (regenerable, ~95 MB)
+marketing/v2/frames/
