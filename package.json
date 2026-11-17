@@ -1,11 +1,12 @@
 {
   "name": "volux-website",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Volux website development server",
   "scripts": {
     "serve": "cd docs && python3 -m http.server 8000",
     "serve:node": "npx serve docs -p 8000",
-    "dev": "npm run serve"
+    "dev": "npm run serve",
+    "test": "node tests/license-validation.test.mjs"
   },
   "keywords": ["volux", "website", "static"],
   "author": "vannk84",

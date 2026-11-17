@@ -7,6 +7,20 @@ const MANAGED_DOMAINS_KEY = 'volux_managed_domains';
 const TAB_OVERRIDES_KEY = 'volux_tab_overrides';
 const FREE_DOMAIN_LIMIT = 2;
 
+// Lemon Squeezy stops processing payments on 2027-03-31 and its license API
+// can't be relied on to answer after that. From this moment on, licenses that
+// were already activated are trusted locally and never re-checked against it.
+const LEMON_SQUEEZY_RETIRED_AT = Date.UTC(2027, 3, 1); // 2027-04-01T00:00:00Z
+
+// The only Lemon Squeezy statuses that mean "this purchase was taken back"
+// (refund, chargeback, manual revoke). Anything else — errors, unknown
+// shapes, outages — must never cost a paying customer their Pro license.
+const REVOKED_LICENSE_STATUSES = new Set(['disabled', 'expired']);
+
+function isLemonSqueezyRetired(now = Date.now()) {
+  return now >= LEMON_SQUEEZY_RETIRED_AT;
+}
+
 // In-memory cache of per-tab volume overrides (PRO feature).
 // Shape: { [tabId]: { volume: 0-100, muted: boolean, domain: string } }
 // Persisted to chrome.storage.session so it survives service-worker restarts
@@ -204,6 +218,13 @@ async function activateLicense(licenseKey) {
     } catch (error) {
       return { success: false, error: 'Failed to save license' };
     }
+  }
+
+  if (isLemonSqueezyRetired()) {
+    return {
+      success: false,
+      error: 'This key needs to be moved to our new payment provider. Email support@devlifeeasy.com and we will sort it out.'
+    };
   }
 
   // Validate against LemonSqueezy API
@@ -876,6 +897,11 @@ async function validateStoredLicense() {
       return { valid: true, reason: 'dev_key' };
     }
 
+    // Lemon Squeezy is gone: keep activated licenses for good.
+    if (isLemonSqueezyRetired()) {
+      return { valid: true, reason: 'provider_retired' };
+    }
+
     // Validate against LemonSqueezy API
     const response = await fetch('https://api.lemonsqueezy.com/v1/licenses/validate', {
       method: 'POST',
@@ -888,16 +914,26 @@ async function validateStoredLicense() {
       })
     });
 
-    const data = await response.json();
-
-    // If license is no longer valid (refunded, expired, etc.), remove it
-    if (!data.valid || data.license_key?.status !== 'active') {
-      console.log('License is no longer valid (possibly refunded), removing...');
-      await chrome.storage.local.remove(LICENSE_KEY);
-      return { valid: false, reason: 'license_invalid', status: data.license_key?.status };
+    // Outages, 4xx/5xx and shutdown pages say nothing about the purchase.
+    if (!response.ok) {
+      return { valid: true, reason: 'api_unavailable', httpStatus: response.status };
     }
 
-    return { valid: true, reason: 'api_validated' };
+    let data;
+    try {
+      data = await response.json();
+    } catch {
+      return { valid: true, reason: 'api_unreadable' };
+    }
+
+    const status = data?.license_key?.status;
+    if (REVOKED_LICENSE_STATUSES.has(status)) {
+      console.log(`License ${status} by the provider (refund/revoke), removing...`);
+      await chrome.storage.local.remove(LICENSE_KEY);
+      return { valid: false, reason: 'license_revoked', status };
+    }
+
+    return { valid: true, reason: status === 'active' ? 'api_validated' : 'api_inconclusive', status };
   } catch (error) {
     // Don't remove license on network errors - user might be offline
     console.error('License validation check failed:', error);
