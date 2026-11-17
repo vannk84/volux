@@ -127,7 +127,8 @@
       "amount_html": "$2<small>一次性</small>",
       "sub": "或随心支付。终身访问。",
       "list": [ "无限域名", "按标签页音量覆盖", "优先支持", "终身更新" ],
-      "cta": "升级到 Pro"
+      "cta": "升级到 Pro",
+      "checkout_note": "通过 Lemon Squeezy 安全结账,支持银行卡或 PayPal。由于需要处理销售税,可能会要求填写账单地址。"
     }
   },
 

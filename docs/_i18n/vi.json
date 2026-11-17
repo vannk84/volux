@@ -127,7 +127,8 @@
       "amount_html": "$2<small>một lần</small>",
       "sub": "Hoặc trả bao nhiêu tuỳ bạn. Truy cập trọn đời.",
       "list": [ "Không giới hạn tên miền", "Ghi đè âm lượng theo tab", "Hỗ trợ ưu tiên", "Cập nhật trọn đời" ],
-      "cta": "Nâng cấp Pro"
+      "cta": "Nâng cấp Pro",
+      "checkout_note": "Thanh toán an toàn qua Lemon Squeezy, bằng thẻ hoặc PayPal. Họ xử lý thuế bán hàng nên có thể hỏi địa chỉ thanh toán của bạn."
     }
   },
 

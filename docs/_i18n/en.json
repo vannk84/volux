@@ -127,7 +127,8 @@
       "amount_html": "$2<small>one-time</small>",
       "sub": "Or pay what you want. Lifetime access.",
       "list": [ "Unlimited domains", "Per-tab volume override", "Priority support", "Lifetime updates" ],
-      "cta": "Upgrade to Pro"
+      "cta": "Upgrade to Pro",
+      "checkout_note": "Secure checkout by Lemon Squeezy, card or PayPal. They handle sales tax, so they may ask for your billing address."
     }
   },
 

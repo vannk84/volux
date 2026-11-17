@@ -127,7 +127,8 @@
       "amount_html": "$2<small>pagamento único</small>",
       "sub": "Ou pague o quanto quiser. Acesso vitalício.",
       "list": [ "Domínios ilimitados", "Override de volume por aba", "Suporte prioritário", "Atualizações vitalícias" ],
-      "cta": "Fazer upgrade para Pro"
+      "cta": "Fazer upgrade para Pro",
+      "checkout_note": "Pagamento seguro pela Lemon Squeezy, com cartão ou PayPal. Eles cuidam dos impostos, por isso podem pedir seu endereço de cobrança."
     }
   },
 

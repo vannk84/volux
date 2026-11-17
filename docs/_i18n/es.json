@@ -127,7 +127,8 @@
       "amount_html": "$2<small>pago único</small>",
       "sub": "O pagá lo que quieras. Acceso de por vida.",
       "list": [ "Dominios ilimitados", "Anulación de volumen por pestaña", "Soporte prioritario", "Actualizaciones de por vida" ],
-      "cta": "Actualizar a Pro"
+      "cta": "Actualizar a Pro",
+      "checkout_note": "Pago seguro con Lemon Squeezy, con tarjeta o PayPal. Ellos gestionan los impuestos, por eso pueden pedirte la dirección de facturación."
     }
   },
 

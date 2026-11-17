@@ -909,6 +909,14 @@ body {
   color: var(--text-muted);
 }
 
+/* Checkout note under the Buy button in the upgrade modal */
+.modal .upgrade-note {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 1.5;
+}
+
 .upgrade-icon {
   font-size: 14px;
 }
