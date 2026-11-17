@@ -12,7 +12,7 @@
 // Prices shown are the planned 1.0.10 price ($3.99, pay what you want from
 // $2.99, tax included). Don't publish these before that release ships.
 import puppeteer from 'puppeteer-core';
-import { readFileSync, mkdirSync, rmSync, existsSync, writeFileSync } from 'node:fs';
+import { readFileSync, mkdirSync, rmSync, existsSync, writeFileSync, copyFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -32,7 +32,7 @@ const ONLY_VIDEO = process.argv.includes('--video');
 const PRICE = {
   amount: '$3.99',
   banner: '$3.99, or pay what you want from $2.99',
-  checkout: 'Secure checkout, card or PayPal. Tax included.',
+  checkout: 'Secure checkout by Dodo Payments. Tax included.',
 };
 
 // Popup is captured at a fixed 380×600 so every frame of a scene has the same
@@ -306,6 +306,9 @@ async function stills() {
       1280, 800, resolve(STORE, `screenshot-${s.id}-1280x800.png`));
     console.log('slide', s.id);
   }
+
+  // Social preview (og:image) for the website: the per-site slide has no price.
+  copyFileSync(resolve(STORE, 'screenshot-1-per-site-1280x800.png'), resolve(WEB, 'og-1280x800.png'));
 
   // Marquee 1400×560 and small tile 440×280 for the Chrome Web Store.
   const hero = b64(resolve(WEB, 'popup-4-per-tab.png'));

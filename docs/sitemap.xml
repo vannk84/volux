@@ -15,19 +15,19 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://volux.devlifeeasy.com/ja/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://volux.devlifeeasy.com/"/>
     <image:image>
-      <image:loc>https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-expanded.png</image:loc>
+      <image:loc>https://volux.devlifeeasy.com/assets/media/popup-per-tab.png</image:loc>
       <image:title>Volux — Per-Tab Volume Control (Pro)</image:title>
       <image:caption>Three tabs on the same site, three different volumes — expand the tab-count badge to control each tab independently.</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-pro-collapsed.png</image:loc>
-      <image:title>Volux popup, collapsed state</image:title>
-      <image:caption>Clean default view — one slider per domain, with a clickable tab-count badge to unlock per-tab control.</image:caption>
+      <image:loc>https://volux.devlifeeasy.com/assets/media/popup-one-click.png</image:loc>
+      <image:title>Volux one-click add</image:title>
+      <image:caption>Open Volux on any tab and press &quot;Control this site&quot; to start controlling its volume.</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://raw.githubusercontent.com/vannk84/volux/main/marketing/generated/popup-upgrade-modal.png</image:loc>
-      <image:title>Volux Pro upgrade modal</image:title>
-      <image:caption>Unlock unlimited domains and per-tab volume override for $2 one-time.</image:caption>
+      <image:loc>https://volux.devlifeeasy.com/assets/media/popup-scan.png</image:loc>
+      <image:title>Volux tab scan</image:title>
+      <image:caption>One button adds the media sites you already have open in other tabs.</image:caption>
     </image:image>
   </url>
   <url>

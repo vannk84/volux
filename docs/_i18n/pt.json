@@ -68,8 +68,8 @@
       { "k": "Sobrepor",    "v_html": "Arraste o controle de qualquer aba para dar a ela um volume próprio. O padrão do site ainda vale para o que você não personalizou." },
       { "k": "Descartar",   "v_html": "Feche a aba ou mude de site — o override se apaga automaticamente. O padrão do site continua limpo." }
     ],
-    "cta": "Liberar Pro · $2 pagamento único",
-    "video_caption": "Demo de 8 segundos · Expandir, arrastar, pronto"
+    "cta": "Liberar Pro · $3.99 pagamento único",
+    "video_caption": "Demo de 18 segundos · Adicione, escaneie, ajuste cada aba"
   },
 
   "usecases": {
@@ -101,11 +101,11 @@
   "gallery": {
     "label": "04 · Interface",
     "title": "Veja em ação no navegador.",
-    "kicker": "Limpa por padrão. Expansível quando você quer controle granular.",
+    "kicker": "As três coisas que você mais vai fazer, no popup de verdade.",
     "items": [
-      { "alt": "Visão expandida por aba — YouTube com três abas em três volumes diferentes", "title": "Volume por aba · Pro",  "body": "Cada aba em qualquer site — YouTube, TikTok, Facebook — com o nível próprio." },
-      { "alt": "Popup recolhido com selo 3 ABAS pronto para expandir",                       "title": "Limpa por padrão",      "body": "Toque no selo de contagem para expandir quando precisar de controle granular." },
-      { "alt": "Modal de upgrade mostrando os recursos Pro, incluindo override por aba",     "title": "$2 pagamento único",    "body": "Domínios ilimitados + override por aba + acesso vitalício." }
+      { "alt": "Popup com YouTube em 30%, Spotify em 60% e Zoom em 100%", "title": "Um volume para cada site",  "body": "YouTube baixo, chamadas altas. O Volux reaplica cada nível a cada visita." },
+      { "alt": "Popup sugerindo twitch.tv com o botão Control this site",                       "title": "Adicionar com um clique",      "body": "Abra o Volux em qualquer aba e toque em &ldquo;Control this site&rdquo;. Sem digitar." },
+      { "alt": "Popup depois de escanear as abas, com SoundCloud e TikTok adicionados",     "title": "Escanear abas abertas",    "body": "Um botão adiciona os sites de mídia que você já tem abertos." }
     ]
   },
 
@@ -124,11 +124,11 @@
     "pro": {
       "name": "Pro",
       "tag": "Melhor custo-benefício",
-      "amount_html": "$2<small>pagamento único</small>",
-      "sub": "Ou pague o quanto quiser. Acesso vitalício.",
+      "amount_html": "$3.99<small>pagamento único</small>",
+      "sub": "Ou pague o quanto quiser a partir de $2.99. Impostos incluídos. Acesso vitalício.",
       "list": [ "Domínios ilimitados", "Override de volume por aba", "Suporte prioritário", "Atualizações vitalícias" ],
       "cta": "Fazer upgrade para Pro",
-      "checkout_note": "Pagamento seguro pela Lemon Squeezy, com cartão ou PayPal. Eles cuidam dos impostos, por isso podem pedir seu endereço de cobrança."
+      "checkout_note": "Pagamento seguro pela Dodo Payments. Impostos incluídos, sem taxas extras no checkout."
     }
   },
 
@@ -150,7 +150,7 @@
       { "q": "O Volux é seguro? Que permissões precisa?",
         "a": "O Volux é open source e respeita a privacidade. Só pede as permissões necessárias para controlar o áudio nas páginas. Sem dados pessoais, sem histórico de navegação, sem analytics. O código pode ser revisado no GitHub." },
       { "q": "Qual a diferença entre Free e Pro?",
-        "a": "O Free permite controlar 2 sites, com adição em um clique do site aberto e escaneamento das abas abertas. O Pro ($2 pagamento único) libera sites ilimitados e volume por aba. Compra vitalícia, sem assinatura." },
+        "a": "O Free permite controlar 2 sites, com adição em um clique do site aberto e escaneamento das abas abertas. O Pro ($3.99 pagamento único) libera sites ilimitados e volume por aba. Compra vitalícia, sem assinatura." },
       { "q": "O Volux funciona com várias abas do mesmo site?",
         "a": "Sim — dois modos. Por padrão, todas as abas do mesmo site compartilham um volume. Com o Pro, você pode sobrepor qualquer aba individualmente: três abas do mesmo site podem manter três volumes diferentes ao mesmo tempo, e o padrão do site ainda cobre as abas não personalizadas." },
       { "q": "Posso colocar volumes diferentes em várias abas do mesmo site (YouTube, TikTok, Facebook…)?",
@@ -216,7 +216,7 @@
       { "q": "O Volux funciona no Chrome e no Firefox?",
         "a": "Sim! O Volux está disponível para Chrome, Firefox, Edge, Brave e outros navegadores baseados em Chromium." },
       { "q": "O Volux é grátis?",
-        "a": "Sim, o Volux tem uma versão grátis que permite controlar 2 sites com todas as funções principais. A versão Pro ($2 pagamento único) oferece sites ilimitados." },
+        "a": "Sim, o Volux tem uma versão grátis que permite controlar 2 sites com todas as funções principais. A versão Pro ($3.99 pagamento único) oferece sites ilimitados." },
       { "q": "O Volux coleta meus dados?",
         "a": "Não. O Volux não coleta, armazena ou transmite dados pessoais. Todos os ajustes ficam salvos localmente no seu dispositivo. Sem rastreamento, sem analytics, sem servidores." },
       { "q": "Posso definir volumes diferentes para várias abas do mesmo site (YouTube, TikTok, Facebook, etc.)?",

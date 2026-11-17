@@ -68,8 +68,8 @@
       { "k": "Override", "v_html": "Drag any tab&rsquo;s slider to give it its own volume. The site default still covers anything you haven&rsquo;t customized." },
       { "k": "Dispose",  "v_html": "Close the tab or navigate away — the override clears automatically. Your site default stays clean." }
     ],
-    "cta": "Unlock Pro · $2 one-time",
-    "video_caption": "8-second demo · Expand, drag, done"
+    "cta": "Unlock Pro · $3.99 one-time",
+    "video_caption": "18-second demo · Add, scan, fine-tune every tab"
   },
 
   "usecases": {
@@ -101,11 +101,11 @@
   "gallery": {
     "label": "04 · Interface",
     "title": "See it in the browser.",
-    "kicker": "Clean by default. Expandable when you want granular control.",
+    "kicker": "The three things you&rsquo;ll do most, in the real popup.",
     "items": [
-      { "alt": "Per-tab expanded view — YouTube with three tabs at three different volumes", "title": "Per-tab volume · Pro", "body": "Every tab on any site — YouTube, TikTok, Facebook — its own level." },
-      { "alt": "Collapsed popup with 3 TABS badge ready to expand",                          "title": "Clean by default",    "body": "Tap the tab-count badge to expand when you need granular control." },
-      { "alt": "Upgrade modal showing Pro features including per-tab volume override",       "title": "$2 one-time",         "body": "Unlimited domains + per-tab override + lifetime access." }
+      { "alt": "Popup with YouTube at 30%, Spotify at 60% and Zoom at 100%", "title": "A volume for every site", "body": "YouTube quiet, calls loud. Volux re-applies each level on every visit." },
+      { "alt": "Popup suggesting twitch.tv with a Control this site button",                          "title": "One-click add",    "body": "Open Volux on any tab and press &ldquo;Control this site&rdquo;. No typing." },
+      { "alt": "Popup after scanning tabs, with SoundCloud and TikTok added",       "title": "Scan open tabs",         "body": "One button adds the media sites you already have open." }
     ]
   },
 
@@ -124,11 +124,11 @@
     "pro": {
       "name": "Pro",
       "tag": "Best value",
-      "amount_html": "$2<small>one-time</small>",
-      "sub": "Or pay what you want. Lifetime access.",
+      "amount_html": "$3.99<small>one-time</small>",
+      "sub": "Or pay what you want from $2.99. Tax included. Lifetime access.",
       "list": [ "Unlimited domains", "Per-tab volume override", "Priority support", "Lifetime updates" ],
       "cta": "Upgrade to Pro",
-      "checkout_note": "Secure checkout by Lemon Squeezy, card or PayPal. They handle sales tax, so they may ask for your billing address."
+      "checkout_note": "Secure checkout by Dodo Payments. Tax included, no extra fees at checkout."
     }
   },
 
@@ -150,7 +150,7 @@
       { "q": "Is Volux safe? What permissions does it need?",
         "a": "Volux is open source and privacy-friendly. It only requests permissions necessary to control audio on web pages. No personal data, no browsing history, no analytics. Code is reviewable on GitHub." },
       { "q": "What&rsquo;s the difference between Free and Pro?",
-        "a": "Free lets you control volume for 2 websites, with one-click add for the site you&rsquo;re on and a scan of your open tabs. Pro ($2 one-time) unlocks unlimited websites and per-tab volume override. Lifetime purchase, no subscription." },
+        "a": "Free lets you control volume for 2 websites, with one-click add for the site you&rsquo;re on and a scan of your open tabs. Pro ($3.99 one-time) unlocks unlimited websites and per-tab volume override. Lifetime purchase, no subscription." },
       { "q": "Does Volux work with multiple tabs of the same website?",
         "a": "Yes — two modes. By default, all tabs of the same site share one volume. With Pro, you can override any individual tab: three tabs on the same site can hold three different volumes simultaneously, and the site default still covers any tab you haven&rsquo;t customized." },
       { "q": "Can I set different volumes for multiple tabs of the same site (YouTube, TikTok, Facebook…)?",
@@ -216,7 +216,7 @@
       { "q": "Does Volux work on Chrome and Firefox?",
         "a": "Yes! Volux is available for Chrome, Firefox, Edge, Brave, and other Chromium-based browsers." },
       { "q": "Is Volux free?",
-        "a": "Yes, Volux offers a free version that lets you control 2 websites with all core features. Pro version ($2 one-time) offers unlimited websites." },
+        "a": "Yes, Volux offers a free version that lets you control 2 websites with all core features. Pro version ($3.99 one-time) offers unlimited websites." },
       { "q": "Does Volux collect my data?",
         "a": "No. Volux does not collect, store, or transmit any personal data. All settings are stored locally on your device. No tracking, no analytics, no servers." },
       { "q": "Can I set different volumes for multiple tabs of the same site (YouTube, TikTok, Facebook, etc.)?",

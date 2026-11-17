@@ -68,8 +68,8 @@
       { "k": "Ghi đè",  "v_html": "Kéo thanh trượt của tab nào đó để gán mức âm lượng riêng. Mức mặc định vẫn áp dụng cho những tab bạn chưa tùy chỉnh." },
       { "k": "Tự xoá",  "v_html": "Đóng tab hoặc chuyển trang — ghi đè tự động mất đi. Mặc định của website vẫn giữ sạch sẽ." }
     ],
-    "cta": "Mở khoá Pro · $2 trọn đời",
-    "video_caption": "Demo 8 giây · Mở rộng, kéo, xong"
+    "cta": "Mở khoá Pro · $3.99 trọn đời",
+    "video_caption": "Demo 18 giây · Thêm trang, quét tab, chỉnh từng tab"
   },
 
   "usecases": {
@@ -101,11 +101,11 @@
   "gallery": {
     "label": "04 · Giao diện",
     "title": "Xem trực tiếp trong trình duyệt.",
-    "kicker": "Sạch sẽ theo mặc định. Mở rộng khi bạn cần điều khiển chi tiết.",
+    "kicker": "Ba việc bạn làm nhiều nhất, ngay trong popup thật.",
     "items": [
-      { "alt": "Chế độ mở rộng theo tab — YouTube với ba tab ở ba mức âm lượng khác nhau", "title": "Âm lượng theo tab · Pro", "body": "Mỗi tab trên bất kỳ trang nào — YouTube, TikTok, Facebook — một mức riêng." },
-      { "alt": "Popup thu gọn với huy hiệu 3 TABS sẵn sàng mở rộng",                     "title": "Sạch theo mặc định",       "body": "Nhấn huy hiệu đếm tab khi cần điều khiển chi tiết." },
-      { "alt": "Modal nâng cấp hiển thị các tính năng Pro gồm ghi đè âm lượng theo tab", "title": "$2 một lần",              "body": "Không giới hạn tên miền + ghi đè theo tab + truy cập trọn đời." }
+      { "alt": "Popup với YouTube 30%, Spotify 60% và Zoom 100%", "title": "Mỗi trang một mức âm lượng", "body": "YouTube nhỏ, cuộc gọi to. Volux tự áp dụng lại mỗi lần bạn ghé." },
+      { "alt": "Popup gợi ý twitch.tv với nút Control this site",                     "title": "Thêm bằng 1 cú bấm",       "body": "Mở Volux trên bất kỳ tab nào và bấm &ldquo;Control this site&rdquo;. Không cần gõ." },
+      { "alt": "Popup sau khi quét tab, đã thêm SoundCloud và TikTok", "title": "Quét các tab đang mở",              "body": "Một nút thêm các trang media bạn đang mở." }
     ]
   },
 
@@ -124,11 +124,11 @@
     "pro": {
       "name": "Pro",
       "tag": "Giá trị nhất",
-      "amount_html": "$2<small>một lần</small>",
-      "sub": "Hoặc trả bao nhiêu tuỳ bạn. Truy cập trọn đời.",
+      "amount_html": "$3.99<small>một lần</small>",
+      "sub": "Hoặc trả tuỳ ý từ $2.99. Đã gồm thuế. Truy cập trọn đời.",
       "list": [ "Không giới hạn tên miền", "Ghi đè âm lượng theo tab", "Hỗ trợ ưu tiên", "Cập nhật trọn đời" ],
       "cta": "Nâng cấp Pro",
-      "checkout_note": "Thanh toán an toàn qua Lemon Squeezy, bằng thẻ hoặc PayPal. Họ xử lý thuế bán hàng nên có thể hỏi địa chỉ thanh toán của bạn."
+      "checkout_note": "Thanh toán an toàn qua Dodo Payments. Giá đã gồm thuế, không phát sinh thêm khi thanh toán."
     }
   },
 
@@ -150,7 +150,7 @@
       { "q": "Volux có an toàn không? Cần quyền gì?",
         "a": "Volux là mã nguồn mở và tôn trọng quyền riêng tư. Chỉ yêu cầu những quyền cần thiết để điều khiển âm thanh trên trang web. Không thu thập dữ liệu cá nhân, không lịch sử duyệt, không analytics. Bạn có thể xem mã trên GitHub." },
       { "q": "Khác biệt giữa Free và Pro là gì?",
-        "a": "Free cho phép điều khiển 2 website, kèm thêm trang đang xem bằng 1 cú bấm và quét các tab đang mở. Pro ($2 một lần) mở khoá không giới hạn website và âm lượng riêng cho từng tab. Mua trọn đời, không phải thuê bao." },
+        "a": "Free cho phép điều khiển 2 website, kèm thêm trang đang xem bằng 1 cú bấm và quét các tab đang mở. Pro ($3.99 một lần) mở khoá không giới hạn website và âm lượng riêng cho từng tab. Mua trọn đời, không phải thuê bao." },
       { "q": "Volux có hoạt động với nhiều tab của cùng một website không?",
         "a": "Có — hai chế độ. Mặc định, mọi tab của cùng một trang chia sẻ một mức âm lượng. Với Pro, bạn có thể ghi đè từng tab riêng: ba tab cùng trang có thể giữ ba mức khác nhau cùng lúc, và mức mặc định vẫn áp dụng cho tab chưa tùy chỉnh." },
       { "q": "Tôi có thể đặt mức âm lượng khác nhau cho nhiều tab cùng trang (YouTube, TikTok, Facebook…) không?",
@@ -216,7 +216,7 @@
       { "q": "Volux có chạy trên Chrome và Firefox không?",
         "a": "Có! Volux có sẵn cho Chrome, Firefox, Edge, Brave và các trình duyệt dựa trên Chromium." },
       { "q": "Volux có miễn phí không?",
-        "a": "Có. Volux có bản miễn phí cho phép điều khiển 2 website với đầy đủ tính năng cốt lõi. Bản Pro ($2 một lần) mở khoá không giới hạn website." },
+        "a": "Có. Volux có bản miễn phí cho phép điều khiển 2 website với đầy đủ tính năng cốt lõi. Bản Pro ($3.99 một lần) mở khoá không giới hạn website." },
       { "q": "Volux có thu thập dữ liệu của tôi không?",
         "a": "Không. Volux không thu thập, lưu trữ hay truyền bất kỳ dữ liệu cá nhân nào. Mọi cài đặt ở trên máy bạn. Không theo dõi, không analytics, không server." },
       { "q": "Tôi có thể đặt âm lượng khác nhau cho nhiều tab cùng trang (YouTube, TikTok, Facebook, v.v.) không?",

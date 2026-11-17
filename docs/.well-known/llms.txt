@@ -28,7 +28,7 @@ Volux lets you control audio volume for individual browser tabs and websites. Pe
 ## Pricing
 
 - Free: 2 websites, one-click add, scan open tabs
-- Pro ($2 one-time): Unlimited websites, per-tab volume override, lifetime access
+- Pro ($3.99 one-time, tax included): Unlimited websites, per-tab volume override, lifetime access
 
 ## Contact
 

@@ -10,6 +10,9 @@
 # store-assets.mjs records in frames/manifest.json, plus UI clicks and an end
 # chime. NOTE: these are third-party YouTube audio; uploading the video to
 # YouTube may get a Content ID claim.
+#
+#   tools/build-store-video.sh             # 1280x720 store/YouTube video with headlines
+#   tools/build-store-video.sh --portrait  # popup-only 760x1200 cut for the website's video slot
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -24,6 +27,7 @@ mkdir -p "$OUT"
 
 FADE=0.35
 END_HOLD=2.5
+PORTRAIT=0; [[ "${1:-}" == "--portrait" ]] && PORTRAIT=1
 
 # Pull layout + scene list from the manifest written by store-assets.mjs.
 read -r FPS PX PY PW PH < <(python3 -c "
@@ -36,15 +40,23 @@ echo "[1/3] Rendering ${#SCENES[@]} scenes..."
 CLIPS=() DURS=()
 for entry in "${SCENES[@]}"; do
   read -r ID SECS <<<"$entry"
+  if (( PORTRAIT )); then
+    "$FFMPEG" -v error -y -framerate "$FPS" -i "$FRAMES/$ID/%04d.png" \
+      -vf format=yuv420p -r "$FPS" -c:v libx264 -preset medium -crf 18 "$TMP/$ID.mp4"
+  else
   "$FFMPEG" -v error -y \
     -loop 1 -framerate "$FPS" -i "$FRAMES/$ID/bg.png" \
     -framerate "$FPS" -i "$FRAMES/$ID/%04d.png" \
     -filter_complex "[1:v]scale=${PW}:-2:flags=lanczos,crop=${PW}:${PH}:0:0[p];[0:v][p]overlay=${PX}:${PY}:shortest=1,format=yuv420p[v]" \
     -map "[v]" -r "$FPS" -c:v libx264 -preset medium -crf 18 "$TMP/$ID.mp4"
+  fi
   CLIPS+=("$TMP/$ID.mp4"); DURS+=("$SECS")
 done
+END_VF="format=yuv420p"
+# Portrait: centre the landscape end card on an ink background at popup size.
+(( PORTRAIT )) && END_VF="scale=760:-2,pad=760:1200:0:(oh-ih)/2:color=0x141210,format=yuv420p"
 "$FFMPEG" -v error -y -loop 1 -framerate "$FPS" -t "$END_HOLD" -i "$FRAMES/end.png" \
-  -vf format=yuv420p -r "$FPS" -c:v libx264 -preset medium -crf 18 "$TMP/end.mp4"
+  -vf "$END_VF" -r "$FPS" -c:v libx264 -preset medium -crf 18 "$TMP/end.mp4"
 CLIPS+=("$TMP/end.mp4"); DURS+=("$END_HOLD")
 
 echo "[2/3] Joining with crossfades..."
@@ -143,10 +155,11 @@ print(';'.join(parts))
 PY
 )
 
-echo "[3/3] Encoding ${TOTAL}s video..."
+NAME=volux-demo-1280x720.mp4; (( PORTRAIT )) && NAME=volux-demo-portrait-760x1200.mp4
+echo "[3/3] Encoding ${TOTAL}s video ($NAME)..."
 "$FFMPEG" -v error -y "${INPUTS[@]}" "${AUDIO[@]}" \
   -filter_complex "$FILTER;$AMAP" -map "[v]" -map "[a]" -t "$TOTAL" \
   -c:v libx264 -preset slow -crf 20 -pix_fmt yuv420p -movflags +faststart \
-  -c:a aac -b:a 160k -ac 2 -ar 44100 "$OUT/volux-demo-1280x720.mp4"
+  -c:a aac -b:a 160k -ac 2 -ar 44100 "$OUT/$NAME"
 
-ls -lh "$OUT/volux-demo-1280x720.mp4" | awk '{print $5, $NF}'
+ls -lh "$OUT/$NAME" | awk '{print $5, $NF}'

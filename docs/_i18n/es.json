@@ -68,8 +68,8 @@
       { "k": "Anular",   "v_html": "Arrastrá el control de cualquier pestaña para asignarle su propio volumen. El predeterminado del sitio sigue aplicándose a las pestañas que no personalizaste." },
       { "k": "Descartar","v_html": "Cerrá la pestaña o cambiá de sitio — la anulación se borra sola. El predeterminado del sitio se mantiene limpio." }
     ],
-    "cta": "Desbloquear Pro · $2 pago único",
-    "video_caption": "Demo de 8 segundos · Expandir, arrastrar, listo"
+    "cta": "Desbloquear Pro · $3.99 pago único",
+    "video_caption": "Demo de 18 segundos · Agregá, escaneá, ajustá cada pestaña"
   },
 
   "usecases": {
@@ -101,11 +101,11 @@
   "gallery": {
     "label": "04 · Interfaz",
     "title": "Mirá cómo se ve.",
-    "kicker": "Limpia por defecto. Ampliable cuando querés control granular.",
+    "kicker": "Las tres cosas que más vas a hacer, en el popup real.",
     "items": [
-      { "alt": "Vista expandida por pestaña — YouTube con tres pestañas a tres volúmenes distintos", "title": "Volumen por pestaña · Pro", "body": "Cada pestaña en cualquier sitio — YouTube, TikTok, Facebook — con su propio nivel." },
-      { "alt": "Popup contraído con insignia 3 TABS lista para expandir",                              "title": "Limpia por defecto",        "body": "Tocá la insignia de conteo para expandir cuando necesites control granular." },
-      { "alt": "Modal de upgrade mostrando funciones Pro incluyendo anulación por pestaña",            "title": "$2 pago único",             "body": "Dominios ilimitados + anulación por pestaña + acceso de por vida." }
+      { "alt": "Popup con YouTube al 30%, Spotify al 60% y Zoom al 100%", "title": "Un volumen para cada sitio", "body": "YouTube bajo, llamadas altas. Volux reaplica cada nivel en cada visita." },
+      { "alt": "Popup que sugiere twitch.tv con el botón Control this site",                              "title": "Agregar con un clic",        "body": "Abrí Volux en cualquier pestaña y tocá &ldquo;Control this site&rdquo;. Sin escribir." },
+      { "alt": "Popup después de escanear pestañas, con SoundCloud y TikTok agregados",            "title": "Escanear pestañas abiertas",             "body": "Un botón agrega los sitios de medios que ya tenés abiertos." }
     ]
   },
 
@@ -124,11 +124,11 @@
     "pro": {
       "name": "Pro",
       "tag": "Mejor valor",
-      "amount_html": "$2<small>pago único</small>",
-      "sub": "O pagá lo que quieras. Acceso de por vida.",
+      "amount_html": "$3.99<small>pago único</small>",
+      "sub": "O pagá lo que quieras desde $2.99. Impuestos incluidos. Acceso de por vida.",
       "list": [ "Dominios ilimitados", "Anulación de volumen por pestaña", "Soporte prioritario", "Actualizaciones de por vida" ],
       "cta": "Actualizar a Pro",
-      "checkout_note": "Pago seguro con Lemon Squeezy, con tarjeta o PayPal. Ellos gestionan los impuestos, por eso pueden pedirte la dirección de facturación."
+      "checkout_note": "Pago seguro con Dodo Payments. Impuestos incluidos, sin cargos extra al pagar."
     }
   },
 
@@ -150,7 +150,7 @@
       { "q": "¿Es seguro Volux? ¿Qué permisos necesita?",
         "a": "Volux es código abierto y respeta la privacidad. Solo pide los permisos necesarios para controlar el audio en páginas web. Sin datos personales, sin historial de navegación, sin analítica. Podés revisar el código en GitHub." },
       { "q": "¿Cuál es la diferencia entre Free y Pro?",
-        "a": "Free te deja controlar 2 sitios, con agregado en un clic del sitio que estás viendo y escaneo de tus pestañas abiertas. Pro ($2 pago único) desbloquea sitios ilimitados y volumen por pestaña. Compra única, sin suscripción." },
+        "a": "Free te deja controlar 2 sitios, con agregado en un clic del sitio que estás viendo y escaneo de tus pestañas abiertas. Pro ($3.99 pago único) desbloquea sitios ilimitados y volumen por pestaña. Compra única, sin suscripción." },
       { "q": "¿Funciona Volux con varias pestañas del mismo sitio?",
         "a": "Sí — dos modos. Por defecto, todas las pestañas del mismo sitio comparten un volumen. Con Pro, podés anular cualquier pestaña individual: tres pestañas del mismo sitio pueden mantener tres volúmenes distintos al mismo tiempo, y el predeterminado del sitio sigue cubriendo las que no personalizaste." },
       { "q": "¿Puedo poner volúmenes distintos en varias pestañas del mismo sitio (YouTube, TikTok, Facebook…)?",
@@ -216,7 +216,7 @@
       { "q": "¿Funciona Volux en Chrome y Firefox?",
         "a": "¡Sí! Volux está disponible para Chrome, Firefox, Edge, Brave y otros navegadores basados en Chromium." },
       { "q": "¿Volux es gratis?",
-        "a": "Sí, Volux tiene una versión gratuita que permite controlar 2 sitios con todas las funciones principales. La versión Pro ($2 pago único) ofrece sitios ilimitados." },
+        "a": "Sí, Volux tiene una versión gratuita que permite controlar 2 sitios con todas las funciones principales. La versión Pro ($3.99 pago único) ofrece sitios ilimitados." },
       { "q": "¿Volux recopila mis datos?",
         "a": "No. Volux no recopila, almacena ni transmite datos personales. Todos los ajustes se guardan localmente en tu dispositivo. Sin rastreo, sin analítica, sin servidores." },
       { "q": "¿Puedo establecer volúmenes distintos para varias pestañas del mismo sitio (YouTube, TikTok, Facebook, etc.)?",
