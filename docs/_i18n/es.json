@@ -92,7 +92,7 @@
     "kicker": "Tres pasitos. Después, automático. Para siempre.",
     "steps": [
       { "title": "Instalá la extensión",           "body": "Agregá Volux a Chrome o Firefox con un clic. Sin cuenta. Sin configuración. El ícono aparece en tu barra al instante." },
-      { "title": "Ajustá en cualquier sitio",      "body": "Hacé clic en el ícono de Volux y arrastrá el control. YouTube al 30%. Podcast al 80%. Se aplica de inmediato." },
+      { "title": "Ajustá en cualquier sitio",      "body": "Hacé clic en el ícono de Volux, tocá “Control this site” y arrastrá el control. YouTube al 30%. Podcast al 80%. Se aplica de inmediato." },
       { "title": "Volux recuerda",                  "body": "Listo. Tus niveles se guardan localmente y se reaplican cada vez, para siempre — entre recargas, reinicios y semanas." }
     ],
     "note_html": "<strong>Tip Pro:</strong> por defecto, todas las pestañas del mismo sitio comparten un volumen — igual en YouTube, TikTok, Facebook, Spotify, donde sea. Con Pro, expandí la insignia con el conteo de pestañas para darle nivel propio a cada una. El predeterminado del sitio sigue cubriendo las pestañas no personalizadas."
@@ -118,7 +118,7 @@
       "tag": "Para siempre",
       "amount": "$0",
       "sub": "Sin cuenta, sin tarjeta.",
-      "list": [ "Control de 2 dominios", "Volumen por dominio", "Silencio instantáneo", "Ajustes persistentes" ],
+      "list": [ "Control de 2 dominios", "Volumen por dominio", "Agregar con un clic y escaneo de pestañas", "Silencio instantáneo", "Ajustes persistentes" ],
       "cta": "Instalar gratis"
     },
     "pro": {
@@ -126,7 +126,7 @@
       "tag": "Mejor valor",
       "amount_html": "$2<small>pago único</small>",
       "sub": "O pagá lo que quieras. Acceso de por vida.",
-      "list": [ "Dominios ilimitados", "Anulación de volumen por pestaña", "Detección automática de sitios de medios", "Escaneo de pestañas", "Actualizaciones de por vida" ],
+      "list": [ "Dominios ilimitados", "Anulación de volumen por pestaña", "Soporte prioritario", "Actualizaciones de por vida" ],
       "cta": "Actualizar a Pro"
     }
   },
@@ -149,7 +149,7 @@
       { "q": "¿Es seguro Volux? ¿Qué permisos necesita?",
         "a": "Volux es código abierto y respeta la privacidad. Solo pide los permisos necesarios para controlar el audio en páginas web. Sin datos personales, sin historial de navegación, sin analítica. Podés revisar el código en GitHub." },
       { "q": "¿Cuál es la diferencia entre Free y Pro?",
-        "a": "Free te deja controlar 2 sitios — ideal para probar. Pro ($2 pago único) desbloquea sitios ilimitados, detección automática de sitios de medios y escaneo de todas las pestañas abiertas. Compra única, sin suscripción." },
+        "a": "Free te deja controlar 2 sitios, con agregado en un clic del sitio que estás viendo y escaneo de tus pestañas abiertas. Pro ($2 pago único) desbloquea sitios ilimitados y volumen por pestaña. Compra única, sin suscripción." },
       { "q": "¿Funciona Volux con varias pestañas del mismo sitio?",
         "a": "Sí — dos modos. Por defecto, todas las pestañas del mismo sitio comparten un volumen. Con Pro, podés anular cualquier pestaña individual: tres pestañas del mismo sitio pueden mantener tres volúmenes distintos al mismo tiempo, y el predeterminado del sitio sigue cubriendo las que no personalizaste." },
       { "q": "¿Puedo poner volúmenes distintos en varias pestañas del mismo sitio (YouTube, TikTok, Facebook…)?",

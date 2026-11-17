@@ -92,7 +92,7 @@
     "kicker": "Três passos pequenos. Depois, automático. Para sempre.",
     "steps": [
       { "title": "Instale a extensão",         "body": "Adicione o Volux ao Chrome ou Firefox com um clique. Sem conta, sem configuração. O ícone aparece na barra na hora." },
-      { "title": "Ajuste em qualquer site",    "body": "Clique no ícone do Volux e arraste o controle. YouTube em 30%. Podcast em 80%. Aplica na hora." },
+      { "title": "Ajuste em qualquer site",    "body": "Clique no ícone do Volux, toque em “Control this site” e arraste o controle. YouTube em 30%. Podcast em 80%. Aplica na hora." },
       { "title": "O Volux lembra",              "body": "Pronto. Seus níveis ficam salvos localmente e se reaplicam toda vez — entre recargas, reinícios e semanas depois." }
     ],
     "note_html": "<strong>Dica Pro:</strong> por padrão, todas as abas do mesmo site compartilham um volume — igual no YouTube, TikTok, Facebook, Spotify, onde for. Com o Pro, expanda o selo de contagem de abas para dar nível próprio a cada uma. O padrão do site ainda cobre as abas que você não personalizou."
@@ -118,7 +118,7 @@
       "tag": "Para sempre",
       "amount": "$0",
       "sub": "Sem conta, sem cartão.",
-      "list": [ "Controle de 2 domínios", "Volume por domínio", "Mudo instantâneo", "Ajustes persistentes" ],
+      "list": [ "Controle de 2 domínios", "Volume por domínio", "Adicionar com um clique e escanear abas", "Mudo instantâneo", "Ajustes persistentes" ],
       "cta": "Instalar grátis"
     },
     "pro": {
@@ -126,7 +126,7 @@
       "tag": "Melhor custo-benefício",
       "amount_html": "$2<small>pagamento único</small>",
       "sub": "Ou pague o quanto quiser. Acesso vitalício.",
-      "list": [ "Domínios ilimitados", "Override de volume por aba", "Detecção automática de sites de mídia", "Escaneamento de abas", "Atualizações vitalícias" ],
+      "list": [ "Domínios ilimitados", "Override de volume por aba", "Suporte prioritário", "Atualizações vitalícias" ],
       "cta": "Fazer upgrade para Pro"
     }
   },
@@ -149,7 +149,7 @@
       { "q": "O Volux é seguro? Que permissões precisa?",
         "a": "O Volux é open source e respeita a privacidade. Só pede as permissões necessárias para controlar o áudio nas páginas. Sem dados pessoais, sem histórico de navegação, sem analytics. O código pode ser revisado no GitHub." },
       { "q": "Qual a diferença entre Free e Pro?",
-        "a": "O Free permite controlar 2 sites — ótimo para testar. O Pro ($2 pagamento único) libera sites ilimitados, detecção automática de sites de mídia e escaneamento de todas as abas abertas. Compra vitalícia, sem assinatura." },
+        "a": "O Free permite controlar 2 sites, com adição em um clique do site aberto e escaneamento das abas abertas. O Pro ($2 pagamento único) libera sites ilimitados e volume por aba. Compra vitalícia, sem assinatura." },
       { "q": "O Volux funciona com várias abas do mesmo site?",
         "a": "Sim — dois modos. Por padrão, todas as abas do mesmo site compartilham um volume. Com o Pro, você pode sobrepor qualquer aba individualmente: três abas do mesmo site podem manter três volumes diferentes ao mesmo tempo, e o padrão do site ainda cobre as abas não personalizadas." },
       { "q": "Posso colocar volumes diferentes em várias abas do mesmo site (YouTube, TikTok, Facebook…)?",

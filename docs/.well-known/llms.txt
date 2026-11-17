@@ -10,7 +10,7 @@ Volux lets you control audio volume for individual browser tabs and websites. Pe
 ## Links
 
 - Website: https://volux.devlifeeasy.com/
-- Chrome Extension: https://chrome.google.com/webstore/detail/volux/
+- Chrome Extension: https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm
 - Firefox Add-on: https://addons.mozilla.org/en-US/firefox/addon/volux-premium-volume-control/
 - GitHub: https://github.com/vannk84/volux
 - Privacy Policy: https://volux.devlifeeasy.com/privacy.html
@@ -18,6 +18,7 @@ Volux lets you control audio volume for individual browser tabs and websites. Pe
 ## Features
 
 - Per-domain volume control
+- One-click add for the current site, scan open tabs for media sites
 - Smart tab grouping by site
 - One-click mute
 - Persistent settings
@@ -26,8 +27,8 @@ Volux lets you control audio volume for individual browser tabs and websites. Pe
 
 ## Pricing
 
-- Free: Basic features
-- Pro ($2): Unlimited domains, auto-detect, scan tabs, lifetime access
+- Free: 2 websites, one-click add, scan open tabs
+- Pro ($2 one-time): Unlimited websites, per-tab volume override, lifetime access
 
 ## Contact
 

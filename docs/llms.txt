@@ -12,6 +12,9 @@ Volux lets you control audio volume for individual browser tabs and websites. Un
 - **Per-Domain Control**: Set unique volume levels for each website independently
 - **Per-Tab Volume Override (Pro)**: Give individual tabs of the same site their own volume. Works on any site with audio — YouTube, TikTok, Facebook, Spotify, Twitch, SoundCloud, any domain. Three tabs on the same site can hold three different volumes; the site default still applies to any tab you haven't customized
 - **Smart Grouping**: By default, all tabs from the same site share one volume slider (Pro unlocks per-tab overrides on top of this)
+- **One-Click Add**: Click "Control this site" in the popup to add the site you are on, no typing needed; sites playing audio in other tabs are suggested too
+- **Scan Open Tabs**: One button finds media sites in your open tabs and adds them (Free plan: up to its 2-site limit)
+- **Ready Out of the Box**: YouTube is added on install
 - **Instant Mute**: One-click mute without losing your volume setting
 - **Persistent Settings**: Your preferences are saved automatically across sessions
 - **Live Detection**: See which tabs are currently playing audio
@@ -19,25 +22,25 @@ Volux lets you control audio volume for individual browser tabs and websites. Un
 
 ## Installation
 
-- Chrome: https://chrome.google.com/webstore/detail/volux/
+- Chrome: https://chromewebstore.google.com/detail/cnagfimhcaplopdllnmkhalkeagmeapm
 - Firefox: https://addons.mozilla.org/en-US/firefox/addon/volux-premium-volume-control/
 - Source Code: https://github.com/vannk84/volux
 
 ## Pricing
 
-- **Free Version**: Basic volume control features
-- **Pro Version ($2)**: Unlimited domain control, per-tab volume override, auto-detect media sites, scan tabs button, priority support, lifetime access
+- **Free Version**: 2 websites, auto-save volume, one-click add, scan open tabs, instant mute
+- **Pro Version ($2 one-time)**: Unlimited websites, per-tab volume override, priority support, lifetime access
 
 ## Privacy
 
-Volux does NOT collect, store, or transmit any personal data. All settings are stored locally on the user's device. No analytics, no tracking, no cookies.
+The Volux extension does NOT collect, store, or transmit any personal data. All settings are stored locally on the user's device. The extension has no analytics, no tracking, and no cookies. Its only network request is a license check with Lemon Squeezy when a Pro key is activated. (This website, not the extension, uses Google Analytics and Microsoft Clarity.)
 
 Read full privacy policy: https://volux.devlifeeasy.com/privacy.html
 
 ## Technical Details
 
 - Works with Manifest V3 (Chrome) and Manifest V2 (Firefox)
-- Uses Web Audio API for volume control
+- Sets the volume of the page's own audio/video elements
 - Requires permissions: tabs, storage, host_permissions
 - No external dependencies or background processes
 
@@ -52,10 +55,10 @@ Q: Does Volux work with all websites?
 A: Yes, Volux works with any website that plays audio through the browser, including YouTube, Spotify Web, Netflix, and more.
 
 Q: Is my data safe?
-A: Absolutely. Volux stores everything locally on your device. No data is ever sent to external servers.
+A: Absolutely. Volux stores everything locally on your device. The only network request is a license-key check with Lemon Squeezy when you activate Pro; no personal or browsing data is ever sent.
 
 Q: What's the difference between Free and Pro?
-A: Free version has limited domain slots. Pro offers unlimited domains, per-tab volume override (individual tabs of the same site can have different volumes), auto-detection of media sites, and the ability to scan all tabs for audio.
+A: Free controls 2 websites and includes one-click add and scanning open tabs for media sites. Pro ($2 one-time) offers unlimited websites and per-tab volume override (individual tabs of the same site can have different volumes).
 
 Q: Does it work with multiple tabs of the same site?
 A: Yes. By default, Volux groups tabs by domain so all tabs of the same site share one volume (works the same on YouTube, TikTok, Facebook, Spotify, or any site). With Pro, you can expand the tab-count badge on a domain and set a different volume on any individual tab — three tabs of the same site can play at three different volumes simultaneously.

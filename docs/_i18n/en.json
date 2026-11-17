@@ -92,7 +92,7 @@
     "kicker": "Three small steps. After that, it&rsquo;s automatic. Forever.",
     "steps": [
       { "title": "Install the extension", "body": "Add Volux to Chrome or Firefox with one click. No account. No setup. Icon appears in your toolbar instantly." },
-      { "title": "Adjust on any site",    "body": "Click the Volux icon and drag the slider. YouTube at 30%. Podcast at 80%. It applies immediately." },
+      { "title": "Adjust on any site",    "body": "Click the Volux icon, tap “Control this site”, then drag the slider. YouTube at 30%. Podcast at 80%. It applies immediately." },
       { "title": "Volux remembers",       "body": "That&rsquo;s it. Your levels are saved locally and reapplied every time, forever — across refreshes, restarts, and weeks." }
     ],
     "note_html": "<strong>Pro tip:</strong> by default, all tabs of the same site share one volume — same on YouTube, TikTok, Facebook, Spotify, anywhere. With Pro, expand the tab-count badge to give individual tabs their own level. The site default still covers any tab you haven&rsquo;t customized."
@@ -118,7 +118,7 @@
       "tag": "Forever",
       "amount": "$0",
       "sub": "No account, no credit card.",
-      "list": [ "Control 2 domains", "Per-domain volume", "Instant mute", "Persistent settings" ],
+      "list": [ "Control 2 domains", "Per-domain volume", "One-click add &amp; tab scan", "Instant mute", "Persistent settings" ],
       "cta": "Install free"
     },
     "pro": {
@@ -126,7 +126,7 @@
       "tag": "Best value",
       "amount_html": "$2<small>one-time</small>",
       "sub": "Or pay what you want. Lifetime access.",
-      "list": [ "Unlimited domains", "Per-tab volume override", "Auto-detect media sites", "Scan tabs feature", "Lifetime updates" ],
+      "list": [ "Unlimited domains", "Per-tab volume override", "Priority support", "Lifetime updates" ],
       "cta": "Upgrade to Pro"
     }
   },
@@ -149,7 +149,7 @@
       { "q": "Is Volux safe? What permissions does it need?",
         "a": "Volux is open source and privacy-friendly. It only requests permissions necessary to control audio on web pages. No personal data, no browsing history, no analytics. Code is reviewable on GitHub." },
       { "q": "What&rsquo;s the difference between Free and Pro?",
-        "a": "Free lets you control volume for 2 websites — perfect to try. Pro ($2 one-time) unlocks unlimited websites, auto-detection of media sites, and the ability to scan all open tabs. Lifetime purchase, no subscription." },
+        "a": "Free lets you control volume for 2 websites, with one-click add for the site you&rsquo;re on and a scan of your open tabs. Pro ($2 one-time) unlocks unlimited websites and per-tab volume override. Lifetime purchase, no subscription." },
       { "q": "Does Volux work with multiple tabs of the same website?",
         "a": "Yes — two modes. By default, all tabs of the same site share one volume. With Pro, you can override any individual tab: three tabs on the same site can hold three different volumes simultaneously, and the site default still covers any tab you haven&rsquo;t customized." },
       { "q": "Can I set different volumes for multiple tabs of the same site (YouTube, TikTok, Facebook…)?",

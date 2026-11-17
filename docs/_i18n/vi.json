@@ -92,7 +92,7 @@
     "kicker": "Ba bước nhỏ. Sau đó, tự động. Mãi mãi.",
     "steps": [
       { "title": "Cài tiện ích",           "body": "Thêm Volux vào Chrome hoặc Firefox chỉ với một cú nhấp. Không tài khoản, không thiết lập. Biểu tượng hiện ngay trên thanh công cụ." },
-      { "title": "Chỉnh trên bất kỳ trang","body": "Nhấp biểu tượng Volux và kéo thanh trượt. YouTube 30%. Podcast 80%. Áp dụng ngay lập tức." },
+      { "title": "Chỉnh trên bất kỳ trang","body": "Nhấp biểu tượng Volux, chọn “Control this site”, rồi kéo thanh trượt. YouTube 30%. Podcast 80%. Áp dụng ngay lập tức." },
       { "title": "Volux ghi nhớ",          "body": "Vậy là xong. Mức của bạn được lưu cục bộ và áp dụng lại mỗi lần — qua tải lại, khởi động lại và nhiều tuần sau." }
     ],
     "note_html": "<strong>Mẹo Pro:</strong> mặc định, mọi tab của cùng một website chia sẻ một mức âm lượng — giống nhau trên YouTube, TikTok, Facebook, Spotify, bất cứ đâu. Với Pro, mở huy hiệu đếm tab để gán mức riêng cho từng tab. Mức mặc định vẫn áp dụng cho tab chưa tùy chỉnh."
@@ -118,7 +118,7 @@
       "tag": "Mãi mãi",
       "amount": "$0",
       "sub": "Không tài khoản, không thẻ.",
-      "list": [ "Kiểm soát 2 tên miền", "Âm lượng theo tên miền", "Tắt tiếng tức thì", "Lưu cài đặt lâu dài" ],
+      "list": [ "Kiểm soát 2 tên miền", "Âm lượng theo tên miền", "Thêm bằng 1 cú bấm &amp; quét tab", "Tắt tiếng tức thì", "Lưu cài đặt lâu dài" ],
       "cta": "Cài miễn phí"
     },
     "pro": {
@@ -126,7 +126,7 @@
       "tag": "Giá trị nhất",
       "amount_html": "$2<small>một lần</small>",
       "sub": "Hoặc trả bao nhiêu tuỳ bạn. Truy cập trọn đời.",
-      "list": [ "Không giới hạn tên miền", "Ghi đè âm lượng theo tab", "Tự phát hiện trang media", "Quét tab có âm thanh", "Cập nhật trọn đời" ],
+      "list": [ "Không giới hạn tên miền", "Ghi đè âm lượng theo tab", "Hỗ trợ ưu tiên", "Cập nhật trọn đời" ],
       "cta": "Nâng cấp Pro"
     }
   },
@@ -149,7 +149,7 @@
       { "q": "Volux có an toàn không? Cần quyền gì?",
         "a": "Volux là mã nguồn mở và tôn trọng quyền riêng tư. Chỉ yêu cầu những quyền cần thiết để điều khiển âm thanh trên trang web. Không thu thập dữ liệu cá nhân, không lịch sử duyệt, không analytics. Bạn có thể xem mã trên GitHub." },
       { "q": "Khác biệt giữa Free và Pro là gì?",
-        "a": "Free cho phép điều khiển 2 website — đủ để thử. Pro ($2 một lần) mở khoá không giới hạn website, tự phát hiện trang media, và quét mọi tab đang mở. Mua trọn đời, không phải thuê bao." },
+        "a": "Free cho phép điều khiển 2 website, kèm thêm trang đang xem bằng 1 cú bấm và quét các tab đang mở. Pro ($2 một lần) mở khoá không giới hạn website và âm lượng riêng cho từng tab. Mua trọn đời, không phải thuê bao." },
       { "q": "Volux có hoạt động với nhiều tab của cùng một website không?",
         "a": "Có — hai chế độ. Mặc định, mọi tab của cùng một trang chia sẻ một mức âm lượng. Với Pro, bạn có thể ghi đè từng tab riêng: ba tab cùng trang có thể giữ ba mức khác nhau cùng lúc, và mức mặc định vẫn áp dụng cho tab chưa tùy chỉnh." },
       { "q": "Tôi có thể đặt mức âm lượng khác nhau cho nhiều tab cùng trang (YouTube, TikTok, Facebook…) không?",
